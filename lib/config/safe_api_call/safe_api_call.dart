@@ -1,4 +1,4 @@
-import '../../core/utility/exception_handler.dart';
+import '../../core/utility/exception/exception_handler.dart';
 import '../base_response/base_response.dart';
 
 Future<BaseResponse<T>> safeApiCall<T>(Future<T> Function() apiCall) async {

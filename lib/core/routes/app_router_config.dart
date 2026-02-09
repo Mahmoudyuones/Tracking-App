@@ -12,6 +12,11 @@ class AppRouterConfig {
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
       /// Navigation to Boarding Screen
+      // GoRoute(
+      //   path: AppRoutes.onboardingRoute,
+      //   name: AppRoutes.onboardingRoute,
+      //   builder: (context, state) => const TestWidget(),
+      // ),
     ],
   );
 }
