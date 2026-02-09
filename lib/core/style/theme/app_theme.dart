@@ -8,7 +8,7 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    brightness: Brightness.light,
+    brightness: .light,
     scaffoldBackgroundColor: AppColors.whiteBase,
     fontFamily: GoogleFonts.inter().fontFamily,
     //------------ App Bar Theme -----------------//
@@ -21,6 +21,16 @@ class AppTheme {
         color: AppColors.blackBase,
         fontWeight: FontWeight.w500,
       ),
+    ),
+    //------------ Bottom Navigation Bar Theme -----------------//
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white60,
+      selectedItemColor: AppColors.mainBase,
+      unselectedItemColor: AppColors.white80,
+      elevation: 1,
+      type: .fixed,
+      selectedLabelStyle: TextStyle(fontSize: 12, color: AppColors.mainBase),
+      unselectedLabelStyle: TextStyle(fontSize: 12, color: AppColors.white80),
     ),
     //------------ Text Form Field Theme -----------------//
     inputDecorationTheme: InputDecorationTheme(
@@ -45,85 +55,85 @@ class AppTheme {
       // Display styles
       displayLarge: TextStyle(
         fontSize: 57,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.blackBase,
       ),
       displayMedium: TextStyle(
         fontSize: 45,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.blackBase,
       ),
       displaySmall: TextStyle(
         fontSize: 36,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.blackBase,
       ),
 
       // Headline styles
       headlineLarge: TextStyle(
         fontSize: 32,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.blackBase,
       ),
       headlineMedium: TextStyle(
         fontSize: 28,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.blackBase,
       ),
       headlineSmall: TextStyle(
         fontSize: 24,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.blackBase,
       ),
 
       // Title styles
       titleLarge: TextStyle(
         fontSize: 22,
-        fontWeight: FontWeight.w500,
+        fontWeight: .w500,
         color: AppColors.blackBase,
       ),
       titleMedium: TextStyle(
         fontSize: 16,
-        fontWeight: FontWeight.w500,
+        fontWeight: .w500,
         color: AppColors.blackBase,
       ),
       titleSmall: TextStyle(
         fontSize: 14,
-        fontWeight: FontWeight.w500,
+        fontWeight: .w500,
         color: AppColors.blackBase,
       ),
 
       // Label styles
       labelLarge: TextStyle(
         fontSize: 14,
-        fontWeight: FontWeight.w500,
+        fontWeight: .w500,
         color: AppColors.blackBase,
       ),
       labelMedium: TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w500,
+        fontWeight: .w500,
         color: AppColors.blackBase,
       ),
       labelSmall: TextStyle(
         fontSize: 11,
-        fontWeight: FontWeight.w500,
+        fontWeight: .w500,
         color: AppColors.blackBase,
       ),
 
       // Body styles
       bodyLarge: TextStyle(
         fontSize: 16,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.gray,
       ),
       bodyMedium: TextStyle(
         fontSize: 14,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.gray,
       ),
       bodySmall: TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w400,
+        fontWeight: .w400,
         color: AppColors.blackBase,
       ),
     ),
@@ -140,8 +150,24 @@ class AppTheme {
         padding: const EdgeInsets.symmetric(vertical: 14),
         textStyle: const TextStyle(
           fontSize: 16,
-          fontWeight: FontWeight.w500,
+          fontWeight: .w500,
           color: AppColors.whiteBase,
+        ),
+      ),
+    ),
+    //------------ Outlined Button Theme -----------------//
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: AppColors.whiteBase,
+        foregroundColor: AppColors.gray,
+        elevation: 0,
+        side: const BorderSide(color: AppColors.gray, width: 1),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        textStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.gray,
         ),
       ),
     ),
@@ -171,14 +197,20 @@ class AppTheme {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       titleTextStyle: const TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.w600,
+        fontWeight: .w600,
         color: AppColors.blackBase,
       ),
       contentTextStyle: const TextStyle(
         fontSize: 16,
-        fontWeight: FontWeight.normal,
         color: AppColors.blackBase,
       ),
+    ),
+    //------------ Card Theme -----------------//
+    cardTheme: CardThemeData(
+      clipBehavior: .antiAlias,
+      color: AppColors.whiteBase,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation: 5,
     ),
     //------------ PIN CODE INPUT Theme -----------------//
   );
