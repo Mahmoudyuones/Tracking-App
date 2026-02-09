@@ -1,0 +1,226 @@
+import 'package:easy_localization/easy_localization.dart';
+
+class AppTextString {
+  AppTextString._();
+
+  //-------------------------- Technical Keys --------------------------//
+  static const String enLangKey = 'en';
+  static const String arLangKey = 'ar';
+
+  //-------------------------- NAVIGATION TEXT --------------------------//
+  static String get navigationError => 'errors.navigation'.tr();
+
+  //-------------------------- COMMON TEXT --------------------------//
+  static String get loading => 'common.loading'.tr();
+  static String get retry => 'common.retry'.tr();
+  static String get cancel => 'common.cancel'.tr();
+  static String get confirm => 'common.confirm'.tr();
+  static String get update => 'common.update'.tr();
+  static String get delete => 'common.delete'.tr();
+
+  //-------------------------- AUTH ONBOARDING TEXT --------------------------//
+  static String get onboarding => 'auth.onboarding'.tr();
+  static String get login => 'auth.login'.tr();
+  static String get applyNow => 'auth.applyNow'.tr();
+
+  //-------------------------- AUTH LOGIN TEXT --------------------------//
+  static String get rememberMe => 'auth.rememberMe'.tr();
+  static String get didForgetPassword => 'auth.didForgetPassword'.tr();
+
+  //-------------------------- AUTH FORGET PASSWORD TEXT --------------------------//
+  static String get forgetPasswordHeader => 'auth.forgetPassword.header'.tr();
+  static String get forgetPasswordTitle => 'auth.forgetPassword.title'.tr();
+  static String get emailVerificationHeader =>
+      'auth.forgetPassword.emailVerificationHeader'.tr();
+  static String get emailVerificationTitle =>
+      'auth.forgetPassword.emailVerificationTitle'.tr();
+  static String get didResentCode => 'auth.forgetPassword.didResentCode'.tr();
+  static String get resend => 'auth.forgetPassword.resend'.tr();
+
+  //-------------------------- AUTH APPLY TEXT --------------------------//
+  static String get applyHeader => 'auth.apply.header'.tr();
+  static String get applyTitle => 'auth.apply.title'.tr();
+
+  //-------------------------- AUTH SUCCESS APPLY TEXT --------------------------//
+  static String get successApplyHeader => 'auth.successApply.header'.tr();
+  static String get successApplyTitle => 'auth.successApply.title'.tr();
+
+  // Auth Labels
+  static String get emailLabel => 'auth.labels.email'.tr();
+  static String get passwordLabel => 'auth.labels.password'.tr();
+  static String get currentPasswordLabel => 'auth.labels.currentPassword'.tr();
+  static String get newPasswordLabel => 'auth.labels.newPassword'.tr();
+  static String get confirmPasswordLabel => 'auth.labels.confirmPassword'.tr();
+  static String get countryLabel => 'auth.labels.country'.tr();
+  static String get firstLegalNameLabel => 'auth.labels.firstLegalName'.tr();
+  static String get secondLegalNameLabel => 'auth.labels.secondLegalName'.tr();
+  static String get vehicleTypeLabel => 'auth.labels.vehicleType'.tr();
+  static String get vehicleNumberLabel => 'auth.labels.vehicleNumber'.tr();
+  static String get vehicleLicenseLabel => 'auth.labels.vehicleLicense'.tr();
+  static String get phoneNumberLabel => 'auth.labels.phoneNumber'.tr();
+  static String get idNumberLabel => 'auth.labels.idNumber'.tr();
+  static String get idImageLabel => 'auth.labels.idImage'.tr();
+
+  // Auth Hints
+  static String get enterEmail => 'auth.hints.enterEmail'.tr();
+  static String get enterPassword => 'auth.hints.enterPassword'.tr();
+  static String get enterCurrentPassword => 'auth.hints.enterCurrentPassword'.tr();
+  static String get enterConfirmPassword => 'auth.hints.enterConfirmPassword'.tr();
+  static String get enterFirstName => 'auth.hints.enterFirstName'.tr();
+  static String get enterLastName => 'auth.hints.enterLastName'.tr();
+  static String get enterPhoneNumber => 'auth.hints.enterPhoneNumber'.tr();
+  static String get enterFirstLegalName => 'auth.hints.enterFirstLegalName'.tr();
+  static String get enterSecondLegalName => 'auth.hints.enterSecondLegalName'.tr();
+  static String get enterVehicleNumber => 'auth.hints.enterVehicleNumber'.tr();
+  static String get uploadVehicleLicensePhoto => 'auth.hints.uploadVehicleLicensePhoto'.tr();
+  static String get enterNationalIdNumber => 'auth.hints.enterNationalIdNumber'.tr();
+  static String get uploadIdImagePhoto => 'auth.hints.uploadIdImagePhoto'.tr();
+
+
+  static String get logout => 'auth.logout'.tr();
+
+  static String get confirmLogout => 'auth.confirmLogout'.tr();
+
+  static String get firstName => 'auth.firstName'.tr();
+
+  static String get lastName => 'auth.lastName'.tr();
+
+  static String get confirmPassword => 'auth.confirmPassword'.tr();
+
+  static String get phoneNumber => 'auth.phoneNumber'.tr();
+
+  static String get gender => 'auth.gender'.tr();
+
+  static String get female => 'auth.female'.tr();
+
+  static String get male => 'auth.male'.tr();
+
+  //-------------------------- Auth Forget Password --------------------------//
+
+
+
+
+  static String get resetPasswordHeader =>
+      'auth.forgetPassword.resetPasswordHeader'.tr();
+
+  static String get resetPasswordTitle =>
+      'auth.forgetPassword.resetPasswordTitle'.tr();
+
+
+
+
+  static String get newPasswordHint =>
+      'auth.forgetPassword.newPasswordHint'.tr();
+
+  static String get otpResentSuccess =>
+      'auth.forgetPassword.otpResentSuccess'.tr();
+
+  static String get currentPassword =>
+      'auth.forgetPassword.currentPassword'.tr();
+
+  static String get newPassword => 'auth.forgetPassword.newPassword'.tr();
+
+  // Auth Messages
+  static String get failedToRegister => 'auth.messages.failedToRegister'.tr();
+
+  static String get creatingAccountAgreement =>
+      'auth.messages.creatingAccountAgreement'.tr();
+
+  static String get termsAndConditions =>
+      'auth.messages.termsAndConditions'.tr();
+
+  static String get alreadyHaveAccount =>
+      'auth.messages.alreadyHaveAccount'.tr();
+
+  static String get invalidPhoneNumber =>
+      'auth.messages.invalidPhoneNumber'.tr();
+
+  static String get accountCreatedSuccessfully =>
+      'auth.messages.accountCreatedSuccessfully'.tr();
+
+  static String get loginSuccess => 'auth.messages.loginSuccess'.tr();
+
+  static String get passwordUpdatedSuccessfully =>
+      'auth.messages.passwordUpdatedSuccessfully'.tr();
+
+  static String get failedToUpdatePassword =>
+      'auth.messages.failedToUpdatePassword'.tr();
+
+  static String get newPasswordSameAsOld =>
+      'auth.messages.newPasswordSameAsOld'.tr();
+
+  static String get pleaseConfirmYourNewPassword =>
+      'auth.messages.pleaseConfirmYourNewPassword'.tr();
+
+  static String get pleaseEnterYourCurrentPassword =>
+      'auth.messages.pleaseEnterYourCurrentPassword'.tr();
+
+  static String get pleaseEnterYourNewPassword =>
+      'auth.messages.pleaseEnterYourNewPassword'.tr();
+
+  static String get emailFocusError => 'auth.messages.emailFocusError'.tr();
+
+  static String get passwordsDoNotMatch =>
+      'auth.messages.passwordsDoNotMatch'.tr();
+
+
+  //-------------------------- HOME --------------------------//
+  static String get home => 'home.title'.tr();
+
+
+  //-------------------------- Profile --------------------------//
+  static const String defaultAvatarUrl =
+      'https://flower.elevateegy.com/uploads/default-profile.png';
+  static const String englishProfileState = 'English';
+  static const String arabicProfileState = 'Arabic';
+
+  static String get profile => 'profile.title'.tr();
+
+  static String get notification => 'profile.notification'.tr();
+
+  static String get chooseLanguage => 'profile.chooseLanguage'.tr();
+
+  static String get english => 'profile.english'.tr();
+
+  static String get arabic => 'profile.arabic'.tr();
+
+  static String get language => 'profile.language'.tr();
+
+  static String get termsAndConditionsPolicy =>
+      'profile.termsAndConditionsPolicy'.tr();
+
+  static String get aboutUsPolicy => 'profile.aboutUsPolicy'.tr();
+
+  static String get myOrders => 'profile.myOrders'.tr();
+
+  static String get savedAddresses => 'profile.savedAddresses'.tr();
+
+  static String get termsAppBarTitleEn => 'profile.termsAppBarTitle'.tr();
+
+  static String get termsAppBarTitleAr => 'profile.termsAppBarTitle'.tr();
+
+  static String get appInfoAppBarTitleEn => 'profile.appInfoAppBarTitle'.tr();
+
+  static String get appInfoAppBarTitleAr => 'profile.appInfoAppBarTitle'.tr();
+
+  static String get noTermsDataAvailable => 'profile.noTermsDataAvailable'.tr();
+
+  static String get switchToArabic => 'profile.switchToArabic'.tr();
+
+  static String get switchToEnglish => 'profile.switchToEnglish'.tr();
+
+  ///-------------------------- Edit Profile --------------------------//
+  static String get editProfile => 'editProfile.title'.tr();
+
+  static String get change => 'editProfile.change'.tr();
+
+  static String get uploadImage => 'editProfile.uploadImage'.tr();
+
+  static String get id => 'id';
+
+  static String get percentageSign => '%';
+
+  static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
+
+
+}

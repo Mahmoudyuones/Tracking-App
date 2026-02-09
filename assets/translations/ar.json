@@ -1,0 +1,150 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "retry": "إعادة المحاولة",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "update": "تحديث",
+    "delete": "حذف"
+  },
+  "auth": {
+    "onboarding": "مرحباً بكم في تطبيق فلاوري رايدر",
+    "login": "تسجيل الدخول",
+    "applyNow": "قدم الآن",
+    "rememberMe": "تذكرنى",
+    "didForgetPassword": "هل نسيت كلمة المرور؟",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "labels": {
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "currentPassword": "Current password",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "country": "البلد",
+      "firstLegalName": "الاسم القانوني الأول",
+      "secondLegalName": "الاسم القانوني الثاني",
+      "vehicleType": "نوع المركبة",
+      "vehicleNumber": "رقم المركبة",
+      "vehicleLicense": "رخصة المركبة",
+      "phoneNumber": "رقم الهاتف",
+      "idNumber": "رقم الهوية",
+      "idImage": "صورة الهوية"
+    },
+    "hints": {
+      "enterEmail": "أدخل البريد الإلكتروني",
+      "enterPassword": "أدخل كلمة المرور",
+      "enterCurrentPassword": "أدخل كلمة المرور الحالية",
+      "enterConfirmPassword": "أدخل تأكيد كلمة المرور",
+      "enterFirstName": "أدخل الاسم الأول",
+      "enterLastName": "أدخل اسم العائلة",
+      "enterPhoneNumber": "أدخل رقم الهاتف",
+      "enterFirstLegalName": "أدخل الاسم القانوني الأول",
+      "enterSecondLegalName": "أدخل الاسم القانوني الثاني",
+      "enterVehicleNumber": "أدخل رقم المركبة",
+      "uploadVehicleLicensePhoto": "تحميل صورة الرخصة",
+      "enterNationalIdNumber": "أدخل رقم الهوية الوطنية",
+      "uploadIdImagePhoto": "تحميل صورة الهوية"
+    },
+    "forgetPassword": {
+      "header": "نسيت كلمة المرور",
+      "title": "يرجى إدخال البريد الإلكتروني المرتبط بحسابك",
+      "emailVerificationHeader": "التحقق من البريد الإلكتروني",
+      "emailVerificationTitle": "يرجى إدخال الرمز المرسل إلى بريدك الإلكتروني",
+      "didResentCode": "لم تستلم الرمز؟",
+      "resend": "أعد الإرسال",
+      "resetPasswordHeader": "إعادة تعيين كلمة المرور",
+      "resetPasswordTitle": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد"
+    },
+    "apply": {
+      "header": "مرحباً!!",
+      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا"
+    },
+    "successApply": {
+      "header": "تم تقديم طلبك!",
+      "title": "نشكرك على تقديم طلبك، سنقوم بمراجعته وسنتواصل معك قريباً."
+    },
+    "messages": {
+      "failedToRegister": "فشل التسجيل. يرجى المحاولة مرة أخرى.",
+      "creatingAccountAgreement": "بإنشاء حساب، فإنك توافق على ",
+      "termsAndConditions": "الشروط والأحكام",
+      "alreadyHaveAccount": "لديك حساب بالفعل؟",
+      "invalidPhoneNumber": "رقم الهاتف غير صالح",
+      "accountCreatedSuccessfully": "تم إنشاء الحساب بنجاح",
+      "loginSuccess": "تم تسجيل الدخول بنجاح",
+      "passwordUpdatedSuccessfully": "تم تحديث كلمة المرور بنجاح!",
+      "failedToUpdatePassword": "فشل تحديث كلمة المرور!",
+      "newPasswordSameAsOld": "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية",
+      "pleaseConfirmYourNewPassword": "يرجى تأكيد كلمة المرور الجديدة",
+      "pleaseEnterYourCurrentPassword": "يرجى إدخال كلمة المرور الحالية",
+      "pleaseEnterYourNewPassword": "يرجى إدخال كلمة المرور الجديدة",
+      "emailFocusError": "هذا البريد الإلكتروني غير صالح",
+      "passwordsDoNotMatch": "كلمات المرور غير متطابقة"
+    }
+  },
+  "bottomNavBar": {
+    "home": "الرئيسية",
+    "order": "الطلبات",
+    "profile": "الملف الشخصي"
+  },
+  "home": {
+    "title": "فلاوري رايدر"
+  },
+  "profile": {
+    "vehicleInfo": "معلومات المركبة",
+    "language": "اللغة",
+    "chooseLanguage": "اختر اللغة",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+    "logout": "تسجيل الخروج",
+    "confirmLogout": "تأكيد تسجيل الخروج!!"
+  },
+  "editProfile": {
+    "title": "تعديل الملف الشخصي",
+    "uploadImage": "تحميل صورة",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "change": "تغيير",
+    "gender": "الجنس",
+    "female": "أنثى",
+    "male": "ذكر"
+  },
+  "validation": {
+    "noEmailAvailable": "لا يوجد بريد إلكتروني متاح",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "invalidEmail": "أدخل بريد إلكتروني صحيح",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "passwordMinLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+    "passwordUpperCase": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+    "passwordLowerCase": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+    "passwordNumber": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+    "passwordSpecialChar": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل",
+    "confirmPasswordRequired": "يرجى تأكيد كلمة المرور",
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "phoneNumberRequired": "رقم الهاتف مطلوب",
+    "invalidPhoneNumber": "أدخل رقم هاتف صحيح",
+    "pleaseEnterOTPCode": "يرجى إدخال رمز التحقق",
+    "otpMustBe6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام"
+  },
+  "errors": {
+    "navigation": "خطأ عند التنقل إلى المسار",
+    "badRequest": "طلب غير صالح.",
+    "noContent": "لا يوجد محتوى متاح.",
+    "forbidden": "الوصول ممنوع.",
+    "unauthorized": "وصول غير مصرح به.",
+    "notFound": "المورد غير موجود.",
+    "conflict": "تعارض في الطلب.",
+    "internalServer": "خطأ داخلي في الخادم.",
+    "unknown": "حدث خطأ غير معروف.",
+    "timeout": "انتهت مهلة الاتصال. يرجى المحاولة مرة أخرى.",
+    "default": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "noInternet": "لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.",
+    "authenticationCheck": "فشل التحقق من الهوية:",
+    "cache": "حدث خطأ في التخزين المؤقت.",
+    "noCacheDataAvailable": "لا توجد بيانات مخزنة مؤقتًا متاحة",
+    "failedToLoadCachedData": "فشل تحميل البيانات المخزنة مؤقتًا:",
+    "userNotLoggedIn": "المستخدم غير مسجل الدخول",
+    "sessionExpired": "انتهت الجلسة",
+    "logoutFailed": "فشل تسجيل الخروج:",
+    "failedToEmitSideEffect": "فشل تنفيذ التأثير الجانبي"
+  }
+}
