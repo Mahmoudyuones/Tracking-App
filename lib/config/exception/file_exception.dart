@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 class FileException extends AppException {
   final String? filePath;
@@ -12,5 +13,5 @@ class FileException extends AppException {
   });
 
   @override
-  String getUserMessage() => 'File operation failed. Please try again.';
+  String getUserMessage() => ExceptionConstantMessages.fileError;
 }

@@ -64,18 +64,23 @@ class AppTextString {
   // Auth Hints
   static String get enterEmail => 'auth.hints.enterEmail'.tr();
   static String get enterPassword => 'auth.hints.enterPassword'.tr();
-  static String get enterCurrentPassword => 'auth.hints.enterCurrentPassword'.tr();
-  static String get enterConfirmPassword => 'auth.hints.enterConfirmPassword'.tr();
+  static String get enterCurrentPassword =>
+      'auth.hints.enterCurrentPassword'.tr();
+  static String get enterConfirmPassword =>
+      'auth.hints.enterConfirmPassword'.tr();
   static String get enterFirstName => 'auth.hints.enterFirstName'.tr();
   static String get enterLastName => 'auth.hints.enterLastName'.tr();
   static String get enterPhoneNumber => 'auth.hints.enterPhoneNumber'.tr();
-  static String get enterFirstLegalName => 'auth.hints.enterFirstLegalName'.tr();
-  static String get enterSecondLegalName => 'auth.hints.enterSecondLegalName'.tr();
+  static String get enterFirstLegalName =>
+      'auth.hints.enterFirstLegalName'.tr();
+  static String get enterSecondLegalName =>
+      'auth.hints.enterSecondLegalName'.tr();
   static String get enterVehicleNumber => 'auth.hints.enterVehicleNumber'.tr();
-  static String get uploadVehicleLicensePhoto => 'auth.hints.uploadVehicleLicensePhoto'.tr();
-  static String get enterNationalIdNumber => 'auth.hints.enterNationalIdNumber'.tr();
+  static String get uploadVehicleLicensePhoto =>
+      'auth.hints.uploadVehicleLicensePhoto'.tr();
+  static String get enterNationalIdNumber =>
+      'auth.hints.enterNationalIdNumber'.tr();
   static String get uploadIdImagePhoto => 'auth.hints.uploadIdImagePhoto'.tr();
-
 
   static String get logout => 'auth.logout'.tr();
 
@@ -97,17 +102,11 @@ class AppTextString {
 
   //-------------------------- Auth Forget Password --------------------------//
 
-
-
-
   static String get resetPasswordHeader =>
       'auth.forgetPassword.resetPasswordHeader'.tr();
 
   static String get resetPasswordTitle =>
       'auth.forgetPassword.resetPasswordTitle'.tr();
-
-
-
 
   static String get newPasswordHint =>
       'auth.forgetPassword.newPasswordHint'.tr();
@@ -163,10 +162,8 @@ class AppTextString {
   static String get passwordsDoNotMatch =>
       'auth.messages.passwordsDoNotMatch'.tr();
 
-
   //-------------------------- HOME --------------------------//
   static String get home => 'home.title'.tr();
-
 
   //-------------------------- Profile --------------------------//
   static const String defaultAvatarUrl =
@@ -221,6 +218,4 @@ class AppTextString {
   static String get percentageSign => '%';
 
   static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
-
-
 }

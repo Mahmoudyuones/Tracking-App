@@ -146,5 +146,41 @@
     "sessionExpired": "Session expired",
     "logoutFailed": "Logout failed:",
     "failedToEmitSideEffect": "Failed to emit side effect"
+  },
+  "appexceptionerrors": {
+   "invalidEmailOrPassword": "Invalid email or password.",
+   "userAccountNotFound": "User account not found.",
+   "weakPassword": "Password is too weak.",
+   "emailAlreadyRegistered": "Email is already registered.",
+   "sessionExpired": "Your session has expired. Please log in again.",
+   "authenticationFailed": "Authentication failed. Please try again.",
+   "casherror": "Failed to load data. Please try again.",
+   "databaseerror": "Database error occurred. Please try again.",
+   "fileerror": "File operation failed. Please try again.",
+   "networkerror": "Network error occurred. Please check your connection and try again.",
+   "timeout": "Request timed out. Please check your connection and try again.",
+   "unexpectedError": "An unexpected error occurred. Please try again.",
+   "validationerror": "Validation failed. Please check your input."
+  },"servererrors": {
+    "400_badRequest": "Invalid request. Please check your input.",
+    "401_unauthorized": "You need to log in to access this.",
+    "402_paymentRequired": "Payment is required to continue.",
+    "403_forbidden": "You don't have permission to access this.",
+    "404_notFound": "The requested resource was not found.",
+    "405_methodNotAllowed": "This operation is not allowed.",
+    "406_notAcceptable": "Request format is not acceptable.",
+    "408_requestTimeout": "Request took too long. Please try again.",
+    "409_conflict": "There was a conflict with your request.",
+    "410_gone": "This resource is no longer available.",
+    "413_payloadTooLarge": "The file or data is too large.",
+    "415_unsupportedMediaType": "This file type is not supported.",
+    "422_unprocessableEntity": "Unable to process your request. Please check your data.",
+    "429_tooManyRequests": "Too many requests. Please slow down and try again.",
+    "500_internalServerError": "Server error. Please try again later.",
+    "501_notImplemented": "This feature is not available yet.",
+    "502_badGateway": "Server communication error. Please try again.",
+    "503_serviceUnavailable": "Service is temporarily unavailable. Please try again later.",
+    "504_gatewayTimeout": "Server took too long to respond. Please try again.",
+    "default": "Something went wrong on the server. Please try again."
   }
 }

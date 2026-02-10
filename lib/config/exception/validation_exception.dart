@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 class ValidationException extends AppException {
   final Map<String, String>? fieldErrors;
@@ -12,5 +13,5 @@ class ValidationException extends AppException {
   });
 
   @override
-  String getUserMessage() => 'Validation failed. Please check your input.';
+  String getUserMessage() => ExceptionConstantMessages.validationError;
 }
