@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 enum AuthFailureReason {
   invalidCredentials,
@@ -24,17 +25,17 @@ class AuthException extends AppException {
   String getUserMessage() {
     switch (reason) {
       case AuthFailureReason.invalidCredentials:
-        return 'Invalid email or password.';
+        return ExceptionConstantMessages.invalidEmailOrPassword;
       case AuthFailureReason.userNotFound:
-        return 'User account not found.';
+        return ExceptionConstantMessages.userAccountNotFound;
       case AuthFailureReason.weakPassword:
-        return 'Password is too weak.';
+        return ExceptionConstantMessages.weakPassword;
       case AuthFailureReason.emailAlreadyInUse:
-        return 'Email is already registered.';
+        return ExceptionConstantMessages.emailAlreadyRegistered;
       case AuthFailureReason.sessionExpired:
-        return 'Your session has expired. Please log in again.';
+        return ExceptionConstantMessages.sessionExpired;
       default:
-        return 'Authentication failed. Please try again.';
+        return ExceptionConstantMessages.unexpectedError;
     }
   }
 }

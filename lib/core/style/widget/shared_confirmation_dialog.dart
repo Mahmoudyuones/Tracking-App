@@ -60,7 +60,7 @@ class _SharedConfirmationDialogState extends State<SharedConfirmationDialog>
           child: Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: AppColors.whiteBase,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(24),
             ),
             child: Column(
@@ -71,11 +71,11 @@ class _SharedConfirmationDialogState extends State<SharedConfirmationDialog>
                   height: size.height * 0.12,
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [AppColors.whiteBase, AppColors.lightPink],
+                      colors: [AppColors.white, AppColors.primary],
                     ),
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  child: Icon(widget.icon, size: 48, color: AppColors.mainBase),
+                  child: Icon(widget.icon, size: 48, color: AppColors.primary),
                 ),
                 const SizedBox(height: 24),
                 Text(widget.title, style: textTheme.headlineMedium),
@@ -104,7 +104,7 @@ class _SharedConfirmationDialogState extends State<SharedConfirmationDialog>
                     child: Ink(
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [AppColors.mainBase, AppColors.lightPink],
+                          colors: [AppColors.white, AppColors.primary],
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),

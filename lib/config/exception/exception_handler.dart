@@ -3,11 +3,11 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../../config/exception/app_exception.dart';
-import '../../config/exception/server_exception.dart';
-import '../../config/exception/timeout_exception.dart';
-import '../../config/exception/unknown_exception.dart';
-import '../../config/exception/validation_exception.dart';
+import 'app_exception.dart';
+import 'server_exception.dart';
+import 'timeout_exception.dart';
+import 'unknown_exception.dart';
+import 'validation_exception.dart';
 
 class ExceptionHandler {
   static AppException handle({dynamic exception, StackTrace? stackTrace}) {
