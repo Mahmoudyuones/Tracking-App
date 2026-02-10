@@ -20,6 +20,7 @@ class AppTextString {
 
   //-------------------------- AUTH ONBOARDING TEXT --------------------------//
   static String get onboarding => 'auth.onboarding'.tr();
+  static String get onboarding2 => 'auth.onboarding2'.tr();
   static String get login => 'auth.login'.tr();
   static String get applyNow => 'auth.applyNow'.tr();
 

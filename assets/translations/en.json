@@ -8,7 +8,8 @@
     "delete": "Delete"
   },
   "auth": {
-    "onboarding": "Welcome to Flowery rider app",
+    "onboarding": "Welcome to",
+    "onboarding2": "Flowery rider app",
     "login": "Login",
     "applyNow": "Apply now",
     "rememberMe": "Remember Me",
