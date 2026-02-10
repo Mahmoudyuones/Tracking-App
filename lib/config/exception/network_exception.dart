@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 class NetworkException extends AppException {
   NetworkException({
@@ -9,6 +10,5 @@ class NetworkException extends AppException {
   });
 
   @override
-  String getUserMessage() =>
-      'Network error. Please check your internet connection and try again.';
+  String getUserMessage() => ExceptionConstantMessages.networkError;
 }

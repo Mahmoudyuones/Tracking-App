@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 class CacheException extends AppException {
   CacheException({
@@ -9,5 +10,5 @@ class CacheException extends AppException {
   });
 
   @override
-  String getUserMessage() => 'Failed to load data. Please try again.';
+  String getUserMessage() => ExceptionConstantMessages.cashError;
 }

@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 class UnknownException extends AppException {
   UnknownException({
@@ -9,5 +10,5 @@ class UnknownException extends AppException {
   });
 
   @override
-  String getUserMessage() => 'An unexpected error occurred. Please try again.';
+  String getUserMessage() => ExceptionConstantMessages.unexpectedError;
 }

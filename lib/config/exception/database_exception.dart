@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 class DatabaseException extends AppException {
   DatabaseException({
@@ -9,6 +10,5 @@ class DatabaseException extends AppException {
   });
 
   @override
-  String getUserMessage() =>
-      'Database error occurred. Please try again.';
+  String getUserMessage() => ExceptionConstantMessages.databaseError;
 }

@@ -1,4 +1,5 @@
 import 'app_exception.dart';
+import 'exception_constant_messages.dart';
 
 class TimeoutExceptions extends AppException {
   TimeoutExceptions({
@@ -9,6 +10,5 @@ class TimeoutExceptions extends AppException {
   });
 
   @override
-  String getUserMessage() =>
-      'Request timed out. Please check your connection and try again.';
+  String getUserMessage() => ExceptionConstantMessages.timeout;
 }
