@@ -83,7 +83,7 @@
   },
   "bottomNavBar": {
     "home": "Home",
-    "order": "Order",
+    "orders": "Orders",
     "profile": "Profile"
   },
   "home": {
@@ -148,20 +148,21 @@
     "failedToEmitSideEffect": "Failed to emit side effect"
   },
   "appexceptionerrors": {
-   "invalidEmailOrPassword": "Invalid email or password.",
-   "userAccountNotFound": "User account not found.",
-   "weakPassword": "Password is too weak.",
-   "emailAlreadyRegistered": "Email is already registered.",
-   "sessionExpired": "Your session has expired. Please log in again.",
-   "authenticationFailed": "Authentication failed. Please try again.",
-   "casherror": "Failed to load data. Please try again.",
-   "databaseerror": "Database error occurred. Please try again.",
-   "fileerror": "File operation failed. Please try again.",
-   "networkerror": "Network error occurred. Please check your connection and try again.",
-   "timeout": "Request timed out. Please check your connection and try again.",
-   "unexpectedError": "An unexpected error occurred. Please try again.",
-   "validationerror": "Validation failed. Please check your input."
-  },"servererrors": {
+    "invalidEmailOrPassword": "Invalid email or password.",
+    "userAccountNotFound": "User account not found.",
+    "weakPassword": "Password is too weak.",
+    "emailAlreadyRegistered": "Email is already registered.",
+    "sessionExpired": "Your session has expired. Please log in again.",
+    "authenticationFailed": "Authentication failed. Please try again.",
+    "casherror": "Failed to load data. Please try again.",
+    "databaseerror": "Database error occurred. Please try again.",
+    "fileerror": "File operation failed. Please try again.",
+    "networkerror": "Network error occurred. Please check your connection and try again.",
+    "timeout": "Request timed out. Please check your connection and try again.",
+    "unexpectedError": "An unexpected error occurred. Please try again.",
+    "validationerror": "Validation failed. Please check your input."
+  },
+  "servererrors": {
     "400_badRequest": "Invalid request. Please check your input.",
     "401_unauthorized": "You need to log in to access this.",
     "402_paymentRequired": "Payment is required to continue.",
