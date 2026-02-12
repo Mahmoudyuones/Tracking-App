@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lottie/lottie.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // Optional: Keep if you use it elsewhere
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tracking_app/feature/onboarding/presentation/pages/onboarding_screen.dart';
 
-// IMPORTANT: Make sure these imports match your project structure
 import 'package:tracking_app/core/constants/app_text_string.dart';
 
 void main() {
