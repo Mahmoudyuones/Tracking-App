@@ -34,7 +34,7 @@ void main() {
           ),
         );
 
-        expect(find.byType(Lottie), findsOneWidget, reason: "Lottie animation should be present");
+        expect(find.byType(Lottie), findsOneWidget, reason: 'Lottie animation should be present');
 
         expect(find.text(AppTextString.onboarding), findsOneWidget);
         expect(find.text(AppTextString.onboarding2), findsOneWidget);
@@ -42,13 +42,13 @@ void main() {
         expect(find.text(AppTextString.applyNow), findsOneWidget);
 
 
-        expect(find.byType(ElevatedButton), findsOneWidget, reason: "Login button missing");
-        expect(find.byType(OutlinedButton), findsOneWidget, reason: "Apply Now button missing");
+        expect(find.byType(ElevatedButton), findsOneWidget, reason: 'Login button missing');
+        expect(find.byType(OutlinedButton), findsOneWidget, reason: 'Apply Now button missing');
 
-        expect(find.text('1.0.0'), findsOneWidget, reason: "Package version did not load correctly");
+        expect(find.text('1.0.0'), findsOneWidget, reason: 'Package version did not load correctly');
 
 
-        expect(find.byType(SingleChildScrollView), findsOneWidget, reason: "Screen should be scrollable");
+        expect(find.byType(SingleChildScrollView), findsOneWidget, reason: 'Screen should be scrollable');
       });
 
   testWidgets('Buttons are clickable', (WidgetTester tester) async {
@@ -58,7 +58,6 @@ void main() {
       ),
     );
 
-    final loginButton = find.byType(ElevatedButton);
     final applyButton = find.byType(OutlinedButton);
     await tester.tap(applyButton);
   });
