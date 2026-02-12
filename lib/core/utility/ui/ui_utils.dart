@@ -11,14 +11,14 @@ class UIUtils {
     EasyLoading.instance.indicatorSize = 45.0;
     EasyLoading.instance.loadingStyle = EasyLoadingStyle.custom;
     EasyLoading.instance.radius = 10.0;
-    EasyLoading.instance.backgroundColor = AppColors.black;
+    EasyLoading.instance.backgroundColor = AppColors.primary;
     EasyLoading.instance.indicatorColor = AppColors.white;
     EasyLoading.instance.textColor = AppColors.white;
     EasyLoading.instance.maskType = EasyLoadingMaskType.black;
     EasyLoading.show(status: status ?? AppTextString.loading);
   }
 
-  static void hideLoading(BuildContext context) => Navigator.of(context).pop();
+  static void hideLoading(BuildContext context) => EasyLoading.dismiss();
 
   static void showMessage(
     String message, {

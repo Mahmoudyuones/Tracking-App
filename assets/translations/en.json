@@ -32,9 +32,10 @@
     },
     "hints": {
       "enterEmail": "Enter your email",
-      "enterPassword": "Enter you password",
-      "enterCurrentPassword": "Enter you current password",
-      "enterConfirmPassword": "Enter confirm password",
+      "enterYourNewPassword":"Enter your new password",
+      "enterPassword": "Enter your password",
+      "enterCurrentPassword": "Enter your current password",
+      "enterConfirmPassword": "Re-enter your new password",
       "enterFirstName": "Enter first name",
       "enterLastName": "Enter last name",
       "enterPhoneNumber": "Enter phone number",
