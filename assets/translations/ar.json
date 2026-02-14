@@ -79,7 +79,8 @@
       "pleaseEnterYourCurrentPassword": "يرجى إدخال كلمة المرور الحالية",
       "pleaseEnterYourNewPassword": "يرجى إدخال كلمة المرور الجديدة",
       "emailFocusError": "هذا البريد الإلكتروني غير صالح",
-      "passwordsDoNotMatch": "كلمات المرور غير متطابقة"
+      "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+      "newPasswordIsTheOldPassword":"كلمة المرور الجديدة يجب أن تكون مختلفة عن القديمة"
     }
   },
   "bottomNavBar": {
@@ -110,6 +111,7 @@
     "male": "ذكر"
   },
   "validation": {
+    "fieldRequired": "هذا الحقل مطلوب",
     "noEmailAvailable": "لا يوجد بريد إلكتروني متاح",
     "emailRequired": "البريد الإلكتروني مطلوب",
     "invalidEmail": "أدخل بريد إلكتروني صحيح",

@@ -62,6 +62,7 @@ class ChangePasswordCubit extends Cubit<ChangePasswordStates> {
     final isValid =
         password.validatePassword == null &&
         newPassword.validatePassword == null &&
+        password != newPassword &&
         confirmPassword.validateMatch(newPassword) == null;
     emit(state.copyWith(isValidForm: isValid));
   }

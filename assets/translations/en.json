@@ -110,6 +110,7 @@
     "male": "Male"
   },
   "validation": {
+    "fieldRequired": "This field is required",
     "noEmailAvailable": "No email available",
     "emailRequired": "Email is required",
     "invalidEmail": "Enter a valid email address",
@@ -124,7 +125,8 @@
     "phoneNumberRequired": "Phone number is required",
     "invalidPhoneNumber": "Enter a valid phone number",
     "pleaseEnterOTPCode": "Please enter OTP code",
-    "otpMustBe6Digits": "OTP must be 6 digits"
+    "otpMustBe6Digits": "OTP must be 6 digits",
+    "newPasswordIsTheOldPassword":"New password must be different from the old password"
   },
   "errors": {
     "navigation": "Error When Navigate to route",

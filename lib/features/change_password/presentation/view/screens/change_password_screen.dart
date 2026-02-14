@@ -155,7 +155,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       },
                     ),
                   ),
-                  validator: AppValidators.validatePassword,
+                  validator: (value) =>
+                      AppValidators.validateNewPasswordIsNotTheOldPassword(
+                        value,
+                        _currentPassword.text,
+                      ),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ),
                 const SizedBox(height: 20),
