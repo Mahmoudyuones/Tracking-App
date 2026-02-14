@@ -106,7 +106,8 @@
     "change": "Change",
     "gender": "Gender",
     "female": "Female",
-    "male": "Male"
+    "male": "Male",
+    "vehicleTypeFieldError": "Please select vehicle type"
   },
   "validation": {
     "noEmailAvailable": "No email available",

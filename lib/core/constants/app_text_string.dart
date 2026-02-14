@@ -218,4 +218,5 @@ class AppTextString {
   static String get percentageSign => '%';
 
   static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
+  static String get vehicleTypeFieldError => 'editProfile.vehicleTypeFieldError'.tr();
 }

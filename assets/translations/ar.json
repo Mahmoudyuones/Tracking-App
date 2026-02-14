@@ -106,7 +106,9 @@
     "change": "تغيير",
     "gender": "الجنس",
     "female": "أنثى",
-    "male": "ذكر"
+    "male": "ذكر",
+    "vehicleTypeFieldError": "من فضلك اختر نوع المركبة"
+
   },
   "validation": {
     "noEmailAvailable": "لا يوجد بريد إلكتروني متاح",

@@ -34,6 +34,7 @@ class AppColors {
   static const Color lightTextgreen = Color(0xFF0CB359);
   static const Color lightTextred = Color(0xFFEF4444);
 
+
   // =========================
   // Common Colors
   // =========================
@@ -44,4 +45,20 @@ class AppColors {
   static const Color transparent = Color(0x00000000);
   static const Color red = Color(0xFFF40909);
   static const Color green = Color(0xFF10B981);
+  static const Color midGray=Color(0xFF878787);
+  static const MaterialColor pink=MaterialColor
+    (0xFFD21E6A, <int , Color>{
+    10: Color(0xFFf6d2e1),
+    20: Color(0xFFf0b4cd),
+    30: Color(0xFFe98fb5),
+    40: Color(0xFFe1699c),
+    50: Color(0xFFda4483),
+    0: Color(0xFFD21E6A),
+    60: Color(0xFFaf1958),
+    70: Color(0xFF8c1447),
+    80: Color(0xFF690f35),
+    90: Color(0xFF460a23),
+    100: Color(0xFF2a0615),
+  });
+
 }

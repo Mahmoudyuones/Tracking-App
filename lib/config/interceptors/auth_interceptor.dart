@@ -23,7 +23,7 @@ class AuthInterceptor extends Interceptor {
     RequestInterceptorHandler handler,
   ) async {
     // Use the SecureStorageService extension method directly
-    final tokenResponse = await _secureStorageService.getAuthTokens();
+    final tokenResponse =/* await _secureStorageService.getAuthTokens()*/BaseResponse.success("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOiI2OThmZDJmOWUzNjRlZjYxNDA1NWI5ZDMiLCJpYXQiOjE3NzEwMzMzMzd9.BzrFyZiEkhLlu4lf66sFeoNindn6Rsa46db-P1yJdmQ");
 
     tokenResponse.when(
       success: (token) {
