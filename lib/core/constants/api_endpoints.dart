@@ -6,4 +6,5 @@ class ApiEndpoints {
   static const String forgotPassword = 'forgotPassword';
   static const String verifyResetCode = 'verifyResetCode';
   static const String resetPassword = 'resetPassword';
+  static const String changePassword = 'change-password';
 }
