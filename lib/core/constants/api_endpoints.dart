@@ -4,6 +4,9 @@ class ApiEndpoints {
   static const String baseUrl = 'https://flower.elevateegy.com/api/v1/drivers/';
   // ------------------------ AUTHENTICATION ENDPOINTS ------------------------ //
   static const String changePassword = 'change-password';
+  static const String forgotPassword = 'forgotPassword';
+  static const String verifyResetCode = 'verifyResetCode';
+  static const String resetPassword = 'resetPassword';
   // ------------------------  PROFILE ENDPOINTS ------------------------ //
   static const String myProfile = 'profile-data';
 }
