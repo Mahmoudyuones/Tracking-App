@@ -1,9 +1,12 @@
 import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../config/base_response/base_response.dart';
-import '../../../../../config/base_state/base_state.dart';
+import '../../../../../config/di/di.dart';
+import '../../../../../config/services/session_manager_service.dart';
+import '../../../../../config/services/token_service.dart';
 import '../../data/models/login_request_model/login_request_model.dart';
 import '../../domain/use_cases/login_use_case.dart';
 import 'login_events.dart';
@@ -15,6 +18,7 @@ class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase _useCase;
 
   final _effectsController = StreamController<LoginEffect>.broadcast();
+
   Stream<LoginEffect> get effects => _effectsController.stream;
 
   Future<void> doIntent(LoginIntent intent) async {
@@ -51,15 +55,25 @@ class LoginCubit extends Cubit<LoginStates> {
       isRemembered: rememberMe,
     );
 
-    _emitEffect(LoadingEffect(false));
     result.when(
-      success: (data) {
+      success: (data) async {
+        _emitEffect(LoadingEffect(false));
         emit(
-          state.copyWith(isLoading: false, loginState: BaseState(data: data)),
+          state.copyWith(
+            isLoading: false,
+            loginState: state.loginState.copyWith(data: data),
+          ),
         );
+        if (rememberMe) {
+          state.copyWith(isRememberMe: true);
+          await getIt<TokenService>().saveToken(data.token!);
+        }
+        getIt<SessionManagerService>().notifySessionExpired();
+        await Future.delayed(Duration.zero);
         _emitEffect(NavigateToHomeEffect());
       },
       failure: (e) {
+        _emitEffect(LoadingEffect(false));
         emit(state.copyWith(isLoading: false));
         _emitEffect(ShowErrorEffect(e.getUserMessage()));
       },

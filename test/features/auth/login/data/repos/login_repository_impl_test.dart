@@ -39,6 +39,12 @@ void main() {
         when(
           mockRemoteDataSource.login(tLoginRequest),
         ).thenAnswer((_) async => const BaseResponse.success(tLoginResponse));
+        when(
+          mockLocalDataSource.saveLoginData(
+            token: tToken,
+            userData: tLoginResponse.toJson(),
+          ),
+        ).thenAnswer((_) async => const BaseResponse.success(null));
 
         // act
         final result = await repo.login(
@@ -49,8 +55,15 @@ void main() {
         // assert
         expect(result, const BaseResponse.success(tLoginResponse));
         verify(mockRemoteDataSource.login(tLoginRequest)).called(1);
+        // The implementation save token even if remembered is false
+        verify(
+          mockLocalDataSource.saveLoginData(
+            token: tToken,
+            userData: tLoginResponse.toJson(),
+          ),
+        ).called(1);
         verifyNoMoreInteractions(mockRemoteDataSource);
-        verifyZeroInteractions(mockLocalDataSource);
+        verifyNoMoreInteractions(mockLocalDataSource);
       },
     );
 
@@ -62,7 +75,10 @@ void main() {
           mockRemoteDataSource.login(tLoginRequest),
         ).thenAnswer((_) async => const BaseResponse.success(tLoginResponse));
         when(
-          mockLocalDataSource.saveLoggedUserData(token: tToken),
+          mockLocalDataSource.saveLoginData(
+            token: tToken,
+            userData: tLoginResponse.toJson(),
+          ),
         ).thenAnswer((_) async => const BaseResponse.success(null));
 
         // act
@@ -74,7 +90,14 @@ void main() {
         // assert
         expect(result, const BaseResponse.success(tLoginResponse));
         verify(mockRemoteDataSource.login(tLoginRequest)).called(1);
-        verify(mockLocalDataSource.saveLoggedUserData(token: tToken)).called(1);
+
+        verify(
+          mockLocalDataSource.saveLoginData(
+            token: tToken,
+            userData: tLoginResponse.toJson(),
+          ),
+        ).called(1);
+
         verifyNoMoreInteractions(mockRemoteDataSource);
         verifyNoMoreInteractions(mockLocalDataSource);
       },
@@ -117,8 +140,13 @@ void main() {
         when(
           mockRemoteDataSource.login(tLoginRequest),
         ).thenAnswer((_) async => const BaseResponse.success(tLoginResponse));
+
+        // Corrected stub execution to match implementation arguments
         when(
-          mockLocalDataSource.saveLoggedUserData(token: tToken),
+          mockLocalDataSource.saveLoginData(
+            token: tToken,
+            userData: tLoginResponse.toJson(),
+          ),
         ).thenAnswer((_) async => BaseResponse.failure(tException));
 
         // act
@@ -130,7 +158,12 @@ void main() {
         // assert
         expect(result, const BaseResponse.success(tLoginResponse));
         verify(mockRemoteDataSource.login(tLoginRequest)).called(1);
-        verify(mockLocalDataSource.saveLoggedUserData(token: tToken)).called(1);
+        verify(
+          mockLocalDataSource.saveLoginData(
+            token: tToken,
+            userData: tLoginResponse.toJson(),
+          ),
+        ).called(1);
         verifyNoMoreInteractions(mockRemoteDataSource);
         verifyNoMoreInteractions(mockLocalDataSource);
       },

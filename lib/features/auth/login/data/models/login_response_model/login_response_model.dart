@@ -15,4 +15,9 @@ class LoginResponseModel {
       _$LoginResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginResponseModelToJson(this);
+
+  @override
+  String toString() {
+    return 'LoginResponseModel(message: $message, token: $token)';
+  }
 }

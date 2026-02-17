@@ -13,6 +13,7 @@ import 'core/style/theme/app_theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
+  // await getIt<TokenService>().clearToken();
   await EasyLocalization.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   runApp(

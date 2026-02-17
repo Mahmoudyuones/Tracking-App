@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../../../../config/base_state/base_state.dart';
 import '../../data/models/login_response_model/login_response_model.dart';
 
@@ -24,6 +25,10 @@ class LoginStates extends Equatable {
       isRememberMe: isRememberMe ?? this.isRememberMe,
     );
   }
+
+  @override
+  String toString() =>
+      'LoginStates(loginState: $loginState, isLoading: $isLoading, isRememberMe: $isRememberMe)';
 
   @override
   List<Object?> get props => [loginState, isLoading, isRememberMe];

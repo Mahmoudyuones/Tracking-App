@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/constants/app_text_string.dart';
@@ -48,7 +49,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   void _handleEffects(LoginEffect effect) {
     switch (effect) {
       case NavigateToHomeEffect():
-        context.goNamed('/home');
+        context.goNamed(AppRoutes.homeRoute);
       case NavigateToForgetPasswordEffect():
         context.pushNamed(AppRoutes.forgetPasswordRoute);
       case ShowErrorEffect():
@@ -61,7 +62,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         if (effect.isLoading) {
           UIUtils.showEasyLoading(status: AppTextString.loading);
         } else {
-          UIUtils.hideLoading(context);
+          EasyLoading.dismiss();
         }
     }
   }
@@ -103,6 +104,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Form(
         onChanged: _hasPressedButton ? _validateSignInForm : null,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         key: globalKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -146,14 +148,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   child: Text(AppTextString.login),
                 );
               },
-            ),
-            16.verticalSpacing,
-            Center(
-              child: TextButton(
-                onPressed: () =>
-                    cubit.doIntent(NavigateToForgetPasswordIntent()),
-                child: Text(AppTextString.didForgetPassword),
-              ),
             ),
           ],
         ),

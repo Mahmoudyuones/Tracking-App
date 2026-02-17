@@ -16,5 +16,10 @@ class BaseState<T> extends Equatable {
   }
 
   @override
+  String toString() {
+    return 'BaseState(data: $data,errorMessage: $errorMessage, isEmpty: $isEmpty)';
+  }
+
+  @override
   List<Object?> get props => [data, errorMessage, isEmpty];
 }

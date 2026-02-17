@@ -1,19 +1,23 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../config/base_response/base_response.dart';
-import '../../../../../../config/cash_services/secure_storage_service.dart';
+import '../../../../../../config/services/token_service.dart';
 import '../../../data/data_sources/local/login_local_data_source.dart';
 
 @Injectable(as: LoginLocalDataSource)
 class LoginLocalDataSourceImpl implements LoginLocalDataSource {
-  final SecureStorageService _secureStorageService;
+  final TokenService _tokenService;
 
-  const LoginLocalDataSourceImpl(this._secureStorageService);
+  const LoginLocalDataSourceImpl(this._tokenService);
 
   @override
-  Future<BaseResponse<void>> saveLoggedUserData({required String token}) async {
-    final result = await _secureStorageService.saveAuthTokens(
-      accessToken: token,
+  Future<BaseResponse<void>> saveLoginData({
+    required String token,
+    required Map<String, dynamic> userData,
+  }) async {
+    final result = await _tokenService.saveLoginData(
+      token: token,
+      userData: userData,
     );
     return result.when(
       success: (_) => const BaseResponse.success(null),

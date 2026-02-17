@@ -22,27 +22,17 @@ class LoginRepositoryImpl implements LoginRepository {
     final response = await _remoteDataSource.login(request);
     return response.when(
       success: (model) async {
-        _handelSaveToken(remembered: remembered, model: model);
+        if (model.token != null) {
+          await _localDataSource.saveLoginData(
+            token: model.token!,
+            userData: model.toJson(),
+          );
+        }
         return BaseResponse.success(model);
       },
       failure: (e) {
         return BaseResponse.failure(e);
       },
     );
-  }
-
-  Future _handelSaveToken({
-    required bool remembered,
-    required LoginResponseModel model,
-  }) async {
-    if (remembered && model.token != null) {
-      final localResult = await _localDataSource.saveLoggedUserData(
-        token: model.token!,
-      );
-      return localResult.when(
-        success: (_) => BaseResponse.success(model),
-        failure: (failure) => BaseResponse.failure(failure),
-      );
-    }
   }
 }
