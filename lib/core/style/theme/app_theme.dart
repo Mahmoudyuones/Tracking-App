@@ -40,7 +40,7 @@ class AppTheme {
     ),
     //------------ Text Form Field Theme -----------------//
     inputDecorationTheme: InputDecorationTheme(
-      labelStyle: const TextStyle(color: AppColors.lightTextSecondary),
+      labelStyle: const TextStyle(color: AppColors.lightTextgrey),
       hintStyle: const TextStyle(color: AppColors.lightTextSecondary),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
       enabledBorder: OutlineInputBorder(

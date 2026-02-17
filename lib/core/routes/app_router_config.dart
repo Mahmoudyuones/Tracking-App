@@ -15,7 +15,7 @@ class AppRouterConfig {
       // GoRoute(
       //   path: AppRoutes.onboardingRoute,
       //   name: AppRoutes.onboardingRoute,
-      //   builder: (context, state) => const TestWidget(),
+      //   builder: (context, state) => const TestWidget()
       // ),
     ],
   );
