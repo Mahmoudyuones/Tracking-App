@@ -91,7 +91,7 @@
   },
   "bottomNavBar": {
     "home": "الرئيسية",
-    "order": "الطلبات",
+    "orders": "الطلبات",
     "profile": "الملف الشخصي"
   },
   "home": {
