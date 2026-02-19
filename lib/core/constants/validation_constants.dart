@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 class ValidationConstants {
   ValidationConstants._();
 
+  static String get fieldRequired => 'validation.fieldRequired'.tr();
+
   static String get noEmailAvailable => 'validation.noEmailAvailable'.tr();
 
   static String get emailRequired => 'validation.emailRequired'.tr();
@@ -37,4 +39,6 @@ class ValidationConstants {
   static String get pleaseEnterOTPCode => 'validation.pleaseEnterOTPCode'.tr();
 
   static String get otpMustBe6Digits => 'validation.otpMustBe6Digits'.tr();
+  static String get newPasswordIsTheOldPassword =>
+      'validation.newPasswordIsTheOldPassword'.tr();
 }

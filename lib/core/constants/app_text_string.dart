@@ -68,10 +68,13 @@ class AppTextString {
   static String get phoneNumberLabel => 'auth.labels.phoneNumber'.tr();
   static String get idNumberLabel => 'auth.labels.idNumber'.tr();
   static String get idImageLabel => 'auth.labels.idImage'.tr();
+  static String get confirmPassword => 'auth.labels.confirmPassword'.tr();
 
   // Auth Hints
   static String get enterEmail => 'auth.hints.enterEmail'.tr();
   static String get enterPassword => 'auth.hints.enterPassword'.tr();
+  static String get enterYourNewPassword =>
+      'auth.hints.enterYourNewPassword'.tr();
   static String get enterCurrentPassword =>
       'auth.hints.enterCurrentPassword'.tr();
   static String get enterConfirmPassword =>
@@ -97,8 +100,6 @@ class AppTextString {
   static String get firstName => 'auth.firstName'.tr();
 
   static String get lastName => 'auth.lastName'.tr();
-
-  static String get confirmPassword => 'auth.confirmPassword'.tr();
 
   static String get phoneNumber => 'auth.phoneNumber'.tr();
 
