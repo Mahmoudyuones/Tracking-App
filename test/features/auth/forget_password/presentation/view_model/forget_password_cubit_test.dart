@@ -76,9 +76,18 @@ void main() {
           return cubit;
         },
         act: (cubit) async {
+          final uiIntentsFuture = expectLater(
+            cubit.uiIntents,
+            emitsInOrder([
+              isA<ShowLoadingProvideEmailIntent>(),
+              isA<NavigateToVerifyIntent>(),
+            ]),
+          );
+
           cubit.doIntent(EmailChangedIntent('test@example.com'));
           cubit.doIntent(ConfirmEmailIntent());
-          await Future.delayed(Duration.zero);
+
+          await uiIntentsFuture;
         },
         expect: () => [
           const ForgetPasswordStates(
@@ -86,15 +95,6 @@ void main() {
             isValidEmail: true,
           ),
         ],
-        verify: (_) {
-          expectLater(
-            cubit.uiIntents,
-            emitsInOrder([
-              isA<ShowLoadingProvideEmailIntent>(),
-              isA<NavigateToVerifyIntent>(),
-            ]),
-          );
-        },
       );
     });
 
@@ -117,22 +117,20 @@ void main() {
           return cubit;
         },
         act: (cubit) async {
-          cubit.doIntent(OtpChangedIntent('123456'));
-          cubit.doIntent(SubmitCodeIntent());
-          await Future.delayed(Duration.zero);
-        },
-        expect: () => [
-          const ForgetPasswordStates(code: '123456', isValidOtp: true),
-        ],
-        verify: (_) {
-          expectLater(
+          final uiIntentsFuture = expectLater(
             cubit.uiIntents,
             emitsInOrder([
               isA<ShowLoadingVerifyIntent>(),
               isA<NavigateToResetPasswordIntent>(),
             ]),
           );
+          cubit.doIntent(OtpChangedIntent('123456'));
+          cubit.doIntent(SubmitCodeIntent());
+          await uiIntentsFuture;
         },
+        expect: () => [
+          const ForgetPasswordStates(code: '123456', isValidOtp: true),
+        ],
       );
     });
 
@@ -166,20 +164,20 @@ void main() {
           return cubit;
         },
         act: (cubit) async {
-          cubit.doIntent(EmailChangedIntent('test@example.com'));
-          cubit.doIntent(NewPasswordChangedIntent('password123'));
-          cubit.doIntent(ConfirmPasswordChangedIntent('password123'));
-          cubit.doIntent(ConfirmResetPasswordIntent());
-          await Future.delayed(Duration.zero);
-        },
-        verify: (_) {
-          expectLater(
+          final uiIntentsFuture = expectLater(
             cubit.uiIntents,
             emitsInOrder([
               isA<ShowLoadingResetPasswordIntent>(),
               isA<NavigateToLoginIntent>(),
             ]),
           );
+
+          cubit.doIntent(EmailChangedIntent('test@example.com'));
+          cubit.doIntent(NewPasswordChangedIntent('password123'));
+          cubit.doIntent(ConfirmPasswordChangedIntent('password123'));
+          cubit.doIntent(ConfirmResetPasswordIntent());
+
+          await uiIntentsFuture;
         },
       );
 
@@ -193,20 +191,20 @@ void main() {
           return cubit;
         },
         act: (cubit) async {
-          cubit.doIntent(EmailChangedIntent('test@example.com'));
-          cubit.doIntent(NewPasswordChangedIntent('password123'));
-          cubit.doIntent(ConfirmPasswordChangedIntent('password123'));
-          cubit.doIntent(ConfirmResetPasswordIntent());
-          await Future.delayed(Duration.zero);
-        },
-        verify: (_) {
-          expectLater(
+          final uiIntentsFuture = expectLater(
             cubit.uiIntents,
             emitsInOrder([
               isA<ShowLoadingResetPasswordIntent>(),
               isA<ShowErrorMsgResetPasswordIntent>(),
             ]),
           );
+
+          cubit.doIntent(EmailChangedIntent('test@example.com'));
+          cubit.doIntent(NewPasswordChangedIntent('password123'));
+          cubit.doIntent(ConfirmPasswordChangedIntent('password123'));
+          cubit.doIntent(ConfirmResetPasswordIntent());
+
+          await uiIntentsFuture;
         },
       );
     });
@@ -222,18 +220,18 @@ void main() {
           return cubit;
         },
         act: (cubit) async {
-          cubit.doIntent(EmailChangedIntent('test@example.com'));
-          cubit.doIntent(ConfirmEmailIntent());
-          await Future.delayed(Duration.zero);
-        },
-        verify: (_) {
-          expectLater(
+          final uiIntentsFuture = expectLater(
             cubit.uiIntents,
             emitsInOrder([
               isA<ShowLoadingProvideEmailIntent>(),
               isA<ShowErrorProvideEmailIntent>(),
             ]),
           );
+
+          cubit.doIntent(EmailChangedIntent('test@example.com'));
+          cubit.doIntent(ConfirmEmailIntent());
+
+          await uiIntentsFuture;
         },
       );
 
@@ -247,18 +245,18 @@ void main() {
           return cubit;
         },
         act: (cubit) async {
-          cubit.doIntent(OtpChangedIntent('123456'));
-          cubit.doIntent(SubmitCodeIntent());
-          await Future.delayed(Duration.zero);
-        },
-        verify: (_) {
-          expectLater(
+          final uiIntentsFuture = expectLater(
             cubit.uiIntents,
             emitsInOrder([
               isA<ShowLoadingVerifyIntent>(),
               isA<ShowErrorMsgVerifyIntent>(),
             ]),
           );
+
+          cubit.doIntent(OtpChangedIntent('123456'));
+          cubit.doIntent(SubmitCodeIntent());
+
+          await uiIntentsFuture;
         },
       );
     });

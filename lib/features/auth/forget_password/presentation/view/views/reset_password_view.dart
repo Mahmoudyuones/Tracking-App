@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../../core/constants/app_text_string.dart';
+import '../../../../../../core/routes/app_routes.dart';
 import '../../../../../../core/style/color/app_colors.dart';
 import '../../../../../../core/utility/ui/ui_utils.dart';
 import '../../view_model/forget_password_cubit/forget_password_cubit.dart';
@@ -32,27 +33,47 @@ class ResetPasswordViewState extends State<ResetPasswordView> {
         if (!mounted) return;
         switch (event) {
           case ShowLoadingResetPasswordIntent():
-            UIUtils.showEasyLoading();
+            _showLoading();
           case ShowErrorMsgResetPasswordIntent(:final errorMessage):
-            UIUtils.hideLoading(context);
-            UIUtils.showMessage(
-              errorMessage,
-              backGroundColor: AppColors.red,
-              textColor: AppColors.white,
-            );
+            _hideLoading();
+            _showError(errorMessage);
           case NavigateToLoginIntent(:final message):
-            UIUtils.hideLoading(context);
-            UIUtils.showMessage(
-              message,
-              backGroundColor: AppColors.green,
-              textColor: AppColors.white,
-            );
-            context.pop();
+            _hideLoading();
+            _showSuccess(message);
+            _goToLogin();
           default:
             break;
         }
       });
     });
+  }
+
+  void _goToLogin() {
+    context.goNamed(AppRoutes.onboardingRoute);
+  }
+
+  void _showLoading() {
+    UIUtils.showEasyLoading();
+  }
+
+  void _showSuccess(String message) {
+    UIUtils.showMessage(
+      message,
+      backGroundColor: AppColors.green,
+      textColor: AppColors.white,
+    );
+  }
+
+  void _hideLoading() {
+    UIUtils.hideLoading(context);
+  }
+
+  void _showError(String errorMessage) {
+    UIUtils.showMessage(
+      errorMessage,
+      backGroundColor: AppColors.red,
+      textColor: AppColors.white,
+    );
   }
 
   @override

@@ -33,24 +33,45 @@ class VerifyCodeViewState extends State<VerifyCodeView> {
         if (!mounted) return;
         switch (event) {
           case ShowLoadingVerifyIntent():
-            UIUtils.showEasyLoading();
-          case ShowErrorMsgVerifyIntent():
-            UIUtils.hideLoading(context);
+            _showLoading();
+          case ShowErrorMsgVerifyIntent(:final errorMessage):
+            _hideLoading();
+            _showError(errorMessage);
           case ShowSuccessMsgVerifyIntent(:final message):
-            UIUtils.hideLoading(context);
-            UIUtils.showMessage(
-              message,
-              backGroundColor: AppColors.green,
-              textColor: AppColors.white,
-            );
+            _hideLoading();
+            _showSuccess(message);
           case NavigateToResetPasswordIntent():
-            UIUtils.hideLoading(context);
+            _hideLoading();
             widget.onSuccess();
           default:
             break;
         }
       });
     });
+  }
+
+  void _showSuccess(String message) {
+    UIUtils.showMessage(
+      message,
+      backGroundColor: AppColors.green,
+      textColor: AppColors.white,
+    );
+  }
+
+  void _showError(String errorMessage) {
+    UIUtils.showMessage(
+      errorMessage,
+      backGroundColor: AppColors.red,
+      textColor: AppColors.white,
+    );
+  }
+
+  void _hideLoading() {
+    UIUtils.hideLoading(context);
+  }
+
+  void _showLoading() {
+    UIUtils.showEasyLoading();
   }
 
   @override

@@ -87,7 +87,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
       },
       failure: (error) {
         _streamController.add(
-          ShowErrorProvideEmailIntent(error.exception.message),
+          ShowErrorProvideEmailIntent(error.exception.getUserMessage()),
         );
       },
     );
@@ -110,7 +110,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
   }
 
   Future<void> _submitCode() async {
-    if (state.code.isEmpty || state.code.length != 6) {
+    if (!state.isValidOtp) {
       _streamController.add(
         ShowErrorMsgVerifyIntent(AppTextString.enterValidCode),
       );
@@ -147,7 +147,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
       },
       failure: (error) {
         _streamController.add(
-          ShowErrorMsgVerifyIntent(error.exception.message),
+          ShowErrorMsgVerifyIntent(error.exception.getUserMessage()),
         );
       },
     );
@@ -167,7 +167,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
     );
   }
 
-  bool? _validateFields({
+  bool _validateFields({
     required String newPassword,
     required String confirmPassword,
   }) {
@@ -217,7 +217,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
       },
       failure: (error) {
         _streamController.add(
-          ShowErrorMsgResetPasswordIntent(error.exception.message),
+          ShowErrorMsgResetPasswordIntent(error.exception.getUserMessage()),
         );
       },
     );
