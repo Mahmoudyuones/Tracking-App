@@ -20,4 +20,7 @@ class AppRoutes {
   static const String driverInfoProfileRoute = '/driverInfoProfile';
   static const String vehicleInfoProfileRoute = '/vehicleInfoProfile';
   static const String changePasswordRoute = '/changePassword';
+
+  //--------------- HOME ROUTES -----------------//
+  static const String homeRoute = '/home';
 }

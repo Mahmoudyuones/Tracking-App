@@ -1,19 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'config/bloc_observer/my_bloc_observer.dart';
 import 'config/di/di.dart';
+import 'config/integreations/firebase/firebase_options.dart';
 import 'core/constants/app_asset.dart';
 import 'core/constants/app_text_string.dart';
 import 'core/routes/app_router_config.dart';
 import 'core/style/theme/app_theme.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies();
   await EasyLocalization.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  await configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(

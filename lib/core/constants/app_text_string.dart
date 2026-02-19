@@ -227,4 +227,9 @@ class AppTextString {
   static String get percentageSign => '%';
 
   static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
+
+  //-------------------------- Navigation Bar --------------------------//
+  static String get orders => 'bottomNavBar.orders'.tr();
+  static String get profileNav => 'bottomNavBar.profile'.tr();
+  static String get homeNav => 'bottomNavBar.home'.tr();
 }

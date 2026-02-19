@@ -91,7 +91,7 @@
   },
   "bottomNavBar": {
     "home": "Home",
-    "order": "Order",
+    "orders": "Orders",
     "profile": "Profile"
   },
   "home": {
