@@ -32,9 +32,10 @@
     },
     "hints": {
       "enterEmail": "Enter your email",
-      "enterPassword": "Enter you password",
-      "enterCurrentPassword": "Enter you current password",
-      "enterConfirmPassword": "Enter confirm password",
+      "enterYourNewPassword":"Enter your new password",
+      "enterPassword": "Enter your password",
+      "enterCurrentPassword": "Enter your current password",
+      "enterConfirmPassword": "Re-enter your new password",
       "enterFirstName": "Enter first name",
       "enterLastName": "Enter last name",
       "enterPhoneNumber": "Enter phone number",
@@ -91,7 +92,7 @@
   },
   "bottomNavBar": {
     "home": "Home",
-    "order": "Order",
+    "orders": "Orders",
     "profile": "Profile"
   },
   "home": {
@@ -117,6 +118,7 @@
     "male": "Male"
   },
   "validation": {
+    "fieldRequired": "This field is required",
     "noEmailAvailable": "No email available",
     "emailRequired": "Email is required",
     "invalidEmail": "Enter a valid email address",
@@ -131,7 +133,8 @@
     "phoneNumberRequired": "Phone number is required",
     "invalidPhoneNumber": "Enter a valid phone number",
     "pleaseEnterOTPCode": "Please enter OTP code",
-    "otpMustBe6Digits": "OTP must be 6 digits"
+    "otpMustBe6Digits": "OTP must be 6 digits",
+    "newPasswordIsTheOldPassword":"New password must be different from the old password"
   },
   "errors": {
     "navigation": "Error When Navigate to route",
