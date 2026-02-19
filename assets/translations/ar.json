@@ -54,7 +54,15 @@
       "didResentCode": "لم تستلم الرمز؟",
       "resend": "أعد الإرسال",
       "resetPasswordHeader": "إعادة تعيين كلمة المرور",
-      "resetPasswordTitle": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد"
+      "resetPasswordTitle": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد",
+      "pleaseEnterYourEmail": "من فضلك أدخل البريد الالكترونى",
+      "messageSentSuccessfully": "تم ارسال الرسالة بنجاح ",
+      "passwordUpdatedSuccessfully": "تم تحديث كلمة المرور بنجاح",
+      "otpResentSuccess": "تم اعادة ارسال الرمز بنجاح",
+      "enterValidCode": "أدخل رمز صحيح",
+      "completeFields": "يرجى اكمال الحقول",
+      "passwordsDontMatch": "كلمات المرور غير متطابقة",
+      "invalidCode": "الرمز غير صحيح"
     },
     "apply": {
       "header": "مرحباً!!",
@@ -85,7 +93,7 @@
   },
   "bottomNavBar": {
     "home": "الرئيسية",
-    "order": "الطلبات",
+    "orders": "الطلبات",
     "profile": "الملف الشخصي"
   },
   "home": {
@@ -149,7 +157,8 @@
     "sessionExpired": "انتهت الجلسة",
     "logoutFailed": "فشل تسجيل الخروج:",
     "failedToEmitSideEffect": "فشل تنفيذ التأثير الجانبي"
-  } ,"appexceptionerrors": {
+  },
+  "appexceptionerrors": {
     "invalidEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
     "userAccountNotFound": "لم يتم العثور على حساب المستخدم.",
     "weakPassword": "كلمة المرور ضعيفة جدًا.",

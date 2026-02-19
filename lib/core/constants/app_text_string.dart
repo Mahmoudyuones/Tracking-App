@@ -36,6 +36,14 @@ class AppTextString {
       'auth.forgetPassword.emailVerificationTitle'.tr();
   static String get didResentCode => 'auth.forgetPassword.didResentCode'.tr();
   static String get resend => 'auth.forgetPassword.resend'.tr();
+  static String get enterValidCode => 'auth.forgetPassword.enterValidCode'.tr();
+  static String get completeFields => 'auth.forgetPassword.completeFields'.tr();
+  static String get passwordsDontMatch =>
+      'auth.forgetPassword.passwordsDontMatch'.tr();
+  static String get messageSentSuccessfully =>
+      'auth.forgetPassword.messageSentSuccessfully'.tr();
+  static String get otpResentSuccess =>
+      'auth.forgetPassword.otpResentSuccess'.tr();
 
   //-------------------------- AUTH APPLY TEXT --------------------------//
   static String get applyHeader => 'auth.apply.header'.tr();
@@ -112,12 +120,13 @@ class AppTextString {
   static String get newPasswordHint =>
       'auth.forgetPassword.newPasswordHint'.tr();
 
-  static String get otpResentSuccess =>
-      'auth.forgetPassword.otpResentSuccess'.tr();
+  static String get currentPassword =>
+      'auth.forgetPassword.currentPassword'.tr();
 
-  static String get currentPassword => 'auth.labels.currentPassword'.tr();
+  static String get newPassword => 'auth.forgetPassword.newPassword'.tr();
 
-  static String get newPassword => 'auth.labels.newPassword'.tr();
+  static String get pleaseEnterYourEmail =>
+      'auth.forgetPassword.pleaseEnterYourEmail'.tr();
 
   // Auth Messages
   static String get failedToRegister => 'auth.messages.failedToRegister'.tr();
@@ -162,6 +171,7 @@ class AppTextString {
   static String get passwordsDoNotMatch =>
       'auth.messages.passwordsDoNotMatch'.tr();
 
+  static String get invalidCode => 'auth.messages.invalidCode'.tr();
   //-------------------------- HOME --------------------------//
   static String get home => 'home.title'.tr();
 
@@ -218,4 +228,9 @@ class AppTextString {
   static String get percentageSign => '%';
 
   static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
+
+  //-------------------------- Navigation Bar --------------------------//
+  static String get orders => 'bottomNavBar.orders'.tr();
+  static String get profileNav => 'bottomNavBar.profile'.tr();
+  static String get homeNav => 'bottomNavBar.home'.tr();
 }
