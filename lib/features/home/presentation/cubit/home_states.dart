@@ -4,7 +4,12 @@ import '../../../../core/enums/home_nav_bar.dart';
 class HomeStates extends BaseState<void> {
   final HomeNavBarTabs currentTap;
 
-  const HomeStates({required this.currentTap, super.errorMessage, super.data, super.isEmpty});
+  const HomeStates({
+    required this.currentTap,
+    super.errorMessage,
+    super.data,
+    super.isEmpty,
+  });
 
   @override
   HomeStates copyWith({
