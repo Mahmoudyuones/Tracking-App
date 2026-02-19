@@ -39,22 +39,38 @@ class ProvideEmailViewState extends State<ProvideEmailView> {
         if (!mounted) return;
         switch (event) {
           case ShowLoadingProvideEmailIntent():
-            UIUtils.showEasyLoading();
+            _showLoading();
           case ShowErrorProvideEmailIntent(:final errorMessage):
-            UIUtils.hideLoading(context);
-            UIUtils.showMessage(
-              errorMessage,
-              backGroundColor: AppColors.red,
-              textColor: AppColors.white,
-            );
+            _hideLoading();
+            _handleError(errorMessage);
           case NavigateToVerifyIntent():
-            UIUtils.hideLoading(context);
-            widget.onSuccess(_emailController.text);
+            _hideLoading();
+            _handleNavigateToVerify();
           default:
             break;
         }
       });
     });
+  }
+
+  void _showLoading() {
+    UIUtils.showEasyLoading();
+  }
+
+  void _handleError(String errorMessage) {
+    UIUtils.showMessage(
+      errorMessage,
+      backGroundColor: AppColors.red,
+      textColor: AppColors.white,
+    );
+  }
+
+  void _hideLoading() {
+    UIUtils.hideLoading(context);
+  }
+
+  void _handleNavigateToVerify() {
+    widget.onSuccess(_emailController.text);
   }
 
   @override

@@ -1,6 +1,6 @@
 import '../../../../../../config/base_state/base_state.dart';
 
-class ForgetPasswordStates extends BaseState {
+class ForgetPasswordStates extends BaseState<void> {
   // Provide Email fields
   final String email;
   final bool isValidEmail;
@@ -15,7 +15,6 @@ class ForgetPasswordStates extends BaseState {
   final bool isValidForm;
 
   const ForgetPasswordStates({
-    super.data,
     super.errorMessage,
     super.isEmpty,
     this.email = '',
@@ -41,7 +40,6 @@ class ForgetPasswordStates extends BaseState {
     bool? isValidForm,
   }) {
     return ForgetPasswordStates(
-      data: data ?? this.data,
       errorMessage: errorMessage ?? this.errorMessage,
       isEmpty: isEmpty ?? this.isEmpty,
       email: email ?? this.email,
@@ -56,7 +54,6 @@ class ForgetPasswordStates extends BaseState {
 
   @override
   List<Object?> get props => [
-    if (data != null) data,
     isEmpty,
     email,
     isValidEmail,
