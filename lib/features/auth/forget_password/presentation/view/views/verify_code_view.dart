@@ -34,9 +34,8 @@ class VerifyCodeViewState extends State<VerifyCodeView> {
         switch (event) {
           case ShowLoadingVerifyIntent():
             _showLoading();
-          case ShowErrorMsgVerifyIntent(:final errorMessage):
+          case ShowErrorMsgVerifyIntent():
             _hideLoading();
-            _showError(errorMessage);
           case ShowSuccessMsgVerifyIntent(:final message):
             _hideLoading();
             _showSuccess(message);
@@ -54,14 +53,6 @@ class VerifyCodeViewState extends State<VerifyCodeView> {
     UIUtils.showMessage(
       message,
       backGroundColor: AppColors.green,
-      textColor: AppColors.white,
-    );
-  }
-
-  void _showError(String errorMessage) {
-    UIUtils.showMessage(
-      errorMessage,
-      backGroundColor: AppColors.red,
       textColor: AppColors.white,
     );
   }
