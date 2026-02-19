@@ -53,13 +53,7 @@ class AuthInterceptor extends Interceptor {
         log('401 Unauthorized - Session expired');
       }
 
-      return handler.reject(
-        DioException(
-          requestOptions: err.requestOptions,
-          error: 'Session expired',
-          type: DioExceptionType.cancel,
-        ),
-      );
+      return handler.reject(err);
     }
     handler.next(err);
   }

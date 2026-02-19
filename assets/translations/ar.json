@@ -17,7 +17,7 @@
     "labels": {
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
-      "currentPassword": "Current password",
+      "currentPassword": "كلمة المرور الحالية",
       "newPassword": "كلمة المرور الجديدة",
       "confirmPassword": "تأكيد كلمة المرور",
       "country": "البلد",
@@ -32,9 +32,10 @@
     },
     "hints": {
       "enterEmail": "أدخل البريد الإلكتروني",
+      "enterYourNewPassword":"أدخل كلمة المرور الجديدة",
       "enterPassword": "أدخل كلمة المرور",
       "enterCurrentPassword": "أدخل كلمة المرور الحالية",
-      "enterConfirmPassword": "أدخل تأكيد كلمة المرور",
+      "enterConfirmPassword": "أعد إدخال كلمة المرور الجديدة",
       "enterFirstName": "أدخل الاسم الأول",
       "enterLastName": "أدخل اسم العائلة",
       "enterPhoneNumber": "أدخل رقم الهاتف",
@@ -86,12 +87,13 @@
       "pleaseEnterYourCurrentPassword": "يرجى إدخال كلمة المرور الحالية",
       "pleaseEnterYourNewPassword": "يرجى إدخال كلمة المرور الجديدة",
       "emailFocusError": "هذا البريد الإلكتروني غير صالح",
-      "passwordsDoNotMatch": "كلمات المرور غير متطابقة"
+      "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+      "newPasswordIsTheOldPassword":"كلمة المرور الجديدة يجب أن تكون مختلفة عن القديمة"
     }
   },
   "bottomNavBar": {
     "home": "الرئيسية",
-    "order": "الطلبات",
+    "orders": "الطلبات",
     "profile": "الملف الشخصي"
   },
   "home": {
@@ -117,6 +119,7 @@
     "male": "ذكر"
   },
   "validation": {
+    "fieldRequired": "هذا الحقل مطلوب",
     "noEmailAvailable": "لا يوجد بريد إلكتروني متاح",
     "emailRequired": "البريد الإلكتروني مطلوب",
     "invalidEmail": "أدخل بريد إلكتروني صحيح",

@@ -56,7 +56,7 @@ extension StringValidation on String? {
 
   String? get validateRequired {
     if (this == null || this!.trim().isEmpty) {
-      return 'This field is required';
+      return ValidationConstants.fieldRequired;
     }
     return null;
   }
@@ -101,6 +101,20 @@ class AppValidators {
       return ValidationConstants.invalidPhoneNumber;
     }
 
+    return null;
+  }
+
+  static String? validateNewPasswordIsNotTheOldPassword(
+    String? newPassword,
+    String? oldPassword,
+  ) {
+    final passwordError = newPassword?.validatePassword;
+    if (passwordError != null) {
+      return passwordError;
+    }
+    if (newPassword == oldPassword) {
+      return ValidationConstants.newPasswordIsTheOldPassword;
+    }
     return null;
   }
 }
