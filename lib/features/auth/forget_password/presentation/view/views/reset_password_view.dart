@@ -101,7 +101,7 @@ class ResetPasswordViewState extends State<ResetPasswordView> {
                 ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: size.height * .012),
+              const SizedBox(height: 10),
               Text(
                 AppTextString.resetPasswordTitle,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -110,7 +110,7 @@ class ResetPasswordViewState extends State<ResetPasswordView> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: size.height * 0.039),
+              const SizedBox(height: 30),
               TextField(
                 controller: _newPassController,
                 obscureText: true,
@@ -123,7 +123,7 @@ class ResetPasswordViewState extends State<ResetPasswordView> {
                 ),
                 style: const TextStyle(color: AppColors.black),
               ),
-              SizedBox(height: size.height * 0.03),
+              const SizedBox(height: 24),
               TextField(
                 controller: _confirmPassController,
                 obscureText: true,
@@ -141,7 +141,7 @@ class ResetPasswordViewState extends State<ResetPasswordView> {
                 ),
                 style: const TextStyle(color: AppColors.black),
               ),
-              SizedBox(height: size.height * 0.039),
+              const SizedBox(height: 30),
               SizedBox(
                 width: double.infinity,
                 height: size.height * .059,

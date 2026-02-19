@@ -132,7 +132,7 @@ class VerifyCodeViewState extends State<VerifyCodeView> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: size.height * 0.039),
+              const SizedBox(height: 30),
               Pinput(
                 controller: _otpController,
                 length: 6,
@@ -176,7 +176,7 @@ class VerifyCodeViewState extends State<VerifyCodeView> {
                   );
                 },
               ),
-              SizedBox(height: size.height * 0.03),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

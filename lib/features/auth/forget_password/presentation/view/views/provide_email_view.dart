@@ -98,7 +98,7 @@ class ProvideEmailViewState extends State<ProvideEmailView> {
                 ).textTheme.bodyLarge?.copyWith(color: AppColors.lightTextgrey),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: size.height * 0.039),
+              const SizedBox(height: 30),
               TextField(
                 controller: _emailController,
                 onChanged: (value) => context
@@ -111,7 +111,7 @@ class ProvideEmailViewState extends State<ProvideEmailView> {
                 ),
                 style: const TextStyle(color: AppColors.black),
               ),
-              SizedBox(height: size.height * 0.059),
+              const SizedBox(height: 45),
               SizedBox(
                 height: size.height * 0.059,
                 width: double.infinity,
