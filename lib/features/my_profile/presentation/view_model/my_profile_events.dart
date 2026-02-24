@@ -1,3 +1,5 @@
 sealed class MyProfileEvent {}
 
-class GetDriverProfileDateEvent extends MyProfileEvent {}
+class GetDriverProfileDataEvent extends MyProfileEvent {}
+
+class ChangeLanguageEvent extends MyProfileEvent {}

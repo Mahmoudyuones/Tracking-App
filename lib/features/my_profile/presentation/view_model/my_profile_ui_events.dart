@@ -13,3 +13,5 @@ class SuccessUiEvent extends MyProfileUiEvent {
   final DriverResponseEntity driverResponseEntity;
   SuccessUiEvent({required this.driverResponseEntity});
 }
+
+class ShowLanguageBottomSheetEvent extends MyProfileUiEvent {}

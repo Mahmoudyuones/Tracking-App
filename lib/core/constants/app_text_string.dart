@@ -176,6 +176,7 @@ class AppTextString {
   static String get home => 'home.title'.tr();
 
   //-------------------------- Profile --------------------------//
+  static String get vehicleInfo => 'profile.vehicleInfo'.tr();
   static const String defaultAvatarUrl =
       'https://flower.elevateegy.com/uploads/default-profile.png';
   static const String englishProfileState = 'English';
@@ -192,6 +193,8 @@ class AppTextString {
   static String get arabic => 'profile.arabic'.tr();
 
   static String get language => 'profile.language'.tr();
+
+  static String get logoutText => 'logout'.tr();
 
   static String get termsAndConditionsPolicy =>
       'profile.termsAndConditionsPolicy'.tr();
@@ -233,4 +236,8 @@ class AppTextString {
   static String get orders => 'bottomNavBar.orders'.tr();
   static String get profileNav => 'bottomNavBar.profile'.tr();
   static String get homeNav => 'bottomNavBar.home'.tr();
+
+  //-------------------------- Language --------------------------//
+  static String get selected => 'selected';
+  static String get unSelected => 'unSelected';
 }

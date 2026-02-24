@@ -21,8 +21,10 @@ class MyProfileCubit extends Cubit<MyProfileState> {
   Stream<MyProfileUiEvent> get uiEventStream => _uiEventController.stream;
   void onEvent(MyProfileEvent event) {
     switch (event) {
-      case GetDriverProfileDateEvent():
+      case GetDriverProfileDataEvent():
         _getDriverProfileDate();
+      case ChangeLanguageEvent():
+        _showLanguageBottomSheet();
     }
   }
 
@@ -53,5 +55,15 @@ class MyProfileCubit extends Cubit<MyProfileState> {
         );
       },
     );
+  }
+
+  void _showLanguageBottomSheet() {
+    _uiEventController.add(ShowLanguageBottomSheetEvent());
+  }
+
+  @override
+  Future<void> close() {
+    _uiEventController.close();
+    return super.close();
   }
 }

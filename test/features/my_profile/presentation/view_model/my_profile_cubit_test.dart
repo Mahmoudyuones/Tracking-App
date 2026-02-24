@@ -69,7 +69,7 @@ Future<void> main() async {
         return cubit;
       },
       act: (cubit) async {
-        cubit.onEvent(GetDriverProfileDateEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
       },
       verify: (_) {
         verify(mockGetDriverProfileDateUsecase.call()).called(1);
@@ -94,7 +94,7 @@ Future<void> main() async {
         return cubit;
       },
       act: (cubit) async {
-        cubit.onEvent(GetDriverProfileDateEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
       },
       verify: (_) {
         expect(emittedUiEvents.length, 2);
@@ -118,7 +118,7 @@ Future<void> main() async {
         return cubit;
       },
       act: (cubit) async {
-        cubit.onEvent(GetDriverProfileDateEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
       },
       verify: (_) {
         final successEvent = emittedUiEvents.whereType<SuccessUiEvent>().first;
@@ -146,7 +146,7 @@ Future<void> main() async {
         return cubit;
       },
       act: (cubit) async {
-        cubit.onEvent(GetDriverProfileDateEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
       },
       verify: (_) {
         verify(mockGetDriverProfileDateUsecase.call()).called(1);
@@ -166,7 +166,7 @@ Future<void> main() async {
         return cubit;
       },
       act: (cubit) async {
-        cubit.onEvent(GetDriverProfileDateEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
       },
       verify: (_) {
         expect(emittedUiEvents.length, 2);
@@ -185,7 +185,7 @@ Future<void> main() async {
         return cubit;
       },
       act: (cubit) async {
-        cubit.onEvent(GetDriverProfileDateEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
       },
       verify: (_) {
         final errorEvent = emittedUiEvents.whereType<ErrorUiEvent>().first;
@@ -204,8 +204,8 @@ Future<void> main() async {
         return cubit;
       },
       act: (cubit) async {
-        cubit.onEvent(GetDriverProfileDateEvent());
-        cubit.onEvent(GetDriverProfileDateEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
+        cubit.onEvent(GetDriverProfileDataEvent());
       },
       verify: (_) {
         verify(mockGetDriverProfileDateUsecase.call()).called(2);
