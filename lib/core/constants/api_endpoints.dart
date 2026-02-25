@@ -12,4 +12,7 @@ class ApiEndpoints {
 
   // ------------------------ TRACK ORDER ENDPOINTS ------------------------ //
   static const String updateOrderState = 'orders/state/{Id}';
+
+  // ------------------------  PROFILE ENDPOINTS ------------------------ //
+  static const String myProfile = 'profile-data';
 }
