@@ -15,4 +15,5 @@ class ApiEndpoints {
 
   // ------------------------  PROFILE ENDPOINTS ------------------------ //
   static const String myProfile = 'profile-data';
+  static const String logout = 'logout';
 }

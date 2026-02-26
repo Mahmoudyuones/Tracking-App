@@ -17,4 +17,13 @@ class MyProfileRepoImpl implements MyProfileRepo {
       failure: (failure) => BaseResponse.failure(failure),
     );
   }
+
+  @override
+  Future<BaseResponse<void>> logout() async {
+    final response = await _myProfileRemoteDataSource.logout();
+    return response.when(
+      success: (success) => BaseResponse.success(success),
+      failure: (failure) => BaseResponse.failure(failure),
+    );
+  }
 }
