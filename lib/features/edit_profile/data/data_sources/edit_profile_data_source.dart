@@ -4,7 +4,7 @@ import '../models/request/edit_profile_request.dart';
 import '../models/response/edit_profile_response_model.dart';
 import '../models/response/upload_photo_response.dart';
 
-abstract class EditProfileDataSource {
+abstract interface class EditProfileDataSource {
   Future<BaseResponse<EditProfileResponseModel>> editProfile(
     EditProfileRequest request,
   );
