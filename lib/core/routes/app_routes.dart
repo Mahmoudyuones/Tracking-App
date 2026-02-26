@@ -23,4 +23,8 @@ class AppRoutes {
 
   //--------------- HOME ROUTES -----------------//
   static const String homeRoute = '/home';
+
+  //--------------- Edit Profile -----------------//
+    static const String editProfile = '/editProfile';
+
 }

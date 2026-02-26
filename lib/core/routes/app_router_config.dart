@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/change_password/presentation/view/screens/change_password_screen.dart';
+import '../../features/edit_profile/presentation/screens/edit_profile_screen.dart';
 import '../../features/home/presentation/cubit/home_cubit.dart';
 import '../../features/home/presentation/cubit/home_states.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
@@ -29,6 +30,11 @@ class AppRouterConfig {
               HomeCubit(const HomeStates(currentTap: HomeNavBarTabs.home)),
           child: const HomeScreen(),
         ),
+      ),
+       GoRoute(
+        path: AppRoutes.editProfile,
+        name: AppRoutes.editProfile,
+        builder: (context, state) => const EditProfileScreen(),
       ),
     ],
   );
