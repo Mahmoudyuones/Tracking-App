@@ -25,6 +25,5 @@ class AppRoutes {
   static const String homeRoute = '/home';
 
   //--------------- Edit Profile -----------------//
-    static const String editProfile = '/editProfile';
-
+  static const String editProfile = '/editProfile';
 }

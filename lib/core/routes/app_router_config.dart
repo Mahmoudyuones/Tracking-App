@@ -31,7 +31,7 @@ class AppRouterConfig {
           child: const HomeScreen(),
         ),
       ),
-       GoRoute(
+      GoRoute(
         path: AppRoutes.editProfile,
         name: AppRoutes.editProfile,
         builder: (context, state) => const EditProfileScreen(),
