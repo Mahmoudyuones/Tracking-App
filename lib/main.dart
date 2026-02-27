@@ -30,7 +30,7 @@ Future<void> main() async {
       startLocale: null,
       fallbackLocale: const Locale(AppTextString.enLangKey),
       useOnlyLangCode: true,
-      saveLocale: false,
+      saveLocale: true,
       child: const TrackingApp(),
     ),
   );
