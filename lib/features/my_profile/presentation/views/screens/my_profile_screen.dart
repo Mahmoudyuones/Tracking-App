@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,9 +9,10 @@ import '../../view_model/my_profile_cubit.dart';
 import '../../view_model/my_profile_events.dart';
 import '../../view_model/my_profile_state.dart';
 import '../../view_model/my_profile_ui_events.dart';
+import '../widgets/language_bottom_sheet.dart';
 import '../widgets/language_card.dart';
-import '../widgets/language_option.dart';
 import '../widgets/logout_card.dart';
+import '../widgets/logout_dialog.dart';
 import '../widgets/profile_appbar.dart';
 import '../widgets/user_info_card.dart';
 import '../widgets/vehicle_info_card.dart';
@@ -42,6 +42,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
           UIUtils.hideLoading(context);
         case ShowLanguageBottomSheetEvent():
           _showLanguageBottomSheet();
+        case ShowLogoutDialogEvent():
+          _showLogoutDialog();
       }
     });
     _cubit.onEvent(GetDriverProfileDataEvent());
@@ -63,71 +65,13 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      builder: (ctx) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: AppColors.whiteLight,
-                  borderRadius: BorderRadius.circular(100),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary.withValues(alpha: 0.08),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Icon(
-                      Icons.translate_rounded,
-                      color: AppColors.primary,
-                      size: 20,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
-                    AppTextString.chooseLanguage,
-                    style: Theme.of(ctx).textTheme.titleMedium,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              const Divider(height: 1, color: AppColors.whiteLight),
-              const SizedBox(height: 12),
-
-              LanguageOption(
-                label: AppTextString.english,
-                isSelected:
-                    context.locale.languageCode == AppTextString.enLangKey,
-                onTap: () {
-                  context.setLocale(const Locale(AppTextString.enLangKey));
-                  Navigator.pop(ctx);
-                },
-              ),
-              const SizedBox(height: 10),
-              LanguageOption(
-                label: AppTextString.arabic,
-                isSelected:
-                    context.locale.languageCode == AppTextString.arLangKey,
-                onTap: () {
-                  context.setLocale(const Locale(AppTextString.arLangKey));
-                  Navigator.pop(ctx);
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      builder: (ctx) => const LanguageBottomSheet(),
     );
+  }
+
+  void _showLogoutDialog() {
+    UIUtils.hideLoading(context);
+    LogoutDialog.show(context, _cubit);
   }
 
   @override
