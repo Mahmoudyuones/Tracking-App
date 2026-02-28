@@ -19,7 +19,7 @@ import 'app_routes.dart';
 
 class AppRouterConfig {
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.homeRoute,
+    initialLocation: AppRoutes.loginRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [

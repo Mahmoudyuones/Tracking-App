@@ -1,7 +1,7 @@
 class ApiEndpoints {
   ApiEndpoints._();
 
-  static const String baseUrl = 'https://flower.elevateegy.com/api/v1/drivers/';
+  static const String baseUrl = 'https://flower.elevateegy.com/api/v1/';
   static const String idPathQuery = 'Id';
 
   // ------------------------ AUTHENTICATION ENDPOINTS ------------------------ //
@@ -15,5 +15,5 @@ class ApiEndpoints {
   static const String updateOrderState = 'orders/state/{Id}';
 
   // ------------------------  PROFILE ENDPOINTS ------------------------ //
-  static const String myProfile = 'profile-data';
+  static const String myProfile = 'drivers/profile-data';
 }
