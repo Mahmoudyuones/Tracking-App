@@ -15,4 +15,6 @@ class ApiEndpoints {
 
   // ------------------------  PROFILE ENDPOINTS ------------------------ //
   static const String myProfile = 'profile-data';
+  static const String editProfile = 'drivers/editProfile';
+  static const String updateProfileImage = 'drivers/upload-photo';
 }
