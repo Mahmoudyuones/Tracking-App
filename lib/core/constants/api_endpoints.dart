@@ -5,6 +5,7 @@ class ApiEndpoints {
   static const String idPathQuery = 'Id';
 
   // ------------------------ AUTHENTICATION ENDPOINTS ------------------------ //
+  static const loginEndPoint = 'drivers/signin';
   static const String forgotPassword = 'drivers/forgotPassword';
   static const String verifyResetCode = 'drivers/verifyResetCode';
   static const String resetPassword = 'drivers/resetPassword';
