@@ -115,7 +115,10 @@
     "change": "Change",
     "gender": "Gender",
     "female": "Female",
-    "male": "Male"
+    "male": "Male",
+    "updateProfile": "Update Profile",
+    "profilePhotoUpdatedSuccessfully": "Profile Photo Updated Successfully",
+    "profileUpdatedSuccessfully": "Profile Updated Successfully"
   },
   "validation": {
     "fieldRequired": "This field is required",
