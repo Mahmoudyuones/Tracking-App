@@ -4,24 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../config/base_response/base_response.dart';
-import '../../../../../config/di/di.dart';
-import '../../../../../config/services/session_manager_service.dart';
-import '../../../../../config/services/token_service.dart';
 import '../../data/models/login_request_model/login_request_model.dart';
 import '../../domain/use_cases/login_use_case.dart';
-import 'login_events.dart';
-import 'login_state.dart';
+import 'login_intents.dart';
+import 'login_states.dart';
+import 'login_ui_side_effects.dart';
 
 @injectable
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit(this._useCase) : super(const LoginStates());
   final LoginUseCase _useCase;
 
-  final _effectsController = StreamController<LoginEffect>.broadcast();
+  final _effectsController = StreamController<LoginUISideEffects>.broadcast();
 
-  Stream<LoginEffect> get effects => _effectsController.stream;
+  Stream<LoginUISideEffects> get effects => _effectsController.stream;
 
-  Future<void> doIntent(LoginIntent intent) async {
+  Future<void> doIntent(LoginIntents intent) async {
     switch (intent) {
       case SubmitLoginIntent():
         _submitLogin(
@@ -36,7 +34,7 @@ class LoginCubit extends Cubit<LoginStates> {
     }
   }
 
-  void _emitEffect(LoginEffect effect) {
+  void _emitEffect(LoginUISideEffects effect) {
     if (!_effectsController.isClosed) {
       _effectsController.add(effect);
     }
@@ -64,12 +62,10 @@ class LoginCubit extends Cubit<LoginStates> {
             loginState: state.loginState.copyWith(data: data),
           ),
         );
-        if (rememberMe) {
-          state.copyWith(isRememberMe: true);
-          await getIt<TokenService>().saveToken(data.token!);
-        }
-        getIt<SessionManagerService>().notifySessionExpired();
-        await Future.delayed(Duration.zero);
+        // if (rememberMe && data.token != null) {
+        //   emit(state.copyWith(isRememberMe: true));
+        //   await getIt<TokenService>().saveToken(data.token!);
+        // }
         _emitEffect(NavigateToHomeEffect());
       },
       failure: (e) {

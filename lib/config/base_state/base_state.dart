@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
 class BaseState<T> extends Equatable {
   final T? data;
@@ -17,7 +18,10 @@ class BaseState<T> extends Equatable {
 
   @override
   String toString() {
-    return 'BaseState(data: $data,errorMessage: $errorMessage, isEmpty: $isEmpty)';
+    if (kDebugMode) {
+      return 'BaseState(data: $data ,errorMessage: $errorMessage, isEmpty: $isEmpty)';
+    }
+    return 'BaseState(errorMessage: $errorMessage, isEmpty: $isEmpty)';
   }
 
   @override

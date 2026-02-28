@@ -8,7 +8,7 @@ import '../../login/data/models/login_response_model/login_response_model.dart';
 
 part 'shared_auth_api_client.g.dart';
 
-@injectable
+@lazySingleton
 @RestApi()
 abstract class SharedAuthApiClient {
   @factoryMethod

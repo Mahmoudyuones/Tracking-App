@@ -147,6 +147,38 @@ void main() {
     );
 
     test(
+      'Success Test Case 6: Should handle login with different email and password combinations',
+      () async {
+        // arrange
+        const tDifferentRequest = LoginRequestModel(
+          email: 'another@example.com',
+          password: 'differentPassword',
+        );
+        const tDifferentResponse = LoginResponseModel(
+          message: 'Welcome back',
+          token: 'different_token_456',
+        );
+        when(
+          mockedRepo.login(request: tDifferentRequest, remembered: false),
+        ).thenAnswer(
+          (_) async => const BaseResponse.success(tDifferentResponse),
+        );
+
+        // act
+        final result = await loginUseCase.call(
+          request: tDifferentRequest,
+          isRemembered: false,
+        );
+
+        // assert
+        expect(result, const BaseResponse.success(tDifferentResponse));
+        verify(
+          mockedRepo.login(request: tDifferentRequest, remembered: false),
+        ).called(1);
+      },
+    );
+
+    test(
       'Failure Test Case 1: Should return failure response when repository returns failure',
       () async {
         // arrange
@@ -202,38 +234,6 @@ void main() {
             expect((e as ServerException).statusCode, 500);
           },
         );
-      },
-    );
-
-    test(
-      'Failure Test Case 3: Should handle login with different email and password combinations',
-      () async {
-        // arrange
-        const tDifferentRequest = LoginRequestModel(
-          email: 'another@example.com',
-          password: 'differentPassword',
-        );
-        const tDifferentResponse = LoginResponseModel(
-          message: 'Welcome back',
-          token: 'different_token_456',
-        );
-        when(
-          mockedRepo.login(request: tDifferentRequest, remembered: false),
-        ).thenAnswer(
-          (_) async => const BaseResponse.success(tDifferentResponse),
-        );
-
-        // act
-        final result = await loginUseCase.call(
-          request: tDifferentRequest,
-          isRemembered: false,
-        );
-
-        // assert
-        expect(result, const BaseResponse.success(tDifferentResponse));
-        verify(
-          mockedRepo.login(request: tDifferentRequest, remembered: false),
-        ).called(1);
       },
     );
 

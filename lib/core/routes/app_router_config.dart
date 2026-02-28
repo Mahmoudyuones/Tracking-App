@@ -1,11 +1,11 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../config/base_response/base_response.dart';
 import '../../config/di/di.dart';
-import '../../config/services/session_manager_service.dart';
 import '../../config/services/token_service.dart';
 import '../../features/auth/login/presentation/views/login_view.dart';
 import '../constants/app_text_string.dart';
@@ -38,9 +38,9 @@ class AppRouterConfig {
     ],
     // REDIRECT LOGIC FOR APP ENTRY
     redirect: _isLoggedIn,
-    refreshListenable: GoRouterRefreshStream(
-      getIt<SessionManagerService>().sessionExpiredStream,
-    ),
+    // refreshListenable: GoRouterRefreshStream(
+    //   getIt<SessionManagerService>().sessionExpiredStream,
+    // ),
   );
 
   static FutureOr<String?> _isLoggedIn(
@@ -49,6 +49,7 @@ class AppRouterConfig {
   ) async {
     final tokenService = getIt<TokenService>();
     final loginStatus = await tokenService.isLoggedIn();
+    log('>>>>>>>>$loginStatus', name: 'Login Status');
     bool isLoggedIn = false;
     loginStatus.when(
       success: (val) => isLoggedIn = val,

@@ -5,6 +5,7 @@ import '../../../../../../core/style/color/app_colors.dart';
 
 class CustomRememberAndForget extends StatefulWidget {
   const CustomRememberAndForget({super.key, this.onPressed});
+
   final void Function()? onPressed;
 
   @override
@@ -14,6 +15,7 @@ class CustomRememberAndForget extends StatefulWidget {
 
 class _CustomRememberAndForgetState extends State<CustomRememberAndForget> {
   bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -23,9 +25,7 @@ class _CustomRememberAndForgetState extends State<CustomRememberAndForget> {
       leading: Checkbox(
         activeColor: AppColors.primary,
         value: isSelected,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(2),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
         side: const BorderSide(color: AppColors.gray, width: 2),
         onChanged: (value) async {
           setState(() => isSelected = !isSelected);

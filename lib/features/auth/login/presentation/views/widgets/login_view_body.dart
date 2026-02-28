@@ -12,8 +12,9 @@ import '../../../../../../core/style/color/app_colors.dart';
 import '../../../../../../core/utility/ui/ui_utils.dart';
 import '../../../../../../core/validators/app_validators.dart';
 import '../../view_models/login_cubit.dart';
-import '../../view_models/login_events.dart';
-import '../../view_models/login_state.dart';
+import '../../view_models/login_intents.dart';
+import '../../view_models/login_states.dart';
+import '../../view_models/login_ui_side_effects.dart';
 import 'remember_and_forget_widget.dart';
 import 'text_input_filed_widget.dart';
 
@@ -29,7 +30,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   late TextEditingController passwordCtr;
   late GlobalKey<FormState> globalKey;
   late LoginCubit cubit;
-  StreamSubscription<LoginEffect>? _effectsSubscription;
+  StreamSubscription<LoginUISideEffects>? _effectsSubscription;
   bool _isButtonEnabled = true;
   bool _hasPressedButton = false;
   bool _isPasswordVisible = false;
@@ -46,7 +47,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     });
   }
 
-  void _handleEffects(LoginEffect effect) {
+  void _handleEffects(LoginUISideEffects effect) {
     switch (effect) {
       case NavigateToHomeEffect():
         context.goNamed(AppRoutes.homeRoute);
@@ -110,12 +111,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 24),
-            TextInputFiledWidget(
+            TextInputFieldWidget(
               validator: AppValidators.validateEmail,
               controller: emailCtr,
             ),
             24.verticalSpacing,
-            TextInputFiledWidget(
+            TextInputFieldWidget(
               isPassword: true,
               showPassword: !_isPasswordVisible,
               validator: AppValidators.validateLoginPassword,
@@ -127,15 +128,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               },
             ),
             12.verticalSpacing,
-            BlocBuilder<LoginCubit, LoginStates>(
-              buildWhen: (prev, current) =>
-                  prev.isRememberMe != current.isRememberMe,
-              builder: (context, state) {
-                return CustomRememberAndForget(
-                  onPressed: () =>
-                      cubit.doIntent(NavigateToForgetPasswordIntent()),
-                );
-              },
+            CustomRememberAndForget(
+              onPressed: () => cubit.doIntent(NavigateToForgetPasswordIntent()),
             ),
             32.verticalSpacing,
             BlocBuilder<LoginCubit, LoginStates>(

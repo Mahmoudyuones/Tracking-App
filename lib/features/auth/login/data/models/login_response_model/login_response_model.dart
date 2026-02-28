@@ -9,7 +9,7 @@ class LoginResponseModel {
   @JsonKey(name: 'token')
   final String? token;
 
-  const LoginResponseModel({required this.message, required this.token});
+  const LoginResponseModel({this.message, this.token});
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseModelFromJson(json);
@@ -17,7 +17,6 @@ class LoginResponseModel {
   Map<String, dynamic> toJson() => _$LoginResponseModelToJson(this);
 
   @override
-  String toString() {
-    return 'LoginResponseModel(message: $message, token: $token)';
-  }
+  String toString() =>
+      'LoginResponseModel(message: $message, token: ${token != null ? '***redacted***' : 'null'}';
 }

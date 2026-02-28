@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants/app_text_string.dart';
 
-class TextInputFiledWidget extends StatelessWidget {
+class TextInputFieldWidget extends StatelessWidget {
   final bool isPassword;
   final bool showPassword;
   final String? Function(String?)? validator;
   final void Function()? suffixIconOnTap;
   final TextEditingController? controller;
 
-  const TextInputFiledWidget({
+  const TextInputFieldWidget({
     super.key,
     this.validator,
     this.showPassword = true,
@@ -35,6 +35,8 @@ class TextInputFiledWidget extends StatelessWidget {
                     : const Icon(Icons.visibility_outlined),
               ),
             ),
+            autocorrect: false,
+            enableSuggestions: false,
           )
         : TextFormField(
             validator: validator,
