@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "963719748065",
+    "project_id": "flower-app-6eb9f",
+    "storage_bucket": "flower-app-6eb9f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963719748065:android:877bab0b72466bcfce9aa0",
+        "android_client_info": {
+          "package_name": "com.example.tracking_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMiABKBOgxfDW8sDPQCGTfMw9F9DthZmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

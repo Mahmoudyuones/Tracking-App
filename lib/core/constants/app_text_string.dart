@@ -68,10 +68,13 @@ class AppTextString {
   static String get phoneNumberLabel => 'auth.labels.phoneNumber'.tr();
   static String get idNumberLabel => 'auth.labels.idNumber'.tr();
   static String get idImageLabel => 'auth.labels.idImage'.tr();
+  static String get confirmPassword => 'auth.labels.confirmPassword'.tr();
 
   // Auth Hints
   static String get enterEmail => 'auth.hints.enterEmail'.tr();
   static String get enterPassword => 'auth.hints.enterPassword'.tr();
+  static String get enterYourNewPassword =>
+      'auth.hints.enterYourNewPassword'.tr();
   static String get enterCurrentPassword =>
       'auth.hints.enterCurrentPassword'.tr();
   static String get enterConfirmPassword =>
@@ -97,8 +100,6 @@ class AppTextString {
   static String get firstName => 'auth.firstName'.tr();
 
   static String get lastName => 'auth.lastName'.tr();
-
-  static String get confirmPassword => 'auth.confirmPassword'.tr();
 
   static String get phoneNumber => 'auth.phoneNumber'.tr();
 
@@ -175,6 +176,7 @@ class AppTextString {
   static String get home => 'home.title'.tr();
 
   //-------------------------- Profile --------------------------//
+  static String get vehicleInfo => 'profile.vehicleInfo'.tr();
   static const String defaultAvatarUrl =
       'https://flower.elevateegy.com/uploads/default-profile.png';
   static const String englishProfileState = 'English';
@@ -191,6 +193,8 @@ class AppTextString {
   static String get arabic => 'profile.arabic'.tr();
 
   static String get language => 'profile.language'.tr();
+
+  static String get logoutText => 'logout'.tr();
 
   static String get termsAndConditionsPolicy =>
       'profile.termsAndConditionsPolicy'.tr();
@@ -227,4 +231,13 @@ class AppTextString {
   static String get percentageSign => '%';
 
   static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
+
+  //-------------------------- Navigation Bar --------------------------//
+  static String get orders => 'bottomNavBar.orders'.tr();
+  static String get profileNav => 'bottomNavBar.profile'.tr();
+  static String get homeNav => 'bottomNavBar.home'.tr();
+
+  //-------------------------- Language --------------------------//
+  static String get selected => 'selected';
+  static String get unSelected => 'unSelected';
 }

@@ -2,11 +2,18 @@ class ApiEndpoints {
   ApiEndpoints._();
 
   static const String baseUrl = 'https://flower.elevateegy.com/api/v1/drivers/';
+  static const String idPathQuery = 'Id';
 
   // ------------------------ AUTHENTICATION ENDPOINTS ------------------------ //
-  static const loginEndPoint = 'signin';
-  static const String changePassword = 'change-password';
-  static const String forgotPassword = 'forgotPassword';
-  static const String verifyResetCode = 'verifyResetCode';
-  static const String resetPassword = 'resetPassword';
+  static const loginEndPoint = 'drivers/signin';
+  static const String forgotPassword = 'drivers/forgotPassword';
+  static const String verifyResetCode = 'drivers/verifyResetCode';
+  static const String resetPassword = 'drivers/resetPassword';
+  static const String changePassword = 'drivers/change-password';
+
+  // ------------------------ TRACK ORDER ENDPOINTS ------------------------ //
+  static const String updateOrderState = 'orders/state/{Id}';
+
+  // ------------------------  PROFILE ENDPOINTS ------------------------ //
+  static const String myProfile = 'profile-data';
 }
