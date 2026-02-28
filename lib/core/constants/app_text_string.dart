@@ -97,17 +97,17 @@ class AppTextString {
 
   static String get confirmLogout => 'auth.confirmLogout'.tr();
 
-  static String get firstName => 'auth.firstName'.tr();
+  static String get firstName => 'editProfile.firstName'.tr();
 
-  static String get lastName => 'auth.lastName'.tr();
+  static String get lastName => 'editProfile.lastName'.tr();
 
-  static String get phoneNumber => 'auth.phoneNumber'.tr();
+  static String get phoneNumber => 'editProfile.phoneNumber'.tr();
 
-  static String get gender => 'auth.gender'.tr();
+  static String get gender => 'editProfile.gender'.tr();
 
-  static String get female => 'auth.female'.tr();
+  static String get female => 'editProfile.female'.tr();
 
-  static String get male => 'auth.male'.tr();
+  static String get male => 'editProfile.male'.tr();
 
   //-------------------------- Auth Forget Password --------------------------//
 
@@ -231,6 +231,14 @@ class AppTextString {
   static String get percentageSign => '%';
 
   static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
+
+  static String get updateProfile => 'editProfile.updateProfile'.tr();
+
+  static String get profilePhotoUpdatedSuccessfully =>
+      'editProfile.profilePhotoUpdatedSuccessfully'.tr();
+
+  static String get profileUpdatedSuccessfully =>
+      'editProfile.profileUpdatedSuccessfully'.tr();
 
   //-------------------------- Navigation Bar --------------------------//
   static String get orders => 'bottomNavBar.orders'.tr();
