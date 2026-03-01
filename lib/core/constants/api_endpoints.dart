@@ -10,6 +10,7 @@ class ApiEndpoints {
   static const String verifyResetCode = 'drivers/verifyResetCode';
   static const String resetPassword = 'drivers/resetPassword';
   static const String changePassword = 'drivers/change-password';
+  static const String apply = 'drivers/apply';
 
   // ------------------------ TRACK ORDER ENDPOINTS ------------------------ //
   static const String updateOrderState = 'orders/state/{Id}';
