@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'driver_model.g.dart';
 
 @JsonSerializable()
-class Driver {
+class DriverModel {
   @JsonKey(name: 'country')
   final String country;
   @JsonKey(name: 'firstName')
@@ -34,7 +34,7 @@ class Driver {
   @JsonKey(name: 'createdAt')
   final DateTime createdAt;
 
-  Driver({
+  DriverModel({
     required this.country,
     required this.firstName,
     required this.lastName,
@@ -52,7 +52,8 @@ class Driver {
     required this.createdAt,
   });
 
-  factory Driver.fromJson(Map<String, dynamic> json) => _$DriverFromJson(json);
+  factory DriverModel.fromJson(Map<String, dynamic> json) =>
+      _$DriverModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DriverToJson(this);
+  Map<String, dynamic> toJson() => _$DriverModelToJson(this);
 }

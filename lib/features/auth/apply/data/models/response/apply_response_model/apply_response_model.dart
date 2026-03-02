@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
 
-import '../../../../../../edit_profile/data/models/response/driver.dart';
+import '../driver_model/driver_model.dart';
 
 part 'apply_response_model.g.dart';
 
@@ -16,7 +16,7 @@ class ApplyResponseModel {
   @JsonKey(name: 'message')
   final String message;
   @JsonKey(name: 'driver')
-  final Driver driver;
+  final DriverModel driver;
   @JsonKey(name: 'token')
   final String token;
 
