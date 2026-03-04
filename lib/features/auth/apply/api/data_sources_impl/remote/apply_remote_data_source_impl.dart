@@ -19,15 +19,17 @@ class ApplyRemoteDataSourceImpl implements ApplyRemoteDataSource {
     ApplyRequestModel request,
   ) {
     return safeApiCall(() async {
+      final vehicleLicense = await toMultipartFile(request.vehicleLicense);
+      final nIDImg = await toMultipartFile(request.nIDImg);
       final response = await applyApiClient.applyDriver(
         country: request.country,
         firstName: request.firstName,
         lastName: request.lastName,
         vehicleType: request.vehicleType,
         vehicleNumber: request.vehicleNumber,
-        vehicleLicense: await toMultipartFile(request.vehicleLicense),
+        vehicleLicense: vehicleLicense,
         nID: request.nID,
-        nIDImg: await toMultipartFile(request.nIDImg),
+        nIDImg: nIDImg,
         email: request.email,
         password: request.password,
         rePassword: request.rePassword,
