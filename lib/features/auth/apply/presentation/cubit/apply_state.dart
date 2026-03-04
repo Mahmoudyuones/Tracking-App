@@ -1,10 +1,10 @@
-part of 'apply_cubit.dart';
+import '../../../../../config/base_state/base_state.dart';
 
-abstract class ApplyState extends Equatable {
-  const ApplyState();
+class ApplyState {
+  final BaseState? applyState;
+  const ApplyState({this.applyState});
 
-  @override
-  List<Object> get props => [];
+  ApplyState copyWith({BaseState? applyState}) {
+    return ApplyState(applyState: applyState ?? this.applyState);
+  }
 }
-
-class ApplyInitial extends ApplyState {}
