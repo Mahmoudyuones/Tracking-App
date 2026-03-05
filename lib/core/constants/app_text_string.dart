@@ -240,4 +240,13 @@ class AppTextString {
   //-------------------------- Language --------------------------//
   static String get selected => 'selected';
   static String get unSelected => 'unSelected';
+
+  //-------------------------- Orders --------------------------//
+  static String get completed => 'completed';
+  static String get cancelled => 'canceled';
+  static String get completedTitle => 'Completed'.tr();
+  static String get cancelledTitle => 'Cancelled'.tr();
+  static String get myOrdersTitle => 'My Orders'.tr();
+  static String get noOrdersFound => 'No Orders Found'.tr();
+  static String get recentOrders => 'Recent Orders'.tr();
 }

@@ -5,6 +5,14 @@ class OrdersResponseEntity {
   final String? message;
   final OrdersMetadataEntity? metadata;
   final List<OrderWrapperEntity>? orders;
+  final int completedCount;
+  final int cancelledCount;
 
-  const OrdersResponseEntity({this.message, this.metadata, this.orders});
+  const OrdersResponseEntity({
+    this.message,
+    this.metadata,
+    this.orders,
+    this.completedCount = 0,
+    this.cancelledCount = 0,
+  });
 }
