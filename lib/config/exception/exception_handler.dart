@@ -41,6 +41,7 @@ class ExceptionHandler {
   ) {
     return ServerException(
       statusCode: error.response?.statusCode,
+      responseData: error.response?.data as Map<String, dynamic>?,
       message: error.message ?? 'Network error',
       originalException: error,
       stackTrace: stackTrace,

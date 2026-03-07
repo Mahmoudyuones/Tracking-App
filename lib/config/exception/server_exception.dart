@@ -16,6 +16,14 @@ class ServerException extends AppException {
 
   @override
   String getUserMessage() {
+    if (responseData != null) {
+      if (responseData!.containsKey('message')) {
+        return responseData!['message'] as String;
+      }
+      if (responseData!.containsKey('error')) {
+        return responseData!['error'] as String;
+      }
+    }
     switch (statusCode) {
       case 400:
         return ExceptionConstantMessages.badRequest400;

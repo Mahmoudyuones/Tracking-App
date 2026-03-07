@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../config/base_response/base_response.dart';
 import '../../config/di/di.dart';
 import '../../config/services/token_service.dart';
@@ -15,16 +13,24 @@ import '../../features/edit_profile/presentation/view/screens/edit_profile_scree
 import '../../features/home/presentation/cubit/home_cubit.dart';
 import '../../features/home/presentation/cubit/home_states.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/auth/forget_password/presentation/view/screens/forget_password_screen.dart';
 import '../../features/my_profile/domain/entities/driver_entity.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
 class AppRouterConfig {
+  /// GoRouter Configuration
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.loginRoute,
+    initialLocation: AppRoutes.onboardingRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
+      /// Navigation to Boarding Screen
+      // GoRoute(
+      //   path: AppRoutes.onboardingRoute,
+      //   name: AppRoutes.onboardingRoute,
+      //   builder: (context, state) => const TestWidget()
+      // ),
       GoRoute(
         path: AppRoutes.changePasswordRoute,
         name: AppRoutes.changePasswordRoute,
@@ -38,6 +44,16 @@ class AppRouterConfig {
               HomeCubit(const HomeStates(currentTap: HomeNavBarTabs.home)),
           child: const HomeScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.forgetPasswordRoute,
+        name: AppRoutes.forgetPasswordRoute,
+        builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgetPasswordRoute,
+        name: AppRoutes.forgetPasswordRoute,
+        builder: (context, state) => const ForgetPasswordScreen(),
       ),
       GoRoute(
         path: AppRoutes.editProfile,
