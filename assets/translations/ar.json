@@ -116,7 +116,10 @@
     "change": "تغيير",
     "gender": "الجنس",
     "female": "أنثى",
-    "male": "ذكر"
+    "male": "ذكر",
+    "updateProfile": "تحديث الملف الشخصي",
+    "profilePhotoUpdatedSuccessfully": "تم تحديث صورة الملف الشخصي بنجاح",
+    "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح"
   },
   "validation": {
     "fieldRequired": "هذا الحقل مطلوب",

@@ -1,7 +1,7 @@
 import '../../../../config/base_state/base_state.dart';
 import '../../../../core/enums/home_nav_bar.dart';
 
-class HomeStates extends BaseState<void> {
+class HomeStates extends BaseState<Object?> {
   final HomeNavBarTabs currentTap;
 
   const HomeStates({
