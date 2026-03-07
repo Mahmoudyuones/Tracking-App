@@ -19,11 +19,18 @@ import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
 class AppRouterConfig {
+  /// GoRouter Configuration
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.loginRoute,
+    initialLocation: AppRoutes.onboardingRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
+      /// Navigation to Boarding Screen
+      // GoRoute(
+      //   path: AppRoutes.onboardingRoute,
+      //   name: AppRoutes.onboardingRoute,
+      //   builder: (context, state) => const TestWidget()
+      // ),
       GoRoute(
         path: AppRoutes.changePasswordRoute,
         name: AppRoutes.changePasswordRoute,
@@ -37,6 +44,11 @@ class AppRouterConfig {
               HomeCubit(const HomeStates(currentTap: HomeNavBarTabs.home)),
           child: const HomeScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.forgetPasswordRoute,
+        name: AppRoutes.forgetPasswordRoute,
+        builder: (context, state) => const ForgetPasswordScreen(),
       ),
       GoRoute(
         path: AppRoutes.forgetPasswordRoute,
