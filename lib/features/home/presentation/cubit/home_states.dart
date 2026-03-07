@@ -7,7 +7,6 @@ class HomeStates extends BaseState<Object?> {
   const HomeStates({
     required this.currentTap,
     super.errorMessage,
-    super.data,
     super.isEmpty,
   });
 
@@ -15,13 +14,12 @@ class HomeStates extends BaseState<Object?> {
   HomeStates copyWith({
     HomeNavBarTabs? currentTap,
     String? errorMessage,
-    dynamic data,
+    void data,
     bool? isEmpty,
   }) {
     return HomeStates(
       currentTap: currentTap ?? this.currentTap,
       errorMessage: errorMessage ?? this.errorMessage,
-      data: data ?? this.data,
       isEmpty: isEmpty ?? this.isEmpty,
     );
   }

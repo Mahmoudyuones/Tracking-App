@@ -23,7 +23,7 @@ dependencies:
   # Debugging
   logger: ^2.6.2  # for logging purpose
   pretty_dio_logger: ^1.4.0
-
+  
   # UI
   google_fonts: ^8.0.1
   cached_network_image: ^3.4.1
@@ -60,6 +60,7 @@ dependencies:
   pinput: ^6.0.2
   firebase_core: ^4.4.0
   cloud_firestore: ^6.1.2
+  image_picker: ^1.2.1
 
 dev_dependencies:
   flutter_test:

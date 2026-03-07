@@ -19,6 +19,7 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await configureDependencies();
+  // await getIt<TokenService>().clearToken();
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
@@ -30,7 +31,7 @@ Future<void> main() async {
       startLocale: null,
       fallbackLocale: const Locale(AppTextString.enLangKey),
       useOnlyLangCode: true,
-      saveLocale: false,
+      saveLocale: true,
       child: const TrackingApp(),
     ),
   );
