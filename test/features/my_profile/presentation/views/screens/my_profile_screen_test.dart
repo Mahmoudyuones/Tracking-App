@@ -23,11 +23,14 @@ void main() {
 
   // ── Shared test data ────────────────────────────────────────────────────────
 
-  MyProfileState emptyState() =>
-      MyProfileState(myProfileState: const BaseState<DriverResponseEntity>());
+  MyProfileState emptyState() => MyProfileState(
+    myProfileState: const BaseState<DriverResponseEntity>(),
+    logoutState: const BaseState<void>(),
+  );
 
   MyProfileState errorState(String msg) => MyProfileState(
     myProfileState: BaseState<DriverResponseEntity>(errorMessage: msg),
+    logoutState: const BaseState<void>(),
   );
 
   // ── Shared infrastructure ───────────────────────────────────────────────────

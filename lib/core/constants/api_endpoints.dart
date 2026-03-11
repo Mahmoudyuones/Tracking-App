@@ -18,4 +18,5 @@ class ApiEndpoints {
   static const String myProfile = 'drivers/profile-data';
   static const String editProfile = 'drivers/editProfile';
   static const String updateProfileImage = 'drivers/upload-photo';
+  static const String logout = 'logout';
 }

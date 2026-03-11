@@ -93,9 +93,9 @@ class AppTextString {
       'auth.hints.enterNationalIdNumber'.tr();
   static String get uploadIdImagePhoto => 'auth.hints.uploadIdImagePhoto'.tr();
 
-  static String get logout => 'auth.logout'.tr();
+  static String get logout => 'logout'.tr();
 
-  static String get confirmLogout => 'auth.confirmLogout'.tr();
+  static String get confirmLogout => 'Confirm Logout'.tr();
 
   static String get firstName => 'editProfile.firstName'.tr();
 
