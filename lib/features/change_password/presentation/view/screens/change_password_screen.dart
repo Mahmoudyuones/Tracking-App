@@ -71,10 +71,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   void _handleSuccess() {
     UIUtils.hideLoading(context);
     UIUtils.showMessage(
-      AppTextString.loginSuccess, // Update this constant
+      AppTextString.passwordUpdatedSuccessfully,
       backGroundColor: AppColors.green,
       textColor: AppColors.white,
     );
+    context.pop();
   }
 
   @override
@@ -112,9 +113,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 const SizedBox(height: 10),
                 TextFormField(
                   controller: _currentPassword,
+                  cursorColor: AppColors.black,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppColors.black),
                   obscureText: _isCurrentPasswordVisible == false,
                   decoration: InputDecoration(
-                    label: Text(AppTextString.currentPassword),
+                    label: Text(AppTextString.currentPasswordLabel),
                     hintText: AppTextString.enterCurrentPassword,
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -138,9 +143,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 TextFormField(
                   controller: _newpassword,
                   obscureText: _isNewPasswordVisible == false,
-
+                  cursorColor: AppColors.black,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppColors.black),
                   decoration: InputDecoration(
-                    label: Text(AppTextString.newPassword),
+                    label: Text(AppTextString.newPasswordLabel),
                     hintText: AppTextString.enterYourNewPassword,
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -166,7 +174,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 TextFormField(
                   controller: _confirmPassword,
                   obscureText: _isConfirmPasswordVisible == false,
-
+                  cursorColor: AppColors.black,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppColors.black),
                   decoration: InputDecoration(
                     label: Text(AppTextString.confirmPassword),
                     hintText: AppTextString.enterConfirmPassword,
@@ -214,7 +225,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             : null,
                         child: Text(
                           AppTextString.update,
-                          style: const TextStyle(fontSize: 16),
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.white,
+                              ),
                         ),
                       ),
                     );

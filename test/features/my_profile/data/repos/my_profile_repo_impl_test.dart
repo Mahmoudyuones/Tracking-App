@@ -136,4 +136,62 @@ void main() {
       },
     );
   });
+
+  group('logout', () {
+    final tAppException = ServerException(
+      message: 'Server error',
+      statusCode: 500,
+    );
+
+    test(
+      'should return BaseResponse.success<void> when remote data source returns success',
+      () async {
+        when(
+          mockMyProfileRemoteDataSourceImpl.logout(),
+        ).thenAnswer((_) async => BaseResponse<void>.success(null));
+
+        final result = await myProfileRepoImpl.logout();
+
+        expect(result, isA<Success<void>>());
+        result.when(
+          success: (_) {},
+          failure: (_) => fail('Expected success but got failure'),
+        );
+        verify(mockMyProfileRemoteDataSourceImpl.logout()).called(1);
+        verifyNoMoreInteractions(mockMyProfileRemoteDataSourceImpl);
+      },
+    );
+
+    test(
+      'should return BaseResponse.failure when remote data source returns failure',
+      () async {
+        when(
+          mockMyProfileRemoteDataSourceImpl.logout(),
+        ).thenAnswer((_) async => BaseResponse<void>.failure(tAppException));
+
+        final result = await myProfileRepoImpl.logout();
+
+        expect(result, isA<Failure<void>>());
+        result.when(
+          success: (_) => fail('Expected failure but got success'),
+          failure: (exception) {
+            expect(exception, isA<AppException>());
+            expect(exception, equals(tAppException));
+          },
+        );
+        verify(mockMyProfileRemoteDataSourceImpl.logout()).called(1);
+        verifyNoMoreInteractions(mockMyProfileRemoteDataSourceImpl);
+      },
+    );
+
+    test('should call remote data source logout exactly once', () async {
+      when(
+        mockMyProfileRemoteDataSourceImpl.logout(),
+      ).thenAnswer((_) async => BaseResponse<void>.success(null));
+
+      await myProfileRepoImpl.logout();
+
+      verify(mockMyProfileRemoteDataSourceImpl.logout()).called(1);
+    });
+  });
 }
