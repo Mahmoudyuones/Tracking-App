@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:go_router/go_router.dart';
 import '../../../../../config/di/di.dart';
 import '../../../../../core/constants/app_text_string.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/style/color/app_colors.dart';
 import '../../../../../core/utility/ui/ui_utils.dart';
 import '../../view_model/my_profile_cubit.dart';
@@ -131,11 +132,22 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
 
                 return Column(
                   children: [
-                    UserInfoCard(
-                      name: '${driver.firstName} ${driver.lastName}',
-                      email: driver.email,
-                      phone: driver.phone,
-                      image: driver.photo,
+                    InkWell(
+                      onTap: () async {
+                        final cubit = context.read<MyProfileCubit>();
+                        await context.pushNamed(
+                          AppRoutes.editProfile,
+                          extra: driver,
+                        );
+                        if (!mounted) return;
+                        cubit.onEvent(GetDriverProfileDataEvent());
+                      },
+                      child: UserInfoCard(
+                        name: '${driver.firstName} ${driver.lastName}',
+                        email: driver.email,
+                        phone: driver.phone,
+                        image: driver.photo,
+                      ),
                     ),
                     const SizedBox(height: 12),
                     VehicleInfoCard(

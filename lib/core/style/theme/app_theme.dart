@@ -40,9 +40,13 @@ class AppTheme {
     ),
     //------------ Text Form Field Theme -----------------//
     inputDecorationTheme: InputDecorationTheme(
-      labelStyle: const TextStyle(color: AppColors.lightTextgrey),
+      labelStyle: const TextStyle(color: AppColors.lightTextgrey, fontSize: 16),
       hintStyle: const TextStyle(color: AppColors.lightTextSecondary),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
+      floatingLabelStyle: const TextStyle(
+        color: AppColors.lightTextPrimary,
+        fontSize: 16,
+      ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(4),
         borderSide: const BorderSide(color: AppColors.inputBorder),
