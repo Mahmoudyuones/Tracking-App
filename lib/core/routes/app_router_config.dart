@@ -21,7 +21,7 @@ import 'app_routes.dart';
 class AppRouterConfig {
   /// GoRouter Configuration
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.onboardingRoute,
+    initialLocation: AppRoutes.loginRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
@@ -50,11 +50,7 @@ class AppRouterConfig {
         name: AppRoutes.forgetPasswordRoute,
         builder: (context, state) => const ForgetPasswordScreen(),
       ),
-      GoRoute(
-        path: AppRoutes.forgetPasswordRoute,
-        name: AppRoutes.forgetPasswordRoute,
-        builder: (context, state) => const ForgetPasswordScreen(),
-      ),
+
       GoRoute(
         path: AppRoutes.editProfile,
         name: AppRoutes.editProfile,
