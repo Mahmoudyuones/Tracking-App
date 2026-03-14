@@ -124,7 +124,7 @@ void main() {
     test(
       'should return BaseResponse.success<void> when API call is successful',
       () async {
-        when(mockMyProfileApiClient.logout()).thenAnswer((_) async => null);
+        when(mockMyProfileApiClient.logout()).thenAnswer((_) async {});
 
         final result = await myProfileRemoteDataSourceImpl.logout();
 
@@ -179,7 +179,7 @@ void main() {
     );
 
     test('should call MyProfileApiClient.logout exactly once', () async {
-      when(mockMyProfileApiClient.logout()).thenAnswer((_) async => null);
+      when(mockMyProfileApiClient.logout()).thenAnswer((_) async {});
 
       await myProfileRemoteDataSourceImpl.logout();
 
