@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/style/color/app_colors.dart';
@@ -27,7 +28,13 @@ class OrderAddressInfo extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CircleAvatar(radius: 24, backgroundImage: NetworkImage(imageUrl)),
+          CachedNetworkImage(
+            imageUrl: imageUrl,
+            imageBuilder: (context, imageProvider) =>
+                CircleAvatar(radius: 24, backgroundImage: imageProvider),
+            errorWidget: (context, url, error) =>
+                const CircleAvatar(radius: 24, child: Icon(Icons.person)),
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(

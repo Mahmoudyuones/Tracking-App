@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import '../../../../../core/constants/app_text_string.dart';
 
 class OrderCounterCard extends StatelessWidget {
-  const OrderCounterCard({required this.count, required this.status});
+  const OrderCounterCard({
+    required this.count,
+    required this.status,
+    super.key,
+  });
 
   final int count;
   final String status;

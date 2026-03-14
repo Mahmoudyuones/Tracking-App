@@ -21,28 +21,28 @@ class DriverOrdersScreen extends StatefulWidget {
 }
 
 class _DriverOrdersScreenState extends State<DriverOrdersScreen> {
-  late final OrdersCubit _cubit;
+  late final OrdersCubit cubit;
 
   @override
   void initState() {
     super.initState();
-    _cubit = getIt<OrdersCubit>();
-    _cubit.uiEventStream.listen((event) {
+    cubit = getIt<OrdersCubit>();
+    cubit.uiEventStream.listen((event) {
       if (!mounted) return;
       switch (event) {
         case LoadingUiEvent():
           UIUtils.showEasyLoading();
         case ErrorUiEvent():
-          _handleError(event.message);
+          handleError(event.message);
         case SuccessUiEvent():
           UIUtils.hideLoading(context);
       }
     });
 
-    _cubit.onEvent(GetOrdersEvent());
+    cubit.onEvent(GetOrdersEvent());
   }
 
-  void _handleError(String message) {
+  void handleError(String message) {
     UIUtils.hideLoading(context);
     UIUtils.showMessage(
       message,
@@ -53,14 +53,14 @@ class _DriverOrdersScreenState extends State<DriverOrdersScreen> {
 
   @override
   void dispose() {
-    _cubit.close();
+    cubit.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => _cubit,
+      create: (context) => cubit,
       child: BlocBuilder<OrdersCubit, OrdersState>(
         builder: (context, state) {
           final ordersState = state.ordersState;
@@ -95,7 +95,7 @@ class _DriverOrdersScreenState extends State<DriverOrdersScreen> {
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton(
-                          onPressed: () => _cubit.onEvent(GetOrdersEvent()),
+                          onPressed: () => cubit.onEvent(GetOrdersEvent()),
                           child: Text(AppTextString.retry),
                         ),
                       ],
@@ -159,7 +159,8 @@ class _DriverOrdersScreenState extends State<DriverOrdersScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   sliver: SliverList.separated(
                     itemCount: orders.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 12),
                     itemBuilder: (context, index) => Padding(
                       padding: EdgeInsets.only(
                         bottom: index == orders.length - 1 ? 24.0 : 0,

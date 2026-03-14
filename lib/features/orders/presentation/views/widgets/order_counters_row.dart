@@ -6,6 +6,7 @@ class OrderCountersRow extends StatelessWidget {
   const OrderCountersRow({
     required this.cancelledCount,
     required this.completedCount,
+    super.key,
   });
 
   final int cancelledCount;
