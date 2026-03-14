@@ -148,7 +148,7 @@ void main() {
       () async {
         when(
           mockMyProfileRemoteDataSourceImpl.logout(),
-        ).thenAnswer((_) async => BaseResponse<void>.success(null));
+        ).thenAnswer((_) async => const BaseResponse<void>.success(null));
 
         final result = await myProfileRepoImpl.logout();
 
@@ -187,7 +187,7 @@ void main() {
     test('should call remote data source logout exactly once', () async {
       when(
         mockMyProfileRemoteDataSourceImpl.logout(),
-      ).thenAnswer((_) async => BaseResponse<void>.success(null));
+      ).thenAnswer((_) async => const BaseResponse<void>.success(null));
 
       await myProfileRepoImpl.logout();
 
