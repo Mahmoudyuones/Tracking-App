@@ -19,4 +19,7 @@ class ApiEndpoints {
   static const String editProfile = 'drivers/editProfile';
   static const String updateProfileImage = 'drivers/upload-photo';
   static const String logout = 'logout';
+
+  // ------------------------  ORDERS ENDPOINTS ------------------------ //
+  static const String orders = 'orders/driver-orders';
 }

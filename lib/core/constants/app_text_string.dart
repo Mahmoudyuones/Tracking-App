@@ -253,4 +253,13 @@ class AppTextString {
   static String get thankYou => 'success.thankYou'.tr();
   static String get theOrderDeliveredSuccessfully =>
       'success.theOrderDeliveredSuccessfully'.tr();
+
+  //-------------------------- Orders --------------------------//
+  static String get completed => 'completed';
+  static String get cancelled => 'canceled';
+  static String get completedTitle => 'Completed'.tr();
+  static String get cancelledTitle => 'Cancelled'.tr();
+  static String get myOrdersTitle => 'My Orders'.tr();
+  static String get noOrdersFound => 'No Orders Found'.tr();
+  static String get recentOrders => 'Recent Orders'.tr();
 }
