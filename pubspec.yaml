@@ -81,6 +81,7 @@ flutter:
     - assets/translations/
     - assets/icons/
     - assets/lotties/
+    - assets/images/
 
 flutter_gen:
   output: lib/core/gen/
