@@ -26,4 +26,7 @@ class AppRoutes {
 
   //--------------- Edit Profile -----------------//
   static const String editProfile = '/editProfile';
+
+  //--------------- Success -----------------//
+  static const String successRoute = '/success';
 }

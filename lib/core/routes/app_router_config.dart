@@ -15,6 +15,7 @@ import '../../features/home/presentation/cubit/home_states.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/auth/forget_password/presentation/view/screens/forget_password_screen.dart';
 import '../../features/my_profile/domain/entities/driver_entity.dart';
+import '../../features/sucsess/presenatation/success_sccreen.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
@@ -50,7 +51,6 @@ class AppRouterConfig {
         name: AppRoutes.forgetPasswordRoute,
         builder: (context, state) => const ForgetPasswordScreen(),
       ),
-
       GoRoute(
         path: AppRoutes.editProfile,
         name: AppRoutes.editProfile,
@@ -63,6 +63,11 @@ class AppRouterConfig {
         path: AppRoutes.loginRoute,
         name: AppRoutes.loginRoute,
         builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: AppRoutes.successRoute,
+        name: AppRoutes.successRoute,
+        builder: (context, state) => const SuccessScreen(),
       ),
     ],
     // REDIRECT LOGIC FOR APP ENTRY

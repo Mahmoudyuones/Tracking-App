@@ -248,6 +248,11 @@ class AppTextString {
   //-------------------------- Language --------------------------//
   static String get selected => 'selected';
   static String get unSelected => 'unSelected';
+  //-------------------------- Success --------------------------//
+  static String get done => 'success.done'.tr();
+  static String get thankYou => 'success.thankYou'.tr();
+  static String get theOrderDeliveredSuccessfully =>
+      'success.theOrderDeliveredSuccessfully'.tr();
 
   //-------------------------- Orders --------------------------//
   static String get completed => 'completed';
