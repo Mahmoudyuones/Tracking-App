@@ -4,7 +4,7 @@ import '../../domain/entities/orders_response_entity.dart';
 import '../../domain/repos/orders_repo.dart';
 import '../datasources/orders_remote_data_source.dart';
 
-@Injectable(as: OrdersRepo)
+@LazySingleton(as: OrdersRepo)
 class OrdersRepoImpl implements OrdersRepo {
   final OrdersRemoteDataSource _remoteDataSource;
 
