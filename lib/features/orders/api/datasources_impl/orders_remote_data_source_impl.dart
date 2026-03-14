@@ -6,7 +6,7 @@ import '../../data/datasources/orders_remote_data_source.dart';
 import '../api_client/orders_api_client.dart';
 import '../../data/models/orders_response_model.dart';
 
-@Injectable(as: OrdersRemoteDataSource)
+@LazySingleton(as: OrdersRemoteDataSource)
 class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
   final OrdersApiClient _apiClient;
 

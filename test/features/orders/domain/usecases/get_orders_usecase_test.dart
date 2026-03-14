@@ -87,14 +87,14 @@ void main() {
       'should return completedCount=0 and cancelledCount=0 when orders list is empty',
       () async {
         // arrange
-        const tResponseEntity = OrdersResponseEntity(
+        final tResponseEntity = OrdersResponseEntity(
           message: 'Success',
           metadata: null,
           orders: [],
         );
         when(
           mockOrdersRepo.getOrders(),
-        ).thenAnswer((_) async => const BaseResponse.success(tResponseEntity));
+        ).thenAnswer((_) async => BaseResponse.success(tResponseEntity));
 
         // act
         final result = await getOrdersUsecase();
@@ -118,14 +118,14 @@ void main() {
       'should return completedCount=0 and cancelledCount=0 when orders list is null',
       () async {
         // arrange
-        const tResponseEntity = OrdersResponseEntity(
+        final tResponseEntity = OrdersResponseEntity(
           message: 'Success',
           metadata: null,
           orders: null,
         );
         when(
           mockOrdersRepo.getOrders(),
-        ).thenAnswer((_) async => const BaseResponse.success(tResponseEntity));
+        ).thenAnswer((_) async => BaseResponse.success(tResponseEntity));
 
         // act
         final result = await getOrdersUsecase();
@@ -344,13 +344,13 @@ void main() {
       'should call repo.getOrders exactly once per usecase invocation',
       () async {
         // arrange
-        const tResponseEntity = OrdersResponseEntity(
+        final tResponseEntity = OrdersResponseEntity(
           message: 'Success',
           orders: [],
         );
         when(
           mockOrdersRepo.getOrders(),
-        ).thenAnswer((_) async => const BaseResponse.success(tResponseEntity));
+        ).thenAnswer((_) async => BaseResponse.success(tResponseEntity));
 
         // act
         await getOrdersUsecase();
