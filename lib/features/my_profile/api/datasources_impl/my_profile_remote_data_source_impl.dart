@@ -13,4 +13,8 @@ class MyProfileRemoteDataSourceImpl implements MyProfileRemoteDataSource {
   @override
   Future<BaseResponse<DriverResponseModel>> getMyProfileData() =>
       safeApiCall(() => _myProfileApiClient.getMyProfileData());
+
+  @override
+  Future<BaseResponse<void>> logout() =>
+      safeApiCall(() => _myProfileApiClient.logout());
 }

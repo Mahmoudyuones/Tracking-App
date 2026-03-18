@@ -23,6 +23,7 @@ void main() {
 
   final emptyState = MyProfileState(
     myProfileState: const BaseState<DriverResponseEntity>(),
+    logoutState: const BaseState<void>(),
   );
 
   setUpAll(() async {

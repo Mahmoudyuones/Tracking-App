@@ -32,7 +32,7 @@
     },
     "hints": {
       "enterEmail": "Enter your email",
-      "enterYourNewPassword":"Enter your new password",
+      "enterYourNewPassword": "Enter your new password",
       "enterPassword": "Enter your password",
       "enterCurrentPassword": "Enter your current password",
       "enterConfirmPassword": "Re-enter your new password",
@@ -115,7 +115,10 @@
     "change": "Change",
     "gender": "Gender",
     "female": "Female",
-    "male": "Male"
+    "male": "Male",
+    "updateProfile": "Update Profile",
+    "profilePhotoUpdatedSuccessfully": "Profile Photo Updated Successfully",
+    "profileUpdatedSuccessfully": "Profile Updated Successfully"
   },
   "validation": {
     "fieldRequired": "This field is required",
@@ -134,7 +137,7 @@
     "invalidPhoneNumber": "Enter a valid phone number",
     "pleaseEnterOTPCode": "Please enter OTP code",
     "otpMustBe6Digits": "OTP must be 6 digits",
-    "newPasswordIsTheOldPassword":"New password must be different from the old password"
+    "newPasswordIsTheOldPassword": "New password must be different from the old password"
   },
   "errors": {
     "navigation": "Error When Navigate to route",
@@ -194,5 +197,10 @@
     "503_serviceUnavailable": "Service is temporarily unavailable. Please try again later.",
     "504_gatewayTimeout": "Server took too long to respond. Please try again.",
     "default": "Something went wrong on the server. Please try again."
+  },
+  "success": {
+    "done": "Done",
+    "thankYou": "Thank You!!",
+    "theOrderDeliveredSuccessfully": "The order delivered successfully"
   }
 }

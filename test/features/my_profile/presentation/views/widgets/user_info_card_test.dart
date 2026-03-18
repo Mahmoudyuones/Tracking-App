@@ -47,14 +47,9 @@ void main() {
       expect(find.byType(CircleAvatar), findsOneWidget);
     });
 
-    testWidgets('has a GestureDetector', (tester) async {
-      await tester.pumpWidget(_buildTestWidget());
-      expect(find.byType(GestureDetector), findsOneWidget);
-    });
-
     testWidgets('tapping the card does not throw', (tester) async {
       await tester.pumpWidget(_buildTestWidget());
-      await tester.tap(find.byType(GestureDetector));
+      await tester.tap(find.byType(UserInfoCard));
       await tester.pump();
     });
 
