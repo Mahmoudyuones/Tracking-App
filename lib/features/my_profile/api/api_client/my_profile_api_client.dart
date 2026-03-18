@@ -14,4 +14,7 @@ abstract class MyProfileApiClient {
 
   @GET(ApiEndpoints.myProfile)
   Future<DriverResponseModel> getMyProfileData();
+
+  @GET(ApiEndpoints.logout)
+  Future<void> logout();
 }
