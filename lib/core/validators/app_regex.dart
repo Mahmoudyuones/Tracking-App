@@ -33,4 +33,12 @@ abstract class AppRegex {
 
     return localRegex.hasMatch(trimmed) || internationalRegex.hasMatch(trimmed);
   }
+
+  static bool isNationalIdValid(String nationalId) {
+    final trimmed = nationalId.trim();
+
+    final regex = RegExp(r'^[0-9]{14}$');
+
+    return regex.hasMatch(trimmed);
+  }
 }

@@ -17,6 +17,11 @@ class AppTextString {
   static String get confirm => 'common.confirm'.tr();
   static String get update => 'common.update'.tr();
   static String get delete => 'common.delete'.tr();
+  static String get uploadPhoto => 'common.uploadPhoto'.tr();
+  static String get gallery => 'common.gallery'.tr();
+  static String get chooseFromYourPhotos => 'common.chooseFromYourPhotos'.tr();
+  static String get camera => 'common.camera'.tr();
+  static String get takeNewPhoto => 'common.takeNewPhoto'.tr();
 
   //-------------------------- AUTH ONBOARDING TEXT --------------------------//
   static String get onboarding => 'auth.onboarding'.tr();
@@ -38,6 +43,10 @@ class AppTextString {
   static String get vehicleType => 'auth.apply.vehicleType'.tr();
   static String get vehicleNumber => 'auth.apply.vehicleNumber'.tr();
   static String get vehicleLicense => 'auth.apply.vehicleLicense'.tr();
+  static String get uploadLicensePhoto => 'auth.apply.uploadLicensePhoto'.tr();
+  static String get nationalIdLabel => 'auth.apply.nationalId'.tr();
+  static String get uploadNationalIdPhoto =>
+      'auth.apply.uploadNationalIdPhoto'.tr();
 
   //-------------------------- AUTH FORGET PASSWORD TEXT --------------------------//
   static String get forgetPasswordHeader => 'auth.forgetPassword.header'.tr();
@@ -56,10 +65,6 @@ class AppTextString {
       'auth.forgetPassword.messageSentSuccessfully'.tr();
   static String get otpResentSuccess =>
       'auth.forgetPassword.otpResentSuccess'.tr();
-
-  //-------------------------- AUTH APPLY TEXT --------------------------//
-  static String get applyHeader => 'auth.apply.header'.tr();
-  static String get applyTitle => 'auth.apply.title'.tr();
 
   //-------------------------- AUTH SUCCESS APPLY TEXT --------------------------//
   static String get successApplyHeader => 'auth.successApply.header'.tr();

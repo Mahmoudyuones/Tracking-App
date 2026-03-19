@@ -5,7 +5,12 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "update": "Update",
-    "delete": "Delete"
+    "delete": "Delete",
+    "uploadPhoto": "Upload Photo",
+    "gallery": "Gallery",
+    "chooseFromYourPhotos": "Choose from your photos",
+    "camera": "Camera",
+    "takeNewPhoto": "Take a new photo"
   },
   "auth": {
     "onboarding": "Welcome to Flowery rider app",
@@ -69,11 +74,14 @@
       "apply": "Apply",
       "country": "Country",
       "selectCountry": "Select Country",
+      "uploadLicensePhoto": "Upload license photo 4MB or less",
       "firstLegalName": "First Legal Name",
       "secondLegalName": "Second Legal Name",
       "vehicleType": "Vehicle Type",
       "vehicleNumber": "Vehicle Number",
-      "vehicleLicense": "Vehicle License"
+      "vehicleLicense": "Vehicle License",
+      "nationalId": "National ID",
+      "uploadNationalIdPhoto": "Upload National ID Photo"
     },
     "successApply": {
       "header": "Your application has been submitted!",
@@ -131,6 +139,8 @@
   "validation": {
     "fieldRequired": "This field is required",
     "noEmailAvailable": "No email available",
+    "nationalIdRequired": "National ID is required",
+    "invalidNationalId": "Invalid National ID",
     "emailRequired": "Email is required",
     "invalidEmail": "Enter a valid email address",
     "passwordRequired": "Password is required",

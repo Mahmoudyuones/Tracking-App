@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:country_picker/country_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../../config/base_state/base_state.dart';
@@ -10,5 +12,7 @@ abstract class ApplyState with _$ApplyState {
     BaseState? applyState,
     @Default(false) bool fieldsValidation,
     Country? selectedCountry,
+    File? vehicleLicense,
+    File? nationalIdImg,
   }) = _ApplyState;
 }

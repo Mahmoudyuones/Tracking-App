@@ -5,7 +5,12 @@
     "cancel": "إلغاء",
     "confirm": "تأكيد",
     "update": "تحديث",
-    "delete": "حذف"
+    "delete": "حذف",
+    "uploadPhoto": "تحميل صورة",
+    "gallery": "المعرض",
+    "chooseFromYourPhotos": "اختر من صورك",
+    "camera": "الكاميرا",
+    "takeNewPhoto": "التقاط صورة جديدة"
   },
   "auth": {
     "onboarding": "مرحباً بكم في تطبيق فلاوري رايدر",
@@ -70,11 +75,14 @@
       "apply": "قدم",
       "country": "الدولة",
       "selectCountry": "اختر الدولة",
+      "uploadLicensePhoto":  "تحميل صورة الرخصة 4 ميجا بايت أو أقل",
       "firstLegalName": "الاسم القانوني الأول",
       "secondLegalName": "الاسم القانوني الثاني",
       "vehicleType": "نوع المركبة",
       "vehicleNumber": "رقم المركبة",
-      "vehicleLicense": "رخصة المركبة"
+      "vehicleLicense": "رخصة المركبة",
+      "nationalId": "الهوية الوطنية",
+      "uploadNationalIdPhoto": "تحميل صورة الهوية الوطنية 4 ميجا بايت أو أقل"
     },
     "successApply": {
       "header": "تم تقديم طلبك!",
@@ -145,7 +153,9 @@
     "phoneNumberRequired": "رقم الهاتف مطلوب",
     "invalidPhoneNumber": "أدخل رقم هاتف صحيح",
     "pleaseEnterOTPCode": "يرجى إدخال رمز التحقق",
-    "otpMustBe6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام"
+    "otpMustBe6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام",
+    "nationalIdRequired": "رقم الهوية الوطنية مطلوب",
+    "invalidNationalId": "رقم الهوية الوطنية غير صالح"
   },
   "errors": {
     "navigation": "خطأ عند التنقل إلى المسار",

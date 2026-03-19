@@ -19,6 +19,13 @@ class ApplyScreen extends StatefulWidget {
 class _ApplyScreenState extends State<ApplyScreen> {
   late TextTheme textTheme;
   late ApplyCubit applyCubit;
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController secondNameController = TextEditingController();
+  String? vehicleType;
+  TextEditingController vehicleNumberController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController nationalIdController = TextEditingController();
 
   @override
   void initState() {
@@ -51,7 +58,16 @@ class _ApplyScreenState extends State<ApplyScreen> {
                 16.verticalSpacing,
                 const CountryPickerWidget(),
                 24.verticalSpacing,
-                const FieldsSectionWidget(),
+                FieldsSectionWidget(
+                  firstNameController: firstNameController,
+                  secondNameController: secondNameController,
+                  vehicleTypeController: vehicleType,
+                  vehicleNumberController: vehicleNumberController,
+                  emailController: emailController,
+                  phoneNumberController: phoneNumberController,
+                  nationalIdController: nationalIdController,
+                ),
+                24.verticalSpacing,
               ],
             ),
           ),
