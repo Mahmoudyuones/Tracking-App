@@ -49,30 +49,6 @@ class SelectGenderIntent extends ApplyIntents {
 }
 
 class ValidateFieldsIntent extends ApplyIntents {
-  final String? firstName;
-  final String? secondName;
-  final String? vehicleType;
-  final String? vehicleNumber;
-  final File? vehicleLicense;
-  final String? nationalId;
-  final File? nationalIdImg;
-  final String? email;
-  final String? password;
-  final String? confirmPassword;
-  final String? gender;
-  final String? phone;
-  ValidateFieldsIntent({
-    this.firstName,
-    this.secondName,
-    this.vehicleType,
-    this.vehicleNumber,
-    this.vehicleLicense,
-    this.nationalId,
-    this.nationalIdImg,
-    this.email,
-    this.password,
-    this.confirmPassword,
-    this.gender,
-    this.phone,
-  });
+  final bool formsValid;
+  ValidateFieldsIntent({required this.formsValid});
 }

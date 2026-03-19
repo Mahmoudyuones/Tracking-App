@@ -13,9 +13,11 @@ class PasswordFlieldsWidget extends StatelessWidget {
     super.key,
     required this.passwordController,
     required this.confirmPasswordController,
+    required this.formKey,
   });
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,9 @@ class PasswordFlieldsWidget extends StatelessWidget {
                   FocusManager.instance.primaryFocus?.unfocus(),
               onChanged: (value) {
                 context.read<ApplyCubit>().doIntent(
-                  ValidateFieldsIntent(password: value),
+                  ValidateFieldsIntent(
+                    formsValid: formKey.currentState!.validate(),
+                  ),
                 );
               },
             ),
@@ -88,7 +92,9 @@ class PasswordFlieldsWidget extends StatelessWidget {
                   FocusManager.instance.primaryFocus?.unfocus(),
               onChanged: (value) {
                 context.read<ApplyCubit>().doIntent(
-                  ValidateFieldsIntent(confirmPassword: value),
+                  ValidateFieldsIntent(
+                    formsValid: formKey.currentState!.validate(),
+                  ),
                 );
               },
             ),

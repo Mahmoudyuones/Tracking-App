@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,9 +7,11 @@ import '../../../../../config/di/di.dart';
 import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/extention/spacing.dart';
 import '../../../../../core/style/color/app_colors.dart';
+import '../../../../../core/utility/ui/ui_utils.dart';
 import '../../domain/entities/request/apply_request_entity.dart';
 import '../cubit/apply_cubit.dart';
 import '../cubit/apply_intents.dart';
+import '../cubit/apply_side_effects.dart';
 import '../cubit/apply_state.dart';
 import '../widgets/country_picker_widget.dart';
 import '../widgets/fields_section_widget.dart';
@@ -25,7 +29,6 @@ class _ApplyScreenState extends State<ApplyScreen> {
   late ApplyCubit applyCubit;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController secondNameController = TextEditingController();
-  String? vehicleType;
   TextEditingController vehicleNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
@@ -37,6 +40,38 @@ class _ApplyScreenState extends State<ApplyScreen> {
   void initState() {
     super.initState();
     applyCubit = getIt<ApplyCubit>();
+    applyCubit.sideEffects.listen((event) {
+      switch (event) {
+        case ApplyLoading():
+          _handleLoading();
+        case ApplyError():
+          _handleError(event.message);
+        case NavigateToSuccessApply():
+          _handleSuccess();
+      }
+    });
+  }
+
+  void _handleLoading() {
+    UIUtils.showEasyLoading();
+  }
+
+  void _handleSuccess() {
+    UIUtils.hideLoading(context);
+    UIUtils.showMessage(
+      'success',
+      backGroundColor: AppColors.green,
+      textColor: AppColors.white,
+    );
+  }
+
+  void _handleError(String message) {
+    UIUtils.hideLoading(context);
+    UIUtils.showMessage(
+      message,
+      backGroundColor: AppColors.error,
+      textColor: AppColors.white,
+    );
   }
 
   @override
@@ -65,18 +100,18 @@ class _ApplyScreenState extends State<ApplyScreen> {
                 children: [
                   const WelcomeSectionWidget(),
                   16.verticalSpacing,
-                  const CountryPickerWidget(),
+                  CountryPickerWidget(formKey: formKey),
                   24.verticalSpacing,
                   FieldsSectionWidget(
                     firstNameController: firstNameController,
                     secondNameController: secondNameController,
-                    vehicleTypeController: vehicleType,
                     vehicleNumberController: vehicleNumberController,
                     emailController: emailController,
                     phoneNumberController: phoneNumberController,
                     nationalIdController: nationalIdController,
                     passwordController: passwordController,
                     confirmPasswordController: confirmPasswordController,
+                    formKey: formKey,
                   ),
                   24.verticalSpacing,
                   SizedBox(
@@ -85,6 +120,10 @@ class _ApplyScreenState extends State<ApplyScreen> {
                       buildWhen: (previous, current) =>
                           previous.fieldsValidation != current.fieldsValidation,
                       builder: (context, state) {
+                        log(
+                          '${state.fieldsValidation}',
+                          name: 'Fields Validation',
+                        );
                         return ElevatedButton(
                           onPressed: () {
                             if (formKey.currentState!.validate() &&
@@ -96,7 +135,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                                     country: state.selectedCountry!.name,
                                     firstName: firstNameController.text,
                                     lastName: secondNameController.text,
-                                    vehicleType: vehicleType!,
+                                    vehicleType: state.vehicleType!,
                                     vehicleNumber: vehicleNumberController.text,
                                     vehicleLicense: state.vehicleLicense!,
                                     nID: nationalIdController.text,

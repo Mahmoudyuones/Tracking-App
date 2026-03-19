@@ -13,9 +13,11 @@ class NameFieldsWidget extends StatelessWidget {
     super.key,
     required this.firstNameController,
     required this.secondNameController,
+    required this.formKey,
   });
   final TextEditingController firstNameController;
   final TextEditingController secondNameController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,9 @@ class NameFieldsWidget extends StatelessWidget {
           validator: AppValidators.validateRequired,
           onChanged: (value) {
             context.read<ApplyCubit>().doIntent(
-              ValidateFieldsIntent(firstName: value),
+              ValidateFieldsIntent(
+                formsValid: formKey.currentState!.validate(),
+              ),
             );
           },
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
@@ -49,7 +53,9 @@ class NameFieldsWidget extends StatelessWidget {
           style: textTheme,
           onChanged: (value) {
             context.read<ApplyCubit>().doIntent(
-              ValidateFieldsIntent(secondName: value),
+              ValidateFieldsIntent(
+                formsValid: formKey.currentState!.validate(),
+              ),
             );
           },
         ),
