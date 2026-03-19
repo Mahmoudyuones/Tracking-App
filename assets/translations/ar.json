@@ -11,10 +11,12 @@
     "chooseFromYourPhotos": "اختر من صورك",
     "camera": "الكاميرا",
     "takeNewPhoto": "التقاط صورة جديدة",
-    "continue": "التالي"
+    "continue": "التالي",
+    "fileIsTooLarge": "الملف كبير جدا"
   },
   "auth": {
     "onboarding": "مرحباً بكم في تطبيق فلاوري رايدر",
+    "dontHaveAnAccount": "لا تمتلك حساب؟",
     "login": "تسجيل الدخول",
     "applyNow": "قدم الآن",
     "rememberMe": "تذكرنى",
@@ -140,6 +142,7 @@
   },
   "validation": {
     "fieldRequired": "هذا الحقل مطلوب",
+    "minLength": "لم يكمل الحد الادنى",
     "noEmailAvailable": "لا يوجد بريد إلكتروني متاح",
     "emailRequired": "البريد الإلكتروني مطلوب",
     "invalidEmail": "أدخل بريد إلكتروني صحيح",

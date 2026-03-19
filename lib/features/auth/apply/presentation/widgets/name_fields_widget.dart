@@ -32,7 +32,7 @@ class NameFieldsWidget extends StatelessWidget {
             labelText: AppTextString.firstLegalNameLabel,
           ),
           style: textTheme,
-          validator: AppValidators.validateRequired,
+          validator: (value) => AppValidators.validateMinLength(value, 2),
           onChanged: (value) {
             context.read<ApplyCubit>().doIntent(
               ValidateFieldsIntent(
@@ -48,7 +48,7 @@ class NameFieldsWidget extends StatelessWidget {
           decoration: InputDecoration(
             labelText: AppTextString.secondLegalNameLabel,
           ),
-          validator: AppValidators.validateRequired,
+          validator: (value) => AppValidators.validateMinLength(value, 2),
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
           style: textTheme,
           onChanged: (value) {

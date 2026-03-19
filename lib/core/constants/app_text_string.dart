@@ -23,6 +23,7 @@ class AppTextString {
   static String get camera => 'common.camera'.tr();
   static String get takeNewPhoto => 'common.takeNewPhoto'.tr();
   static String get continueText => 'common.continue'.tr();
+  static String get fileIsTooLarge => 'common.fileIsTooLarge'.tr();
 
   //-------------------------- AUTH ONBOARDING TEXT --------------------------//
   static String get onboarding => 'auth.onboarding'.tr();
@@ -32,6 +33,7 @@ class AppTextString {
   //-------------------------- AUTH LOGIN TEXT --------------------------//
   static String get rememberMe => 'auth.rememberMe'.tr();
   static String get didForgetPassword => 'auth.didForgetPassword'.tr();
+  static String get dontHaveAnAccount => 'auth.dontHaveAnAccount'.tr();
 
   //-------------------------- AUTH APPLY TEXT --------------------------//
   static String get apply => 'auth.apply.apply'.tr();
