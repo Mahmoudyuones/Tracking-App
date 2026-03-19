@@ -24,6 +24,9 @@ class _UploadLicenseFieldState extends State<UploadLicenseField> {
         context.read<ApplyCubit>().doIntent(
           SelectVehicleLicenseIntent(vehicleLicense: file),
         );
+        context.read<ApplyCubit>().doIntent(
+          ValidateFieldsIntent(vehicleLicense: file),
+        );
       }
     }
   }

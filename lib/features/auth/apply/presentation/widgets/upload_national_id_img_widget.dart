@@ -13,7 +13,8 @@ class UploadNationalIdImgField extends StatefulWidget {
   const UploadNationalIdImgField({super.key});
 
   @override
-  State<UploadNationalIdImgField> createState() => _UploadNationalIdImgFieldState();
+  State<UploadNationalIdImgField> createState() =>
+      _UploadNationalIdImgFieldState();
 }
 
 class _UploadNationalIdImgFieldState extends State<UploadNationalIdImgField> {
@@ -22,7 +23,10 @@ class _UploadNationalIdImgFieldState extends State<UploadNationalIdImgField> {
     if (file != null) {
       if (mounted) {
         context.read<ApplyCubit>().doIntent(
-            SelectNationalIdImgIntent(nationalIdImg: file),
+          SelectNationalIdImgIntent(nationalIdImg: file),
+        );
+        context.read<ApplyCubit>().doIntent(
+          ValidateFieldsIntent(nationalIdImg: file),
         );
       }
     }

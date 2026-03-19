@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/extention/spacing.dart';
 import '../../../../../core/style/color/app_colors.dart';
 import '../../../../../core/validators/app_validators.dart';
 import '../../domain/entities/request/vehicle_types_entity.dart';
+import '../cubit/apply_cubit.dart';
+import '../cubit/apply_intents.dart';
+import 'gender_section_widget.dart';
+import 'name_fields_widget.dart';
+import 'password_flields_widget.dart';
 import 'upload_license_field_widget.dart';
+import 'upload_national_id_img_widget.dart';
 
 class FieldsSectionWidget extends StatefulWidget {
   const FieldsSectionWidget({
@@ -17,6 +23,8 @@ class FieldsSectionWidget extends StatefulWidget {
     required this.emailController,
     required this.phoneNumberController,
     required this.nationalIdController,
+    required this.passwordController,
+    required this.confirmPasswordController,
   });
   final TextEditingController firstNameController;
   final TextEditingController secondNameController;
@@ -25,6 +33,8 @@ class FieldsSectionWidget extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController phoneNumberController;
   final TextEditingController nationalIdController;
+  final TextEditingController passwordController;
+  final TextEditingController confirmPasswordController;
 
   @override
   State<FieldsSectionWidget> createState() => _FieldsSectionWidgetState();
@@ -33,24 +43,14 @@ class FieldsSectionWidget extends StatefulWidget {
 class _FieldsSectionWidgetState extends State<FieldsSectionWidget> {
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(
+      context,
+    ).textTheme.bodyLarge?.copyWith(fontWeight: .w500, color: AppColors.black);
     return Column(
       children: [
-        TextFormField(
-          controller: widget.firstNameController,
-          decoration: InputDecoration(
-            labelText: AppTextString.firstLegalNameLabel,
-          ),
-          validator: AppValidators.validateRequired,
-          onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
-        ),
-        24.verticalSpacing,
-        TextFormField(
-          controller: widget.secondNameController,
-          decoration: InputDecoration(
-            labelText: AppTextString.secondLegalNameLabel,
-          ),
-          validator: AppValidators.validateRequired,
-          onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+        NameFieldsWidget(
+          firstNameController: widget.firstNameController,
+          secondNameController: widget.secondNameController,
         ),
         24.verticalSpacing,
         DropdownButtonFormField<String>(
@@ -61,7 +61,16 @@ class _FieldsSectionWidgetState extends State<FieldsSectionWidget> {
               child: Text(vehicle.type),
             );
           }).toList(),
-          onChanged: (value) {},
+          onChanged: (value) {
+            if (value != null) {
+              context.read<ApplyCubit>().doIntent(
+                SelectVehicleTypeIntent(vehicleType: value),
+              );
+            }
+            context.read<ApplyCubit>().doIntent(
+              ValidateFieldsIntent(vehicleType: value),
+            );
+          },
           validator: AppValidators.validateRequired,
           decoration: InputDecoration(
             labelText: AppTextString.vehicleTypeLabel,
@@ -70,12 +79,18 @@ class _FieldsSectionWidgetState extends State<FieldsSectionWidget> {
         24.verticalSpacing,
         TextFormField(
           controller: widget.vehicleNumberController,
-          keyboardType: TextInputType.number,
+          keyboardType: TextInputType.text,
           decoration: InputDecoration(
             labelText: AppTextString.vehicleNumberLabel,
           ),
+          style: textStyle,
           validator: AppValidators.validateRequired,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          onChanged: (value) {
+            context.read<ApplyCubit>().doIntent(
+              ValidateFieldsIntent(vehicleNumber: value),
+            );
+          },
         ),
         24.verticalSpacing,
         const UploadLicenseField(),
@@ -83,8 +98,14 @@ class _FieldsSectionWidgetState extends State<FieldsSectionWidget> {
         TextFormField(
           controller: widget.emailController,
           decoration: InputDecoration(labelText: AppTextString.emailLabel),
+          style: textStyle,
           validator: AppValidators.validateEmail,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          onChanged: (value) {
+            context.read<ApplyCubit>().doIntent(
+              ValidateFieldsIntent(email: value),
+            );
+          },
         ),
         24.verticalSpacing,
         TextFormField(
@@ -93,17 +114,38 @@ class _FieldsSectionWidgetState extends State<FieldsSectionWidget> {
           decoration: InputDecoration(
             labelText: AppTextString.phoneNumberLabel,
           ),
+          style: textStyle,
           validator: AppValidators.validatePhoneNumber,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          onChanged: (value) {
+            context.read<ApplyCubit>().doIntent(
+              ValidateFieldsIntent(phone: value),
+            );
+          },
         ),
         24.verticalSpacing,
         TextFormField(
           controller: widget.nationalIdController,
           keyboardType: TextInputType.number,
           decoration: InputDecoration(labelText: AppTextString.nationalIdLabel),
+          style: textStyle,
           validator: AppValidators.validateNationalId,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          onChanged: (value) {
+            context.read<ApplyCubit>().doIntent(
+              ValidateFieldsIntent(nationalId: value),
+            );
+          },
         ),
+        24.verticalSpacing,
+        const UploadNationalIdImgField(),
+        24.verticalSpacing,
+        PasswordFlieldsWidget(
+          passwordController: widget.passwordController,
+          confirmPasswordController: widget.confirmPasswordController,
+        ),
+        24.verticalSpacing,
+        const GenderSectionWidget(),
       ],
     );
   }

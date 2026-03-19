@@ -12,7 +12,12 @@ abstract class ApplyState with _$ApplyState {
     BaseState? applyState,
     @Default(false) bool fieldsValidation,
     Country? selectedCountry,
+    String? vehicleType,
+
     File? vehicleLicense,
     File? nationalIdImg,
+    @Default(false) bool isPasswordVisible,
+    @Default(false) bool isConfirmPasswordVisible,
+    String? gender,
   }) = _ApplyState;
 }

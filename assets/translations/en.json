@@ -10,7 +10,8 @@
     "gallery": "Gallery",
     "chooseFromYourPhotos": "Choose from your photos",
     "camera": "Camera",
-    "takeNewPhoto": "Take a new photo"
+    "takeNewPhoto": "Take a new photo",
+    "continue": "Continue"
   },
   "auth": {
     "onboarding": "Welcome to Flowery rider app",
