@@ -1,10 +1,14 @@
+import 'package:country_picker/country_picker.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../../config/base_state/base_state.dart';
 
-class ApplyState {
-  final BaseState? applyState;
-  const ApplyState({this.applyState});
+part 'apply_state.freezed.dart';
 
-  ApplyState copyWith({BaseState? applyState}) {
-    return ApplyState(applyState: applyState ?? this.applyState);
-  }
+@freezed
+abstract class ApplyState with _$ApplyState {
+  const factory ApplyState({
+    BaseState? applyState,
+    @Default(false) bool fieldsValidation,
+    Country? selectedCountry,
+  }) = _ApplyState;
 }

@@ -27,6 +27,18 @@ class AppTextString {
   static String get rememberMe => 'auth.rememberMe'.tr();
   static String get didForgetPassword => 'auth.didForgetPassword'.tr();
 
+  //-------------------------- AUTH APPLY TEXT --------------------------//
+  static String get apply => 'auth.apply.apply'.tr();
+  static String get welcome => 'auth.apply.header'.tr();
+  static String get welcomeTitle => 'auth.apply.title'.tr();
+  static String get country => 'auth.apply.country'.tr();
+  static String get selectCountry => 'auth.apply.selectCountry'.tr();
+  static String get firstLegalName => 'auth.apply.firstLegalName'.tr();
+  static String get secondLegalName => 'auth.apply.secondLegalName'.tr();
+  static String get vehicleType => 'auth.apply.vehicleType'.tr();
+  static String get vehicleNumber => 'auth.apply.vehicleNumber'.tr();
+  static String get vehicleLicense => 'auth.apply.vehicleLicense'.tr();
+
   //-------------------------- AUTH FORGET PASSWORD TEXT --------------------------//
   static String get forgetPasswordHeader => 'auth.forgetPassword.header'.tr();
   static String get forgetPasswordTitle => 'auth.forgetPassword.title'.tr();

@@ -65,7 +65,15 @@
     },
     "apply": {
       "header": "Welcome!!",
-      "title": "You want to be a delivery man?\nJoin our team"
+      "title": "You want to be a delivery man?\nJoin our team",
+      "apply": "Apply",
+      "country": "Country",
+      "selectCountry": "Select Country",
+      "firstLegalName": "First Legal Name",
+      "secondLegalName": "Second Legal Name",
+      "vehicleType": "Vehicle Type",
+      "vehicleNumber": "Vehicle Number",
+      "vehicleLicense": "Vehicle License"
     },
     "successApply": {
       "header": "Your application has been submitted!",

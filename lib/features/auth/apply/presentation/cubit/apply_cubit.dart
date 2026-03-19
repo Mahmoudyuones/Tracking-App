@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../../../../config/base_response/base_response.dart';
 import '../../../../../config/base_state/base_state.dart';
 import '../../domain/entities/request/apply_request_entity.dart';
@@ -8,6 +10,7 @@ import 'apply_intents.dart';
 import 'apply_side_effects.dart';
 import 'apply_state.dart';
 
+@injectable
 class ApplyCubit extends Cubit<ApplyState> {
   final ApplyUseCase applyUseCase;
   ApplyCubit(this.applyUseCase) : super(const ApplyState());
@@ -21,7 +24,13 @@ class ApplyCubit extends Cubit<ApplyState> {
     switch (intent) {
       case SubmitApplyIntent(request: final request):
         _doApply(request);
+      case SelectCountryIntent(country: final country):
+        _selectCountry(country);
     }
+  }
+
+  void _selectCountry(Country country) {
+    emit(state.copyWith(selectedCountry: country));
   }
 
   void _doApply(ApplyRequestEntity request) async {

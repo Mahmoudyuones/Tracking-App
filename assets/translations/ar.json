@@ -32,7 +32,7 @@
     },
     "hints": {
       "enterEmail": "أدخل البريد الإلكتروني",
-      "enterYourNewPassword":"أدخل كلمة المرور الجديدة",
+      "enterYourNewPassword": "أدخل كلمة المرور الجديدة",
       "enterPassword": "أدخل كلمة المرور",
       "enterCurrentPassword": "أدخل كلمة المرور الحالية",
       "enterConfirmPassword": "أعد إدخال كلمة المرور الجديدة",
@@ -66,7 +66,15 @@
     },
     "apply": {
       "header": "مرحباً!!",
-      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا"
+      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا",
+      "apply": "قدم",
+      "country": "الدولة",
+      "selectCountry": "اختر الدولة",
+      "firstLegalName": "الاسم القانوني الأول",
+      "secondLegalName": "الاسم القانوني الثاني",
+      "vehicleType": "نوع المركبة",
+      "vehicleNumber": "رقم المركبة",
+      "vehicleLicense": "رخصة المركبة"
     },
     "successApply": {
       "header": "تم تقديم طلبك!",
@@ -88,7 +96,7 @@
       "pleaseEnterYourNewPassword": "يرجى إدخال كلمة المرور الجديدة",
       "emailFocusError": "هذا البريد الإلكتروني غير صالح",
       "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-      "newPasswordIsTheOldPassword":"كلمة المرور الجديدة يجب أن تكون مختلفة عن القديمة"
+      "newPasswordIsTheOldPassword": "كلمة المرور الجديدة يجب أن تكون مختلفة عن القديمة"
     }
   },
   "bottomNavBar": {
