@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/base_response/base_response.dart';
 import '../../config/di/di.dart';
+import '../../config/services/session_manager_service.dart';
 import '../../config/services/token_service.dart';
 import '../../core/enums/home_nav_bar.dart';
 import '../../features/auth/apply/presentation/screens/apply_screen.dart';
@@ -77,10 +78,10 @@ class AppRouterConfig {
       ),
     ],
     // REDIRECT LOGIC FOR APP ENTRY
-    // redirect: _isLoggedIn,
-    // refreshListenable: GoRouterRefreshStream(
-    //   getIt<SessionManagerService>().sessionExpiredStream,
-    // ),
+    redirect: _isLoggedIn,
+    refreshListenable: GoRouterRefreshStream(
+      getIt<SessionManagerService>().sessionExpiredStream,
+    ),
   );
 
   static FutureOr<String?> _isLoggedIn(
