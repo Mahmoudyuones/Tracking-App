@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -120,10 +118,6 @@ class _ApplyScreenState extends State<ApplyScreen> {
                       buildWhen: (previous, current) =>
                           previous.fieldsValidation != current.fieldsValidation,
                       builder: (context, state) {
-                        log(
-                          '${state.fieldsValidation}',
-                          name: 'Fields Validation',
-                        );
                         return ElevatedButton(
                           onPressed: () {
                             if (formKey.currentState!.validate() &&
