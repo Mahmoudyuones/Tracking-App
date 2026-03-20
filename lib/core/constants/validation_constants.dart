@@ -9,6 +9,10 @@ class ValidationConstants {
 
   static String get emailRequired => 'validation.emailRequired'.tr();
 
+  static String get nationalIdRequired => 'validation.nationalIdRequired'.tr();
+
+  static String get invalidNationalId => 'validation.invalidNationalId'.tr();
+
   static String get invalidEmail => 'validation.invalidEmail'.tr();
 
   static String get passwordRequired => 'validation.passwordRequired'.tr();

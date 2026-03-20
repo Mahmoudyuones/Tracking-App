@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/base_response/base_response.dart';
 import '../../config/di/di.dart';
+import '../../config/services/session_manager_service.dart';
 import '../../config/services/token_service.dart';
 import '../../core/enums/home_nav_bar.dart';
+import '../../features/auth/apply/presentation/screens/apply_screen.dart';
 import '../../features/auth/login/presentation/views/login_view.dart';
 import '../../features/change_password/presentation/view/screens/change_password_screen.dart';
 import '../../features/edit_profile/presentation/view/screens/edit_profile_screen.dart';
@@ -22,7 +24,7 @@ import 'app_routes.dart';
 class AppRouterConfig {
   /// GoRouter Configuration
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.loginRoute,
+    initialLocation: AppRoutes.applyRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
@@ -65,6 +67,11 @@ class AppRouterConfig {
         builder: (context, state) => const LoginView(),
       ),
       GoRoute(
+        path: AppRoutes.applyRoute,
+        name: AppRoutes.applyRoute,
+        builder: (context, state) => const ApplyScreen(),
+      ),
+      GoRoute(
         path: AppRoutes.successRoute,
         name: AppRoutes.successRoute,
         builder: (context, state) => const SuccessScreen(),
@@ -72,9 +79,9 @@ class AppRouterConfig {
     ],
     // REDIRECT LOGIC FOR APP ENTRY
     redirect: _isLoggedIn,
-    // refreshListenable: GoRouterRefreshStream(
-    //   getIt<SessionManagerService>().sessionExpiredStream,
-    // ),
+    refreshListenable: GoRouterRefreshStream(
+      getIt<SessionManagerService>().sessionExpiredStream,
+    ),
   );
 
   static FutureOr<String?> _isLoggedIn(

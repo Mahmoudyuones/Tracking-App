@@ -117,4 +117,16 @@ class AppValidators {
     }
     return null;
   }
+
+  static String? validateNationalId(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return ValidationConstants.nationalIdRequired;
+    }
+
+    if (!AppRegex.isNationalIdValid(value)) {
+      return ValidationConstants.invalidNationalId;
+    }
+
+    return null;
+  }
 }
