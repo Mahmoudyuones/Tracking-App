@@ -9,7 +9,7 @@ class AppRoutes {
 
   //--------------- REGISTRATION ROUTES -----------------//
   static const String applyRoute = '/apply';
-  static const String submitApplicationRoute = '/submitApplication';
+  static const String successApplyRoute = '/successApply';
 
   //--------------- FORGET PASSWORD ROUTES -----------------//
   static const String forgetPasswordRoute = '/forgetPassword';

@@ -81,6 +81,12 @@ class AppValidators {
 
   static String? validatePassword(String? value) => value.validatePassword;
 
+  static String? validateMinLength(String? value, int minLength) =>
+      value.validateMinLength(
+        minLength,
+        errorMessage: ValidationConstants.minLength,
+      );
+
   static String? validateLoginPassword(String? value) =>
       value.validateLoginPassword;
 

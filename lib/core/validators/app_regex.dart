@@ -27,11 +27,9 @@ abstract class AppRegex {
   static bool isPhoneValid(String phone) {
     final trimmed = phone.trim();
 
-    final localRegex = RegExp(r'^01[0-9]{9}$');
-
     final internationalRegex = RegExp(r'^\+201[0-9]{9}$');
 
-    return localRegex.hasMatch(trimmed) || internationalRegex.hasMatch(trimmed);
+    return internationalRegex.hasMatch(trimmed);
   }
 
   static bool isNationalIdValid(String nationalId) {

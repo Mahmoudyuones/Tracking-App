@@ -11,10 +11,12 @@
     "chooseFromYourPhotos": "اختر من صورك",
     "camera": "الكاميرا",
     "takeNewPhoto": "التقاط صورة جديدة",
-    "continue": "التالي"
+    "continue": "التالي",
+    "fileIsTooLarge": "الملف كبير جدا"
   },
   "auth": {
     "onboarding": "مرحباً بكم في تطبيق فلاوري رايدر",
+    "dontHaveAnAccount": "لا تمتلك حساب؟",
     "login": "تسجيل الدخول",
     "applyNow": "قدم الآن",
     "rememberMe": "تذكرنى",
@@ -84,6 +86,18 @@
       "vehicleLicense": "رخصة المركبة",
       "nationalId": "الهوية الوطنية",
       "uploadNationalIdPhoto": "تحميل صورة الهوية الوطنية 4 ميجا بايت أو أقل"
+      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا",
+      "apply": "قدم",
+      "country": "الدولة",
+      "selectCountry": "اختر الدولة",
+      "uploadLicensePhoto":  "تحميل صورة الرخصة 4 ميجا بايت أو أقل",
+      "firstLegalName": "الاسم القانوني الأول",
+      "secondLegalName": "الاسم القانوني الثاني",
+      "vehicleType": "نوع المركبة",
+      "vehicleNumber": "رقم المركبة",
+      "vehicleLicense": "رخصة المركبة",
+      "nationalId": "الهوية الوطنية",
+      "uploadNationalIdPhoto": "تحميل صورة الهوية الوطنية 4 ميجا بايت أو أقل"
     },
     "successApply": {
       "header": "تم تقديم طلبك!",
@@ -140,6 +154,7 @@
   },
   "validation": {
     "fieldRequired": "هذا الحقل مطلوب",
+    "minLength": "لم يكمل الحد الادنى",
     "noEmailAvailable": "لا يوجد بريد إلكتروني متاح",
     "emailRequired": "البريد الإلكتروني مطلوب",
     "invalidEmail": "أدخل بريد إلكتروني صحيح",

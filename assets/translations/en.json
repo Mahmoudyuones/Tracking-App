@@ -11,10 +11,12 @@
     "chooseFromYourPhotos": "Choose from your photos",
     "camera": "Camera",
     "takeNewPhoto": "Take a new photo",
-    "continue": "Continue"
+    "continue": "Continue",
+    "fileIsTooLarge": "File is too large"
   },
   "auth": {
     "onboarding": "Welcome to Flowery rider app",
+    "dontHaveAnAccount": "Don't have an account?",
     "login": "Login",
     "applyNow": "Apply now",
     "rememberMe": "Remember Me",
@@ -85,7 +87,7 @@
       "uploadNationalIdPhoto": "Upload National ID Photo"
     },
     "successApply": {
-      "header": "Your application has been submitted!",
+      "header": "Your application has been\nsubmitted!",
       "title": "Thank you for providing your application, we will review your application and will get back to you soon."
     },
     "messages": {
@@ -138,6 +140,7 @@
     "profileUpdatedSuccessfully": "Profile Updated Successfully"
   },
   "validation": {
+    "minLength": "This field is less than min length",
     "fieldRequired": "This field is required",
     "noEmailAvailable": "No email available",
     "nationalIdRequired": "National ID is required",
