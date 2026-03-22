@@ -17,6 +17,13 @@ class AppTextString {
   static String get confirm => 'common.confirm'.tr();
   static String get update => 'common.update'.tr();
   static String get delete => 'common.delete'.tr();
+  static String get uploadPhoto => 'common.uploadPhoto'.tr();
+  static String get gallery => 'common.gallery'.tr();
+  static String get chooseFromYourPhotos => 'common.chooseFromYourPhotos'.tr();
+  static String get camera => 'common.camera'.tr();
+  static String get takeNewPhoto => 'common.takeNewPhoto'.tr();
+  static String get continueText => 'common.continue'.tr();
+  static String get fileIsTooLarge => 'common.fileIsTooLarge'.tr();
 
   //-------------------------- AUTH ONBOARDING TEXT --------------------------//
   static String get onboarding => 'auth.onboarding'.tr();
@@ -26,6 +33,23 @@ class AppTextString {
   //-------------------------- AUTH LOGIN TEXT --------------------------//
   static String get rememberMe => 'auth.rememberMe'.tr();
   static String get didForgetPassword => 'auth.didForgetPassword'.tr();
+  static String get dontHaveAnAccount => 'auth.dontHaveAnAccount'.tr();
+
+  //-------------------------- AUTH APPLY TEXT --------------------------//
+  static String get apply => 'auth.apply.apply'.tr();
+  static String get welcome => 'auth.apply.header'.tr();
+  static String get welcomeTitle => 'auth.apply.title'.tr();
+  static String get country => 'auth.apply.country'.tr();
+  static String get selectCountry => 'auth.apply.selectCountry'.tr();
+  static String get firstLegalName => 'auth.apply.firstLegalName'.tr();
+  static String get secondLegalName => 'auth.apply.secondLegalName'.tr();
+  static String get vehicleType => 'auth.apply.vehicleType'.tr();
+  static String get vehicleNumber => 'auth.apply.vehicleNumber'.tr();
+  static String get vehicleLicense => 'auth.apply.vehicleLicense'.tr();
+  static String get uploadLicensePhoto => 'auth.apply.uploadLicensePhoto'.tr();
+  static String get nationalIdLabel => 'auth.apply.nationalId'.tr();
+  static String get uploadNationalIdPhoto =>
+      'auth.apply.uploadNationalIdPhoto'.tr();
 
   //-------------------------- AUTH FORGET PASSWORD TEXT --------------------------//
   static String get forgetPasswordHeader => 'auth.forgetPassword.header'.tr();
@@ -44,10 +68,6 @@ class AppTextString {
       'auth.forgetPassword.messageSentSuccessfully'.tr();
   static String get otpResentSuccess =>
       'auth.forgetPassword.otpResentSuccess'.tr();
-
-  //-------------------------- AUTH APPLY TEXT --------------------------//
-  static String get applyHeader => 'auth.apply.header'.tr();
-  static String get applyTitle => 'auth.apply.title'.tr();
 
   //-------------------------- AUTH SUCCESS APPLY TEXT --------------------------//
   static String get successApplyHeader => 'auth.successApply.header'.tr();
@@ -93,9 +113,9 @@ class AppTextString {
       'auth.hints.enterNationalIdNumber'.tr();
   static String get uploadIdImagePhoto => 'auth.hints.uploadIdImagePhoto'.tr();
 
-  static String get logout => 'auth.logout'.tr();
+  static String get logout => 'logout'.tr();
 
-  static String get confirmLogout => 'auth.confirmLogout'.tr();
+  static String get confirmLogout => 'Confirm Logout'.tr();
 
   static String get firstName => 'editProfile.firstName'.tr();
 
@@ -248,4 +268,18 @@ class AppTextString {
   //-------------------------- Language --------------------------//
   static String get selected => 'selected';
   static String get unSelected => 'unSelected';
+  //-------------------------- Success --------------------------//
+  static String get done => 'success.done'.tr();
+  static String get thankYou => 'success.thankYou'.tr();
+  static String get theOrderDeliveredSuccessfully =>
+      'success.theOrderDeliveredSuccessfully'.tr();
+
+  //-------------------------- Orders --------------------------//
+  static String get completed => 'completed';
+  static String get cancelled => 'canceled';
+  static String get completedTitle => 'Completed'.tr();
+  static String get cancelledTitle => 'Cancelled'.tr();
+  static String get myOrdersTitle => 'My Orders'.tr();
+  static String get noOrdersFound => 'No Orders Found'.tr();
+  static String get recentOrders => 'Recent Orders'.tr();
 }

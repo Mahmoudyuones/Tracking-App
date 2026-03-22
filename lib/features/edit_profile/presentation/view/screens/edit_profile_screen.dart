@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -31,7 +30,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final imagePicker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
   late EditProfileCubit _editProfileCubit;
-  late StreamSubscription<EditProfileUiIntents> _uiIntentsSub;
 
   @override
   void initState() {
@@ -45,7 +43,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         photoUrl: widget.driver.photo,
       );
 
-    _uiIntentsSub = _editProfileCubit.uiIntentsStream.listen((intent) {
+    _editProfileCubit.uiIntentsStream.listen((intent) {
       if (!mounted) return;
       switch (intent) {
         case ShowLoadingIntent():
@@ -60,13 +58,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           _handlePhotoSuccess();
       }
     });
-  }
-
-  @override
-  void dispose() {
-    _editProfileCubit.close();
-    _uiIntentsSub.cancel();
-    super.dispose();
   }
 
   void _handleFailure(String message) {
@@ -165,7 +156,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     labelText: AppTextString.firstName,
                                   ),
                                   onChanged: (value) {
-                                    _editProfileCubit.doIntent(
+                                    context.read<EditProfileCubit>().doIntent(
                                       FirstNameChangedIntent(value),
                                     );
                                   },
@@ -183,7 +174,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     labelText: AppTextString.lastName,
                                   ),
                                   onChanged: (value) {
-                                    _editProfileCubit.doIntent(
+                                    context.read<EditProfileCubit>().doIntent(
                                       LastNameChangedIntent(value),
                                     );
                                   },
@@ -199,7 +190,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               labelText: AppTextString.emailLabel,
                             ),
                             onChanged: (value) {
-                              _editProfileCubit.doIntent(
+                              context.read<EditProfileCubit>().doIntent(
                                 EmailChangedIntent(value),
                               );
                             },
@@ -212,7 +203,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               labelText: AppTextString.phoneNumberLabel,
                             ),
                             onChanged: (value) {
-                              _editProfileCubit.doIntent(
+                              context.read<EditProfileCubit>().doIntent(
                                 PhoneChangedIntent(value),
                               );
                             },
@@ -241,12 +232,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   const Spacer(),
                                   InkWell(
                                     onTap: () async {
+                                      final cubit = context
+                                          .read<EditProfileCubit>();
                                       final result = await context.pushNamed(
                                         AppRoutes.changePasswordRoute,
                                       );
                                       if (!mounted) return;
                                       if (result == true) {
-                                        _editProfileCubit.doIntent(
+                                        cubit.doIntent(
                                           const UpdateProfileSubmitIntent(),
                                         );
                                       }
@@ -272,7 +265,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             child: ElevatedButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  _editProfileCubit.doIntent(
+                                  context.read<EditProfileCubit>().doIntent(
                                     const UpdateProfileSubmitIntent(),
                                   );
                                 }

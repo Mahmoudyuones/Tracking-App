@@ -4,13 +4,6 @@ import '../../config/base_response/base_response.dart';
 import '../cash_services/secure_storage_service.dart';
 import '../../core/constants/storage_keys.dart';
 
-/// SRP violations [TokenService] Multiple responsibilities
-/// Issues:
-///        Manages token operations (get, save, clear)
-///        Manages user data operations (getUserData, saveUserData)
-///        Manages login state (isLoggedIn, saveLoginData)
-///        Provides status reporting (getTokenStatus)
-
 @injectable
 class TokenService {
   final SecureStorageService _secureStorageService;

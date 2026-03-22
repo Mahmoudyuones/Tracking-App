@@ -5,10 +5,18 @@
     "cancel": "إلغاء",
     "confirm": "تأكيد",
     "update": "تحديث",
-    "delete": "حذف"
+    "delete": "حذف",
+    "uploadPhoto": "تحميل صورة",
+    "gallery": "المعرض",
+    "chooseFromYourPhotos": "اختر من صورك",
+    "camera": "الكاميرا",
+    "takeNewPhoto": "التقاط صورة جديدة",
+    "continue": "التالي",
+    "fileIsTooLarge": "الملف كبير جدا"
   },
   "auth": {
     "onboarding": "مرحباً بكم في تطبيق فلاوري رايدر",
+    "dontHaveAnAccount": "لا تمتلك حساب؟",
     "login": "تسجيل الدخول",
     "applyNow": "قدم الآن",
     "rememberMe": "تذكرنى",
@@ -32,7 +40,7 @@
     },
     "hints": {
       "enterEmail": "أدخل البريد الإلكتروني",
-      "enterYourNewPassword":"أدخل كلمة المرور الجديدة",
+      "enterYourNewPassword": "أدخل كلمة المرور الجديدة",
       "enterPassword": "أدخل كلمة المرور",
       "enterCurrentPassword": "أدخل كلمة المرور الحالية",
       "enterConfirmPassword": "أعد إدخال كلمة المرور الجديدة",
@@ -66,7 +74,30 @@
     },
     "apply": {
       "header": "مرحباً!!",
-      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا"
+      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا",
+      "apply": "قدم",
+      "country": "الدولة",
+      "selectCountry": "اختر الدولة",
+      "uploadLicensePhoto":  "تحميل صورة الرخصة 4 ميجا بايت أو أقل",
+      "firstLegalName": "الاسم القانوني الأول",
+      "secondLegalName": "الاسم القانوني الثاني",
+      "vehicleType": "نوع المركبة",
+      "vehicleNumber": "رقم المركبة",
+      "vehicleLicense": "رخصة المركبة",
+      "nationalId": "الهوية الوطنية",
+      "uploadNationalIdPhoto": "تحميل صورة الهوية الوطنية 4 ميجا بايت أو أقل"
+      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا",
+      "apply": "قدم",
+      "country": "الدولة",
+      "selectCountry": "اختر الدولة",
+      "uploadLicensePhoto":  "تحميل صورة الرخصة 4 ميجا بايت أو أقل",
+      "firstLegalName": "الاسم القانوني الأول",
+      "secondLegalName": "الاسم القانوني الثاني",
+      "vehicleType": "نوع المركبة",
+      "vehicleNumber": "رقم المركبة",
+      "vehicleLicense": "رخصة المركبة",
+      "nationalId": "الهوية الوطنية",
+      "uploadNationalIdPhoto": "تحميل صورة الهوية الوطنية 4 ميجا بايت أو أقل"
     },
     "successApply": {
       "header": "تم تقديم طلبك!",
@@ -88,7 +119,7 @@
       "pleaseEnterYourNewPassword": "يرجى إدخال كلمة المرور الجديدة",
       "emailFocusError": "هذا البريد الإلكتروني غير صالح",
       "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-      "newPasswordIsTheOldPassword":"كلمة المرور الجديدة يجب أن تكون مختلفة عن القديمة"
+      "newPasswordIsTheOldPassword": "كلمة المرور الجديدة يجب أن تكون مختلفة عن القديمة"
     }
   },
   "bottomNavBar": {
@@ -123,6 +154,7 @@
   },
   "validation": {
     "fieldRequired": "هذا الحقل مطلوب",
+    "minLength": "لم يكمل الحد الادنى",
     "noEmailAvailable": "لا يوجد بريد إلكتروني متاح",
     "emailRequired": "البريد الإلكتروني مطلوب",
     "invalidEmail": "أدخل بريد إلكتروني صحيح",
@@ -137,7 +169,9 @@
     "phoneNumberRequired": "رقم الهاتف مطلوب",
     "invalidPhoneNumber": "أدخل رقم هاتف صحيح",
     "pleaseEnterOTPCode": "يرجى إدخال رمز التحقق",
-    "otpMustBe6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام"
+    "otpMustBe6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام",
+    "nationalIdRequired": "رقم الهوية الوطنية مطلوب",
+    "invalidNationalId": "رقم الهوية الوطنية غير صالح"
   },
   "errors": {
     "navigation": "خطأ عند التنقل إلى المسار",
@@ -197,5 +231,10 @@
     "503_serviceUnavailable": "الخدمة غير متاحة مؤقتًا. حاول لاحقًا.",
     "504_gatewayTimeout": "الخادم استغرق وقتًا طويلًا في الاستجابة. حاول مرة أخرى.",
     "default": "حدث خطأ في الخادم. برجاء المحاولة مرة أخرى."
+  },
+  "success": {
+    "done": "تم",
+    "thankYou": "شكرا لك",
+    "theOrderDeliveredSuccessfully": "تم تسليم الطلب بنجاح"
   }
 }

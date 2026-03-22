@@ -119,4 +119,71 @@ void main() {
       },
     );
   });
+
+  group('logout', () {
+    test(
+      'should return BaseResponse.success<void> when API call is successful',
+      () async {
+        when(mockMyProfileApiClient.logout()).thenAnswer((_) async {});
+
+        final result = await myProfileRemoteDataSourceImpl.logout();
+
+        expect(result, isA<Success<void>>());
+        verify(mockMyProfileApiClient.logout()).called(1);
+        verifyNoMoreInteractions(mockMyProfileApiClient);
+      },
+    );
+
+    test(
+      'should return BaseResponse.failure when API call throws a generic exception',
+      () async {
+        when(
+          mockMyProfileApiClient.logout(),
+        ).thenThrow(Exception('Network error'));
+
+        final result = await myProfileRemoteDataSourceImpl.logout();
+
+        expect(result, isA<Failure<void>>());
+        result.when(
+          success: (_) => fail('Expected failure but got success'),
+          failure: (exception) {
+            expect(exception, isA<AppException>());
+          },
+        );
+        verify(mockMyProfileApiClient.logout()).called(1);
+        verifyNoMoreInteractions(mockMyProfileApiClient);
+      },
+    );
+
+    test(
+      'should return BaseResponse.failure when API call throws a ServerException',
+      () async {
+        final serverException = ServerException(
+          message: 'Unauthorized',
+          statusCode: 401,
+        );
+        when(mockMyProfileApiClient.logout()).thenThrow(serverException);
+
+        final result = await myProfileRemoteDataSourceImpl.logout();
+
+        expect(result, isA<Failure<void>>());
+        result.when(
+          success: (_) => fail('Expected failure but got success'),
+          failure: (exception) {
+            expect(exception, isA<AppException>());
+          },
+        );
+        verify(mockMyProfileApiClient.logout()).called(1);
+        verifyNoMoreInteractions(mockMyProfileApiClient);
+      },
+    );
+
+    test('should call MyProfileApiClient.logout exactly once', () async {
+      when(mockMyProfileApiClient.logout()).thenAnswer((_) async {});
+
+      await myProfileRemoteDataSourceImpl.logout();
+
+      verify(mockMyProfileApiClient.logout()).called(1);
+    });
+  });
 }
