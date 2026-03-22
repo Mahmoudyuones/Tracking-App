@@ -9,6 +9,7 @@ import '../../config/services/session_manager_service.dart';
 import '../../config/services/token_service.dart';
 import '../../core/enums/home_nav_bar.dart';
 import '../../features/auth/apply/presentation/screens/apply_screen.dart';
+import '../../features/auth/apply/presentation/screens/sucsess_apply_screen.dart';
 import '../../features/auth/login/presentation/views/login_view.dart';
 import '../../features/change_password/presentation/view/screens/change_password_screen.dart';
 import '../../features/edit_profile/presentation/view/screens/edit_profile_screen.dart';
@@ -70,6 +71,11 @@ class AppRouterConfig {
         path: AppRoutes.applyRoute,
         name: AppRoutes.applyRoute,
         builder: (context, state) => const ApplyScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.successApplyRoute,
+        name: AppRoutes.successApplyRoute,
+        builder: (context, state) => const SucsessApplyScreen(),
       ),
       GoRoute(
         path: AppRoutes.successRoute,

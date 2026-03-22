@@ -143,6 +143,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 );
               },
             ),
+            16.verticalSpacing,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(AppTextString.dontHaveAnAccount),
+                TextButton(
+                  onPressed: () => context.pushNamed(AppRoutes.applyRoute),
+                  child: Text(AppTextString.applyNow),
+                ),
+              ],
+            ),
           ],
         ),
       ),
