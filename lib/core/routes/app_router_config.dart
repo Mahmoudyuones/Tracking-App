@@ -17,16 +17,23 @@ import '../../features/home/presentation/cubit/home_states.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/auth/forget_password/presentation/view/screens/forget_password_screen.dart';
 import '../../features/my_profile/domain/entities/driver_entity.dart';
+import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
 class AppRouterConfig {
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.loginRoute,
+    initialLocation: AppRoutes.onBoardingRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
+      //==========================OnBoarding Route========================================
+      GoRoute(
+        path: AppRoutes.onBoardingRoute,
+        name: AppRoutes.onBoardingRoute,
+        builder: (context, state) => const OnBoardingScreen(),
+      ),
       //==========================Auth Routes========================================
       GoRoute(
         path: AppRoutes.applyRoute,

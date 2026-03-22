@@ -15,7 +15,7 @@
     "fileIsTooLarge": "File is too large"
   },
   "auth": {
-    "onboarding": "Welcome to Flowery rider app",
+    "onboarding": "Welcome to\nFlowery rider app",
     "dontHaveAnAccount": "Don't have an account?",
     "login": "Login",
     "applyNow": "Apply now",

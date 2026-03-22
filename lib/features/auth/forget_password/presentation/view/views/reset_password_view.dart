@@ -49,7 +49,7 @@ class ResetPasswordViewState extends State<ResetPasswordView> {
   }
 
   void _goToLogin() {
-    context.goNamed(AppRoutes.onboardingRoute);
+    context.goNamed(AppRoutes.loginRoute);
   }
 
   void _showLoading() {
