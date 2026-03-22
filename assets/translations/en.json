@@ -11,11 +11,11 @@
     "chooseFromYourPhotos": "Choose from your photos",
     "camera": "Camera",
     "takeNewPhoto": "Take a new photo",
-    "continue": "Continue",
+    "continueBtn": "Continue",
     "fileIsTooLarge": "File is too large"
   },
   "auth": {
-    "onboarding": "Welcome to Flowery rider app",
+    "onboarding": "Welcome to\nFlowery rider app",
     "dontHaveAnAccount": "Don't have an account?",
     "login": "Login",
     "applyNow": "Apply now",

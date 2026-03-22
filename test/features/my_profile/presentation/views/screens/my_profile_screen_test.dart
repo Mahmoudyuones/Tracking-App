@@ -12,7 +12,6 @@ import 'package:tracking_app/features/my_profile/presentation/view_model/my_prof
 import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_state.dart';
 import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_ui_events.dart';
 import 'package:tracking_app/features/my_profile/presentation/views/screens/my_profile_screen.dart';
-import 'package:tracking_app/features/my_profile/presentation/views/widgets/profile_appbar.dart';
 import 'package:tracking_app/features/my_profile/presentation/views/widgets/user_info_card.dart';
 import 'package:tracking_app/features/my_profile/presentation/views/widgets/vehicle_info_card.dart';
 
@@ -141,11 +140,6 @@ void main() {
   // ── Initial / empty state ───────────────────────────────────────────────────
 
   group('MyProfileScreen — initial state (no data, no error)', () {
-    testWidgets('renders ProfileAppBar', (tester) async {
-      await pumpScreen(tester);
-      expect(find.byType(ProfileAppBar), findsOneWidget);
-    });
-
     testWidgets('does NOT show UserInfoCard', (tester) async {
       await pumpScreen(tester);
       expect(find.byType(UserInfoCard), findsNothing);

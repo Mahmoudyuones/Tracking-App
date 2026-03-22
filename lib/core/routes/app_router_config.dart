@@ -17,16 +17,23 @@ import '../../features/home/presentation/cubit/home_states.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/auth/forget_password/presentation/view/screens/forget_password_screen.dart';
 import '../../features/my_profile/domain/entities/driver_entity.dart';
+import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
 class AppRouterConfig {
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.loginRoute,
+    initialLocation: AppRoutes.onBoardingRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
+      //==========================OnBoarding Route========================================
+      GoRoute(
+        path: AppRoutes.onBoardingRoute,
+        name: AppRoutes.onBoardingRoute,
+        builder: (context, state) => const OnBoardingScreen(),
+      ),
       //==========================Auth Routes========================================
       GoRoute(
         path: AppRoutes.applyRoute,
@@ -44,9 +51,20 @@ class AppRouterConfig {
         builder: (context, state) => const LoginView(),
       ),
       GoRoute(
+        path: AppRoutes.loginRoute,
+        name: AppRoutes.loginRoute,
+        builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
         path: AppRoutes.forgetPasswordRoute,
         name: AppRoutes.forgetPasswordRoute,
         builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      //==========================Profile Route========================================
+      GoRoute(
+        path: AppRoutes.changePasswordRoute,
+        name: AppRoutes.changePasswordRoute,
+        builder: (context, state) => const ChangePasswordScreen(),
       ),
       //==========================Profile Route========================================
       GoRoute(
@@ -105,10 +123,12 @@ class AppRouterConfig {
         state.matchedLocation == AppRoutes.forgetPasswordRoute;
 
     if (!isLoggedIn && !isPublicRoute) {
-      return AppRoutes.loginRoute;
+      return AppRoutes.onBoardingRoute;
     }
 
-    if (isLoggedIn && state.matchedLocation == AppRoutes.loginRoute) {
+    if (isLoggedIn &&
+        (state.matchedLocation == AppRoutes.loginRoute ||
+            state.matchedLocation == AppRoutes.onBoardingRoute)) {
       return AppRoutes.homeRoute;
     }
 

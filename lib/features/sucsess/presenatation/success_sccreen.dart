@@ -22,6 +22,7 @@ class SuccessScreen extends StatelessWidget {
             const SizedBox(height: 50),
             Image.asset(
               AppAsset.successImage,
+              key: const Key('success_image'),
               height: 150,
               width: 150,
               fit: BoxFit.cover,
@@ -47,6 +48,7 @@ class SuccessScreen extends StatelessWidget {
               child: SizedBox(
                 height: 50,
                 child: ElevatedButton(
+                  key: const Key('done_button'),
                   onPressed: () {
                     context.goNamed(AppRoutes.homeRoute);
                   },

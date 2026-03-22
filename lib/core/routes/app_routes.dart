@@ -2,7 +2,7 @@ class AppRoutes {
   AppRoutes._();
 
   //--------------- ONBOARDING ROUTES -----------------//
-  static const String onboardingRoute = '/onboarding';
+  static const String onBoardingRoute = '/onBoarding';
 
   //--------------- LOGIN ROUTES -----------------//
   static const String loginRoute = '/login';
