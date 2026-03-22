@@ -12,6 +12,12 @@
 .swiftpm/
 migrate_working_dir/
 
+# Lock file
+pubspec.lock
+
+# Generated files
+lib/core/gen/assets.gen.dart
+
 # IntelliJ related
 *.iml
 *.ipr
