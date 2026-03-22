@@ -100,7 +100,7 @@ void main() {
     });
 
     group('Form Validation', () {
-      test('isValidForm is false when any field is invalid', () {
+      test('isValidForm Is false when any field is invalid', () {
         seed();
         cubit.doIntent(const FirstNameChangedIntent(''));
         expect(cubit.state.isValidForm, isFalse);
