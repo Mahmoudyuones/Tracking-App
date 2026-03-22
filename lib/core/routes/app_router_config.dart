@@ -112,10 +112,12 @@ class AppRouterConfig {
         state.matchedLocation == AppRoutes.forgetPasswordRoute;
 
     if (!isLoggedIn && !isPublicRoute) {
-      return AppRoutes.loginRoute;
+      return AppRoutes.onBoardingRoute;
     }
 
-    if (isLoggedIn && state.matchedLocation == AppRoutes.loginRoute) {
+    if (isLoggedIn &&
+        (state.matchedLocation == AppRoutes.loginRoute ||
+            state.matchedLocation == AppRoutes.onBoardingRoute)) {
       return AppRoutes.homeRoute;
     }
 
