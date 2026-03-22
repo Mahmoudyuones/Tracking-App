@@ -11,9 +11,7 @@
     "chooseFromYourPhotos": "اختر من صورك",
     "camera": "الكاميرا",
     "takeNewPhoto": "التقاط صورة جديدة",
-    "continue": "التالي",
-    "fileIsTooLarge": "الملف كبير جدا"
-    "continue": "التالي",
+    "continueBtn": "التالي",
     "fileIsTooLarge": "الملف كبير جدا"
   },
   "auth": {
@@ -76,18 +74,6 @@
     },
     "apply": {
       "header": "مرحباً!!",
-      "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا",
-      "apply": "قدم",
-      "country": "الدولة",
-      "selectCountry": "اختر الدولة",
-      "uploadLicensePhoto":  "تحميل صورة الرخصة 4 ميجا بايت أو أقل",
-      "firstLegalName": "الاسم القانوني الأول",
-      "secondLegalName": "الاسم القانوني الثاني",
-      "vehicleType": "نوع المركبة",
-      "vehicleNumber": "رقم المركبة",
-      "vehicleLicense": "رخصة المركبة",
-      "nationalId": "الهوية الوطنية",
-      "uploadNationalIdPhoto": "تحميل صورة الهوية الوطنية 4 ميجا بايت أو أقل"
       "title": "هل ترغب في العمل كسائق توصيل؟\n\nانضم إلى فريقنا",
       "apply": "قدم",
       "country": "الدولة",

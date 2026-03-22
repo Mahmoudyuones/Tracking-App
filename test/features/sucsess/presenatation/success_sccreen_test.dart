@@ -38,7 +38,7 @@ void main() {
   Widget createWidgetUnderTest() {
     return EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],
-      path: 'assets/translations', // This should match the path in pubspec.yaml
+      path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       startLocale: const Locale('en'),
       child: Builder(
@@ -55,18 +55,19 @@ void main() {
   }
 
   Future<void> pumpScreen(WidgetTester tester) async {
-    // Set a larger viewport to avoid clipping issues
     tester.view.physicalSize = const Size(1080, 1920);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
 
     await tester.runAsync(() async {
       await tester.pumpWidget(createWidgetUnderTest());
-      await tester.pump(); // Initial pump to start EasyLocalization loading
+      await Future.delayed(const Duration(seconds: 1));
     });
 
-    // pumpAndSettle should wait for EasyLocalization to finish loading assets
-    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(const Duration(seconds: 3));
+
+    // ADD THIS - print what's actually rendered
+    debugDumpApp();
   }
 
   group('SuccessScreen Widget Tests', () {
@@ -75,9 +76,13 @@ void main() {
     ) async {
       await pumpScreen(tester);
 
-      // Verify the Success image is rendered
-      expect(find.byType(Image), findsOneWidget);
-      final image = tester.widget<Image>(find.byType(Image));
+      // Verify the Success image is rendered via key
+      expect(find.byKey(const Key('success_image')), findsOneWidget);
+
+      // Verify the asset name is correct
+      final image = tester.widget<Image>(
+        find.byKey(const Key('success_image')),
+      );
       expect((image.image as AssetImage).assetName, AppAsset.successImage);
 
       // Verify texts are rendered
@@ -87,8 +92,8 @@ void main() {
         findsOneWidget,
       );
 
-      // Verify the button is rendered
-      expect(find.byType(ElevatedButton), findsOneWidget);
+      // Verify the button is rendered via key
+      expect(find.byKey(const Key('done_button')), findsOneWidget);
       expect(find.text(AppTextString.done), findsOneWidget);
     });
 
@@ -97,8 +102,8 @@ void main() {
     ) async {
       await pumpScreen(tester);
 
-      // Find the Done button and tap it
-      final doneButton = find.byType(ElevatedButton);
+      // Find and tap the Done button via key
+      final doneButton = find.byKey(const Key('done_button'));
       expect(doneButton, findsOneWidget);
 
       await tester.tap(doneButton);

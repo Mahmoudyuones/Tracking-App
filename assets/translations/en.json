@@ -11,9 +11,7 @@
     "chooseFromYourPhotos": "Choose from your photos",
     "camera": "Camera",
     "takeNewPhoto": "Take a new photo",
-    "continue": "Continue",
-    "fileIsTooLarge": "File is too large"
-    "continue": "Continue",
+    "continueBtn": "Continue",
     "fileIsTooLarge": "File is too large"
   },
   "auth": {

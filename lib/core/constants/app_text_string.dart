@@ -22,7 +22,7 @@ class AppTextString {
   static String get chooseFromYourPhotos => 'common.chooseFromYourPhotos'.tr();
   static String get camera => 'common.camera'.tr();
   static String get takeNewPhoto => 'common.takeNewPhoto'.tr();
-  static String get continueText => 'common.continue'.tr();
+  static String get continueText => 'common.continueBtn'.tr();
   static String get fileIsTooLarge => 'common.fileIsTooLarge'.tr();
 
   //-------------------------- AUTH ONBOARDING TEXT --------------------------//
