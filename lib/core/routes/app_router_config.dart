@@ -23,50 +23,12 @@ import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
 class AppRouterConfig {
-  /// GoRouter Configuration
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.applyRoute,
+    initialLocation: AppRoutes.loginRoute,
     errorBuilder: (context, state) =>
         Scaffold(body: Center(child: Text(AppTextString.navigationError))),
     routes: [
-      /// Navigation to Boarding Screen
-      // GoRoute(
-      //   path: AppRoutes.onboardingRoute,
-      //   name: AppRoutes.onboardingRoute,
-      //   builder: (context, state) => const TestWidget()
-      // ),
-      GoRoute(
-        path: AppRoutes.changePasswordRoute,
-        name: AppRoutes.changePasswordRoute,
-        builder: (context, state) => const ChangePasswordScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.homeRoute,
-        name: AppRoutes.homeRoute,
-        builder: (context, state) => BlocProvider(
-          create: (_) =>
-              HomeCubit(const HomeStates(currentTap: HomeNavBarTabs.home)),
-          child: const HomeScreen(),
-        ),
-      ),
-      GoRoute(
-        path: AppRoutes.forgetPasswordRoute,
-        name: AppRoutes.forgetPasswordRoute,
-        builder: (context, state) => const ForgetPasswordScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.editProfile,
-        name: AppRoutes.editProfile,
-        builder: (context, state) {
-          final driver = state.extra as DriverEntity;
-          return EditProfileScreen(driver: driver);
-        },
-      ),
-      GoRoute(
-        path: AppRoutes.loginRoute,
-        name: AppRoutes.loginRoute,
-        builder: (context, state) => const LoginView(),
-      ),
+      //==========================Auth Routes========================================
       GoRoute(
         path: AppRoutes.applyRoute,
         name: AppRoutes.applyRoute,
@@ -76,6 +38,40 @@ class AppRouterConfig {
         path: AppRoutes.successApplyRoute,
         name: AppRoutes.successApplyRoute,
         builder: (context, state) => const SucsessApplyScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.loginRoute,
+        name: AppRoutes.loginRoute,
+        builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgetPasswordRoute,
+        name: AppRoutes.forgetPasswordRoute,
+        builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      //==========================Profile Route========================================
+      GoRoute(
+        path: AppRoutes.changePasswordRoute,
+        name: AppRoutes.changePasswordRoute,
+        builder: (context, state) => const ChangePasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.editProfile,
+        name: AppRoutes.editProfile,
+        builder: (context, state) {
+          final driver = state.extra as DriverEntity;
+          return EditProfileScreen(driver: driver);
+        },
+      ),
+      //==========================Main App Route========================================
+      GoRoute(
+        path: AppRoutes.homeRoute,
+        name: AppRoutes.homeRoute,
+        builder: (context, state) => BlocProvider(
+          create: (_) =>
+              HomeCubit(const HomeStates(currentTap: HomeNavBarTabs.home)),
+          child: const HomeScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.successRoute,
@@ -97,20 +93,27 @@ class AppRouterConfig {
     final tokenService = getIt<TokenService>();
     final loginStatus = await tokenService.isLoggedIn();
     log('>>>>>>>>$loginStatus', name: 'Login Status');
+
     bool isLoggedIn = false;
     loginStatus.when(
       success: (val) => isLoggedIn = val,
       failure: (_) => isLoggedIn = false,
     );
-    final isLoggingIn = state.matchedLocation == AppRoutes.loginRoute;
-    if (!isLoggedIn) {
-      // If not logged in and not already on login page, go to login
-      return isLoggingIn ? null : AppRoutes.loginRoute;
+
+    final isPublicRoute =
+        state.matchedLocation == AppRoutes.applyRoute ||
+        state.matchedLocation == AppRoutes.loginRoute ||
+        state.matchedLocation == AppRoutes.successApplyRoute ||
+        state.matchedLocation == AppRoutes.forgetPasswordRoute;
+
+    if (!isLoggedIn && !isPublicRoute) {
+      return AppRoutes.loginRoute;
     }
-    if (isLoggedIn && isLoggingIn) {
-      // If logged in and trying to go to login, redirect to home
+
+    if (isLoggedIn && state.matchedLocation == AppRoutes.loginRoute) {
       return AppRoutes.homeRoute;
     }
+
     return null;
   }
 }
