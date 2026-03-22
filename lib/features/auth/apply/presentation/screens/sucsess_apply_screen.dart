@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/constants/app_asset.dart';
 import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/extention/spacing.dart';
-import '../../../../../core/gen/assets.gen.dart';
 import '../../../../../core/routes/app_routes.dart';
 
 class SucsessApplyScreen extends StatelessWidget {
@@ -20,10 +20,8 @@ class SucsessApplyScreen extends StatelessWidget {
           Container(
             height: size.height * 0.2,
             width: size.width * 0.3,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(Assets.images.applySuccess.path),
-              ),
+            decoration: const BoxDecoration(
+              image: DecorationImage(image: AssetImage(AppAsset.applySuccess)),
             ),
           ),
           Text(
@@ -50,10 +48,10 @@ class SucsessApplyScreen extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   alignment: Alignment.bottomCenter,
-                  image: AssetImage(Assets.images.applySuccessFooter.path),
+                  image: AssetImage(AppAsset.applySuccessFooter),
                 ),
               ),
             ),

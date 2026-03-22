@@ -113,7 +113,7 @@ void main() {
 
     group('Actions (Submit & Photo)', () {
       blocTest<EditProfileCubit, EditProfileStates>(
-        'UpdateProfileSubmitIntent — success emtis correct UI intents',
+        'UpdateProfileSubmitIntent — success emits correct UI intents',
         build: () {
           when(
             mockEditProfileUseCase.call(any),
@@ -122,6 +122,7 @@ void main() {
         },
         act: (c) async {
           seed();
+          c.doIntent(const FirstNameChangedIntent('Jane')); // Make state dirty
           c.doIntent(const UpdateProfileSubmitIntent());
           await Future.delayed(Duration.zero);
         },
@@ -132,7 +133,7 @@ void main() {
       );
 
       blocTest<EditProfileCubit, EditProfileStates>(
-        'UpdateProfilePhotoIntent — success emtis correct UI intents',
+        'UpdateProfilePhotoIntent — success emits correct UI intents',
         build: () {
           when(
             mockUpdateProfileImageUseCase.call(any),

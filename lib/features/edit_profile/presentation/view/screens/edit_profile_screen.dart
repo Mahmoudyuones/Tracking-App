@@ -101,186 +101,179 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       value: _editProfileCubit,
       child: Scaffold(
         appBar: AppBar(title: Text(AppTextString.editProfile)),
-        body: BlocBuilder<EditProfileCubit, EditProfileStates>(
-          builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Stack(
                   children: [
-                    Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundImage: _imageFile != null
-                              ? FileImage(_imageFile!) as ImageProvider
-                              : NetworkImage(widget.driver.photo)
-                                    as ImageProvider,
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: GestureDetector(
-                            onTap: _pickImage,
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: const BoxDecoration(
-                                color: AppColors.whiteLight,
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.camera_alt_outlined,
-                                size: 18,
-                                color: AppColors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: _imageFile != null
+                          ? FileImage(_imageFile!) as ImageProvider
+                          : NetworkImage(widget.driver.photo) as ImageProvider,
                     ),
-                    const SizedBox(height: 30),
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: TextFormField(
-                                  initialValue: widget.driver.firstName,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    labelText: AppTextString.firstName,
-                                  ),
-                                  onChanged: (value) {
-                                    context.read<EditProfileCubit>().doIntent(
-                                      FirstNameChangedIntent(value),
-                                    );
-                                  },
-                                ),
-                              ),
-                              const SizedBox(width: 15),
-                              Expanded(
-                                child: TextFormField(
-                                  initialValue: widget.driver.lastName,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.titleMedium,
-
-                                  decoration: InputDecoration(
-                                    labelText: AppTextString.lastName,
-                                  ),
-                                  onChanged: (value) {
-                                    context.read<EditProfileCubit>().doIntent(
-                                      LastNameChangedIntent(value),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: GestureDetector(
+                        onTap: _pickImage,
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: const BoxDecoration(
+                            color: AppColors.whiteLight,
+                            shape: BoxShape.circle,
                           ),
-                          const SizedBox(height: 25),
-                          TextFormField(
-                            initialValue: widget.driver.email,
-                            style: Theme.of(context).textTheme.titleMedium,
-                            decoration: InputDecoration(
-                              labelText: AppTextString.emailLabel,
-                            ),
-                            onChanged: (value) {
-                              context.read<EditProfileCubit>().doIntent(
-                                EmailChangedIntent(value),
-                              );
-                            },
+                          child: const Icon(
+                            Icons.camera_alt_outlined,
+                            size: 18,
+                            color: AppColors.white,
                           ),
-                          const SizedBox(height: 25),
-                          TextFormField(
-                            initialValue: widget.driver.phone,
-                            style: Theme.of(context).textTheme.titleMedium,
-                            decoration: InputDecoration(
-                              labelText: AppTextString.phoneNumberLabel,
-                            ),
-                            onChanged: (value) {
-                              context.read<EditProfileCubit>().doIntent(
-                                PhoneChangedIntent(value),
-                              );
-                            },
-                          ),
-                          const SizedBox(height: 25),
-                          TextFormField(
-                            obscureText: true,
-                            readOnly: true,
-                            cursorColor: AppColors.black,
-                            canRequestFocus: false,
-                            decoration: InputDecoration(
-                              labelText: AppTextString.passwordLabel,
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
-                              suffix: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  ...List.generate(
-                                    6,
-                                    (index) => const Icon(
-                                      Icons.star,
-                                      size: 20,
-                                      color: AppColors.black,
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  InkWell(
-                                    onTap: () async {
-                                      final cubit = context
-                                          .read<EditProfileCubit>();
-                                      final result = await context.pushNamed(
-                                        AppRoutes.changePasswordRoute,
-                                      );
-                                      if (!mounted) return;
-                                      if (result == true) {
-                                        cubit.doIntent(
-                                          const UpdateProfileSubmitIntent(),
-                                        );
-                                      }
-                                    },
-                                    child: Text(
-                                      AppTextString.change,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 50),
-                          SizedBox(
-                            height: 50,
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  context.read<EditProfileCubit>().doIntent(
-                                    const UpdateProfileSubmitIntent(),
-                                  );
-                                }
-                              },
-                              child: Text(AppTextString.update),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
                 ),
-              ),
-            );
-          },
+                const SizedBox(height: 30),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              initialValue: widget.driver.firstName,
+                              style: Theme.of(context).textTheme.titleMedium,
+                              decoration: InputDecoration(
+                                labelText: AppTextString.firstName,
+                              ),
+                              onChanged: (value) {
+                                _editProfileCubit.doIntent(
+                                  FirstNameChangedIntent(value),
+                                );
+                              },
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: TextFormField(
+                              initialValue: widget.driver.lastName,
+                              style: Theme.of(context).textTheme.titleMedium,
+
+                              decoration: InputDecoration(
+                                labelText: AppTextString.lastName,
+                              ),
+                              onChanged: (value) {
+                                _editProfileCubit.doIntent(
+                                  LastNameChangedIntent(value),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 25),
+                      TextFormField(
+                        initialValue: widget.driver.email,
+                        style: Theme.of(context).textTheme.titleMedium,
+                        decoration: InputDecoration(
+                          labelText: AppTextString.emailLabel,
+                        ),
+                        onChanged: (value) {
+                          context.read<EditProfileCubit>().doIntent(
+                            EmailChangedIntent(value),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 25),
+                      TextFormField(
+                        initialValue: widget.driver.phone,
+                        style: Theme.of(context).textTheme.titleMedium,
+                        decoration: InputDecoration(
+                          labelText: AppTextString.phoneNumberLabel,
+                        ),
+                        onChanged: (value) {
+                          _editProfileCubit.doIntent(PhoneChangedIntent(value));
+                        },
+                      ),
+                      const SizedBox(height: 25),
+                      TextFormField(
+                        obscureText: true,
+                        readOnly: true,
+                        cursorColor: AppColors.black,
+                        canRequestFocus: false,
+                        decoration: InputDecoration(
+                          labelText: AppTextString.passwordLabel,
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          suffix: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ...List.generate(
+                                6,
+                                (index) => const Icon(
+                                  Icons.star,
+                                  size: 20,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                              const Spacer(),
+                              InkWell(
+                                onTap: () async {
+                                  final result = await context.pushNamed(
+                                    AppRoutes.changePasswordRoute,
+                                  );
+                                  if (!mounted) return;
+                                  if (result == true) {
+                                    _editProfileCubit.doIntent(
+                                      const UpdateProfileSubmitIntent(),
+                                    );
+                                  }
+                                },
+                                child: Text(
+                                  AppTextString.change,
+                                  style: Theme.of(context).textTheme.titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 50),
+                      SizedBox(
+                        height: 50,
+                        width: double.infinity,
+                        child: BlocBuilder<EditProfileCubit, EditProfileStates>(
+                          buildWhen: (prev, curr) =>
+                              prev.isDirty != curr.isDirty ||
+                              prev.isValidForm != curr.isValidForm,
+                          builder: (context, state) => ElevatedButton(
+                            onPressed: (state.isDirty && state.isValidForm)
+                                ? () {
+                                    if (_formKey.currentState!.validate()) {
+                                      _editProfileCubit.doIntent(
+                                        const UpdateProfileSubmitIntent(),
+                                      );
+                                    }
+                                  }
+                                : null,
+                            child: Text(
+                              AppTextString.update,
+                              style: Theme.of(context).textTheme.titleMedium
+                                  ?.copyWith(color: AppColors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

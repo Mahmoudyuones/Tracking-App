@@ -72,14 +72,7 @@ class AppRouterConfig {
           child: const HomeScreen(),
         ),
       ),
-      GoRoute(
-        path: AppRoutes.editProfile,
-        name: AppRoutes.editProfile,
-        builder: (context, state) {
-          final driver = state.extra as DriverEntity;
-          return EditProfileScreen(driver: driver);
-        },
-      ),
+
       GoRoute(
         path: AppRoutes.successRoute,
         name: AppRoutes.successRoute,

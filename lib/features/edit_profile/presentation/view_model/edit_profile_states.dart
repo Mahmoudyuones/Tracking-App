@@ -1,6 +1,7 @@
 import '../../../../config/base_state/base_state.dart';
+import '../../data/models/response/edit_profile_response_model.dart';
 
-class EditProfileStates extends BaseState<EditProfileStates> {
+class EditProfileStates extends BaseState<EditProfileResponseModel> {
   final String firstName;
   final String lastName;
   final String email;
@@ -8,6 +9,7 @@ class EditProfileStates extends BaseState<EditProfileStates> {
   final String photoUrl;
   final bool isValidForm;
   final bool isLoadingProfile;
+  final bool isDirty;
 
   const EditProfileStates({
     super.data,
@@ -20,6 +22,7 @@ class EditProfileStates extends BaseState<EditProfileStates> {
     this.photoUrl = '',
     this.isValidForm = false,
     this.isLoadingProfile = false,
+    this.isDirty = false,
   });
 
   @override
@@ -32,11 +35,12 @@ class EditProfileStates extends BaseState<EditProfileStates> {
     photoUrl,
     isValidForm,
     isLoadingProfile,
+    isDirty,
   ];
 
   @override
   EditProfileStates copyWith({
-    EditProfileStates? data,
+    EditProfileResponseModel? data,
     String? firstName,
     String? lastName,
     String? email,
@@ -46,9 +50,10 @@ class EditProfileStates extends BaseState<EditProfileStates> {
     bool? isLoadingProfile,
     String? errorMessage,
     bool? isEmpty,
+    bool? isDirty,
   }) {
     return EditProfileStates(
-      data: data,
+      data: data ?? this.data,
       errorMessage: errorMessage ?? this.errorMessage,
       isEmpty: isEmpty ?? this.isEmpty,
       firstName: firstName ?? this.firstName,
@@ -58,6 +63,7 @@ class EditProfileStates extends BaseState<EditProfileStates> {
       photoUrl: photoUrl ?? this.photoUrl,
       isValidForm: isValidForm ?? this.isValidForm,
       isLoadingProfile: isLoadingProfile ?? this.isLoadingProfile,
+      isDirty: isDirty ?? this.isDirty,
     );
   }
 }
