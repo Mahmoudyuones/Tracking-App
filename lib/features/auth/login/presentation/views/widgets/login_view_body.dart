@@ -103,58 +103,62 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Form(
-        onChanged: _hasPressedButton ? _validateSignInForm : null,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        key: globalKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: 24),
-            TextInputFieldWidget(
-              validator: AppValidators.validateEmail,
-              controller: emailCtr,
-            ),
-            24.verticalSpacing,
-            TextInputFieldWidget(
-              isPassword: true,
-              showPassword: !_isPasswordVisible,
-              validator: AppValidators.validateLoginPassword,
-              controller: passwordCtr,
-              suffixIconOnTap: () {
-                setState(() {
-                  _isPasswordVisible = !_isPasswordVisible;
-                });
-              },
-            ),
-            12.verticalSpacing,
-            CustomRememberAndForget(
-              onPressed: () => cubit.doIntent(NavigateToForgetPasswordIntent()),
-            ),
-            32.verticalSpacing,
-            BlocBuilder<LoginCubit, LoginStates>(
-              buildWhen: (prev, current) => prev.isLoading != current.isLoading,
-              builder: (context, state) {
-                return ElevatedButton(
-                  onPressed: _isButtonEnabled && !state.isLoading
-                      ? _submitLogin
-                      : null,
-                  child: Text(AppTextString.login),
-                );
-              },
-            ),
-            16.verticalSpacing,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(AppTextString.dontHaveAnAccount),
-                TextButton(
-                  onPressed: () => context.pushNamed(AppRoutes.applyRoute),
-                  child: Text(AppTextString.applyNow),
-                ),
-              ],
-            ),
-          ],
+      child: SingleChildScrollView(
+        child: Form(
+          onChanged: _hasPressedButton ? _validateSignInForm : null,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: globalKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 24),
+              TextInputFieldWidget(
+                validator: AppValidators.validateEmail,
+                controller: emailCtr,
+              ),
+              24.verticalSpacing,
+              TextInputFieldWidget(
+                isPassword: true,
+                showPassword: !_isPasswordVisible,
+                validator: AppValidators.validateLoginPassword,
+                controller: passwordCtr,
+                suffixIconOnTap: () {
+                  setState(() {
+                    _isPasswordVisible = !_isPasswordVisible;
+                  });
+                },
+              ),
+              12.verticalSpacing,
+              CustomRememberAndForget(
+                onPressed: () =>
+                    cubit.doIntent(NavigateToForgetPasswordIntent()),
+              ),
+              32.verticalSpacing,
+              BlocBuilder<LoginCubit, LoginStates>(
+                buildWhen: (prev, current) =>
+                    prev.isLoading != current.isLoading,
+                builder: (context, state) {
+                  return ElevatedButton(
+                    onPressed: _isButtonEnabled && !state.isLoading
+                        ? _submitLogin
+                        : null,
+                    child: Text(AppTextString.login),
+                  );
+                },
+              ),
+              16.verticalSpacing,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(AppTextString.dontHaveAnAccount),
+                  TextButton(
+                    onPressed: () => context.pushNamed(AppRoutes.applyRoute),
+                    child: Text(AppTextString.applyNow),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

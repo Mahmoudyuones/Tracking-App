@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -92,7 +91,6 @@ class AppRouterConfig {
   ) async {
     final tokenService = getIt<TokenService>();
     final loginStatus = await tokenService.isLoggedIn();
-    log('>>>>>>>>$loginStatus', name: 'Login Status');
 
     bool isLoggedIn = false;
     loginStatus.when(
