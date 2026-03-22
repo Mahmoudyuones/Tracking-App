@@ -13,6 +13,8 @@
     "takeNewPhoto": "Take a new photo",
     "continue": "Continue",
     "fileIsTooLarge": "File is too large"
+    "continue": "Continue",
+    "fileIsTooLarge": "File is too large"
   },
   "auth": {
     "onboarding": "Welcome to\nFlowery rider app",

@@ -51,9 +51,20 @@ class AppRouterConfig {
         builder: (context, state) => const LoginView(),
       ),
       GoRoute(
+        path: AppRoutes.loginRoute,
+        name: AppRoutes.loginRoute,
+        builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
         path: AppRoutes.forgetPasswordRoute,
         name: AppRoutes.forgetPasswordRoute,
         builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      //==========================Profile Route========================================
+      GoRoute(
+        path: AppRoutes.changePasswordRoute,
+        name: AppRoutes.changePasswordRoute,
+        builder: (context, state) => const ChangePasswordScreen(),
       ),
       //==========================Profile Route========================================
       GoRoute(
