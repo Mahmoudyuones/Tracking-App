@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../../config/base_response/base_response.dart';
 import '../../../../../../config/exception/firebase_exception.dart';
-import '../../../../data/data_sources/remote/firebase/track_order_firebase_data_source.dart';
+import '../../../../data/data_sources/remote/firebase/remote_track_order_firebase_data_source.dart';
 import '../../../../data/models/order_tracking_firebase_model.dart';
 
 @Injectable(as: TrackOrderFirebaseDataSource)

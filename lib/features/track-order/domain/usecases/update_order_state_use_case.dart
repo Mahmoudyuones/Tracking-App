@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../config/base_response/base_response.dart';
-
+import '../../domain/entities/update_order_state_request_entity.dart';
 import '../../domain/repo/track_order_repo.dart';
 
 @injectable
@@ -15,16 +15,18 @@ class UpdateOrderStateUseCase {
     required String currentState,
   }) async {
     // Get the next state based on current state
-    final nextState = _getNextState(currentState);
+    final firebaseNextState = _getFirebaseNextState(currentState);
+    final apiNextState = _getApiNextState(currentState);
 
     return await _repository.updateOrderState(
-      orderId: orderId,
-      state: nextState,
+      orderId,
+      firebaseNextState,
+      UpdateOrderStateRequestEntity(state: apiNextState),
     );
   }
 
-  /// Returns the next state in the order flow
-  String _getNextState(String currentState) {
+  /// Returns the next Firebase state for UI tracking
+  String _getFirebaseNextState(String currentState) {
     switch (currentState.toLowerCase()) {
       case 'pending':
         return 'Accepted';
@@ -36,9 +38,23 @@ class UpdateOrderStateUseCase {
         return 'Arrived';
       case 'arrived':
         return 'Delivered';
-
       default:
-        return 'Pending';
+        return 'pending'; // Changed from 'Pending' to match lowercase pattern
+    }
+  }
+
+  /// Returns the API state (inProgress or completed)
+  String _getApiNextState(String currentState) {
+    switch (currentState.toLowerCase()) {
+      case 'pending':
+      case 'accepted':
+      case 'picked':
+      case 'out for delivery':
+        return 'inProgress';
+      case 'arrived':
+        return 'completed';
+      default:
+        return 'pending'; // Changed from 'Pending' to match API states
     }
   }
 }
