@@ -6,7 +6,7 @@ import '../../domain/entities/driver_response_entity.dart';
 import '../../domain/repos/my_profile_repo.dart';
 import '../datasources/my_profile_remote_data_source.dart';
 
-@Injectable(as: MyProfileRepo)
+@LazySingleton(as: MyProfileRepo)
 class MyProfileRepoImpl implements MyProfileRepo {
   final MyProfileRemoteDataSource _myProfileRemoteDataSource;
   final TokenService _tokenService;
