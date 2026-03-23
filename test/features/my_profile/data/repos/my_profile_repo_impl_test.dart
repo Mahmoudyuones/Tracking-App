@@ -4,6 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
+import 'package:tracking_app/config/services/token_service.dart';
 import 'package:tracking_app/features/my_profile/api/datasources_impl/my_profile_remote_data_source_impl.dart';
 import 'package:tracking_app/features/my_profile/data/models/driver_model.dart';
 import 'package:tracking_app/features/my_profile/data/models/driver_response_model.dart';
@@ -12,14 +13,19 @@ import 'package:tracking_app/features/my_profile/domain/entities/driver_response
 
 import 'my_profile_repo_impl_test.mocks.dart';
 
-@GenerateMocks([MyProfileRemoteDataSourceImpl])
+@GenerateMocks([MyProfileRemoteDataSourceImpl, TokenService])
 void main() {
   late MyProfileRepoImpl myProfileRepoImpl;
   late MockMyProfileRemoteDataSourceImpl mockMyProfileRemoteDataSourceImpl;
+  late MockTokenService mockTokenService;
 
   setUp(() {
     mockMyProfileRemoteDataSourceImpl = MockMyProfileRemoteDataSourceImpl();
-    myProfileRepoImpl = MyProfileRepoImpl(mockMyProfileRemoteDataSourceImpl);
+    mockTokenService = MockTokenService();
+    myProfileRepoImpl = MyProfileRepoImpl(
+      mockMyProfileRemoteDataSourceImpl,
+      mockTokenService,
+    );
   });
 
   group('getMyProfileData', () {
@@ -149,6 +155,9 @@ void main() {
         when(
           mockMyProfileRemoteDataSourceImpl.logout(),
         ).thenAnswer((_) async => const BaseResponse<void>.success(null));
+        when(
+          mockTokenService.clearAuthData(),
+        ).thenAnswer((_) async => const BaseResponse<bool>.success(true));
 
         final result = await myProfileRepoImpl.logout();
 
@@ -158,7 +167,7 @@ void main() {
           failure: (_) => fail('Expected success but got failure'),
         );
         verify(mockMyProfileRemoteDataSourceImpl.logout()).called(1);
-        verifyNoMoreInteractions(mockMyProfileRemoteDataSourceImpl);
+        verify(mockTokenService.clearAuthData()).called(1);
       },
     );
 
@@ -188,6 +197,9 @@ void main() {
       when(
         mockMyProfileRemoteDataSourceImpl.logout(),
       ).thenAnswer((_) async => const BaseResponse<void>.success(null));
+      when(
+        mockTokenService.clearAuthData(),
+      ).thenAnswer((_) async => const BaseResponse<bool>.success(true));
 
       await myProfileRepoImpl.logout();
 
