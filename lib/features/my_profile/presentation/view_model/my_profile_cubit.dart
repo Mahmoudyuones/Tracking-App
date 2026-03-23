@@ -80,6 +80,7 @@ class MyProfileCubit extends Cubit<MyProfileState> {
     response.when(
       success: (_) {
         emit(state.copyWith(logoutState: const BaseState<void>(data: null)));
+        _uiEventController.add(LogoutSuccessUiEvent());
       },
       failure: (appException) {
         _uiEventController.add(ErrorUiEvent(message: appException.message));

@@ -279,7 +279,10 @@ class AppTextString {
   static String get cancelled => 'canceled';
   static String get completedTitle => 'Completed'.tr();
   static String get cancelledTitle => 'Cancelled'.tr();
+  static String get flowerOrder => 'Flower Order'.tr();
   static String get myOrdersTitle => 'My Orders'.tr();
   static String get noOrdersFound => 'No Orders Found'.tr();
   static String get recentOrders => 'Recent Orders'.tr();
+  static String get pickupAddress => 'Pickup Address'.tr();
+  static String get userAddress => 'User Address'.tr();
 }

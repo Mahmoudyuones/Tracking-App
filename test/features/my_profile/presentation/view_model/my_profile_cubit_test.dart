@@ -255,7 +255,7 @@ Future<void> main() async {
       },
       act: (cubit) => cubit.onEvent(ConfirmLogoutEvent()),
       verify: (_) {
-        expect(emittedUiEvents.length, 1);
+        expect(emittedUiEvents.length, 2);
         expect(emittedUiEvents[0], isA<LoadingUiEvent>());
       },
     );

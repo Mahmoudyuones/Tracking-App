@@ -45,6 +45,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
           _showLanguageBottomSheet();
         case ShowLogoutDialogEvent():
           _showLogoutDialog();
+        case LogoutSuccessUiEvent():
+          UIUtils.hideLoading(context);
+          context.goNamed(AppRoutes.loginRoute);
       }
     });
     _cubit.onEvent(GetDriverProfileDataEvent());

@@ -17,3 +17,5 @@ class SuccessUiEvent extends MyProfileUiEvent {
 class ShowLanguageBottomSheetEvent extends MyProfileUiEvent {}
 
 class ShowLogoutDialogEvent extends MyProfileUiEvent {}
+
+class LogoutSuccessUiEvent extends MyProfileUiEvent {}
