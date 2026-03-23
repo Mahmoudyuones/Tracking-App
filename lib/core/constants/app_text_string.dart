@@ -260,6 +260,8 @@ class AppTextString {
   static String get profileUpdatedSuccessfully =>
       'editProfile.profileUpdatedSuccessfully'.tr();
 
+  static String get noChangesToUpdate => 'editProfile.noChangesToUpdate'.tr();
+
   //-------------------------- Navigation Bar --------------------------//
   static String get orders => 'bottomNavBar.orders'.tr();
   static String get profileNav => 'bottomNavBar.profile'.tr();

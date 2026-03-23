@@ -90,6 +90,7 @@ class AppRouterConfig {
           child: const HomeScreen(),
         ),
       ),
+
       GoRoute(
         path: AppRoutes.successRoute,
         name: AppRoutes.successRoute,

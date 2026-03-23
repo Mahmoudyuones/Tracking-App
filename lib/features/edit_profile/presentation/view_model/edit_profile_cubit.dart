@@ -77,22 +77,23 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
   }
 
   void _onFirstNameChanged(String firstName) {
-    final next = state.copyWith(firstName: firstName);
-    emit(next.copyWith(isValidForm: _isFormValid(next)));
+    final next = state.copyWith(firstName: firstName, isDirty: true);
+    final finalState = next.copyWith(isValidForm: _isFormValid(next));
+    emit(finalState);
   }
 
   void _onLastNameChanged(String lastName) {
-    final next = state.copyWith(lastName: lastName);
+    final next = state.copyWith(lastName: lastName, isDirty: true);
     emit(next.copyWith(isValidForm: _isFormValid(next)));
   }
 
   void _onEmailChanged(String email) {
-    final next = state.copyWith(email: email);
+    final next = state.copyWith(email: email, isDirty: true);
     emit(next.copyWith(isValidForm: _isFormValid(next)));
   }
 
   void _onPhoneChanged(String phone) {
-    final next = state.copyWith(phone: phone);
+    final next = state.copyWith(phone: phone, isDirty: true);
     emit(next.copyWith(isValidForm: _isFormValid(next)));
   }
 
@@ -104,6 +105,12 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
   }
 
   Future<void> _updateProfile() async {
+    if (!state.isDirty) {
+      _uiIntentsController.add(
+        ShowErrorIntent(AppTextString.noChangesToUpdate),
+      );
+      return;
+    }
     _uiIntentsController.add(ShowLoadingIntent());
 
     final request = EditProfileRequest(
