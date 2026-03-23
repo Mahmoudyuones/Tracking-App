@@ -34,11 +34,19 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/apply_success.png
+  AssetGenImage get applySuccess =>
+      const AssetGenImage('assets/images/apply_success.png');
+
+  /// File path: assets/images/apply_success_footer.png
+  AssetGenImage get applySuccessFooter =>
+      const AssetGenImage('assets/images/apply_success_footer.png');
+
   /// File path: assets/images/success.png
   AssetGenImage get success => const AssetGenImage('assets/images/success.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [success];
+  List<AssetGenImage> get values => [applySuccess, applySuccessFooter, success];
 }
 
 class $AssetsLottiesGen {
