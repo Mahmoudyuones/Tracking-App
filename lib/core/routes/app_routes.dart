@@ -2,14 +2,14 @@ class AppRoutes {
   AppRoutes._();
 
   //--------------- ONBOARDING ROUTES -----------------//
-  static const String onboardingRoute = '/onboarding';
+  static const String onBoardingRoute = '/onBoarding';
 
   //--------------- LOGIN ROUTES -----------------//
   static const String loginRoute = '/login';
 
   //--------------- REGISTRATION ROUTES -----------------//
   static const String applyRoute = '/apply';
-  static const String submitApplicationRoute = '/submitApplication';
+  static const String successApplyRoute = '/successApply';
 
   //--------------- FORGET PASSWORD ROUTES -----------------//
   static const String forgetPasswordRoute = '/forgetPassword';
@@ -23,4 +23,10 @@ class AppRoutes {
 
   //--------------- HOME ROUTES -----------------//
   static const String homeRoute = '/home';
+
+  //--------------- Edit Profile -----------------//
+  static const String editProfile = '/editProfile';
+
+  //--------------- Success -----------------//
+  static const String successRoute = '/success';
 }

@@ -7,7 +7,13 @@ class ValidationConstants {
 
   static String get noEmailAvailable => 'validation.noEmailAvailable'.tr();
 
+  static String get minLength => 'validation.minLength'.tr();
+
   static String get emailRequired => 'validation.emailRequired'.tr();
+
+  static String get nationalIdRequired => 'validation.nationalIdRequired'.tr();
+
+  static String get invalidNationalId => 'validation.invalidNationalId'.tr();
 
   static String get invalidEmail => 'validation.invalidEmail'.tr();
 

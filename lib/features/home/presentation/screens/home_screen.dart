@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/enums/home_nav_bar.dart';
+import '../../../my_profile/presentation/views/screens/my_profile_screen.dart';
+import '../../../orders/presentation/views/screens/driver_orders_screen.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_intents.dart';
 import '../cubit/home_states.dart';
@@ -36,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
       case HomeNavBarTabs.home:
         return const Center(child: Text('Home Screen'));
       case HomeNavBarTabs.orders:
-        return const Center(child: Text('Orders Screen'));
+        return const DriverOrdersScreen();
       case HomeNavBarTabs.profile:
-        return const Center(child: Text('Profile Screen'));
+        return const MyProfileScreen();
     }
   }
 }

@@ -6,11 +6,11 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'config/bloc_observer/my_bloc_observer.dart';
 import 'config/di/di.dart';
-import 'config/integreations/firebase/firebase_options.dart';
 import 'core/constants/app_asset.dart';
 import 'core/constants/app_text_string.dart';
 import 'core/routes/app_router_config.dart';
 import 'core/style/theme/app_theme.dart';
+import 'config/integreations/firebase/firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +30,7 @@ Future<void> main() async {
       startLocale: null,
       fallbackLocale: const Locale(AppTextString.enLangKey),
       useOnlyLangCode: true,
-      saveLocale: false,
+      saveLocale: true,
       child: const TrackingApp(),
     ),
   );

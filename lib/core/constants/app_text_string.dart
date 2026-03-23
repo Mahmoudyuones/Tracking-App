@@ -17,6 +17,13 @@ class AppTextString {
   static String get confirm => 'common.confirm'.tr();
   static String get update => 'common.update'.tr();
   static String get delete => 'common.delete'.tr();
+  static String get uploadPhoto => 'common.uploadPhoto'.tr();
+  static String get gallery => 'common.gallery'.tr();
+  static String get chooseFromYourPhotos => 'common.chooseFromYourPhotos'.tr();
+  static String get camera => 'common.camera'.tr();
+  static String get takeNewPhoto => 'common.takeNewPhoto'.tr();
+  static String get continueText => 'common.continueBtn'.tr();
+  static String get fileIsTooLarge => 'common.fileIsTooLarge'.tr();
 
   //-------------------------- AUTH ONBOARDING TEXT --------------------------//
   static String get onboarding => 'auth.onboarding'.tr();
@@ -26,6 +33,23 @@ class AppTextString {
   //-------------------------- AUTH LOGIN TEXT --------------------------//
   static String get rememberMe => 'auth.rememberMe'.tr();
   static String get didForgetPassword => 'auth.didForgetPassword'.tr();
+  static String get dontHaveAnAccount => 'auth.dontHaveAnAccount'.tr();
+
+  //-------------------------- AUTH APPLY TEXT --------------------------//
+  static String get apply => 'auth.apply.apply'.tr();
+  static String get welcome => 'auth.apply.header'.tr();
+  static String get welcomeTitle => 'auth.apply.title'.tr();
+  static String get country => 'auth.apply.country'.tr();
+  static String get selectCountry => 'auth.apply.selectCountry'.tr();
+  static String get firstLegalName => 'auth.apply.firstLegalName'.tr();
+  static String get secondLegalName => 'auth.apply.secondLegalName'.tr();
+  static String get vehicleType => 'auth.apply.vehicleType'.tr();
+  static String get vehicleNumber => 'auth.apply.vehicleNumber'.tr();
+  static String get vehicleLicense => 'auth.apply.vehicleLicense'.tr();
+  static String get uploadLicensePhoto => 'auth.apply.uploadLicensePhoto'.tr();
+  static String get nationalIdLabel => 'auth.apply.nationalId'.tr();
+  static String get uploadNationalIdPhoto =>
+      'auth.apply.uploadNationalIdPhoto'.tr();
 
   //-------------------------- AUTH FORGET PASSWORD TEXT --------------------------//
   static String get forgetPasswordHeader => 'auth.forgetPassword.header'.tr();
@@ -44,10 +68,6 @@ class AppTextString {
       'auth.forgetPassword.messageSentSuccessfully'.tr();
   static String get otpResentSuccess =>
       'auth.forgetPassword.otpResentSuccess'.tr();
-
-  //-------------------------- AUTH APPLY TEXT --------------------------//
-  static String get applyHeader => 'auth.apply.header'.tr();
-  static String get applyTitle => 'auth.apply.title'.tr();
 
   //-------------------------- AUTH SUCCESS APPLY TEXT --------------------------//
   static String get successApplyHeader => 'auth.successApply.header'.tr();
@@ -93,21 +113,21 @@ class AppTextString {
       'auth.hints.enterNationalIdNumber'.tr();
   static String get uploadIdImagePhoto => 'auth.hints.uploadIdImagePhoto'.tr();
 
-  static String get logout => 'auth.logout'.tr();
+  static String get logout => 'logout'.tr();
 
-  static String get confirmLogout => 'auth.confirmLogout'.tr();
+  static String get confirmLogout => 'Confirm Logout'.tr();
 
-  static String get firstName => 'auth.firstName'.tr();
+  static String get firstName => 'editProfile.firstName'.tr();
 
-  static String get lastName => 'auth.lastName'.tr();
+  static String get lastName => 'editProfile.lastName'.tr();
 
-  static String get phoneNumber => 'auth.phoneNumber'.tr();
+  static String get phoneNumber => 'editProfile.phoneNumber'.tr();
 
-  static String get gender => 'auth.gender'.tr();
+  static String get gender => 'editProfile.gender'.tr();
 
-  static String get female => 'auth.female'.tr();
+  static String get female => 'editProfile.female'.tr();
 
-  static String get male => 'auth.male'.tr();
+  static String get male => 'editProfile.male'.tr();
 
   //-------------------------- Auth Forget Password --------------------------//
 
@@ -176,6 +196,7 @@ class AppTextString {
   static String get home => 'home.title'.tr();
 
   //-------------------------- Profile --------------------------//
+  static String get vehicleInfo => 'profile.vehicleInfo'.tr();
   static const String defaultAvatarUrl =
       'https://flower.elevateegy.com/uploads/default-profile.png';
   static const String englishProfileState = 'English';
@@ -192,6 +213,8 @@ class AppTextString {
   static String get arabic => 'profile.arabic'.tr();
 
   static String get language => 'profile.language'.tr();
+
+  static String get logoutText => 'logout'.tr();
 
   static String get termsAndConditionsPolicy =>
       'profile.termsAndConditionsPolicy'.tr();
@@ -229,8 +252,39 @@ class AppTextString {
 
   static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
 
+  static String get updateProfile => 'editProfile.updateProfile'.tr();
+
+  static String get profilePhotoUpdatedSuccessfully =>
+      'editProfile.profilePhotoUpdatedSuccessfully'.tr();
+
+  static String get profileUpdatedSuccessfully =>
+      'editProfile.profileUpdatedSuccessfully'.tr();
+
+  static String get noChangesToUpdate => 'editProfile.noChangesToUpdate'.tr();
+
   //-------------------------- Navigation Bar --------------------------//
   static String get orders => 'bottomNavBar.orders'.tr();
   static String get profileNav => 'bottomNavBar.profile'.tr();
   static String get homeNav => 'bottomNavBar.home'.tr();
+
+  //-------------------------- Language --------------------------//
+  static String get selected => 'selected';
+  static String get unSelected => 'unSelected';
+  //-------------------------- Success --------------------------//
+  static String get done => 'success.done'.tr();
+  static String get thankYou => 'success.thankYou'.tr();
+  static String get theOrderDeliveredSuccessfully =>
+      'success.theOrderDeliveredSuccessfully'.tr();
+
+  //-------------------------- Orders --------------------------//
+  static String get completed => 'completed';
+  static String get cancelled => 'canceled';
+  static String get completedTitle => 'Completed'.tr();
+  static String get cancelledTitle => 'Cancelled'.tr();
+  static String get flowerOrder => 'Flower Order'.tr();
+  static String get myOrdersTitle => 'My Orders'.tr();
+  static String get noOrdersFound => 'No Orders Found'.tr();
+  static String get recentOrders => 'Recent Orders'.tr();
+  static String get pickupAddress => 'Pickup Address'.tr();
+  static String get userAddress => 'User Address'.tr();
 }

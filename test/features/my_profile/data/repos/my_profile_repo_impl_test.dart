@@ -4,6 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
+import 'package:tracking_app/config/services/token_service.dart';
 import 'package:tracking_app/features/my_profile/api/datasources_impl/my_profile_remote_data_source_impl.dart';
 import 'package:tracking_app/features/my_profile/data/models/driver_model.dart';
 import 'package:tracking_app/features/my_profile/data/models/driver_response_model.dart';
@@ -12,14 +13,19 @@ import 'package:tracking_app/features/my_profile/domain/entities/driver_response
 
 import 'my_profile_repo_impl_test.mocks.dart';
 
-@GenerateMocks([MyProfileRemoteDataSourceImpl])
+@GenerateMocks([MyProfileRemoteDataSourceImpl, TokenService])
 void main() {
   late MyProfileRepoImpl myProfileRepoImpl;
   late MockMyProfileRemoteDataSourceImpl mockMyProfileRemoteDataSourceImpl;
+  late MockTokenService mockTokenService;
 
   setUp(() {
     mockMyProfileRemoteDataSourceImpl = MockMyProfileRemoteDataSourceImpl();
-    myProfileRepoImpl = MyProfileRepoImpl(mockMyProfileRemoteDataSourceImpl);
+    mockTokenService = MockTokenService();
+    myProfileRepoImpl = MyProfileRepoImpl(
+      mockMyProfileRemoteDataSourceImpl,
+      mockTokenService,
+    );
   });
 
   group('getMyProfileData', () {
@@ -135,5 +141,69 @@ void main() {
         );
       },
     );
+  });
+
+  group('logout', () {
+    final tAppException = ServerException(
+      message: 'Server error',
+      statusCode: 500,
+    );
+
+    test(
+      'should return BaseResponse.success<void> when remote data source returns success',
+      () async {
+        when(
+          mockMyProfileRemoteDataSourceImpl.logout(),
+        ).thenAnswer((_) async => const BaseResponse<void>.success(null));
+        when(
+          mockTokenService.clearAuthData(),
+        ).thenAnswer((_) async => const BaseResponse<bool>.success(true));
+
+        final result = await myProfileRepoImpl.logout();
+
+        expect(result, isA<Success<void>>());
+        result.when(
+          success: (_) {},
+          failure: (_) => fail('Expected success but got failure'),
+        );
+        verify(mockMyProfileRemoteDataSourceImpl.logout()).called(1);
+        verify(mockTokenService.clearAuthData()).called(1);
+      },
+    );
+
+    test(
+      'should return BaseResponse.failure when remote data source returns failure',
+      () async {
+        when(
+          mockMyProfileRemoteDataSourceImpl.logout(),
+        ).thenAnswer((_) async => BaseResponse<void>.failure(tAppException));
+
+        final result = await myProfileRepoImpl.logout();
+
+        expect(result, isA<Failure<void>>());
+        result.when(
+          success: (_) => fail('Expected failure but got success'),
+          failure: (exception) {
+            expect(exception, isA<AppException>());
+            expect(exception, equals(tAppException));
+          },
+        );
+        verify(mockMyProfileRemoteDataSourceImpl.logout()).called(1);
+        verifyNoMoreInteractions(mockMyProfileRemoteDataSourceImpl);
+      },
+    );
+
+    test('should call remote data source logout exactly once', () async {
+      when(
+        mockMyProfileRemoteDataSourceImpl.logout(),
+      ).thenAnswer((_) async => const BaseResponse<void>.success(null));
+      when(
+        mockTokenService.clearAuthData(),
+      ).thenAnswer((_) async => const BaseResponse<bool>.success(true));
+
+      await myProfileRepoImpl.logout();
+
+      verify(mockMyProfileRemoteDataSourceImpl.logout()).called(1);
+    });
   });
 }

@@ -81,6 +81,12 @@ class AppValidators {
 
   static String? validatePassword(String? value) => value.validatePassword;
 
+  static String? validateMinLength(String? value, int minLength) =>
+      value.validateMinLength(
+        minLength,
+        errorMessage: ValidationConstants.minLength,
+      );
+
   static String? validateLoginPassword(String? value) =>
       value.validateLoginPassword;
 
@@ -115,6 +121,18 @@ class AppValidators {
     if (newPassword == oldPassword) {
       return ValidationConstants.newPasswordIsTheOldPassword;
     }
+    return null;
+  }
+
+  static String? validateNationalId(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return ValidationConstants.nationalIdRequired;
+    }
+
+    if (!AppRegex.isNationalIdValid(value)) {
+      return ValidationConstants.invalidNationalId;
+    }
+
     return null;
   }
 }
