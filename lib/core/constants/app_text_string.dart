@@ -287,4 +287,9 @@ class AppTextString {
   static String get recentOrders => 'Recent Orders'.tr();
   static String get pickupAddress => 'Pickup Address'.tr();
   static String get userAddress => 'User Address'.tr();
+  static String get orderDetails => 'Order Details'.tr();
+  static String get total => 'Total'.tr();
+  static String get paymentMethod => 'Payment Method'.tr();
+  static String get multiply => 'x';
+  static String get egp => 'EGP';
 }

@@ -27,6 +27,9 @@ class AppRoutes {
   //--------------- Edit Profile -----------------//
   static const String editProfile = '/editProfile';
 
+  //--------------- Orders -----------------//
+  static const String driverOrderDetails = '/driverOrderDetails';
+
   //--------------- Success -----------------//
   static const String successRoute = '/success';
 }
