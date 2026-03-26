@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/constants/app_text_string.dart';
-import '../../../domain/entities/order_item_entity.dart';
-import '../../../domain/entities/order_wrapper_entity.dart';
+import '../../../../../features/orders/domain/entities/order_item_entity.dart';
+import '../../../../../features/orders/domain/entities/order_wrapper_entity.dart';
 import 'address_card.dart';
 import 'order_items_list.dart';
 import 'order_status_row.dart';

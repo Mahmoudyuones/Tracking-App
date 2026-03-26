@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/style/color/app_colors.dart';
-
 class SummaryRow extends StatelessWidget {
   const SummaryRow({super.key, required this.label, required this.value});
 
@@ -15,18 +13,8 @@ class SummaryRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            label,
-            style: Theme.of(
-              context,
-            ).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.bold),
-          ),
-          Text(
-            value,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(color: AppColors.inputBorder),
-          ),
+          Text(label, style: Theme.of(context).textTheme.titleSmall),
+          Text(value, style: Theme.of(context).textTheme.bodyMedium),
         ],
       ),
     );

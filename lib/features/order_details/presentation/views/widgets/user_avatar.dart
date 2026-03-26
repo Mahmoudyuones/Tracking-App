@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/style/color/app_colors.dart';
-
 class UserAvatar extends StatelessWidget {
   const UserAvatar({super.key, required this.avatarUrl});
 
@@ -9,10 +7,11 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
+    return CircleAvatar(
       radius: 22,
-      backgroundColor: AppColors.lightTextSecondary,
-      child: Icon(Icons.person, size: 36, color: AppColors.white),
+      backgroundImage: avatarUrl.isNotEmpty ? NetworkImage(avatarUrl) : null,
+      onBackgroundImageError: avatarUrl.isNotEmpty ? (_, _) {} : null,
+      child: avatarUrl.isEmpty ? const Icon(Icons.person, size: 22) : null,
     );
   }
 }

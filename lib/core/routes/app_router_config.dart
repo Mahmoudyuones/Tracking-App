@@ -19,7 +19,7 @@ import '../../features/auth/forget_password/presentation/view/screens/forget_pas
 import '../../features/my_profile/domain/entities/driver_entity.dart';
 import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
 import '../../features/orders/domain/entities/order_wrapper_entity.dart';
-import '../../features/orders/presentation/views/screens/driver_order_details_screen.dart';
+import '../../features/order_details/presentation/views/screens/driver_order_details_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';

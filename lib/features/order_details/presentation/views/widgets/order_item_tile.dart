@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/style/color/app_colors.dart';
-import '../../../domain/entities/order_item_entity.dart';
+import '../../../../../features/orders/domain/entities/order_item_entity.dart';
 import 'quantity_badge.dart';
 
 class OrderItemTile extends StatelessWidget {

@@ -22,25 +22,19 @@ class OrderStatusRow extends StatelessWidget {
             const Icon(
               Icons.check_circle_outline,
               color: AppColors.lightTextgreen,
-              size: 20,
+              size: 18,
             ),
             const SizedBox(width: 4),
             Text(
               status,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppColors.lightTextgreen,
                 fontWeight: FontWeight.w600,
               ),
             ),
           ],
         ),
-        Text(
-          orderId,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            color: AppColors.inputBorder,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        Text(orderId, style: Theme.of(context).textTheme.bodyMedium),
       ],
     );
   }
