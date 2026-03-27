@@ -18,6 +18,8 @@ import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/auth/forget_password/presentation/view/screens/forget_password_screen.dart';
 import '../../features/my_profile/domain/entities/driver_entity.dart';
 import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
+import '../../features/orders/domain/entities/order_wrapper_entity.dart';
+import '../../features/order_details/presentation/views/screens/driver_order_details_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
@@ -51,20 +53,9 @@ class AppRouterConfig {
         builder: (context, state) => const LoginView(),
       ),
       GoRoute(
-        path: AppRoutes.loginRoute,
-        name: AppRoutes.loginRoute,
-        builder: (context, state) => const LoginView(),
-      ),
-      GoRoute(
         path: AppRoutes.forgetPasswordRoute,
         name: AppRoutes.forgetPasswordRoute,
         builder: (context, state) => const ForgetPasswordScreen(),
-      ),
-      //==========================Profile Route========================================
-      GoRoute(
-        path: AppRoutes.changePasswordRoute,
-        name: AppRoutes.changePasswordRoute,
-        builder: (context, state) => const ChangePasswordScreen(),
       ),
       //==========================Profile Route========================================
       GoRoute(
@@ -89,6 +80,15 @@ class AppRouterConfig {
               HomeCubit(const HomeStates(currentTap: HomeNavBarTabs.home)),
           child: const HomeScreen(),
         ),
+      ),
+
+      GoRoute(
+        path: AppRoutes.driverOrderDetails,
+        name: AppRoutes.driverOrderDetails,
+        builder: (context, state) {
+          final order = state.extra as OrderWrapperEntity;
+          return OrderDetailsScreen(order: order);
+        },
       ),
 
       GoRoute(

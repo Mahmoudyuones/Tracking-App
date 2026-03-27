@@ -48,7 +48,12 @@ class UserInfoCard extends StatelessWidget {
               children: [
                 Text(name, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 2),
-                Text(email, style: Theme.of(context).textTheme.labelLarge),
+                Text(
+                  email,
+                  style: Theme.of(context).textTheme.labelLarge,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 const SizedBox(height: 2),
                 Text(phone, style: Theme.of(context).textTheme.labelLarge),
               ],
