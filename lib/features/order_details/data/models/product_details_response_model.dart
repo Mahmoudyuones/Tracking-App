@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import '../../domain/entities/product_details_response_entity.dart';
 import 'product_order_model.dart';
 
 part 'product_details_response_model.g.dart';
@@ -17,4 +18,8 @@ class ProductDetailsResponseModel {
       _$ProductDetailsResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductDetailsResponseModelToJson(this);
+
+  ProductDetailsResponseEntity toEntity() {
+    return ProductDetailsResponseEntity(product: product?.toEntity());
+  }
 }

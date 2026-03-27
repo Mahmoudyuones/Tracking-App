@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../domain/entities/product_order_entity.dart';
+
 part 'product_order_model.g.dart';
 
 @JsonSerializable()
@@ -91,4 +93,12 @@ class ProductOrderModel {
       _$ProductOrderModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductOrderModelToJson(this);
+
+  ProductOrderEntity toEntity() {
+    return ProductOrderEntity(
+      title: title ?? '',
+      imgCover: imgCover ?? '',
+      price: price ?? 0,
+    );
+  }
 }
