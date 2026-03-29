@@ -23,5 +23,5 @@ class ApiEndpoints {
 
   // ------------------------  ORDERS ENDPOINTS ------------------------ //
   static const String orders = 'orders/driver-orders';
-  static const String productDetails = 'products/{id}';
+  static const String productDetails = 'products/{Id}';
 }

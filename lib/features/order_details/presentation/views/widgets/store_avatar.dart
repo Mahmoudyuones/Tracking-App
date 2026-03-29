@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/style/color/app_colors.dart';
+import '../../../../../core/style/widget/loading_indicator.dart';
 
 class StoreAvatar extends StatelessWidget {
   const StoreAvatar({super.key, required this.imageUrl});
@@ -9,28 +10,17 @@ class StoreAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (imageUrl.isNotEmpty) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Image.network(
-          imageUrl,
-          width: 44,
-          height: 44,
-          fit: BoxFit.cover,
-          errorBuilder: (_, _, _) => _placeholder(),
-        ),
-      );
-    }
-    return _placeholder();
-  }
+    return ClipOval(
+      child: CachedNetworkImage(
+        imageUrl: imageUrl,
+        width: 48,
+        height: 48,
+        fit: BoxFit.cover,
 
-  Widget _placeholder() => Container(
-    width: 44,
-    height: 44,
-    decoration: BoxDecoration(
-      color: AppColors.primary.withValues(alpha: 0.1),
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: const Icon(Icons.shop_2, color: AppColors.primary, size: 22),
-  );
+        placeholder: (context, url) => const LoadingIndicator(),
+        errorWidget: (context, url, error) =>
+            const Icon(Icons.store, color: AppColors.primary, size: 28),
+      ),
+    );
+  }
 }
