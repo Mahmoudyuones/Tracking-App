@@ -40,6 +40,7 @@ class AddressCard extends StatelessWidget {
                       Text(
                         address,
                         style: Theme.of(context).textTheme.bodySmall,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../features/orders/domain/entities/order_item_entity.dart';
+import '../../../domain/entities/product_details_response_entity.dart';
 import 'order_item_tile.dart';
 
 class OrderItemsList extends StatelessWidget {
-  const OrderItemsList({super.key, required this.items});
+  const OrderItemsList({
+    super.key,
+    required this.items,
+    required this.productDetails,
+  });
 
   final List<OrderItemEntity> items;
+  final List<ProductDetailsResponseEntity> productDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,13 @@ class OrderItemsList extends StatelessWidget {
           itemCount: items.length,
           separatorBuilder: (context, index) =>
               const Divider(height: 1, thickness: 1, indent: 12, endIndent: 12),
-          itemBuilder: (context, index) => OrderItemTile(item: items[index]),
+          itemBuilder: (context, index) {
+            final item = items[index];
+            final detail = index < productDetails.length
+                ? productDetails[index]
+                : ProductDetailsResponseEntity.empty();
+            return OrderItemTile(item: item, detail: detail);
+          },
         ),
       ),
     );
