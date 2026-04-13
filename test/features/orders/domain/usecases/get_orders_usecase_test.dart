@@ -4,11 +4,11 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
-import 'package:tracking_app/features/orders/domain/entities/order_entity.dart';
-import 'package:tracking_app/features/orders/domain/entities/order_wrapper_entity.dart';
-import 'package:tracking_app/features/orders/domain/entities/orders_response_entity.dart';
-import 'package:tracking_app/features/orders/domain/repos/orders_repo.dart';
-import 'package:tracking_app/features/orders/domain/usecases/get_orders_usecase.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/entities/order_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/entities/order_wrapper_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/entities/orders_response_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/repos/orders_repo.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/usecases/get_orders_usecase.dart';
 
 import 'get_orders_usecase_test.mocks.dart';
 

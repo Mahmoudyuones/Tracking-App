@@ -3,10 +3,10 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
-import 'package:tracking_app/features/order_details/domain/entities/product_details_response_entity.dart';
-import 'package:tracking_app/features/order_details/domain/entities/product_order_entity.dart';
-import 'package:tracking_app/features/order_details/domain/repos/product_details_repo.dart';
-import 'package:tracking_app/features/order_details/domain/usecases/get_product_details_usecase.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/domain/entities/product_details_response_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/domain/entities/product_order_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/domain/repos/product_details_repo.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/domain/usecases/get_product_details_usecase.dart';
 
 import 'get_product_details_usecase_test.mocks.dart';
 

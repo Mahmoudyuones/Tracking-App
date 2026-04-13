@@ -5,14 +5,14 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
 import 'package:tracking_app/config/exception/unknown_exception.dart';
-import 'package:tracking_app/features/my_profile/domain/entities/driver_entity.dart';
-import 'package:tracking_app/features/my_profile/domain/entities/driver_response_entity.dart';
-import 'package:tracking_app/features/my_profile/domain/usecases/get_driver_profile_date_usecase.dart';
-import 'package:tracking_app/features/my_profile/domain/usecases/logout_usecase.dart';
-import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_cubit.dart';
-import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_events.dart';
-import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_state.dart';
-import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_ui_events.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/domain/entities/driver_entity.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/domain/entities/driver_response_entity.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/domain/usecases/get_driver_profile_date_usecase.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/domain/usecases/logout_usecase.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/view_model/my_profile_cubit.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/view_model/my_profile_events.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/view_model/my_profile_state.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/view_model/my_profile_ui_events.dart';
 
 import 'my_profile_cubit_test.mocks.dart';
 

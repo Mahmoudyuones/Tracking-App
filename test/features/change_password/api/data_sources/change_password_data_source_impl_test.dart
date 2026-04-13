@@ -5,10 +5,10 @@ import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/network_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
-import 'package:tracking_app/features/change_password/api/api_client/change_password_api_client.dart';
-import 'package:tracking_app/features/change_password/api/data_sources/change_password_data_source_impl.dart';
-import 'package:tracking_app/features/change_password/data/models/change_password_request_model.dart';
-import 'package:tracking_app/features/change_password/data/models/change_password_response_model.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/api/api_client/change_password_api_client.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/api/data_sources/change_password_data_source_impl.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/data/models/change_password_request_model.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/data/models/change_password_response_model.dart';
 
 import 'change_password_data_source_impl_test.mocks.dart';
 

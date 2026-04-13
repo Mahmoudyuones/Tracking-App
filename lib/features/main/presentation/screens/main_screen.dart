@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/enums/home_nav_bar.dart';
-import '../../../my_profile/presentation/views/screens/my_profile_screen.dart';
-import '../../../orders/presentation/views/screens/driver_orders_screen.dart';
+import '../../../taps/profile_tab/my_profile/presentation/views/screens/my_profile_screen.dart';
+import '../../../taps/orders_tap/orders/presentation/views/screens/driver_orders_screen.dart';
 import '../cubit/main_cubit.dart';
 import '../cubit/main_intents.dart';
 import '../cubit/main_states.dart';

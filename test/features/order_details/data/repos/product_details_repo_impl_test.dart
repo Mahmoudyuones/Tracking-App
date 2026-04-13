@@ -4,11 +4,11 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
-import 'package:tracking_app/features/order_details/data/datasources/product_details_remote_data_source.dart';
-import 'package:tracking_app/features/order_details/data/models/product_details_response_model.dart';
-import 'package:tracking_app/features/order_details/data/models/product_order_model.dart';
-import 'package:tracking_app/features/order_details/data/repos/product_details_repo_impl.dart';
-import 'package:tracking_app/features/order_details/domain/entities/product_details_response_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/data/datasources/product_details_remote_data_source.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/data/models/product_details_response_model.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/data/models/product_order_model.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/data/repos/product_details_repo_impl.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/domain/entities/product_details_response_entity.dart';
 
 import 'product_details_repo_impl_test.mocks.dart';
 

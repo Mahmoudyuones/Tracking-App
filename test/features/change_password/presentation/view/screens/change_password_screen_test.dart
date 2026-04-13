@@ -5,10 +5,10 @@ import 'package:get_it/get_it.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tracking_app/features/change_password/presentation/view/screens/change_password_screen.dart';
-import 'package:tracking_app/features/change_password/presentation/view_model/change_password_cubit.dart';
-import 'package:tracking_app/features/change_password/presentation/view_model/change_password_states.dart';
-import 'package:tracking_app/features/change_password/presentation/view_model/change_pasword_ui_events.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view/screens/change_password_screen.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view_model/change_password_cubit.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view_model/change_password_states.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view_model/change_pasword_ui_events.dart';
 
 import 'change_password_screen_test.mocks.dart';
 

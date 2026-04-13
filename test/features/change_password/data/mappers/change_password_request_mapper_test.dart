@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tracking_app/features/change_password/data/mappers/change_password_request_mapper.dart';
-import 'package:tracking_app/features/change_password/data/models/change_password_request_model.dart';
-import 'package:tracking_app/features/change_password/domain/entities/change_password_request_entity.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/data/mappers/change_password_request_mapper.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/data/models/change_password_request_model.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/domain/entities/change_password_request_entity.dart';
 
 void main() {
   group('ChangePasswordRequestMapper', () {
