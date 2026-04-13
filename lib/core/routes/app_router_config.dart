@@ -12,9 +12,9 @@ import '../../features/auth/apply/presentation/screens/sucsess_apply_screen.dart
 import '../../features/auth/login/presentation/views/login_view.dart';
 import '../../features/change_password/presentation/view/screens/change_password_screen.dart';
 import '../../features/edit_profile/presentation/view/screens/edit_profile_screen.dart';
-import '../../features/home/presentation/cubit/home_cubit.dart';
-import '../../features/home/presentation/cubit/home_states.dart';
-import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/main/presentation/cubit/main_cubit.dart';
+import '../../features/main/presentation/cubit/main_states.dart';
+import '../../features/main/presentation/screens/main_screen.dart';
 import '../../features/auth/forget_password/presentation/view/screens/forget_password_screen.dart';
 import '../../features/my_profile/domain/entities/driver_entity.dart';
 import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
@@ -73,12 +73,12 @@ class AppRouterConfig {
       ),
       //==========================Main App Route========================================
       GoRoute(
-        path: AppRoutes.homeRoute,
-        name: AppRoutes.homeRoute,
+        path: AppRoutes.mainRoute,
+        name: AppRoutes.mainRoute,
         builder: (context, state) => BlocProvider(
           create: (_) =>
-              HomeCubit(const HomeStates(currentTap: HomeNavBarTabs.home)),
-          child: const HomeScreen(),
+              MainCubit(const MainStates(currentTap: HomeNavBarTabs.home)),
+          child: const MainScreen(),
         ),
       ),
 
@@ -130,7 +130,7 @@ class AppRouterConfig {
     if (isLoggedIn &&
         (state.matchedLocation == AppRoutes.loginRoute ||
             state.matchedLocation == AppRoutes.onBoardingRoute)) {
-      return AppRoutes.homeRoute;
+      return AppRoutes.mainRoute;
     }
 
     return null;

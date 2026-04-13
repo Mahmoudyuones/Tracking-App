@@ -1,23 +1,23 @@
 import '../../../../config/base_state/base_state.dart';
 import '../../../../core/enums/home_nav_bar.dart';
 
-class HomeStates extends BaseState<Object?> {
+class MainStates extends BaseState<Object?> {
   final HomeNavBarTabs currentTap;
 
-  const HomeStates({
+  const MainStates({
     required this.currentTap,
     super.errorMessage,
     super.isEmpty,
   });
 
   @override
-  HomeStates copyWith({
+  MainStates copyWith({
     HomeNavBarTabs? currentTap,
     String? errorMessage,
     void data,
     bool? isEmpty,
   }) {
-    return HomeStates(
+    return MainStates(
       currentTap: currentTap ?? this.currentTap,
       errorMessage: errorMessage ?? this.errorMessage,
       isEmpty: isEmpty ?? this.isEmpty,

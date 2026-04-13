@@ -4,29 +4,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/enums/home_nav_bar.dart';
 import '../../../my_profile/presentation/views/screens/my_profile_screen.dart';
 import '../../../orders/presentation/views/screens/driver_orders_screen.dart';
-import '../cubit/home_cubit.dart';
-import '../cubit/home_intents.dart';
-import '../cubit/home_states.dart';
+import '../cubit/main_cubit.dart';
+import '../cubit/main_intents.dart';
+import '../cubit/main_states.dart';
 import '../widgets/nav_bar.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeStates>(
+    return BlocBuilder<MainCubit, MainStates>(
       builder: (context, state) {
         return Scaffold(
           body: _buildBody(state.currentTap),
           bottomNavigationBar: NavBar(
             currentTab: state.currentTap,
             onTabSelected: (tab) =>
-                context.read<HomeCubit>().doIntent(SelectTab(tab: tab)),
+                context.read<MainCubit>().doIntent(SelectTab(tab: tab)),
           ),
         );
       },
