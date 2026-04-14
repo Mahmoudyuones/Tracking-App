@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import '../../../../../core/style/widget/shared_lottie_states_widget.dart';
 
 class ErrorsOrEmptyHappenWidget extends StatelessWidget {
-  const ErrorsOrEmptyHappenWidget({super.key, required this.text, required this.lottie});
+  const ErrorsOrEmptyHappenWidget({
+    super.key,
+    required this.text,
+    required this.lottie,
+  });
 
   final String text;
   final String lottie;
@@ -11,12 +15,7 @@ class ErrorsOrEmptyHappenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SharedLottieStatesWidget(
-          lottie: lottie,
-          text: text,
-        ),
-      ],
+      children: [SharedLottieStatesWidget(lottie: lottie, text: text)],
     );
   }
 }

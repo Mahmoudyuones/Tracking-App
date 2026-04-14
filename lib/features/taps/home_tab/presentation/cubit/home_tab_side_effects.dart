@@ -1,5 +1,4 @@
-sealed class HomeTabSideEffects {
-}
+sealed class HomeTabSideEffects {}
 
 class LoadingPendingOrdersSideEffect extends HomeTabSideEffects {}
 

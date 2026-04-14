@@ -124,11 +124,14 @@
     "flowerOrder": "Flower Order",
     "orderDetails": "Order Details",
     "pickupAddress": "Pickup address",
+    "deliveryAddress": "Delivery address",
     "userAddress": "User Address",
     "total": "Total",
     "paymentMethod": "Payment Method",
     "completed": "Completed",
-    "cancelled": "Cancelled"
+    "cancelled": "Cancelled",
+    "reject": "Reject",
+    "accept": "Accept"
   },
   "profile": {
     "title": "Profile",

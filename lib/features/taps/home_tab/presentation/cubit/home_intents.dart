@@ -4,5 +4,5 @@ sealed class HomeIntents {
 
 class GetPendingOrdersIntent extends HomeIntents {
   final int limit;
-  const GetPendingOrdersIntent({this.limit=10});
+  const GetPendingOrdersIntent({this.limit = 10});
 }

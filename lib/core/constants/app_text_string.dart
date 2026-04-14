@@ -112,8 +112,7 @@ class AppTextString {
   // ───────────────────── Auth — Forget / Reset Password ─────────────────── //
   static String get forgetPasswordHeader => 'auth.forgetPassword.header'.tr();
   static String get forgetPasswordTitle => 'auth.forgetPassword.title'.tr();
-  static String get forgetPasswordHeadLine =>
-      'auth.forgetPassword.header'.tr();
+  static String get forgetPasswordHeadLine => 'auth.forgetPassword.header'.tr();
   static String get pleaseEnterYourEmail =>
       'auth.forgetPassword.pleaseEnterYourEmail'.tr();
   static String get emailVerificationHeader =>
@@ -183,11 +182,14 @@ class AppTextString {
   static String get flowerOrder => 'orders.flowerOrder'.tr();
   static String get orderDetails => 'orders.orderDetails'.tr();
   static String get pickupAddress => 'orders.pickupAddress'.tr();
+  static String get deliveryAddress => 'orders.deliveryAddress'.tr();
   static String get userAddress => 'orders.userAddress'.tr();
   static String get total => 'orders.total'.tr();
   static String get paymentMethod => 'orders.paymentMethod'.tr();
   static String get completedTitle => 'orders.completed'.tr();
   static String get cancelledTitle => 'orders.cancelled'.tr();
+  static String get reject => 'orders.reject'.tr();
+  static String get accept => 'orders.accept'.tr();
   // Raw status keys used for comparisons (not translated)
   static const String completed = 'completed';
   static const String cancelled = 'canceled';
@@ -211,8 +213,7 @@ class AppTextString {
   static String get termsAppBarTitleAr => 'profile.termsAppBarTitle'.tr();
   static String get appInfoAppBarTitleEn => 'profile.appInfoAppBarTitle'.tr();
   static String get appInfoAppBarTitleAr => 'profile.appInfoAppBarTitle'.tr();
-  static String get noTermsDataAvailable =>
-      'profile.noTermsDataAvailable'.tr();
+  static String get noTermsDataAvailable => 'profile.noTermsDataAvailable'.tr();
 
   // ─────────────────────────── Edit Profile ─────────────────────────────── //
   static String get editProfile => 'editProfile.title'.tr();

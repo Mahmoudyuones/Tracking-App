@@ -124,11 +124,14 @@
     "flowerOrder": "طلب زهور",
     "orderDetails": "تفاصيل الطلب",
     "pickupAddress": "عنوان الاستلام",
+    "deliveryAddress": "عنوان التوصيل",
     "userAddress": "عنوان المستخدم",
     "total": "الإجمالي",
     "paymentMethod": "طريقة الدفع",
     "completed": "مكتمل",
-    "cancelled": "ملغي"
+    "cancelled": "ملغي",
+    "reject": "رفض",
+    "accept": "قبول"
   },
   "profile": {
     "title": "الملف الشخصي",
