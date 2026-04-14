@@ -11,8 +11,8 @@ abstract class HomeApiClient {
   @factoryMethod
   factory HomeApiClient(Dio dio) = _HomeApiClient;
 
-  @GET(ApiEndpoints.orders)
+  @GET(ApiEndpoints.pendingOrders)
   Future<PendingOrderResponseModel> getPendingOrders({
-    @Query('limit') int limit,
+    @Query('limit') int limit = 10,
   });
 }

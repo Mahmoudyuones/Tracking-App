@@ -18,6 +18,10 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/home_app_bar_leading.svg
+  SvgGenImage get homeAppBarLeading =>
+      const SvgGenImage('assets/icons/home_app_bar_leading.svg');
+
   /// File path: assets/icons/ic_home.svg
   SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
 
@@ -28,7 +32,12 @@ class $AssetsIconsGen {
   SvgGenImage get icPerson => const SvgGenImage('assets/icons/ic_person.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [icHome, icOrder, icPerson];
+  List<SvgGenImage> get values => [
+    homeAppBarLeading,
+    icHome,
+    icOrder,
+    icPerson,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -52,9 +61,8 @@ class $AssetsImagesGen {
 class $AssetsLottiesGen {
   const $AssetsLottiesGen();
 
-  /// File path: assets/lotties/empty_cart.json
-  LottieGenImage get emptyCart =>
-      const LottieGenImage('assets/lotties/empty_cart.json');
+  /// File path: assets/lotties/empty.json
+  LottieGenImage get empty => const LottieGenImage('assets/lotties/empty.json');
 
   /// File path: assets/lotties/error.json
   LottieGenImage get error => const LottieGenImage('assets/lotties/error.json');
@@ -64,7 +72,7 @@ class $AssetsLottiesGen {
       const LottieGenImage('assets/lotties/motorcycle delivery.json');
 
   /// List of all assets
-  List<LottieGenImage> get values => [emptyCart, error, motorcycleDelivery];
+  List<LottieGenImage> get values => [empty, error, motorcycleDelivery];
 }
 
 class $AssetsTranslationsGen {

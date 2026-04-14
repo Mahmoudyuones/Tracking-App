@@ -1,10 +1,21 @@
-part of 'home_tab_cubit.dart';
+import 'package:equatable/equatable.dart';
+import '../../../../../config/base_state/base_state.dart';
+import '../../domain/entities/response/pending_orders_response/order_entity.dart';
 
-abstract class HomeTabState extends Equatable {
-  const HomeTabState();
+class HomeTabState extends Equatable{
+
+  final BaseState<List<OrderEntity>>? getPendingOrdersState;
+
+  const HomeTabState({this.getPendingOrdersState});
+
+  HomeTabState copyWith({
+    BaseState<List<OrderEntity>>? getPendingOrdersState,
+  }) {
+    return HomeTabState(
+      getPendingOrdersState: getPendingOrdersState ?? this.getPendingOrdersState,
+    );
+  }
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [getPendingOrdersState];
 }
-
-class HomeTabInitial extends HomeTabState {}
