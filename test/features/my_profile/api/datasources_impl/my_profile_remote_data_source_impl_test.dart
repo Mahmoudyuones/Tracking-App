@@ -4,10 +4,10 @@ import 'package:test/test.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
-import 'package:tracking_app/features/my_profile/api/api_client/my_profile_api_client.dart';
-import 'package:tracking_app/features/my_profile/api/datasources_impl/my_profile_remote_data_source_impl.dart';
-import 'package:tracking_app/features/my_profile/data/models/driver_model.dart';
-import 'package:tracking_app/features/my_profile/data/models/driver_response_model.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/api/api_client/my_profile_api_client.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/api/datasources_impl/my_profile_remote_data_source_impl.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/data/models/driver_model.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/data/models/driver_response_model.dart';
 
 import 'my_profile_remote_data_source_impl_test.mocks.dart';
 

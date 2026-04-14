@@ -4,10 +4,10 @@ import 'package:test/test.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
-import 'package:tracking_app/features/order_details/api/api_client/product_details_api_client.dart';
-import 'package:tracking_app/features/order_details/api/datasources_impl/product_details_remote_data_source_impl.dart';
-import 'package:tracking_app/features/order_details/data/models/product_details_response_model.dart';
-import 'package:tracking_app/features/order_details/data/models/product_order_model.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/api/api_client/product_details_api_client.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/api/datasources_impl/product_details_remote_data_source_impl.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/data/models/product_details_response_model.dart';
+import 'package:tracking_app/features/taps/orders_tap/order_details/data/models/product_order_model.dart';
 
 import 'product_details_remote_data_source_impl_test.mocks.dart';
 

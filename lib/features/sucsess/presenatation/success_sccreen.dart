@@ -50,7 +50,7 @@ class SuccessScreen extends StatelessWidget {
                 child: ElevatedButton(
                   key: const Key('done_button'),
                   onPressed: () {
-                    context.goNamed(AppRoutes.homeRoute);
+                    context.goNamed(AppRoutes.mainRoute);
                   },
                   child: Text(AppTextString.done),
                 ),

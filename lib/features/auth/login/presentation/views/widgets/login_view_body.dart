@@ -50,7 +50,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   void _handleEffects(LoginUISideEffects effect) {
     switch (effect) {
       case NavigateToHomeEffect():
-        context.goNamed(AppRoutes.homeRoute);
+        context.goNamed(AppRoutes.mainRoute);
       case NavigateToForgetPasswordEffect():
         context.pushNamed(AppRoutes.forgetPasswordRoute);
       case ShowErrorEffect():

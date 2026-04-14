@@ -22,7 +22,7 @@ class AppRoutes {
   static const String changePasswordRoute = '/changePassword';
 
   //--------------- HOME ROUTES -----------------//
-  static const String homeRoute = '/home';
+  static const String mainRoute = '/main';
 
   //--------------- Edit Profile -----------------//
   static const String editProfile = '/editProfile';

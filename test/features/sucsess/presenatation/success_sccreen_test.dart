@@ -26,8 +26,8 @@ void main() {
           builder: (context, state) => const SuccessScreen(),
         ),
         GoRoute(
-          path: AppRoutes.homeRoute,
-          name: AppRoutes.homeRoute,
+          path: AppRoutes.mainRoute,
+          name: AppRoutes.mainRoute,
           builder: (context, state) =>
               const Scaffold(body: Center(child: Text('Home Screen'))),
         ),

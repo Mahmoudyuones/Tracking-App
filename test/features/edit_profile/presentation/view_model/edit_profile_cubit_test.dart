@@ -6,13 +6,13 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/unknown_exception.dart';
-import 'package:tracking_app/features/edit_profile/domain/use_cases/edit_profile_use_case.dart';
-import 'package:tracking_app/features/edit_profile/domain/use_cases/update_profile_image_use_case.dart';
-import 'package:tracking_app/features/edit_profile/presentation/view_model/edit_profile_cubit.dart';
-import 'package:tracking_app/features/edit_profile/presentation/view_model/edit_profile_intents.dart';
-import 'package:tracking_app/features/edit_profile/presentation/view_model/edit_profile_states.dart';
-import 'package:tracking_app/features/edit_profile/presentation/view_model/edit_profile_ui_intents.dart';
-import 'package:tracking_app/features/my_profile/domain/entities/driver_entity.dart';
+import 'package:tracking_app/features/taps/profile_tab/edit_profile/domain/use_cases/edit_profile_use_case.dart';
+import 'package:tracking_app/features/taps/profile_tab/edit_profile/domain/use_cases/update_profile_image_use_case.dart';
+import 'package:tracking_app/features/taps/profile_tab/edit_profile/presentation/view_model/edit_profile_cubit.dart';
+import 'package:tracking_app/features/taps/profile_tab/edit_profile/presentation/view_model/edit_profile_intents.dart';
+import 'package:tracking_app/features/taps/profile_tab/edit_profile/presentation/view_model/edit_profile_states.dart';
+import 'package:tracking_app/features/taps/profile_tab/edit_profile/presentation/view_model/edit_profile_ui_intents.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/domain/entities/driver_entity.dart';
 
 import 'edit_profile_cubit_test.mocks.dart';
 

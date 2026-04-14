@@ -4,9 +4,9 @@ import 'package:test/test.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
-import 'package:tracking_app/features/orders/api/api_client/orders_api_client.dart';
-import 'package:tracking_app/features/orders/api/datasources_impl/orders_remote_data_source_impl.dart';
-import 'package:tracking_app/features/orders/data/models/orders_response_model.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/api/api_client/orders_api_client.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/api/datasources_impl/orders_remote_data_source_impl.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/data/models/orders_response_model.dart';
 
 import 'orders_remote_data_source_impl_test.mocks.dart';
 

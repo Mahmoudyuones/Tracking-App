@@ -6,12 +6,12 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/unknown_exception.dart';
-import 'package:tracking_app/features/change_password/domain/entities/change_password_request_entity.dart';
-import 'package:tracking_app/features/change_password/domain/use_cases/change_password_use_case.dart';
-import 'package:tracking_app/features/change_password/presentation/view_model/change_password_cubit.dart';
-import 'package:tracking_app/features/change_password/presentation/view_model/change_password_intents.dart';
-import 'package:tracking_app/features/change_password/presentation/view_model/change_password_states.dart';
-import 'package:tracking_app/features/change_password/presentation/view_model/change_pasword_ui_events.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/domain/entities/change_password_request_entity.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/domain/use_cases/change_password_use_case.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view_model/change_password_cubit.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view_model/change_password_intents.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view_model/change_password_states.dart';
+import 'package:tracking_app/features/taps/profile_tab/change_password/presentation/view_model/change_pasword_ui_events.dart';
 
 import 'change_password_cubit_test.mocks.dart';
 

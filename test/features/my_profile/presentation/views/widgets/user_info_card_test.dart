@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tracking_app/features/my_profile/presentation/views/widgets/user_info_card.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/views/widgets/user_info_card.dart';
 
 Widget _buildTestWidget({
   String name = 'John Doe',

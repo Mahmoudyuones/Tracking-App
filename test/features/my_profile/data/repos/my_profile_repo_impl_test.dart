@@ -5,11 +5,11 @@ import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/exception/app_exception.dart';
 import 'package:tracking_app/config/exception/server_exception.dart';
 import 'package:tracking_app/config/services/token_service.dart';
-import 'package:tracking_app/features/my_profile/api/datasources_impl/my_profile_remote_data_source_impl.dart';
-import 'package:tracking_app/features/my_profile/data/models/driver_model.dart';
-import 'package:tracking_app/features/my_profile/data/models/driver_response_model.dart';
-import 'package:tracking_app/features/my_profile/data/repos/my_profile_repo_impl.dart';
-import 'package:tracking_app/features/my_profile/domain/entities/driver_response_entity.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/api/datasources_impl/my_profile_remote_data_source_impl.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/data/models/driver_model.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/data/models/driver_response_model.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/data/repos/my_profile_repo_impl.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/domain/entities/driver_response_entity.dart';
 
 import 'my_profile_repo_impl_test.mocks.dart';
 

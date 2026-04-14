@@ -7,10 +7,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
-import 'package:tracking_app/features/my_profile/domain/entities/driver_response_entity.dart';
-import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_state.dart';
-import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_ui_events.dart';
-import 'package:tracking_app/features/my_profile/presentation/views/widgets/language_card.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/domain/entities/driver_response_entity.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/view_model/my_profile_state.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/view_model/my_profile_ui_events.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/views/widgets/language_card.dart';
 
 import '../../mocks.mocks.dart';
 

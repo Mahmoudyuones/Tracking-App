@@ -5,13 +5,13 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/config/base_response/base_response.dart';
 import 'package:tracking_app/config/base_state/base_state.dart';
 import 'package:tracking_app/config/exception/unknown_exception.dart';
-import 'package:tracking_app/features/orders/domain/entities/orders_metadata_entity.dart';
-import 'package:tracking_app/features/orders/domain/entities/orders_response_entity.dart';
-import 'package:tracking_app/features/orders/domain/usecases/get_orders_usecase.dart';
-import 'package:tracking_app/features/orders/presentation/view_model/orders_cubit.dart';
-import 'package:tracking_app/features/orders/presentation/view_model/orders_events.dart';
-import 'package:tracking_app/features/orders/presentation/view_model/orders_state.dart';
-import 'package:tracking_app/features/orders/presentation/view_model/orders_ui_events.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/entities/orders_metadata_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/entities/orders_response_entity.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/domain/usecases/get_orders_usecase.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/presentation/view_model/orders_cubit.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/presentation/view_model/orders_events.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/presentation/view_model/orders_state.dart';
+import 'package:tracking_app/features/taps/orders_tap/orders/presentation/view_model/orders_ui_events.dart';
 
 import 'orders_cubit_test.mocks.dart';
 

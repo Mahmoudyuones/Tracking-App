@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tracking_app/features/my_profile/presentation/views/widgets/profile_appbar.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/views/widgets/profile_appbar.dart';
 
 /// Wraps [child] in a minimal [MaterialApp] so [Theme] and [Navigator] are available.
 Widget _buildTestWidget(Widget child) {

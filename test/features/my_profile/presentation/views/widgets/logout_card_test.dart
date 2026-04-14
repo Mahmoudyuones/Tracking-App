@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tracking_app/features/my_profile/presentation/view_model/my_profile_cubit.dart';
-import 'package:tracking_app/features/my_profile/presentation/views/widgets/logout_card.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/view_model/my_profile_cubit.dart';
+import 'package:tracking_app/features/taps/profile_tab/my_profile/presentation/views/widgets/logout_card.dart';
 
 import '../../mocks.mocks.dart';
 
