@@ -13,6 +13,7 @@ abstract class HomeApiClient {
 
   @GET(ApiEndpoints.pendingOrders)
   Future<PendingOrderResponseModel> getPendingOrders({
-    @Query('limit') int limit = 10,
+    @Query('limit') int? limit,
+    @Query('page') required int page,
   });
 }

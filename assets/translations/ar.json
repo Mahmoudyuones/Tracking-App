@@ -131,7 +131,8 @@
     "completed": "مكتمل",
     "cancelled": "ملغي",
     "reject": "رفض",
-    "accept": "قبول"
+    "accept": "قبول",
+    "noMoreOrders": "لا توجد طلبات أخرى"
   },
   "profile": {
     "title": "الملف الشخصي",

@@ -14,6 +14,7 @@ class ApiEndpoints {
 
   // ------------------------ TRACK ORDER ENDPOINTS ------------------------ //
   static const String updateOrderState = 'orders/state/{Id}';
+  static const String uploadedPhotos = 'https://flower.elevateegy.com/uploads/';
 
   // ------------------------  PROFILE ENDPOINTS ------------------------ //
   static const String myProfile = 'drivers/profile-data';

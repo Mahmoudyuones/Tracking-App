@@ -127,6 +127,7 @@
     "deliveryAddress": "Delivery address",
     "userAddress": "User Address",
     "total": "Total",
+    "noMoreOrders": "No More Orders",
     "paymentMethod": "Payment Method",
     "completed": "Completed",
     "cancelled": "Cancelled",

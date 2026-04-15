@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../core/constants/api_endpoints.dart';
 import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/style/color/app_colors.dart';
 import '../../domain/entities/response/pending_orders_response/order_entity.dart';
@@ -7,9 +8,14 @@ import 'address_card.dart';
 import 'reject_button.dart';
 
 class OrderCardWidget extends StatelessWidget {
-  const OrderCardWidget({super.key, required this.order});
+  const OrderCardWidget({
+    super.key,
+    required this.order,
+    required this.onReject,
+  });
 
   final OrderEntity order;
+  final VoidCallback onReject;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +52,7 @@ class OrderCardWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AddressCard(
-            avatar: const Icon(Icons.store, color: AppColors.primary),
+            image: order.store.image,
             name: order.store.name,
             address: order.store.address,
           ),
@@ -57,12 +63,11 @@ class OrderCardWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AddressCard(
-            avatar: const Icon(Icons.person, color: AppColors.primary),
+            image: '${ApiEndpoints.uploadedPhotos}${order.user.photo}',
             name: '${order.user.firstName} ${order.user.lastName}',
             address: 'Ahmed Helmy, 6th of October, Giza',
           ),
           const SizedBox(height: 18),
-          // Bottom row: price + action buttons
           Row(
             children: [
               Text(
@@ -72,7 +77,7 @@ class OrderCardWidget extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              RejectButton(onTap: () {}),
+              RejectButton(onTap: onReject),
               const SizedBox(width: 10),
               AcceptButton(onTap: () {}),
             ],

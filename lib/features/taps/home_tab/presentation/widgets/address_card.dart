@@ -5,12 +5,12 @@ import '../../../../../core/style/color/app_colors.dart';
 class AddressCard extends StatelessWidget {
   const AddressCard({
     super.key,
-    required this.avatar,
+    required this.image,
     required this.name,
     required this.address,
   });
 
-  final Widget avatar;
+  final String image;
   final String name;
   final String address;
 
@@ -33,7 +33,7 @@ class AddressCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          avatar,
+          CircleAvatar(backgroundImage: NetworkImage(image)),
           const SizedBox(width: 12),
           Expanded(
             child: Column(

@@ -14,10 +14,12 @@ class PendingOrdersRepositoryImpl implements PendingOrdersRepository {
 
   @override
   Future<BaseResponse<PendingOrderResponseEntity>> getPendingOrders({
-    int limit = 10,
+    int? limit,
+    required int page,
   }) async {
     final response = await _pendingOrdersRemoteDataSource.getPendingOrders(
       limit: limit,
+      page: page,
     );
     return response.when(
       success: (pendingOrderResponseModel) {

@@ -3,6 +3,7 @@ import '../entities/response/pending_orders_response/pending_order_response_enti
 
 abstract interface class PendingOrdersRepository {
   Future<BaseResponse<PendingOrderResponseEntity>> getPendingOrders({
-    int limit,
+    int? limit,
+    required int page,
   });
 }

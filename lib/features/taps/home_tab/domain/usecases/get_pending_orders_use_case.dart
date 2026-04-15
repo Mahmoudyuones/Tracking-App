@@ -9,7 +9,10 @@ class GetPendingOrdersUseCase {
   final PendingOrdersRepository _pendingOrdersRepository;
 
   GetPendingOrdersUseCase(this._pendingOrdersRepository);
-  Future<BaseResponse<PendingOrderResponseEntity>> call({int limit = 10}) {
-    return _pendingOrdersRepository.getPendingOrders(limit: limit);
+  Future<BaseResponse<PendingOrderResponseEntity>> call({
+    int? limit,
+    required int page,
+  }) {
+    return _pendingOrdersRepository.getPendingOrders(limit: limit, page: page);
   }
 }

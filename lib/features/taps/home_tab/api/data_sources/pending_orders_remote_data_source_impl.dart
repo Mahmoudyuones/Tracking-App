@@ -15,8 +15,11 @@ class PendingOrdersRemoteDataSourceImpl
 
   @override
   Future<BaseResponse<PendingOrderResponseModel>> getPendingOrders({
-    int limit = 10,
+    int? limit,
+    required int page,
   }) {
-    return safeApiCall(() => _homeApiClient.getPendingOrders(limit: limit));
+    return safeApiCall(
+      () => _homeApiClient.getPendingOrders(limit: limit, page: page),
+    );
   }
 }

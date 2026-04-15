@@ -185,6 +185,7 @@ class AppTextString {
   static String get deliveryAddress => 'orders.deliveryAddress'.tr();
   static String get userAddress => 'orders.userAddress'.tr();
   static String get total => 'orders.total'.tr();
+  static String get noMoreOrders => 'orders.noMoreOrders'.tr();
   static String get paymentMethod => 'orders.paymentMethod'.tr();
   static String get completedTitle => 'orders.completed'.tr();
   static String get cancelledTitle => 'orders.cancelled'.tr();

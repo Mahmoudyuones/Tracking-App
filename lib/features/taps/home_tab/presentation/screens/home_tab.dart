@@ -4,7 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../config/di/di.dart';
 import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/gen/assets.gen.dart';
+import '../../../../../core/style/color/app_colors.dart';
 import '../../../../../core/utility/ui/ui_utils.dart';
+import '../../domain/entities/response/pending_orders_response/order_entity.dart';
 import '../cubit/home_intents.dart';
 import '../cubit/home_tab_cubit.dart';
 import '../cubit/home_tab_side_effects.dart';
@@ -21,6 +23,8 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   late final HomeTabCubit _homeTabCubit;
+  final _listKey = GlobalKey<AnimatedListState>();
+  final _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -36,7 +40,37 @@ class _HomeTabState extends State<HomeTab> {
         }
       }
     });
-    _homeTabCubit.doIntent(const GetPendingOrdersIntent());
+    _scrollController.addListener(() {
+      final position = _scrollController.position;
+      if (position.pixels >= position.maxScrollExtent - 200) {
+        _homeTabCubit.doIntent(LoadMorePendingOrdersIntent());
+      }
+    });
+    _homeTabCubit.doIntent(const GetPendingOrdersIntent(limit: 2));
+  }
+
+  void _removeOrder(int index, OrderEntity order) {
+    _listKey.currentState?.removeItem(
+      index,
+      (context, animation) => SizeTransition(
+        sizeFactor: animation,
+        child: Column(
+          children: [
+            OrderCardWidget(order: order, onReject: () {}),
+            const SizedBox(height: 16),
+          ],
+        ),
+      ),
+      duration: const Duration(milliseconds: 300),
+    );
+    _homeTabCubit.doIntent(RejectOrderIntent(orderId: order.id));
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _homeTabCubit.close();
+    super.dispose();
   }
 
   @override
@@ -71,11 +105,47 @@ class _HomeTabState extends State<HomeTab> {
                     return Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 24),
-                        child: ListView.builder(
-                          itemCount: orders.length,
-                          itemBuilder: (context, index) {
-                            return OrderCardWidget(order: orders[index]);
+                        child: RefreshIndicator(
+                          onRefresh: () async {
+                            _homeTabCubit.doIntent(
+                              const GetPendingOrdersIntent(limit: 2),
+                            );
                           },
+                          backgroundColor: AppColors.white,
+                          child: AnimatedList(
+                            key: _listKey,
+                            physics: const BouncingScrollPhysics(),
+                            controller: _scrollController,
+                            initialItemCount: orders.length + 1,
+                            itemBuilder: (context, index, animation) {
+                              if (index == orders.length) {
+                                if (state.isLoadingMore) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.gray,
+                                    ),
+                                  );
+                                }
+                                if (!state.hasMore) {
+                                  return Center(
+                                    child: Text(AppTextString.noMoreOrders),
+                                  );
+                                }
+                                return const SizedBox.shrink();
+                              }
+                              return Column(
+                                children: [
+                                  OrderCardWidget(
+                                    order: orders[index],
+                                    onReject: () {
+                                      _removeOrder(index, orders[index]);
+                                    },
+                                  ),
+                                  const SizedBox(height: 16),
+                                ],
+                              );
+                            },
+                          ),
                         ),
                       ),
                     );
