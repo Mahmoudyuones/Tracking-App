@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../../core/constants/api_endpoints.dart';
 import '../../data/models/response/pending_order_response/pending_order_response_model.dart';
+import '../../data/models/response/start_order_response/start_order_response_model.dart';
 part 'home_api_client.g.dart';
 
 @injectable
@@ -16,4 +17,7 @@ abstract class HomeApiClient {
     @Query('limit') int? limit,
     @Query('page') required int page,
   });
+
+  @POST(ApiEndpoints.startOrder)
+  Future<StartOrderResponseModel> startOrder(@Path('orderId') String orderId);
 }

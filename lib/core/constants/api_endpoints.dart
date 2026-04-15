@@ -26,4 +26,5 @@ class ApiEndpoints {
   static const String orders = 'orders/driver-orders';
   static const String productDetails = 'products/{Id}';
   static const String pendingOrders = 'orders/pending-orders';
+  static const String startOrder = 'orders/start/{orderId}';
 }

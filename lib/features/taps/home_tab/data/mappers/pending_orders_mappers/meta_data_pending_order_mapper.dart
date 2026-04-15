@@ -1,5 +1,5 @@
-import '../../domain/entities/response/pending_orders_response/meta_data_pending_order_entity.dart';
-import '../models/response/pending_order_response/meta_data_pending_order_model.dart';
+import '../../../domain/entities/response/pending_orders_response/meta_data_pending_order_entity.dart';
+import '../../models/response/pending_order_response/meta_data_pending_order_model.dart';
 
 extension MetaDataPendingOrderMapper on MetadataPendingOrderModel {
   MetaDataPendingOrderEntity toEntity() {

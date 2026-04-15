@@ -1,5 +1,5 @@
-import '../../domain/entities/response/pending_orders_response/order_item_entity.dart';
-import '../models/response/pending_order_response/order_item_model.dart';
+import '../../../domain/entities/response/pending_orders_response/order_item_entity.dart';
+import '../../models/response/pending_order_response/order_item_model.dart';
 import 'product_mapper.dart';
 
 extension OrderItemMapper on OrderItemModel {

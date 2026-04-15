@@ -1,5 +1,5 @@
-import '../../domain/entities/response/pending_orders_response/pending_order_response_entity.dart';
-import '../models/response/pending_order_response/pending_order_response_model.dart';
+import '../../../domain/entities/response/pending_orders_response/pending_order_response_entity.dart';
+import '../../models/response/pending_order_response/pending_order_response_model.dart';
 import 'meta_data_pending_order_mapper.dart';
 import 'order_mapper.dart';
 

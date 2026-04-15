@@ -4,7 +4,7 @@ import '../../../../../config/base_response/base_response.dart';
 import '../../domain/entities/response/pending_orders_response/pending_order_response_entity.dart';
 import '../../domain/repositories/pending_orders_repository.dart';
 import '../datasources/remote/pending_orders_remote_data_source.dart';
-import '../mappers/pending_order_response_mapper.dart';
+import '../mappers/pending_orders_mappers/pending_order_response_mapper.dart';
 
 @LazySingleton(as: PendingOrdersRepository)
 class PendingOrdersRepositoryImpl implements PendingOrdersRepository {

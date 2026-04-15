@@ -1,5 +1,5 @@
-import '../../domain/entities/response/pending_orders_response/store_entity.dart';
-import '../models/response/pending_order_response/store_model.dart';
+import '../../../domain/entities/response/pending_orders_response/store_entity.dart';
+import '../../models/response/pending_order_response/store_model.dart';
 
 extension StoreMapper on StoreModel {
   StoreEntity toEntity() {
