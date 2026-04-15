@@ -18,6 +18,6 @@ abstract class HomeApiClient {
     @Query('page') required int page,
   });
 
-  @POST(ApiEndpoints.startOrder)
+  @PUT(ApiEndpoints.startOrder)
   Future<StartOrderResponseModel> startOrder(@Path('orderId') String orderId);
 }

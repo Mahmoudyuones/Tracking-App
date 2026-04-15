@@ -14,7 +14,7 @@ class RejectOrderIntent extends HomeIntents {
   const RejectOrderIntent({required this.orderId});
 }
 
-class AcceptOrderIntent extends HomeIntents {
+class StartOrderIntent extends HomeIntents {
   final String orderId;
-  const AcceptOrderIntent({required this.orderId});
+  const StartOrderIntent({required this.orderId});
 }

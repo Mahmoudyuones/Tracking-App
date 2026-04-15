@@ -9,6 +9,7 @@ class StartOrderEntity {
   final bool isPaid;
   final bool isDelivered;
   final String status;
+  final String orderNumber;
 
   StartOrderEntity({
     required this.id,
@@ -19,5 +20,6 @@ class StartOrderEntity {
     required this.isPaid,
     required this.isDelivered,
     required this.status,
+    required this.orderNumber,
   });
 }

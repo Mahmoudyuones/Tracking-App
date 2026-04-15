@@ -13,6 +13,7 @@ extension StartOrderMapper on StartOrderModel {
       isPaid: isPaid,
       isDelivered: isDelivered,
       status: state,
+      orderNumber: orderNumber,
     );
   }
 }

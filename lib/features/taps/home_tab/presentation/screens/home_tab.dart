@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../config/di/di.dart';
 import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/gen/assets.gen.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/style/color/app_colors.dart';
 import '../../../../../core/utility/ui/ui_utils.dart';
-import '../../domain/entities/response/pending_orders_response/order_entity.dart';
+import '../../domain/entities/response/start_order_response/start_order_response_entity.dart';
 import '../cubit/home_intents.dart';
 import '../cubit/home_tab_cubit.dart';
 import '../cubit/home_tab_side_effects.dart';
@@ -23,7 +27,6 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   late final HomeTabCubit _homeTabCubit;
-  final _listKey = GlobalKey<AnimatedListState>();
   final _scrollController = ScrollController();
 
   @override
@@ -33,10 +36,18 @@ class _HomeTabState extends State<HomeTab> {
     _homeTabCubit.sideEffects.listen((event) {
       if (mounted) {
         switch (event) {
-          case LoadingPendingOrdersSideEffect():
+          case LoadingSideEffect():
             UIUtils.showEasyLoading();
           case HideLoadingSideEffect():
             UIUtils.hideLoading(context);
+          case ErrorToStartOrderSideEffect(message: final message):
+            UIUtils.showMessage(
+              message,
+              backGroundColor: AppColors.error,
+              textColor: AppColors.white,
+            );
+          case SuccessToStartOrderSideEffect(response: final response):
+            _startOrder(response);
         }
       }
     });
@@ -49,21 +60,11 @@ class _HomeTabState extends State<HomeTab> {
     _homeTabCubit.doIntent(const GetPendingOrdersIntent(limit: 2));
   }
 
-  void _removeOrder(int index, OrderEntity order) {
-    _listKey.currentState?.removeItem(
-      index,
-      (context, animation) => SizeTransition(
-        sizeFactor: animation,
-        child: Column(
-          children: [
-            OrderCardWidget(order: order, onReject: () {}),
-            const SizedBox(height: 16),
-          ],
-        ),
-      ),
-      duration: const Duration(milliseconds: 300),
+  void _startOrder(StartOrderResponseEntity response) {
+    context.pushReplacementNamed(
+      AppRoutes.startOrderDetails,
+      extra: response.order,
     );
-    _homeTabCubit.doIntent(RejectOrderIntent(orderId: order.id));
   }
 
   @override
@@ -102,6 +103,7 @@ class _HomeTabState extends State<HomeTab> {
                   } else if (state.getPendingOrdersState?.data?.isNotEmpty ==
                       true) {
                     final orders = state.getPendingOrdersState!.data!;
+                    log('orders in home tab: ${orders.length}');
                     return Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 24),
@@ -112,12 +114,13 @@ class _HomeTabState extends State<HomeTab> {
                             );
                           },
                           backgroundColor: AppColors.white,
-                          child: AnimatedList(
-                            key: _listKey,
-                            physics: const BouncingScrollPhysics(),
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(
+                              parent: AlwaysScrollableScrollPhysics(),
+                            ),
                             controller: _scrollController,
-                            initialItemCount: orders.length + 1,
-                            itemBuilder: (context, index, animation) {
+                            itemCount: orders.length + 1,
+                            itemBuilder: (context, index) {
                               if (index == orders.length) {
                                 if (state.isLoadingMore) {
                                   return const Center(
@@ -133,16 +136,32 @@ class _HomeTabState extends State<HomeTab> {
                                 }
                                 return const SizedBox.shrink();
                               }
-                              return Column(
-                                children: [
-                                  OrderCardWidget(
-                                    order: orders[index],
-                                    onReject: () {
-                                      _removeOrder(index, orders[index]);
-                                    },
-                                  ),
-                                  const SizedBox(height: 16),
-                                ],
+                              final order = orders[index];
+                              return AnimatedSwitcher(
+                                duration: const Duration(milliseconds: 300),
+                                child: Column(
+                                  key: ValueKey(order.id),
+                                  children: [
+                                    OrderCardWidget(
+                                      order: orders[index],
+                                      onAccept: () {
+                                        _homeTabCubit.doIntent(
+                                          StartOrderIntent(
+                                            orderId: orders[index].id,
+                                          ),
+                                        );
+                                      },
+                                      onReject: () {
+                                        _homeTabCubit.doIntent(
+                                          RejectOrderIntent(
+                                            orderId: orders[index].id,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    const SizedBox(height: 16),
+                                  ],
+                                ),
                               );
                             },
                           ),

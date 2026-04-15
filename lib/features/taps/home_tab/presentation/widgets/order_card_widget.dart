@@ -12,10 +12,12 @@ class OrderCardWidget extends StatelessWidget {
     super.key,
     required this.order,
     required this.onReject,
+    required this.onAccept,
   });
 
   final OrderEntity order;
   final VoidCallback onReject;
+  final VoidCallback onAccept;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +81,7 @@ class OrderCardWidget extends StatelessWidget {
               const Spacer(),
               RejectButton(onTap: onReject),
               const SizedBox(width: 10),
-              AcceptButton(onTap: () {}),
+              AcceptButton(onTap: onAccept),
             ],
           ),
         ],
