@@ -1,3 +1,5 @@
+import 'dart:developer' show log;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -108,7 +110,10 @@ class _DriverOrdersScreenState extends State<DriverOrdersScreen> {
 
           final orders = ordersState.data!.orders ?? [];
 
+          log(orders.length.toString());
+
           return CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             slivers: [
               const SliverToBoxAdapter(child: MyOrdersAppBar()),
               SliverToBoxAdapter(

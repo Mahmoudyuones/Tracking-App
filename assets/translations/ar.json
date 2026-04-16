@@ -130,6 +130,7 @@
     "paymentMethod": "طريقة الدفع",
     "completed": "مكتمل",
     "cancelled": "ملغي",
+    "inProgress": "قيد التنفيذ",
     "reject": "رفض",
     "accept": "قبول",
     "noMoreOrders": "لا توجد طلبات أخرى"

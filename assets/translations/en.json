@@ -131,6 +131,7 @@
     "paymentMethod": "Payment Method",
     "completed": "Completed",
     "cancelled": "Cancelled",
+    "inProgress": "In Progress",
     "reject": "Reject",
     "accept": "Accept"
   },

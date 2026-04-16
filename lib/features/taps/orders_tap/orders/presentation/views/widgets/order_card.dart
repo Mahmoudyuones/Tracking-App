@@ -54,7 +54,7 @@ class OrderCard extends StatelessWidget {
                 name:
                     '${order.order?.user?.firstName ?? ''} ${order.order?.user?.lastName ?? ''}'
                         .trim(),
-                address: '',
+                address: 'Ahmed Helmy St, Nasr City, Cairo',
                 isStore: false,
               ),
             ],

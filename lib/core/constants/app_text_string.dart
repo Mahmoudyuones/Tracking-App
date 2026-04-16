@@ -189,6 +189,7 @@ class AppTextString {
   static String get paymentMethod => 'orders.paymentMethod'.tr();
   static String get completedTitle => 'orders.completed'.tr();
   static String get cancelledTitle => 'orders.cancelled'.tr();
+  static String get inProgressTitle => 'orders.inProgress'.tr();
   static String get reject => 'orders.reject'.tr();
   static String get accept => 'orders.accept'.tr();
   // Raw status keys used for comparisons (not translated)

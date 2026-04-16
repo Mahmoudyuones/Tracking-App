@@ -67,7 +67,7 @@ class OrderCardWidget extends StatelessWidget {
           AddressCard(
             image: '${ApiEndpoints.uploadedPhotos}${order.user.photo}',
             name: '${order.user.firstName} ${order.user.lastName}',
-            address: 'Ahmed Helmy, 6th of October, Giza',
+            address: 'Ahmed Helmy St, Nasr City, Cairo',
           ),
           const SizedBox(height: 18),
           Row(
