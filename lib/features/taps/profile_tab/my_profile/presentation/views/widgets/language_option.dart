@@ -52,7 +52,7 @@ class LanguageOption extends StatelessWidget {
               duration: const Duration(milliseconds: 200),
               child: isSelected
                   ? Container(
-                      key: ValueKey(AppTextString.selected),
+                      key: const ValueKey(AppTextString.selected),
                       width: 22,
                       height: 22,
                       decoration: const BoxDecoration(
@@ -66,7 +66,7 @@ class LanguageOption extends StatelessWidget {
                       ),
                     )
                   : Container(
-                      key: ValueKey(AppTextString.unSelected),
+                      key: const ValueKey(AppTextString.unSelected),
                       width: 22,
                       height: 22,
                       decoration: BoxDecoration(

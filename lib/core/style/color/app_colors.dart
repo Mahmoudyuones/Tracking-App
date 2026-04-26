@@ -38,6 +38,7 @@ class AppColors {
   // Common Colors
   // =========================
   static const Color white = Color(0xFFFFFFFF);
+  static const Color borderWhite = Color(0xFFEEEEEE);
   static const Color whiteLight = Color(0xFFCFCFCF);
   static const Color black = Color(0xFF000000);
   static const Color gray = Color(0xFFA6A6A6);

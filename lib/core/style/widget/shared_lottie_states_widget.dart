@@ -33,7 +33,7 @@ class SharedLottieStatesWidget extends StatelessWidget {
             width: width ?? screenSize.width * 0.4,
             height: height ?? screenSize.height * 0.4,
             fit: BoxFit.contain,
-            repeat: true,
+            repeat: false,
           ),
           Text(
             text,

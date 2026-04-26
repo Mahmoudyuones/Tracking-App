@@ -12,7 +12,12 @@ class OrderCardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final String status = order.order?.state ?? '';
     final bool isCompleted = status == AppTextString.completed;
-    final Color statusColor = isCompleted ? AppColors.green : AppColors.red;
+    final bool isCancelled = status == AppTextString.cancelled;
+    final Color statusColor = isCompleted
+        ? AppColors.green
+        : isCancelled
+        ? AppColors.red
+        : AppColors.lightTextgreen;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +35,9 @@ class OrderCardHeader extends StatelessWidget {
             Icon(
               isCompleted
                   ? Icons.check_circle_outline_rounded
-                  : Icons.cancel_outlined,
+                  : isCancelled
+                  ? Icons.cancel_outlined
+                  : Icons.access_time_outlined,
               color: statusColor,
               size: 20,
             ),
@@ -38,7 +45,9 @@ class OrderCardHeader extends StatelessWidget {
             Text(
               isCompleted
                   ? AppTextString.completedTitle
-                  : AppTextString.cancelledTitle,
+                  : isCancelled
+                  ? AppTextString.cancelledTitle
+                  : AppTextString.inProgressTitle,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: statusColor,
                 fontWeight: FontWeight.w500,
