@@ -40,6 +40,9 @@ class AppTextString {
 
   // ─────────────────────────────── Errors ───────────────────────────────── //
   static String get navigationError => 'errors.navigation'.tr();
+  static String get orderNotFound => 'errors.orderNotFound'.tr();
+  static String get failedToLoadOrderDetails =>
+      'errors.failedToLoadOrderDetails'.tr();
 
   // ───────────────────────── Auth — Onboarding ──────────────────────────── //
   static String get onboarding => 'auth.onboarding'.tr();

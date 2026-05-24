@@ -1,8 +1,8 @@
-import '../../../../../config/base_response/base_response.dart';
-import '../../../../../core/shared/models/order_details_model.dart';
+import '../../../../config/base_response/base_response.dart';
+import '../../../../core/shared/entities/order_details_entity.dart';
 
-abstract interface class UpdateOrderStateRemoteDataSource {
-  Stream<BaseResponse<OrderDetailsModel>> getOrderByOrderId({
+abstract interface class UpdateOrderStateRepository {
+  Stream<BaseResponse<OrderDetailsEntity>> getOrderByOrderId({
     required String userId,
     required String orderId,
   });
