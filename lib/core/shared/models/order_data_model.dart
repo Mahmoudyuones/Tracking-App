@@ -1,0 +1,311 @@
+import 'location_model.dart';
+
+class OrderDataModel {
+  final String id;
+  final UserDataModel user;
+  final List<OrderItemsModel> orderItems;
+  final int totalPrice;
+  final String paymentType;
+  final bool isPaid;
+  final bool isDelivered;
+  final String state;
+  final String createdAt;
+  final String updatedAt;
+  final String orderNumber;
+  final StoreModel store;
+  OrderDataModel({
+    String? id,
+    UserDataModel? user,
+    List<OrderItemsModel>? orderItems,
+    int? totalPrice,
+    String? paymentType,
+    bool? isPaid,
+    bool? isDelivered,
+    String? state,
+    String? createdAt,
+    String? updatedAt,
+    String? orderNumber,
+    StoreModel? store,
+  }) : id = id ?? '',
+       user = user ?? UserDataModel(),
+       orderItems = orderItems ?? [],
+       totalPrice = totalPrice ?? 0,
+       paymentType = paymentType ?? '',
+       isPaid = isPaid ?? false,
+       isDelivered = isDelivered ?? false,
+       state = state ?? '',
+       createdAt = createdAt ?? '',
+       updatedAt = updatedAt ?? '',
+       orderNumber = orderNumber ?? '',
+       store = store ?? StoreModel();
+
+  factory OrderDataModel.fromJson(Map<String, dynamic> json) {
+    return OrderDataModel(
+      id: json['id'],
+      user: json['user'] != null
+          ? UserDataModel.fromJson(json['user'])
+          : UserDataModel(),
+      orderItems: json['orderItems'] != null
+          ? (json['orderItems'] as List)
+                .map(
+                  (e) => e != null
+                      ? OrderItemsModel.fromJson(e)
+                      : OrderItemsModel(),
+                )
+                .toList()
+          : [],
+      totalPrice: json['totalPrice'],
+      paymentType: json['paymentType'],
+      isPaid: json['isPaid'],
+      isDelivered: json['isDelivered'],
+      state: json['state'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+      orderNumber: json['orderNumber'],
+      store: json['store'] != null
+          ? StoreModel.fromJson(json['store'])
+          : StoreModel(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'user': user.toJson(),
+      'orderItems': orderItems.map((e) => e.toJson()).toList(),
+      'totalPrice': totalPrice,
+      'paymentType': paymentType,
+      'isPaid': isPaid,
+      'isDelivered': isDelivered,
+      'state': state,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+      'orderNumber': orderNumber,
+      'store': store.toJson(),
+    };
+  }
+}
+
+class UserDataModel {
+  final String id;
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String gender;
+  final String phone;
+  final String photo;
+  final LocationModel location;
+
+  UserDataModel({
+    String? id,
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? gender,
+    String? phone,
+    String? photo,
+    LocationModel? location,
+  }) : id = id ?? '',
+       firstName = firstName ?? '',
+       lastName = lastName ?? '',
+       email = email ?? '',
+       gender = gender ?? '',
+       phone = phone ?? '',
+       photo = photo ?? '',
+       location = location ?? LocationModel();
+
+  factory UserDataModel.fromJson(Map<String, dynamic> json) {
+    return UserDataModel(
+      id: json['id'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      email: json['email'],
+      gender: json['gender'],
+      phone: json['phone'],
+      photo: json['photo'],
+      location: json['location'] != null
+          ? LocationModel.fromJson(json['location'])
+          : LocationModel(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'gender': gender,
+      'phone': phone,
+      'photo': photo,
+      'location': location.toJson(),
+    };
+  }
+}
+
+class OrderItemsModel {
+  final ProductModel product;
+  final int price;
+  final int quantity;
+  final String id;
+
+  OrderItemsModel({
+    ProductModel? product,
+    int? price,
+    int? quantity,
+    String? id,
+  }) : product = product ?? ProductModel(),
+       price = price ?? 0,
+       quantity = quantity ?? 0,
+       id = id ?? '';
+
+  factory OrderItemsModel.fromJson(Map<String, dynamic> json) {
+    return OrderItemsModel(
+      product: json['product'] != null
+          ? ProductModel.fromJson(json['product'])
+          : ProductModel(),
+      price: json['price'],
+      quantity: json['quantity'],
+      id: json['id'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'product': product.toJson(),
+      'price': price,
+      'quantity': quantity,
+      'id': id,
+    };
+  }
+}
+
+class ProductModel {
+  final String id;
+  final String title;
+  final String slug;
+  final String description;
+  final String imgCover;
+  final List<String> images;
+  final int price;
+  final int priceAfterDiscount;
+  final int quantity;
+  final String category;
+  final String occasion;
+  final String createdAt;
+  final String updatedAt;
+  final int discount;
+  final int sold;
+
+  ProductModel({
+    String? id,
+    String? title,
+    String? slug,
+    String? description,
+    String? imgCover,
+    List<String>? images,
+    int? price,
+    int? priceAfterDiscount,
+    int? quantity,
+    String? category,
+    String? occasion,
+    String? createdAt,
+    String? updatedAt,
+    int? discount,
+    int? sold,
+  }) : id = id ?? '',
+       title = title ?? '',
+       slug = slug ?? '',
+       description = description ?? '',
+       imgCover = imgCover ?? '',
+       images = images ?? [],
+       price = price ?? 0,
+       priceAfterDiscount = priceAfterDiscount ?? 0,
+       quantity = quantity ?? 0,
+       category = category ?? '',
+       occasion = occasion ?? '',
+       createdAt = createdAt ?? '',
+       updatedAt = updatedAt ?? '',
+       discount = discount ?? 0,
+       sold = sold ?? 0;
+
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      id: json['id'],
+      title: json['title'],
+      slug: json['slug'],
+      description: json['description'],
+      imgCover: json['imgCover'],
+      images: json['images'] != null ? List<String>.from(json['images']) : [],
+      price: json['price'],
+      priceAfterDiscount: json['priceAfterDiscount'],
+      quantity: json['quantity'],
+      category: json['category'],
+      occasion: json['occasion'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+      discount: json['discount'],
+      sold: json['sold'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'slug': slug,
+      'description': description,
+      'imgCover': imgCover,
+      'images': images,
+      'price': price,
+      'priceAfterDiscount': priceAfterDiscount,
+      'quantity': quantity,
+      'category': category,
+      'occasion': occasion,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+      'discount': discount,
+      'sold': sold,
+    };
+  }
+}
+
+class StoreModel {
+  final String name;
+  final String image;
+  final String address;
+  final String phoneNumber;
+  final String latLong;
+
+  StoreModel({
+    String? name,
+    String? image,
+    String? address,
+    String? phoneNumber,
+    String? latLong,
+  }) : name = name ?? '',
+       image = image ?? '',
+       address = address ?? '',
+       phoneNumber = phoneNumber ?? '',
+       latLong = latLong ?? '';
+
+  factory StoreModel.fromJson(Map<String, dynamic> json) {
+    return StoreModel(
+      name: json['name'],
+      image: json['image'],
+      address: json['address'],
+      phoneNumber: json['phoneNumber'],
+      latLong: json['latLong'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'image': image,
+      'address': address,
+      'phoneNumber': phoneNumber,
+      'latLong': latLong,
+    };
+  }
+}

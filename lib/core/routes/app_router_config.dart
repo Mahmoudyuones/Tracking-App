@@ -10,8 +10,6 @@ import '../../core/enums/home_nav_bar.dart';
 import '../../features/auth/apply/presentation/screens/apply_screen.dart';
 import '../../features/auth/apply/presentation/screens/sucsess_apply_screen.dart';
 import '../../features/auth/login/presentation/views/login_view.dart';
-import '../../features/start_order_details/presentation/screens/start_order_details_screen.dart';
-import '../../features/taps/home_tab/domain/entities/response/start_order_response/start_order_entity.dart';
 import '../../features/taps/profile_tab/change_password/presentation/view/screens/change_password_screen.dart';
 import '../../features/taps/profile_tab/edit_profile/presentation/view/screens/edit_profile_screen.dart';
 import '../../features/main/presentation/cubit/main_cubit.dart';
@@ -103,8 +101,8 @@ class AppRouterConfig {
         path: AppRoutes.startOrderDetails,
         name: AppRoutes.startOrderDetails,
         builder: (context, state) {
-          final order = state.extra as StartOrderEntity;
-          return StartOrderDetailsScreen(order: order);
+          //final order = state.extra as StartOrderEntity;
+          return const Placeholder();
         },
       ),
     ],

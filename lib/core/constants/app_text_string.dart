@@ -129,6 +129,7 @@ class AppTextString {
       'auth.forgetPassword.messageSentSuccessfully'.tr();
   static String get otpResentSuccess =>
       'auth.forgetPassword.otpResentSuccess'.tr();
+  // ───────────────────── Auth — Forget / Reset Password ─────────────────── //
   static String get resetPasswordHeader =>
       'auth.forgetPassword.resetPasswordHeader'.tr();
   static String get resetPasswordTitle =>
@@ -139,6 +140,7 @@ class AppTextString {
       'auth.forgetPassword.currentPassword'.tr();
   static String get newPassword => 'auth.forgetPassword.newPassword'.tr();
 
+  // ───────────────────────── Auth — Messages ────────────────────────────── //
   // ───────────────────────── Auth — Messages ────────────────────────────── //
   static String get failedToRegister => 'auth.messages.failedToRegister'.tr();
   static String get creatingAccountAgreement =>
@@ -171,6 +173,10 @@ class AppTextString {
 
   // ─────────────────────────────── Home ─────────────────────────────────── //
   static String get home => 'home.title'.tr();
+  static String get driverDetailsNotFound => 'home.driverDetailsNotFound'.tr();
+  static String get defaultDeliveryAddress =>
+      'home.defaultDeliveryAddress'.tr();
+  static String get ordersInHomeTabLog => 'home.ordersInHomeTabLog'.tr();
   static String get homeNav => 'bottomNavBar.home'.tr();
 
   // ─────────────────────────────── Orders ───────────────────────────────── //
@@ -239,6 +245,7 @@ class AppTextString {
   static String get logoutText => 'logout'.tr();
   static String get confirmLogout => 'common.confirmLogout'.tr();
 
+  // ─────────────────────────────── Success ──────────────────────────────── //
   // ─────────────────────────────── Success ──────────────────────────────── //
   static String get done => 'success.done'.tr();
   static String get thankYou => 'success.thankYou'.tr();

@@ -57,6 +57,7 @@ class _HomeTabState extends State<HomeTab> {
         _homeTabCubit.doIntent(LoadMorePendingOrdersIntent());
       }
     });
+    _homeTabCubit.doIntent(GetMyProfileIntent());
     _homeTabCubit.doIntent(const GetPendingOrdersIntent(limit: 2));
   }
 
@@ -103,7 +104,9 @@ class _HomeTabState extends State<HomeTab> {
                   } else if (state.getPendingOrdersState?.data?.isNotEmpty ==
                       true) {
                     final orders = state.getPendingOrdersState!.data!;
-                    log('orders in home tab: ${orders.length}');
+                    log(
+                      '${AppTextString.ordersInHomeTabLog}: ${orders.length}',
+                    );
                     return Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 24),
@@ -148,6 +151,7 @@ class _HomeTabState extends State<HomeTab> {
                                         _homeTabCubit.doIntent(
                                           StartOrderIntent(
                                             orderId: orders[index].id,
+                                            orderDetails: orders[index],
                                           ),
                                         );
                                       },

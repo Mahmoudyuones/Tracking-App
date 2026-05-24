@@ -3,17 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../config/base_response/base_response.dart';
 import '../../../../../config/base_state/base_state.dart';
+import '../../../../../core/constants/app_text_string.dart';
 import '../../domain/entities/response/pending_orders_response/order_entity.dart';
+import '../../domain/repositories/add_order_datails_use_case.dart';
+import '../../domain/usecases/get_driver_details_use_case.dart';
 import '../../domain/usecases/get_pending_orders_use_case.dart';
 import '../../domain/usecases/start_order_use_case.dart';
+import '../mappers/order_details_entity_mapper.dart';
 import 'home_intents.dart';
 import 'home_tab_side_effects.dart';
 import 'home_tab_state.dart';
 
 @injectable
 class HomeTabCubit extends Cubit<HomeTabState> {
-  HomeTabCubit(this._getPendingOrdersUseCase, this._startOrderUseCase)
-    : super(const HomeTabState());
+  HomeTabCubit(
+    this._getPendingOrdersUseCase,
+    this._startOrderUseCase,
+    this._addOrderDatailsUseCase,
+    this._getDriverDetailsUseCase,
+  ) : super(const HomeTabState());
 
   int _currentPage = 1;
   int _totalPages = 1;
@@ -21,6 +29,8 @@ class HomeTabCubit extends Cubit<HomeTabState> {
 
   final GetPendingOrdersUseCase _getPendingOrdersUseCase;
   final StartOrderUseCase _startOrderUseCase;
+  final AddOrderDatailsUseCase _addOrderDatailsUseCase;
+  final GetDriverDetailsUseCase _getDriverDetailsUseCase;
   final StreamController<HomeTabSideEffects> _sideEffectsController =
       StreamController<HomeTabSideEffects>.broadcast();
 
@@ -35,7 +45,9 @@ class HomeTabCubit extends Cubit<HomeTabState> {
       case RejectOrderIntent():
         _rejectOrder(intent.orderId);
       case StartOrderIntent():
-        _startOrder(intent.orderId);
+        _startOrder(intent.orderId, intent.orderDetails);
+      case GetMyProfileIntent():
+        _getMyProfile();
     }
   }
 
@@ -119,14 +131,39 @@ class HomeTabCubit extends Cubit<HomeTabState> {
     );
   }
 
-  Future<void> _startOrder(String orderId) async {
+  Future<void> _startOrder(String orderId, OrderEntity orderDetails) async {
+    final driverDetails = state.driverDetails;
+    if (driverDetails == null) {
+      _sideEffectsController.add(
+        ErrorToStartOrderSideEffect(
+          message: AppTextString.driverDetailsNotFound,
+        ),
+      );
+      return;
+    }
+    final orderDetailsEntity = orderDetails.toOrderDetailsEntity(
+      driver: driverDetails,
+    );
     _sideEffectsController.add(LoadingSideEffect());
     final result = await _startOrderUseCase(orderId);
+    final addDetailsResult = await _addOrderDatailsUseCase(
+      orderDetails: orderDetailsEntity,
+    );
     result.when(
       success: (response) {
-        _sideEffectsController.add(HideLoadingSideEffect());
-        _sideEffectsController.add(
-          SuccessToStartOrderSideEffect(response: response),
+        addDetailsResult.when(
+          success: (detailsResponse) {
+            _sideEffectsController.add(HideLoadingSideEffect());
+            _sideEffectsController.add(
+              SuccessToStartOrderSideEffect(response: response),
+            );
+          },
+          failure: (detailsFailure) {
+            _sideEffectsController.add(HideLoadingSideEffect());
+            _sideEffectsController.add(
+              ErrorToStartOrderSideEffect(message: detailsFailure.message),
+            );
+          },
         );
       },
       failure: (failure) {
@@ -135,6 +172,16 @@ class HomeTabCubit extends Cubit<HomeTabState> {
           ErrorToStartOrderSideEffect(message: failure.message),
         );
       },
+    );
+  }
+
+  Future<void> _getMyProfile() async {
+    final result = await _getDriverDetailsUseCase();
+    result.when(
+      success: (response) {
+        emit(state.copyWith(driverDetails: response));
+      },
+      failure: (failure) {},
     );
   }
 
