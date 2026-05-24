@@ -8,7 +8,14 @@ extension PendingOrderResponseMapper on PendingOrderResponseModel {
     return PendingOrderResponseEntity(
       message: message,
       metadata: metadata.toEntity(),
-      orders: orders.map((e) => e.toEntity()).toList(),
+      orders: orders
+          .where(
+            (order) =>
+                order.user != null &&
+                order.orderItems.every((item) => item.product != null),
+          )
+          .map((e) => e.toEntity())
+          .toList(),
     );
   }
 }

@@ -5,7 +5,7 @@ part 'order_item_model.g.dart';
 @JsonSerializable()
 class OrderItemModel {
   @JsonKey(name: 'product')
-  final ProductModel product;
+  final ProductModel? product;
   @JsonKey(name: 'price')
   final int price;
   @JsonKey(name: 'quantity')
@@ -14,7 +14,7 @@ class OrderItemModel {
   final String id;
 
   OrderItemModel({
-    required this.product,
+    this.product,
     required this.price,
     required this.quantity,
     required this.id,

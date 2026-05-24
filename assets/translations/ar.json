@@ -19,12 +19,9 @@
     "confirmLogout": "تأكيد تسجيل الخروج"
   },
   "errors": {
-    "navigation": "خطأ في التنقل"
+    "navigation": "خطأ في التنقل",
     "fileIsTooLarge": "حجم الملف كبير جدًا",
     "confirmLogout": "تأكيد تسجيل الخروج"
-  },
-  "errors": {
-    "navigation": "خطأ في التنقل"
   },
   "auth": {
     "onboarding": "مرحبًا بك في\nتطبيق Flowery للسائقين",
@@ -186,6 +183,10 @@
     "driverDetailsNotFound": "لم يتم العثور على بيانات السائق، يرجى المحاولة لاحقًا",
     "defaultDeliveryAddress": "شارع أحمد حلمي، مدينة نصر، القاهرة",
     "ordersInHomeTabLog": "الطلبات في صفحة الرئيسية"
+    "title": "الرئيسية",
+    "driverDetailsNotFound": "لم يتم العثور على بيانات السائق، يرجى المحاولة لاحقًا",
+    "defaultDeliveryAddress": "شارع أحمد حلمي، مدينة نصر، القاهرة",
+    "ordersInHomeTabLog": "الطلبات في صفحة الرئيسية"
   },
   "orders": {
     "myOrders": "طلباتي",
@@ -197,13 +198,13 @@
     "deliveryAddress": "عنوان التوصيل",
     "userAddress": "عنوان المستخدم",
     "total": "الإجمالي",
+    "noMoreOrders": "لا توجد طلبات أخرى",
     "paymentMethod": "طريقة الدفع",
     "completed": "مكتمل",
-    "cancelled": "ملغي",
+    "cancelled": "تم الإلغاء",
     "inProgress": "قيد التنفيذ",
     "reject": "رفض",
-    "accept": "قبول",
-    "noMoreOrders": "لا توجد طلبات أخرى"
+    "accept": "قبول"
   },
   "profile": {
     "title": "الملف الشخصي",
@@ -273,3 +274,4 @@
     "theOrderDeliveredSuccessfully": "تم تسليم الطلب بنجاح"
   }
 }
+

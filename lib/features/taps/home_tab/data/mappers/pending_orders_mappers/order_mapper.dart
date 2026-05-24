@@ -10,7 +10,7 @@ extension OrderMapper on OrderModel {
       id: id,
       totalPrice: totalPrice.toDouble(),
       orderItems: orderItems.map((item) => item.toEntity()).toList(),
-      user: user.toEntity(),
+      user: user!.toEntity(),
       paymentType: paymentType,
       isPaid: isPaid,
       isDelivered: isDelivered,

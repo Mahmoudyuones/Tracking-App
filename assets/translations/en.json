@@ -18,12 +18,9 @@
     "confirmLogout": "Confirm Logout"
   },
   "errors": {
-    "navigation": "Navigation error"
+    "navigation": "Navigation error",
     "fileIsTooLarge": "File is too large",
     "confirmLogout": "Confirm Logout"
-  },
-  "errors": {
-    "navigation": "Navigation error"
   },
   "auth": {
     "onboarding": "Welcome to\nFlowery rider app",
@@ -76,7 +73,7 @@
       "enterPassword": "Enter your password",
       "enterYourNewPassword": "Enter your new password",
       "enterCurrentPassword": "Enter your current password",
-      "enterConfirmPassword": "Confirm your password",
+      "enterConfirmPassword": "Please enter your password",
       "enterFirstName": "Enter your first name",
       "enterLastName": "Enter your last name",
       "enterPhoneNumber": "Enter your phone number",
@@ -129,7 +126,7 @@
       "enterPassword": "Enter your password",
       "enterYourNewPassword": "Enter your new password",
       "enterCurrentPassword": "Enter your current password",
-      "enterConfirmPassword": "Confirm your password",
+      "enterConfirmPassword": "Please enter your password",
       "enterFirstName": "Enter your first name",
       "enterLastName": "Enter your last name",
       "enterPhoneNumber": "Enter your phone number",
@@ -187,6 +184,10 @@
     }
   },
   "home": {
+    "title": "Home",
+    "driverDetailsNotFound": "Driver details not found, please try again later",
+    "defaultDeliveryAddress": "Ahmed Helmy St, Nasr City, Cairo",
+    "ordersInHomeTabLog": "Orders in home tab"
     "title": "Home",
     "driverDetailsNotFound": "Driver details not found, please try again later",
     "defaultDeliveryAddress": "Ahmed Helmy St, Nasr City, Cairo",
@@ -280,3 +281,4 @@
     "theOrderDeliveredSuccessfully": "The order has been delivered successfully"
   }
 }
+
