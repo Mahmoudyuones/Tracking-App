@@ -36,7 +36,7 @@ class OrderModel {
 
   OrderModel({
     required this.id,
-  this.user,
+    this.user,
     required this.orderItems,
     required this.totalPrice,
     required this.paymentType,
