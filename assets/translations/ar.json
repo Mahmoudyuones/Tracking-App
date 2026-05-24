@@ -115,7 +115,10 @@
     }
   },
   "home": {
-    "title": "الرئيسية"
+    "title": "الرئيسية",
+    "driverDetailsNotFound": "لم يتم العثور على بيانات السائق، يرجى المحاولة لاحقًا",
+    "defaultDeliveryAddress": "شارع أحمد حلمي، مدينة نصر، القاهرة",
+    "ordersInHomeTabLog": "الطلبات في صفحة الرئيسية"
   },
   "orders": {
     "myOrders": "طلباتي",

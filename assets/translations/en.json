@@ -115,7 +115,10 @@
     }
   },
   "home": {
-    "title": "Home"
+    "title": "Home",
+    "driverDetailsNotFound": "Driver details not found, please try again later",
+    "defaultDeliveryAddress": "Ahmed Helmy St, Nasr City, Cairo",
+    "ordersInHomeTabLog": "Orders in home tab"
   },
   "orders": {
     "myOrders": "My Orders",

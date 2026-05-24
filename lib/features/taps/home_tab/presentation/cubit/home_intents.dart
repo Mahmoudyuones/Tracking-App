@@ -1,3 +1,5 @@
+import '../../domain/entities/response/pending_orders_response/order_entity.dart';
+
 sealed class HomeIntents {
   const HomeIntents();
 }
@@ -16,5 +18,8 @@ class RejectOrderIntent extends HomeIntents {
 
 class StartOrderIntent extends HomeIntents {
   final String orderId;
-  const StartOrderIntent({required this.orderId});
+  final OrderEntity orderDetails;
+  const StartOrderIntent({required this.orderId, required this.orderDetails});
 }
+
+class GetMyProfileIntent extends HomeIntents {}

@@ -171,6 +171,10 @@ class AppTextString {
 
   // ─────────────────────────────── Home ─────────────────────────────────── //
   static String get home => 'home.title'.tr();
+  static String get driverDetailsNotFound => 'home.driverDetailsNotFound'.tr();
+  static String get defaultDeliveryAddress =>
+      'home.defaultDeliveryAddress'.tr();
+  static String get ordersInHomeTabLog => 'home.ordersInHomeTabLog'.tr();
   static String get homeNav => 'bottomNavBar.home'.tr();
 
   // ─────────────────────────────── Orders ───────────────────────────────── //
