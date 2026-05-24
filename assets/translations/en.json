@@ -1,13 +1,11 @@
 {
   "common": {
     "loading": "Loading",
-    "loading": "Loading",
     "retry": "Retry",
     "cancel": "Cancel",
     "confirm": "Confirm",
     "update": "Update",
     "delete": "Delete",
-    "continueBtn": "Continue",
     "continueBtn": "Continue",
     "uploadPhoto": "Upload Photo",
     "gallery": "Gallery",
@@ -18,25 +16,19 @@
     "confirmLogout": "Confirm Logout"
   },
   "errors": {
-    "navigation": "Navigation error"
+    "navigation": "Navigation error",
     "fileIsTooLarge": "File is too large",
     "confirmLogout": "Confirm Logout"
-  },
-  "errors": {
-    "navigation": "Navigation error"
   },
   "auth": {
     "onboarding": "Welcome to\nFlowery rider app",
     "login": "Login",
     "applyNow": "Apply now",
     "dontHaveAnAccount": "Don't have an account?",
-    "dontHaveAnAccount": "Don't have an account?",
     "rememberMe": "Remember Me",
     "didForgetPassword": "Forget password?",
     "apply": {
       "apply": "Apply",
-      "header": "Welcome",
-      "title": "Please fill in your details to apply",
       "header": "Welcome",
       "title": "Please fill in your details to apply",
       "country": "Country",
@@ -46,7 +38,6 @@
       "vehicleType": "Vehicle Type",
       "vehicleNumber": "Vehicle Number",
       "vehicleLicense": "Vehicle License",
-      "uploadLicensePhoto": "Upload License Photo",
       "uploadLicensePhoto": "Upload License Photo",
       "nationalId": "National ID",
       "uploadNationalIdPhoto": "Upload National ID Photo"
@@ -76,60 +67,7 @@
       "enterPassword": "Enter your password",
       "enterYourNewPassword": "Enter your new password",
       "enterCurrentPassword": "Enter your current password",
-      "enterConfirmPassword": "Confirm your password",
-      "enterFirstName": "Enter your first name",
-      "enterLastName": "Enter your last name",
-      "enterPhoneNumber": "Enter your phone number",
-      "enterFirstLegalName": "Enter your first legal name",
-      "enterSecondLegalName": "Enter your second legal name",
-      "enterVehicleNumber": "Enter your vehicle number",
-      "uploadVehicleLicensePhoto": "Upload vehicle license photo",
-      "enterNationalIdNumber": "Enter your national ID number",
-      "uploadIdImagePhoto": "Upload ID image photo"
-    },
-    "forgetPassword": {
-      "header": "Forget Password",
-      "title": "Enter your email to reset your password",
-      "pleaseEnterYourEmail": "Please enter your email",
-      "emailVerificationHeader": "Email Verification",
-      "emailVerificationTitle": "Enter the code sent to your email",
-      "didResentCode": "Didn't receive the code?",
-      "resend": "Resend",
-      "enterValidCode": "Please enter a valid code",
-      "completeFields": "Please complete all fields",
-      "passwordsDontMatch": "Passwords don't match",
-      "messageSentSuccessfully": "Message sent successfully",
-      "otpResentSuccess": "OTP resent successfully",
-      "resetPasswordHeader": "Reset Password",
-      "resetPasswordTitle": "Enter your new password",
-      "newPasswordHint": "Enter new password",
-      "currentPassword": "Current Password",
-      "newPassword": "New Password"
-      "header": "Application Submitted",
-      "title": "Your application has been submitted successfully. We will review it shortly."
-    },
-    "labels": {
-      "email": "Email",
-      "password": "Password",
-      "currentPassword": "Current Password",
-      "newPassword": "New Password",
-      "confirmPassword": "Confirm Password",
-      "country": "Country",
-      "firstLegalName": "First Legal Name",
-      "secondLegalName": "Second Legal Name",
-      "vehicleType": "Vehicle Type",
-      "vehicleNumber": "Vehicle Number",
-      "vehicleLicense": "Vehicle License",
-      "phoneNumber": "Phone Number",
-      "idNumber": "ID Number",
-      "idImage": "ID Image"
-    },
-    "hints": {
-      "enterEmail": "Enter your email",
-      "enterPassword": "Enter your password",
-      "enterYourNewPassword": "Enter your new password",
-      "enterCurrentPassword": "Enter your current password",
-      "enterConfirmPassword": "Confirm your password",
+      "enterConfirmPassword": "Please enter your password",
       "enterFirstName": "Enter your first name",
       "enterLastName": "Enter your last name",
       "enterPhoneNumber": "Enter your phone number",
@@ -163,15 +101,9 @@
       "failedToRegister": "Failed to register. Please try again.",
       "creatingAccountAgreement": "By creating an account, you agree to our",
       "termsAndConditions": "Terms and Conditions",
-      "creatingAccountAgreement": "By creating an account, you agree to our",
-      "termsAndConditions": "Terms and Conditions",
       "alreadyHaveAccount": "Already have an account?",
       "invalidPhoneNumber": "Invalid phone number",
       "accountCreatedSuccessfully": "Account created successfully",
-      "loginSuccess": "Logged in successfully",
-      "passwordUpdatedSuccessfully": "Password updated successfully",
-      "failedToUpdatePassword": "Failed to update password",
-      "newPasswordSameAsOld": "New password cannot be the same as the old one",
       "loginSuccess": "Logged in successfully",
       "passwordUpdatedSuccessfully": "Password updated successfully",
       "failedToUpdatePassword": "Failed to update password",
@@ -180,9 +112,7 @@
       "pleaseEnterYourCurrentPassword": "Please enter your current password",
       "pleaseEnterYourNewPassword": "Please enter your new password",
       "emailFocusError": "Please enter a valid email address",
-      "emailFocusError": "Please enter a valid email address",
       "passwordsDoNotMatch": "Passwords do not match",
-      "invalidCode": "Invalid code"
       "invalidCode": "Invalid code"
     }
   },
@@ -214,22 +144,10 @@
     "title": "Profile",
     "vehicleInfo": "Vehicle Info",
     "notification": "Notifications",
-    "title": "Profile",
-    "vehicleInfo": "Vehicle Info",
-    "notification": "Notifications",
     "chooseLanguage": "Choose Language",
-    "language": "Language",
     "language": "Language",
     "english": "English",
     "arabic": "Arabic",
-    "switchToArabic": "Switch to Arabic",
-    "switchToEnglish": "Switch to English",
-    "termsAndConditionsPolicy": "Terms and Conditions",
-    "aboutUsPolicy": "About Us",
-    "savedAddresses": "Saved Addresses",
-    "termsAppBarTitle": "Terms and Conditions",
-    "appInfoAppBarTitle": "About Us",
-    "noTermsDataAvailable": "No terms data available"
     "switchToArabic": "Switch to Arabic",
     "switchToEnglish": "Switch to English",
     "termsAndConditionsPolicy": "Terms and Conditions",
@@ -242,13 +160,10 @@
   "editProfile": {
     "title": "Edit Profile",
     "change": "Change",
-    "change": "Change",
     "uploadImage": "Upload Image",
-    "updateProfile": "Update Profile",
     "updateProfile": "Update Profile",
     "firstName": "First Name",
     "lastName": "Last Name",
-    "phoneNumber": "Phone Number",
     "phoneNumber": "Phone Number",
     "gender": "Gender",
     "female": "Female",
@@ -262,20 +177,9 @@
     "home": "Home",
     "orders": "Orders",
     "profile": "Profile"
-    "profilePhotoUpdatedSuccessfully": "Profile photo updated successfully",
-    "profileUpdatedSuccessfully": "Profile updated successfully",
-    "noChangesToUpdate": "No changes to update"
-  },
-  "logout": "Logout",
-  "bottomNavBar": {
-    "home": "Home",
-    "orders": "Orders",
-    "profile": "Profile"
   },
   "success": {
     "done": "Done",
-    "thankYou": "Thank You!",
-    "theOrderDeliveredSuccessfully": "The order has been delivered successfully"
     "thankYou": "Thank You!",
     "theOrderDeliveredSuccessfully": "The order has been delivered successfully"
   }

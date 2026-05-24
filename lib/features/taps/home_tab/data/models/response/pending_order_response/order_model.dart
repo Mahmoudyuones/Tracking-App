@@ -10,7 +10,7 @@ class OrderModel {
   @JsonKey(name: '_id')
   final String id;
   @JsonKey(name: 'user')
-  final UserModel user;
+  final UserModel? user;
   @JsonKey(name: 'orderItems')
   final List<OrderItemModel> orderItems;
   @JsonKey(name: 'totalPrice')
@@ -36,7 +36,7 @@ class OrderModel {
 
   OrderModel({
     required this.id,
-    required this.user,
+  this.user,
     required this.orderItems,
     required this.totalPrice,
     required this.paymentType,

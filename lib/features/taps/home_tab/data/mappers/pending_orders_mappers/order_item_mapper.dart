@@ -6,7 +6,7 @@ extension OrderItemMapper on OrderItemModel {
   OrderItemEntity toEntity() {
     return OrderItemEntity(
       id: id,
-      product: product.toEntity(),
+      product: product!.toEntity(),
       price: price.toDouble(),
       quantity: quantity,
     );
