@@ -50,7 +50,15 @@ class UpdateOrderStateRepositoryImpl implements UpdateOrderStateRepository {
   }
 
   @override
-  Future<BaseResponse<void>> updateDriverLocation({required String orderId, required String userId, required LocationModel location}) {
-    return _remoteDataSource.updateLocation(orderId: orderId, userId: userId, location: location);
+  Future<BaseResponse<void>> updateDriverLocation({
+    required String orderId,
+    required String userId,
+    required LocationModel location,
+  }) {
+    return _remoteDataSource.updateLocation(
+      orderId: orderId,
+      userId: userId,
+      location: location,
+    );
   }
 }
