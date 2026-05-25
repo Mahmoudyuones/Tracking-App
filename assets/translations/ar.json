@@ -18,6 +18,7 @@
   },
   "errors": {
     "navigation": "خطأ في التنقل",
+    "navigation": "خطأ في التنقل",
     "fileIsTooLarge": "حجم الملف كبير جدًا",
     "confirmLogout": "تأكيد تسجيل الخروج",
     "orderNotFound": "لم يتم العثور على الطلب",
@@ -124,6 +125,10 @@
     "driverDetailsNotFound": "لم يتم العثور على بيانات السائق، يرجى المحاولة لاحقًا",
     "defaultDeliveryAddress": "شارع أحمد حلمي، مدينة نصر، القاهرة",
     "ordersInHomeTabLog": "الطلبات في صفحة الرئيسية"
+    "title": "الرئيسية",
+    "driverDetailsNotFound": "لم يتم العثور على بيانات السائق، يرجى المحاولة لاحقًا",
+    "defaultDeliveryAddress": "شارع أحمد حلمي، مدينة نصر، القاهرة",
+    "ordersInHomeTabLog": "الطلبات في صفحة الرئيسية"
   },
   "orders": {
     "myOrders": "طلباتي",
@@ -136,8 +141,10 @@
     "userAddress": "عنوان المستخدم",
     "total": "الإجمالي",
     "noMoreOrders": "لا توجد طلبات أخرى",
+    "noMoreOrders": "لا توجد طلبات أخرى",
     "paymentMethod": "طريقة الدفع",
     "completed": "مكتمل",
+    "cancelled": "تم الإلغاء",
     "cancelled": "تم الإلغاء",
     "inProgress": "قيد التنفيذ",
     "reject": "رفض",
