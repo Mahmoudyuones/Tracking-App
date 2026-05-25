@@ -29,7 +29,7 @@ class AppRoutes {
 
   //--------------- Orders -----------------//
   static const String driverOrderDetails = '/driverOrderDetails';
-  static const String startOrderDetails = '/startOrderDetails';
+  static const String orderDetails = '/orderDetails';
 
   //--------------- Success -----------------//
   static const String successRoute = '/success';

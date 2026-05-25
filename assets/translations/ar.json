@@ -13,7 +13,8 @@
     "camera": "الكاميرا",
     "takeNewPhoto": "التقاط صورة جديدة",
     "fileIsTooLarge": "حجم الملف كبير جدًا",
-    "confirmLogout": "تأكيد تسجيل الخروج"
+    "confirmLogout": "تأكيد تسجيل الخروج",
+    "call": "اتصال"
   },
   "errors": {
     "navigation": "خطأ في التنقل",
@@ -140,7 +141,10 @@
     "cancelled": "تم الإلغاء",
     "inProgress": "قيد التنفيذ",
     "reject": "رفض",
-    "accept": "قبول"
+    "accept": "قبول",
+    "status": "الحالة",
+    "orderId": "رقم الطلب",
+    "orderDate": "تاريخ الطلب"
   },
   "profile": {
     "title": "الملف الشخصي",

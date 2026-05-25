@@ -27,3 +27,15 @@ class UpdateOrderStatusInFirestoreIntent extends UpdateOrderStateIntents {
     required this.newStatus,
   });
 }
+
+class SubmitOrderStatusIntent extends UpdateOrderStateIntents {
+  final String userId;
+  final String orderId;
+  final String newStatus;
+
+  const SubmitOrderStatusIntent({
+    required this.userId,
+    required this.orderId,
+    required this.newStatus,
+  });
+}

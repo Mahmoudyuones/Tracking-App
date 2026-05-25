@@ -21,6 +21,7 @@ import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
 import '../../features/taps/orders_tap/orders/domain/entities/order_wrapper_entity.dart';
 import '../../features/taps/orders_tap/order_details/presentation/views/screens/driver_order_details_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
+import '../../features/update_order_state/presentation/screens/order_details_screen.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
@@ -98,11 +99,17 @@ class AppRouterConfig {
       ),
 
       GoRoute(
-        path: AppRoutes.startOrderDetails,
-        name: AppRoutes.startOrderDetails,
+        path: AppRoutes.orderDetails,
+        name: AppRoutes.orderDetails,
         builder: (context, state) {
-          //final order = state.extra as StartOrderEntity;
-          return const Placeholder();
+          final extra = state.extra;
+          if (extra is Map<String, String>) {
+            return OrderStateDetailsScreen(
+              userId: extra['userId'] ?? '',
+              orderId: extra['orderId'] ?? '',
+            );
+          }
+          return const OrderStateDetailsScreen(userId: '', orderId: '');
         },
       ),
     ],
@@ -139,7 +146,7 @@ class AppRouterConfig {
     if (isLoggedIn &&
         (state.matchedLocation == AppRoutes.loginRoute ||
             state.matchedLocation == AppRoutes.onBoardingRoute)) {
-      return AppRoutes.mainRoute;
+      return AppRoutes.orderDetails;
     }
 
     return null;

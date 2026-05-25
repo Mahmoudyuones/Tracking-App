@@ -30,6 +30,7 @@ class AppTextString {
   static String get confirm => 'common.confirm'.tr();
   static String get update => 'common.update'.tr();
   static String get delete => 'common.delete'.tr();
+  static String get call => 'common.call'.tr();
   static String get continueText => 'common.continueBtn'.tr();
   static String get uploadPhoto => 'common.uploadPhoto'.tr();
   static String get gallery => 'common.gallery'.tr();
@@ -196,6 +197,22 @@ class AppTextString {
   static String get total => 'orders.total'.tr();
   static String get noMoreOrders => 'orders.noMoreOrders'.tr();
   static String get paymentMethod => 'orders.paymentMethod'.tr();
+  static String get orderDateLabel => 'orders.orderDate'.tr();
+  static String get orderIdLabel => 'orders.orderId'.tr();
+  static String get status => 'orders.status'.tr();
+  static String get noItemsFound => 'orders.noItemsFound'.tr();
+  static String get orderStatusUpdatedSuccessfully =>
+      'orders.orderStatusUpdatedSuccessfully'.tr();
+  static String get arrivedAtPickupPoint => 'orders.arrivedAtPickupPoint'.tr();
+  static String get startDeliver => 'orders.startDeliver'.tr();
+  static String get arrivedToUser => 'orders.arrivedToUser'.tr();
+  static String get updateStatus => 'orders.updateStatus'.tr();
+  static String get statusPending => 'orders.statusPending'.tr();
+  static String get statusAccepted => 'orders.statusAccepted'.tr();
+  static String get statusPicked => 'orders.statusPicked'.tr();
+  static String get statusOutForDelivery => 'orders.statusOutForDelivery'.tr();
+  static String get statusDelivered => 'orders.statusDelivered'.tr();
+  static String get orderDateUnknown => 'orders.orderDateUnknown'.tr();
   static String get completedTitle => 'orders.completed'.tr();
   static String get cancelledTitle => 'orders.cancelled'.tr();
   static String get inProgressTitle => 'orders.inProgress'.tr();

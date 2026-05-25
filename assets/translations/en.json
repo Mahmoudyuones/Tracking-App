@@ -13,7 +13,8 @@
     "camera": "Camera",
     "takeNewPhoto": "Take a new photo",
     "fileIsTooLarge": "File is too large",
-    "confirmLogout": "Confirm Logout"
+    "confirmLogout": "Confirm Logout",
+    "call": "Call"
   },
   "errors": {
     "navigation": "Navigation error",
@@ -140,7 +141,10 @@
     "cancelled": "Cancelled",
     "inProgress": "In Progress",
     "reject": "Reject",
-    "accept": "Accept"
+    "accept": "Accept",
+    "status": "Status : ",
+    "orderId": "Order ID : ",
+    "orderDate": "Order Date : "
   },
   "profile": {
     "title": "Profile",

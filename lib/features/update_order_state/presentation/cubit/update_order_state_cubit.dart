@@ -50,6 +50,13 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
           orderId: intent.orderId,
           newStatus: intent.newStatus,
         );
+
+      case SubmitOrderStatusIntent():
+        _changeAndUpdateOrderStatus(
+          userId: intent.userId,
+          orderId: intent.orderId,
+          newStatus: intent.newStatus,
+        );
     }
   }
 
@@ -96,6 +103,7 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
     required String orderId,
     required String newState,
   }) async {
+    emit(state.copyWith(loadingUpdate: true));
     final response = await _changeOrderStatusUseCase(
       orderId: orderId,
       state: newState,
@@ -138,6 +146,7 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
       success: (_) {
         emit(
           state.copyWith(
+            loadingUpdate: false,
             updateOrderStatusInFirestoreState: const BaseState<void>(
               data: null,
             ),
@@ -154,6 +163,69 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
             ),
           ),
         );
+      },
+    );
+  }
+
+  Future<void> _changeAndUpdateOrderStatus({
+    required String userId,
+    required String orderId,
+    required String newStatus,
+  }) async {
+    emit(state.copyWith(loadingUpdate: true));
+    _emitEffect(const Loading());
+
+    final response = await _changeOrderStatusUseCase(
+      orderId: orderId,
+      state: newStatus,
+    );
+
+    response.when(
+      success: (_) async {
+        final firestoreResponse = await _updateOrderStatusInFirestoreUseCase(
+          userId: userId,
+          orderId: orderId,
+          newStatus: newStatus,
+        );
+
+        firestoreResponse.when(
+          success: (_) {
+            emit(
+              state.copyWith(
+                loadingUpdate: false,
+                updateOrderStatusInFirestoreState: const BaseState<void>(
+                  data: null,
+                ),
+                changeOrderStatusState: const BaseState<void>(data: null),
+                updatedInFirestore: true,
+              ),
+            );
+            _emitEffect(const HideLoading());
+            _emitEffect(const UpdateOrderStatusSuccessSideEffect());
+          },
+          failure: (failure) {
+            emit(
+              state.copyWith(
+                loadingUpdate: false,
+                updateOrderStatusInFirestoreState: BaseState<void>(
+                  errorMessage: failure.message,
+                ),
+              ),
+            );
+            _emitEffect(const HideLoading());
+          },
+        );
+      },
+      failure: (failure) {
+        emit(
+          state.copyWith(
+            loadingUpdate: false,
+            changeOrderStatusState: BaseState<void>(
+              errorMessage: failure.message,
+            ),
+          ),
+        );
+        _emitEffect(const HideLoading());
       },
     );
   }
