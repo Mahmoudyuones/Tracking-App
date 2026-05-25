@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../config/base_response/base_response.dart';
 import '../../../../../config/base_state/base_state.dart';
 import '../../../../../core/shared/entities/order_details_entity.dart';
+import '../../../../core/constants/app_text_string.dart';
 import '../../domain/usecases/change_order_status_use_case.dart';
 import '../../domain/usecases/get_order_by_order_id_use_case.dart';
 import '../../domain/usecases/update_order_status_in_firestore_use_case.dart';
@@ -42,20 +43,10 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
         );
 
       case ChangeOrderStatusIntent():
-        _changeOrderStatus(orderId: intent.orderId, newState: intent.state);
-
-      case UpdateOrderStatusInFirestoreIntent():
-        _updateOrderStatusInFirestore(
-          userId: intent.userId,
+        _changeOrderStatus(
           orderId: intent.orderId,
-          newStatus: intent.newStatus,
-        );
-
-      case SubmitOrderStatusIntent():
-        _changeAndUpdateOrderStatus(
+          newStatus: intent.state,
           userId: intent.userId,
-          orderId: intent.orderId,
-          newStatus: intent.newStatus,
         );
     }
   }
@@ -100,84 +91,18 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
   }
 
   Future<void> _changeOrderStatus({
-    required String orderId,
-    required String newState,
-  }) async {
-    emit(state.copyWith(loadingUpdate: true));
-    final response = await _changeOrderStatusUseCase(
-      orderId: orderId,
-      state: newState,
-    );
-    response.when(
-      success: (_) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            changeOrderStatusState: const BaseState<void>(data: null),
-          ),
-        );
-        _emitEffect(const UpdateOrderStatusSuccessSideEffect());
-      },
-      failure: (failure) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            changeOrderStatusState: BaseState<void>(
-              errorMessage: failure.message,
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> _updateOrderStatusInFirestore({
     required String userId,
     required String orderId,
     required String newStatus,
   }) async {
     emit(state.copyWith(loadingUpdate: true));
-    final response = await _updateOrderStatusInFirestoreUseCase(
-      userId: userId,
-      orderId: orderId,
-      newStatus: newStatus,
-    );
-    response.when(
-      success: (_) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            updateOrderStatusInFirestoreState: const BaseState<void>(
-              data: null,
-            ),
-            updatedInFirestore: true,
-          ),
-        );
-      },
-      failure: (failure) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            updateOrderStatusInFirestoreState: BaseState<void>(
-              errorMessage: failure.message,
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> _changeAndUpdateOrderStatus({
-    required String userId,
-    required String orderId,
-    required String newStatus,
-  }) async {
-    emit(state.copyWith(loadingUpdate: true));
-    _emitEffect(const Loading());
-
     final response = await _changeOrderStatusUseCase(
       orderId: orderId,
-      state: newStatus,
+      state: state.currentStep == 0
+          ? AppTextString.inProgress
+          : state.currentStep == 3
+          ? AppTextString.completed
+          : AppTextString.canceled,
     );
 
     response.when(
@@ -197,10 +122,9 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
                   data: null,
                 ),
                 changeOrderStatusState: const BaseState<void>(data: null),
-                updatedInFirestore: true,
+                currentStep: state.currentStep + 1,
               ),
             );
-            _emitEffect(const HideLoading());
             _emitEffect(const UpdateOrderStatusSuccessSideEffect());
           },
           failure: (failure) {
@@ -212,7 +136,6 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
                 ),
               ),
             );
-            _emitEffect(const HideLoading());
           },
         );
       },
@@ -225,7 +148,6 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
             ),
           ),
         );
-        _emitEffect(const HideLoading());
       },
     );
   }

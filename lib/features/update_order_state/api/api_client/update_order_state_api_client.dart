@@ -13,6 +13,6 @@ abstract class UpdateOrderStateApiClient {
   @PUT(ApiEndpoints.updateOrderState)
   Future<void> updateOrderState(
     @Path(ApiEndpoints.idPathQuery) String orderId,
-    @Query('state') String state,
+    @Body() Map<String, dynamic> body,
   );
 }

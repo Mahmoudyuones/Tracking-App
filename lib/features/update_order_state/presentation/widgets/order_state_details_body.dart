@@ -1,56 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/api_endpoints.dart';
 import '../../../../core/constants/app_text_string.dart';
 import '../../../../core/shared/entities/order_details_entity.dart';
-import '../../../../core/style/color/app_colors.dart';
 import '../../../taps/orders_tap/order_details/presentation/views/widgets/store_avatar.dart';
+import '../cubit/update_order_state_cubit.dart';
+import '../cubit/update_order_state_state.dart';
 import 'address_card_in_update_state.dart';
 import 'order_state_header.dart';
 import 'order_state_item_card.dart';
 import 'custom_stepper.dart';
 import 'total_and_payment_sections.dart';
+import 'updated_button.dart';
 import 'user_avatar_in_update_state.dart';
 
 class OrderStateDetailsBody extends StatelessWidget {
-  const OrderStateDetailsBody({
-    super.key,
-    required this.orderDetails,
-    required this.isUpdating,
-    required this.onUpdateStatus,
-  });
+  const OrderStateDetailsBody({super.key, required this.orderDetails});
 
   final OrderDetailsEntity orderDetails;
-  final bool isUpdating;
-  final void Function(String newStatus) onUpdateStatus;
-
-  static const _statusFlow = [
-    'pending',
-    'accepted',
-    'picked',
-    'out for delivery',
-    'delivered',
-  ];
-
-  String _pickNextStatus(String currentState) {
-    final index = _statusFlow.indexOf(currentState.toLowerCase());
-    if (index == -1 || index == _statusFlow.length - 1) return '';
-    return _statusFlow[index + 1];
-  }
-
-  String _statusButtonLabel(String currentState) {
-    switch (currentState.toLowerCase()) {
-      case 'pending':
-      case 'accepted':
-        return AppTextString.arrivedAtPickupPoint;
-      case 'picked':
-        return AppTextString.startDeliver;
-      case 'out for delivery':
-        return AppTextString.arrivedToUser;
-      default:
-        return AppTextString.updateStatus;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,21 +26,25 @@ class OrderStateDetailsBody extends StatelessWidget {
     final store = order.store;
     final user = order.user;
     final items = order.orderItems;
-    final currentStatus = order.state.isEmpty ? 'pending' : order.state;
-    final nextStatus = _pickNextStatus(currentStatus);
+    final currentStatus = order.state;
     final orderId = order.orderNumber.isNotEmpty ? order.orderNumber : order.id;
     final orderDate = order.createdAt.isNotEmpty
         ? order.createdAt
         : AppTextString.orderDateUnknown;
     final textTheme = Theme.of(context).textTheme;
-
     return SingleChildScrollView(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
       physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomStepper(currentStep: 0),
+          BlocBuilder<UpdateOrderStateCubit, UpdateOrderStateState>(
+            buildWhen: (previous, current) =>
+                previous.currentStep != current.currentStep,
+            builder: (context, state) {
+              return CustomStepper(currentStep: state.currentStep);
+            },
+          ),
           const SizedBox(height: 24),
           OrderStateHeader(
             statusLabel: currentStatus,
@@ -133,35 +105,8 @@ class OrderStateDetailsBody extends StatelessWidget {
             totalPrice: order.totalPrice.toString(),
           ),
           const SizedBox(height: 16),
-          SizedBox(
-            width: double.infinity,
-            height: 48,
-            child: ElevatedButton(
-              onPressed: nextStatus.isEmpty || isUpdating
-                  ? null
-                  : () => onUpdateStatus(nextStatus),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: nextStatus.isEmpty
-                    ? AppColors.lightTextSecondary
-                    : null,
-              ),
-              child: isUpdating
-                  ? const SizedBox(
-                      width: 18,
-                      height: 18,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : Text(
-                      _statusButtonLabel(currentStatus),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-            ),
-          ),
-          const SizedBox(height: 16),
+          UpdatedButton(orderId: order.id, userId: user.id),
+          const SizedBox(height: 14),
         ],
       ),
     );

@@ -8,14 +8,14 @@ class UpdateOrderStateState extends Equatable {
   final bool loadingUpdate;
   final BaseState<void>? changeOrderStatusState;
   final BaseState<void>? updateOrderStatusInFirestoreState;
-  final bool updatedInFirestore;
+  final int currentStep;
 
   const UpdateOrderStateState({
     this.orderDetailsState,
     this.changeOrderStatusState,
     this.updateOrderStatusInFirestoreState,
     this.loadingUpdate = false,
-    this.updatedInFirestore = false,
+    this.currentStep = 0,
   });
 
   UpdateOrderStateState copyWith({
@@ -23,7 +23,7 @@ class UpdateOrderStateState extends Equatable {
     BaseState<void>? changeOrderStatusState,
     BaseState<void>? updateOrderStatusInFirestoreState,
     bool? loadingUpdate,
-    bool? updatedInFirestore,
+    int? currentStep,
   }) {
     return UpdateOrderStateState(
       orderDetailsState: orderDetailsState ?? this.orderDetailsState,
@@ -33,7 +33,7 @@ class UpdateOrderStateState extends Equatable {
           updateOrderStatusInFirestoreState ??
           this.updateOrderStatusInFirestoreState,
       loadingUpdate: loadingUpdate ?? this.loadingUpdate,
-      updatedInFirestore: updatedInFirestore ?? this.updatedInFirestore,
+      currentStep: currentStep ?? this.currentStep,
     );
   }
 
@@ -42,7 +42,7 @@ class UpdateOrderStateState extends Equatable {
     orderDetailsState,
     changeOrderStatusState,
     updateOrderStatusInFirestoreState,
-    updatedInFirestore,
     loadingUpdate,
+    currentStep,
   ];
 }

@@ -18,7 +18,6 @@
   },
   "errors": {
     "navigation": "Navigation error",
-    "navigation": "Navigation error",
     "fileIsTooLarge": "File is too large",
     "confirmLogout": "Confirm Logout",
     "orderNotFound": "Order not found",
@@ -125,10 +124,6 @@
     "driverDetailsNotFound": "Driver details not found, please try again later",
     "defaultDeliveryAddress": "Ahmed Helmy St, Nasr City, Cairo",
     "ordersInHomeTabLog": "Orders in home tab"
-    "title": "Home",
-    "driverDetailsNotFound": "Driver details not found, please try again later",
-    "defaultDeliveryAddress": "Ahmed Helmy St, Nasr City, Cairo",
-    "ordersInHomeTabLog": "Orders in home tab"
   },
   "orders": {
     "myOrders": "My Orders",
@@ -149,7 +144,17 @@
     "accept": "Accept",
     "status": "Status : ",
     "orderId": "Order ID : ",
-    "orderDate": "Order Date : "
+    "orderDate": "Order Date : ",
+    "orderDateUnknown": "Order Date Unknown",
+    "arrivedAtPickupPoint": "Arrived at Pickup point",
+    "startDelivery": "Start Delivery",
+    "arrivedToUser": "Arrived to the user",
+    "deliveredToTheUser": "Delivered to the user",
+    "accepted": "Accepted",
+    "pickedUp": "Picked",
+    "outForDelivery": "Out for delivery",
+    "arrived": "Arrived",
+    "delivered": "Delivered"
   },
   "profile": {
     "title": "Profile",

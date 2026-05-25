@@ -12,30 +12,11 @@ class GetOrderByOrderIdIntent extends UpdateOrderStateIntents {
 class ChangeOrderStatusIntent extends UpdateOrderStateIntents {
   final String orderId;
   final String state;
-
-  const ChangeOrderStatusIntent({required this.orderId, required this.state});
-}
-
-class UpdateOrderStatusInFirestoreIntent extends UpdateOrderStateIntents {
   final String userId;
-  final String orderId;
-  final String newStatus;
 
-  const UpdateOrderStatusInFirestoreIntent({
-    required this.userId,
+  const ChangeOrderStatusIntent({
     required this.orderId,
-    required this.newStatus,
-  });
-}
-
-class SubmitOrderStatusIntent extends UpdateOrderStateIntents {
-  final String userId;
-  final String orderId;
-  final String newStatus;
-
-  const SubmitOrderStatusIntent({
+    required this.state,
     required this.userId,
-    required this.orderId,
-    required this.newStatus,
   });
 }

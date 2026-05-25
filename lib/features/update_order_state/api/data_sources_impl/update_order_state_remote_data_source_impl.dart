@@ -68,6 +68,8 @@ class UpdateOrderStateRemoteDataSourceImpl
     required String orderId,
     required String state,
   }) {
-    return safeApiCall(() => _apiClient.updateOrderState(orderId, state));
+    return safeApiCall(
+      () => _apiClient.updateOrderState(orderId, {'state': state}),
+    );
   }
 }

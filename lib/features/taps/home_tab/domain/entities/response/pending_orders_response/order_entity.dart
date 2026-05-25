@@ -13,6 +13,7 @@ class OrderEntity {
   final String state;
   final String orderNumber;
   final StoreEntity store;
+  final String createdAt;
 
   OrderEntity({
     required this.id,
@@ -25,5 +26,6 @@ class OrderEntity {
     required this.state,
     required this.orderNumber,
     required this.store,
+    required this.createdAt,
   });
 }

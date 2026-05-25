@@ -212,15 +212,23 @@ class AppTextString {
   static String get statusPicked => 'orders.statusPicked'.tr();
   static String get statusOutForDelivery => 'orders.statusOutForDelivery'.tr();
   static String get statusDelivered => 'orders.statusDelivered'.tr();
+  static String get deliveredToTheUser => 'orders.deliveredToTheUser'.tr();
   static String get orderDateUnknown => 'orders.orderDateUnknown'.tr();
   static String get completedTitle => 'orders.completed'.tr();
   static String get cancelledTitle => 'orders.cancelled'.tr();
   static String get inProgressTitle => 'orders.inProgress'.tr();
   static String get reject => 'orders.reject'.tr();
   static String get accept => 'orders.accept'.tr();
+  static String get accepted => 'orders.accepted'.tr();
+  static String get picked => 'orders.pickedUp'.tr();
+  static String get outForDelivery => 'orders.outForDelivery'.tr();
+  static String get arrived => 'orders.arrived'.tr();
+  static String get delivered => 'orders.delivered'.tr();
   // Raw status keys used for comparisons (not translated)
   static const String completed = 'completed';
   static const String cancelled = 'canceled';
+  static const String canceled = 'canceled';
+  static const String inProgress = 'inProgress';
 
   // ─────────────────────────────── Profile ──────────────────────────────── //
   static String get profile => 'profile.title'.tr();

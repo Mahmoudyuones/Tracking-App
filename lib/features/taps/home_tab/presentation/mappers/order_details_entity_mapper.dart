@@ -42,6 +42,7 @@ extension HomeOrderDetailsMapper on OrderEntity {
         isDelivered: isDelivered,
         state: state,
         orderNumber: orderNumber,
+        createdAt: createdAt,
         store: details.StoreEntity(
           name: store.name,
           image: store.image,

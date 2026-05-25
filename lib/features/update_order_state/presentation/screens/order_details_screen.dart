@@ -123,19 +123,7 @@ class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
               );
             }
 
-            return OrderStateDetailsBody(
-              orderDetails: orderDetails!,
-              isUpdating: state.loadingUpdate,
-              onUpdateStatus: (newStatus) {
-                _cubit.doIntent(
-                  SubmitOrderStatusIntent(
-                    userId: widget.userId,
-                    orderId: widget.orderId,
-                    newStatus: newStatus,
-                  ),
-                );
-              },
-            );
+            return OrderStateDetailsBody(orderDetails: orderDetails!);
           },
         ),
       ),
