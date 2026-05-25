@@ -32,83 +32,98 @@ class OrderStateDetailsBody extends StatelessWidget {
         ? order.createdAt
         : AppTextString.orderDateUnknown;
     final textTheme = Theme.of(context).textTheme;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          BlocBuilder<UpdateOrderStateCubit, UpdateOrderStateState>(
-            buildWhen: (previous, current) =>
-                previous.currentStep != current.currentStep,
-            builder: (context, state) {
-              return CustomStepper(currentStep: state.currentStep);
-            },
-          ),
-          const SizedBox(height: 24),
-          OrderStateHeader(
-            statusLabel: currentStatus,
-            orderId: orderId,
-            orderDate: orderDate,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            AppTextString.pickupAddress,
-            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: 8),
-          AddressCardInUpdateState(
-            leading: StoreAvatar(imageUrl: store.image),
-            title: store.name,
-            address: store.address,
-            phone: store.phoneNumber,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            AppTextString.userAddress,
-            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: 8),
-          AddressCardInUpdateState(
-            leading: UserAvatarInUpdateState(
-              imageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
-            ),
-            title: '${user.firstName} ${user.lastName}'.trim(),
-            address: AppTextString.defaultDeliveryAddress,
-            phone: user.phone,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            AppTextString.orderDetails,
-            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: 8),
-          if (items.isEmpty)
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  AppTextString.noItemsFound,
-                  style: textTheme.bodyMedium,
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                BlocBuilder<UpdateOrderStateCubit, UpdateOrderStateState>(
+                  buildWhen: (previous, current) =>
+                      previous.currentStep != current.currentStep,
+                  builder: (context, state) {
+                    return CustomStepper(currentStep: state.currentStep);
+                  },
                 ),
-              ),
-            )
-          else
-            Column(
-              children: items.map((item) {
-                return OrderStateItemCard(item: item);
-              }).toList(),
+                const SizedBox(height: 24),
+                OrderStateHeader(
+                  statusLabel: currentStatus,
+                  orderId: orderId,
+                  orderDate: orderDate,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  AppTextString.pickupAddress,
+                  style: textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                AddressCardInUpdateState(
+                  leading: StoreAvatar(imageUrl: store.image),
+                  title: store.name,
+                  address: store.address,
+                  phone: store.phoneNumber,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  AppTextString.userAddress,
+                  style: textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                AddressCardInUpdateState(
+                  leading: UserAvatarInUpdateState(
+                    imageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
+                  ),
+                  title: '${user.firstName} ${user.lastName}'.trim(),
+                  address: AppTextString.defaultDeliveryAddress,
+                  phone: user.phone,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  AppTextString.orderDetails,
+                  style: textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                if (items.isEmpty)
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        AppTextString.noItemsFound,
+                        style: textTheme.bodyMedium,
+                      ),
+                    ),
+                  )
+                else
+                  Column(
+                    children: items.map((item) {
+                      return OrderStateItemCard(item: item);
+                    }).toList(),
+                  ),
+                const SizedBox(height: 4),
+                TotalAndPaymentSections(
+                  paymentType: order.paymentType,
+                  totalPrice: order.totalPrice.toString(),
+                ),
+                const SizedBox(height: 16),
+                const SizedBox(height: 14),
+              ],
             ),
-          const SizedBox(height: 4),
-          TotalAndPaymentSections(
-            paymentType: order.paymentType,
-            totalPrice: order.totalPrice.toString(),
           ),
-          const SizedBox(height: 16),
-          UpdatedButton(orderId: order.id, userId: user.id),
-          const SizedBox(height: 14),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          child: UpdatedButton(orderId: order.id, userId: user.id),
+        ),
+      ],
     );
   }
 }

@@ -18,6 +18,7 @@ class UpdatedButton extends StatelessWidget {
       AppTextString.startDeliver,
       AppTextString.arrivedToUser,
       AppTextString.deliveredToTheUser,
+      AppTextString.deliveredToTheUser,
     ];
   }
 
@@ -41,12 +42,22 @@ class UpdatedButton extends StatelessWidget {
           child: ElevatedButton(
             onPressed: state.currentStep == 4
                 ? null
-                : () {
+                : state.currentStep == 0 || state.currentStep == 3
+                ? () {
                     context.read<UpdateOrderStateCubit>().doIntent(
                       ChangeOrderStatusIntent(
                         userId: userId,
                         orderId: orderId,
                         state: getStates()[state.currentStep],
+                      ),
+                    );
+                  }
+                : () {
+                    context.read<UpdateOrderStateCubit>().doIntent(
+                      UpdateOnlyFirestoreIntent(
+                        userId: userId,
+                        orderId: orderId,
+                        newState: getStates()[state.currentStep],
                       ),
                     );
                   },

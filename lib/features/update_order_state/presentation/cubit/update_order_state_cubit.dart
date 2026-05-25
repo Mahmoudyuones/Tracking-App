@@ -48,6 +48,13 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
           newStatus: intent.state,
           userId: intent.userId,
         );
+
+      case UpdateOnlyFirestoreIntent():
+        _updateFirestoreOnly(
+          userId: intent.userId,
+          orderId: intent.orderId,
+          newStatus: intent.newState,
+        );
     }
   }
 
@@ -125,7 +132,6 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
                 currentStep: state.currentStep + 1,
               ),
             );
-            _emitEffect(const UpdateOrderStatusSuccessSideEffect());
           },
           failure: (failure) {
             emit(
@@ -144,6 +150,43 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
           state.copyWith(
             loadingUpdate: false,
             changeOrderStatusState: BaseState<void>(
+              errorMessage: failure.message,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _updateFirestoreOnly({
+    required String userId,
+    required String orderId,
+    required String newStatus,
+  }) async {
+    emit(state.copyWith(loadingUpdate: true));
+    final firestoreResponse = await _updateOrderStatusInFirestoreUseCase(
+      userId: userId,
+      orderId: orderId,
+      newStatus: newStatus,
+    );
+
+    firestoreResponse.when(
+      success: (_) {
+        emit(
+          state.copyWith(
+            loadingUpdate: false,
+            updateOrderStatusInFirestoreState: const BaseState<void>(
+              data: null,
+            ),
+            currentStep: state.currentStep + 1,
+          ),
+        );
+      },
+      failure: (failure) {
+        emit(
+          state.copyWith(
+            loadingUpdate: false,
+            updateOrderStatusInFirestoreState: BaseState<void>(
               errorMessage: failure.message,
             ),
           ),

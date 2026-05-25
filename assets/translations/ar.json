@@ -147,7 +147,7 @@
     "orderDate": "تاريخ الطلب",
     "orderDateUnknown": "تاريخ الطلب غير معروف",
     "arrivedAtPickupPoint": "وصل إلى نقطة الاستلام",
-    "startDelivery": "بدء التوصيل",
+    "startDeliver": "بدء التوصيل",
     "arrivedToUser": "وصل إلى المستخدم",
     "deliveredToTheUser": "تم التسليم للمستخدم",
     "accepted": "تم القبول",

@@ -147,7 +147,7 @@
     "orderDate": "Order Date : ",
     "orderDateUnknown": "Order Date Unknown",
     "arrivedAtPickupPoint": "Arrived at Pickup point",
-    "startDelivery": "Start Delivery",
+    "startDeliver": "Start Delivery",
     "arrivedToUser": "Arrived to the user",
     "deliveredToTheUser": "Delivered to the user",
     "accepted": "Accepted",

@@ -20,3 +20,15 @@ class ChangeOrderStatusIntent extends UpdateOrderStateIntents {
     required this.userId,
   });
 }
+
+class UpdateOnlyFirestoreIntent extends UpdateOrderStateIntents {
+  final String orderId;
+  final String newState;
+  final String userId;
+
+  const UpdateOnlyFirestoreIntent({
+    required this.orderId,
+    required this.newState,
+    required this.userId,
+  });
+}
