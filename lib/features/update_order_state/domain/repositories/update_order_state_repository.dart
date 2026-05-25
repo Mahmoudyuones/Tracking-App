@@ -1,5 +1,6 @@
 import '../../../../config/base_response/base_response.dart';
 import '../../../../core/shared/entities/order_details_entity.dart';
+import '../../../../core/shared/models/location_model.dart';
 
 abstract interface class UpdateOrderStateRepository {
   Stream<BaseResponse<OrderDetailsEntity>> getOrderByOrderId({
@@ -14,5 +15,10 @@ abstract interface class UpdateOrderStateRepository {
   Future<BaseResponse<void>> changeOrderStatus({
     required String orderId,
     required String state,
+  });
+  Future<BaseResponse<void>> updateDriverLocation({
+    required String orderId,
+    required String userId,
+    required LocationModel location,
   });
 }

@@ -10,6 +10,7 @@ import '../../core/enums/home_nav_bar.dart';
 import '../../features/auth/apply/presentation/screens/apply_screen.dart';
 import '../../features/auth/apply/presentation/screens/sucsess_apply_screen.dart';
 import '../../features/auth/login/presentation/views/login_view.dart';
+import '../../features/taps/home_tab/domain/entities/response/start_order_response/start_order_entity.dart';
 import '../../features/taps/profile_tab/change_password/presentation/view/screens/change_password_screen.dart';
 import '../../features/taps/profile_tab/edit_profile/presentation/view/screens/edit_profile_screen.dart';
 import '../../features/main/presentation/cubit/main_cubit.dart';
@@ -102,14 +103,12 @@ class AppRouterConfig {
         path: AppRoutes.orderDetails,
         name: AppRoutes.orderDetails,
         builder: (context, state) {
-          final extra = state.extra;
-          if (extra is Map<String, String>) {
-            return OrderStateDetailsScreen(
-              userId: extra['userId'] ?? '',
-              orderId: extra['orderId'] ?? '',
-            );
-          }
-          return const OrderStateDetailsScreen(userId: '', orderId: '');
+          final order = state.extra as StartOrderEntity;
+
+          return OrderStateDetailsScreen(
+            orderId: order.id,
+            userId: order.userId,
+          );
         },
       ),
     ],
@@ -146,7 +145,7 @@ class AppRouterConfig {
     if (isLoggedIn &&
         (state.matchedLocation == AppRoutes.loginRoute ||
             state.matchedLocation == AppRoutes.onBoardingRoute)) {
-      return AppRoutes.orderDetails;
+      return AppRoutes.mainRoute;
     }
 
     return null;

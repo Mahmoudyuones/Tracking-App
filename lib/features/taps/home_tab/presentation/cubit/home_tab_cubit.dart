@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../config/base_response/base_response.dart';
 import '../../../../../config/base_state/base_state.dart';
 import '../../../../../core/constants/app_text_string.dart';
+import '../../../../update_order_state/domain/repositories/update_order_state_repository.dart';
 import '../../domain/entities/response/pending_orders_response/order_entity.dart';
 import '../../domain/repositories/add_order_datails_use_case.dart';
 import '../../domain/usecases/get_driver_details_use_case.dart';
@@ -21,6 +22,7 @@ class HomeTabCubit extends Cubit<HomeTabState> {
     this._startOrderUseCase,
     this._addOrderDatailsUseCase,
     this._getDriverDetailsUseCase,
+    this._updateOrderStateRepository,
   ) : super(const HomeTabState());
 
   int _currentPage = 1;
@@ -31,6 +33,7 @@ class HomeTabCubit extends Cubit<HomeTabState> {
   final StartOrderUseCase _startOrderUseCase;
   final AddOrderDatailsUseCase _addOrderDatailsUseCase;
   final GetDriverDetailsUseCase _getDriverDetailsUseCase;
+  final UpdateOrderStateRepository _updateOrderStateRepository;
   final StreamController<HomeTabSideEffects> _sideEffectsController =
       StreamController<HomeTabSideEffects>.broadcast();
 
@@ -152,10 +155,26 @@ class HomeTabCubit extends Cubit<HomeTabState> {
     result.when(
       success: (response) {
         addDetailsResult.when(
-          success: (detailsResponse) {
-            _sideEffectsController.add(HideLoadingSideEffect());
-            _sideEffectsController.add(
-              SuccessToStartOrderSideEffect(response: response),
+          success: (detailsResponse) async {
+            final updateStatusResult = await _updateOrderStateRepository
+                .updateOrderStatusInFirestore(
+                  userId: orderDetails.user.id,
+                  orderId: orderId,
+                  status: AppTextString.accepted,
+                );
+            updateStatusResult.when(
+              success: (s) {
+                _sideEffectsController.add(HideLoadingSideEffect());
+                _sideEffectsController.add(
+                  SuccessToStartOrderSideEffect(response: response),
+                );
+              },
+              failure: (f) {
+                _sideEffectsController.add(HideLoadingSideEffect());
+                _sideEffectsController.add(
+                  ErrorToStartOrderSideEffect(message: f.message),
+                );
+              },
             );
           },
           failure: (detailsFailure) {

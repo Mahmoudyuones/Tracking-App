@@ -1,4 +1,5 @@
 import '../../../../../config/base_response/base_response.dart';
+import '../../../../../core/shared/models/location_model.dart';
 import '../../../../../core/shared/models/order_details_model.dart';
 
 abstract interface class UpdateOrderStateRemoteDataSource {
@@ -14,5 +15,10 @@ abstract interface class UpdateOrderStateRemoteDataSource {
   Future<BaseResponse<void>> changeOrderStatus({
     required String orderId,
     required String state,
+  });
+  Future<BaseResponse<void>> updateLocation({
+    required String orderId,
+    required String userId,
+    required LocationModel location,
   });
 }
