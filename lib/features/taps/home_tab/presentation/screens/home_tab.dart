@@ -62,10 +62,7 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   void _startOrder(StartOrderResponseEntity response) {
-    context.pushReplacementNamed(
-      AppRoutes.startOrderDetails,
-      extra: response.order,
-    );
+    context.pushReplacementNamed(AppRoutes.orderDetails, extra: response.order);
   }
 
   @override

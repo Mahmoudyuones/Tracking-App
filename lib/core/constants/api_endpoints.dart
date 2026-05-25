@@ -2,6 +2,7 @@ class ApiEndpoints {
   ApiEndpoints._();
 
   static const String baseUrl = 'https://flower.elevateegy.com/api/v1/';
+  static const String basePhoto = 'https://flower.elevateegy.com/uploads/';
   static const String idPathQuery = 'Id';
 
   // ------------------------ AUTHENTICATION ENDPOINTS ------------------------ //

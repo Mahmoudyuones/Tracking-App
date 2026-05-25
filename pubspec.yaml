@@ -12,6 +12,8 @@ dependencies:
 
   # Navigation
   go_router: ^17.1.0
+  shimmer: ^3.0.0
+  url_launcher: ^6.3.0
 
   # API Request
   retrofit: ^4.9.2

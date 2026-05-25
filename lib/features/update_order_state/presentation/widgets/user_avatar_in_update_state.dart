@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../../../core/style/color/app_colors.dart';
 
-class StoreAvatar extends StatelessWidget {
-  const StoreAvatar({super.key, required this.imageUrl});
+class UserAvatarInUpdateState extends StatelessWidget {
+  const UserAvatarInUpdateState({super.key, required this.imageUrl});
 
   final String imageUrl;
 
@@ -29,7 +29,7 @@ class StoreAvatar extends StatelessWidget {
           ),
         ),
         errorWidget: (context, url, error) =>
-            const Icon(Icons.store, color: AppColors.primary, size: 28),
+            const Icon(Icons.person, color: AppColors.primary, size: 28),
       ),
     );
   }
