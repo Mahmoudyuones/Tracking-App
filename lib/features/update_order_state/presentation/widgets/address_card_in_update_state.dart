@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../../../core/gen/assets.gen.dart';
+// import '../../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../../core/style/color/app_colors.dart';
 import '../../../../core/constants/app_text_string.dart';
 import '../../../../core/helpers/format_number.dart';
@@ -107,7 +107,7 @@ class AddressCardInUpdateState extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(2.0),
               child: SvgPicture.asset(
-                Assets.icons.whatsapp.path,
+                'Assets.icons.whatsapp.path',
                 fit: BoxFit.scaleDown,
               ),
             ),
