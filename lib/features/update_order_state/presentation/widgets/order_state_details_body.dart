@@ -10,6 +10,7 @@ import '../../../../core/shared/entities/order_details_entity.dart';
 import '../../../taps/orders_tap/order_details/presentation/views/widgets/store_avatar.dart';
 import '../cubit/update_order_state_cubit.dart';
 import '../cubit/update_order_state_state.dart';
+import '../models/pick_up_location_args.dart';
 import 'address_card_in_update_state.dart';
 import 'order_state_header.dart';
 import 'order_state_item_card.dart';
@@ -79,24 +80,18 @@ class OrderStateDetailsBody extends StatelessWidget {
                     );
                     context.pushNamed(
                       AppRoutes.pickUpLocation,
-                      extra: {
-                        'address1': AddressCardInUpdateState(
-                          leading: StoreAvatar(imageUrl: store.image),
-                          title: store.name,
-                          address: store.address,
-                          phone: store.phoneNumber,
-                        ),
-                        'address2': AddressCardInUpdateState(
-                          leading: UserAvatarInUpdateState(
-                            imageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
-                          ),
-                          title: '${user.firstName} ${user.lastName}'.trim(),
-                          address: AppTextString.defaultDeliveryAddress,
-                          phone: user.phone,
-                        ),
-                        'destinationLocation': destinationLocation,
-                        'sourceLocation': driverLocation,
-                      },
+                      extra: PickUpLocationArgs(
+                        storeImageUrl: store.image,
+                        storeName: store.name,
+                        storeAddress: store.address,
+                        storePhone: store.phoneNumber,
+                        userImageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
+                        userName: '${user.firstName} ${user.lastName}'.trim(),
+                        userAddress: AppTextString.defaultDeliveryAddress,
+                        userPhone: user.phone,
+                        destinationLocation: destinationLocation,
+                        sourceLocation: driverLocation,
+                      ),
                     );
                   },
                   child: AddressCardInUpdateState(
@@ -114,13 +109,41 @@ class OrderStateDetailsBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                AddressCardInUpdateState(
-                  leading: UserAvatarInUpdateState(
-                    imageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
+                GestureDetector(
+                  onTap: () {
+                    final destinationLocation = LatLng(
+                      order.user.location.latitude,
+                      order.user.location.longitude,
+                    );
+                    final driverLocation = LatLng(
+                      driver.location.latitude,
+                      driver.location.longitude,
+                    );
+                    context.pushNamed(
+                      AppRoutes.pickUpLocation,
+                      extra: PickUpLocationArgs(
+                        storeImageUrl: store.image,
+                        storeName: store.name,
+                        storeAddress: store.address,
+                        storePhone: store.phoneNumber,
+                        userImageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
+                        userName: '${user.firstName} ${user.lastName}'.trim(),
+                        userAddress: AppTextString.defaultDeliveryAddress,
+                        userPhone: user.phone,
+                        destinationLocation: destinationLocation,
+                        sourceLocation: driverLocation,
+                        pickUpAddressMode: false,
+                      ),
+                    );
+                  },
+                  child: AddressCardInUpdateState(
+                    leading: UserAvatarInUpdateState(
+                      imageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
+                    ),
+                    title: '${user.firstName} ${user.lastName}'.trim(),
+                    address: AppTextString.defaultDeliveryAddress,
+                    phone: user.phone,
                   ),
-                  title: '${user.firstName} ${user.lastName}'.trim(),
-                  address: AppTextString.defaultDeliveryAddress,
-                  phone: user.phone,
                 ),
                 const SizedBox(height: 16),
                 Text(

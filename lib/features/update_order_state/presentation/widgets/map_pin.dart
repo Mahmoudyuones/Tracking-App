@@ -6,12 +6,16 @@ class MapPin extends StatelessWidget {
   final Color color;
   final IconData icon;
   final String? label;
+  final Color? pinColor;
+  final Color? secondPinColor;
 
   const MapPin({
     super.key,
     required this.color,
     required this.icon,
     this.label,
+    this.pinColor,
+    this.secondPinColor,
   });
 
   @override
@@ -52,9 +56,19 @@ class MapPin extends StatelessWidget {
         ),
 
         Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+          width: 10,
+          height: 10,
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            color: pinColor ?? color,
+            shape: BoxShape.circle,
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              color: secondPinColor ?? color,
+              shape: BoxShape.circle,
+            ),
+          ),
         ),
       ],
     );

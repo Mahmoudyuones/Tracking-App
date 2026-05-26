@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../../../../core/constants/app_text_string.dart';
 import '../../../../core/constants/map_constants.dart';
 import '../../../../core/style/color/app_colors.dart';
 import 'map_pin.dart';
@@ -12,10 +13,12 @@ class CustomMap extends StatelessWidget {
     required this.centerLocation,
     required this.sourceLocation,
     required this.destinationLocation,
+    this.pickUpAddressMode = true,
   });
   final LatLng centerLocation;
   final LatLng sourceLocation;
   final LatLng destinationLocation;
+  final bool pickUpAddressMode;
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +52,26 @@ class CustomMap extends StatelessWidget {
               width: 160,
               height: 70,
               point: sourceLocation,
-              child: const MapPin(
+              child: MapPin(
                 color: AppColors.primary,
-                icon: Icons.store_mall_directory,
-                label: 'Your Location',
+                icon: Icons.location_on_outlined,
+                label: AppTextString.yourLocation,
+                pinColor: AppColors.blue,
+                secondPinColor: AppColors.white,
               ),
             ),
             Marker(
-              width: 42,
-              height: 42,
+              width: 160,
+              height: 70,
               point: destinationLocation,
-              child: const MapPin(
+              child: MapPin(
                 color: AppColors.primary,
-                icon: Icons.home_outlined,
+                icon: pickUpAddressMode
+                    ? Icons.store_mall_directory
+                    : Icons.home_outlined,
+                label: pickUpAddressMode
+                    ? AppTextString.flowery
+                    : AppTextString.user,
               ),
             ),
           ],

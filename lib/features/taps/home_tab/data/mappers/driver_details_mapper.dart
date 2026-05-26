@@ -1,4 +1,5 @@
 import '../../../../../core/shared/models/driver_details_model.dart';
+import '../../../../../core/shared/models/location_model.dart';
 import '../../../profile_tab/my_profile/data/models/driver_response_model.dart';
 
 extension DriverResponseModelMapper on DriverResponseModel {
@@ -20,6 +21,7 @@ extension DriverResponseModelMapper on DriverResponseModel {
       phone: driverData?.phone,
       photo: driverData?.photo,
       createdAt: driverData?.createdAt,
+      location: LocationModel(latitude: 30.0444, longitude: 31.2357),
     );
   }
 }

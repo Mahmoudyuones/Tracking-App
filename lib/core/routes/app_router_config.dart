@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:latlong2/latlong.dart';
 import '../../config/base_response/base_response.dart';
 import '../../config/di/di.dart';
 import '../../config/services/session_manager_service.dart';
@@ -11,7 +10,6 @@ import '../../core/enums/home_nav_bar.dart';
 import '../../features/auth/apply/presentation/screens/apply_screen.dart';
 import '../../features/auth/apply/presentation/screens/sucsess_apply_screen.dart';
 import '../../features/auth/login/presentation/views/login_view.dart';
-import '../../features/taps/home_tab/domain/entities/response/start_order_response/start_order_entity.dart';
 import '../../features/taps/profile_tab/change_password/presentation/view/screens/change_password_screen.dart';
 import '../../features/taps/profile_tab/edit_profile/presentation/view/screens/edit_profile_screen.dart';
 import '../../features/main/presentation/cubit/main_cubit.dart';
@@ -23,6 +21,7 @@ import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
 import '../../features/taps/orders_tap/orders/domain/entities/order_wrapper_entity.dart';
 import '../../features/taps/orders_tap/order_details/presentation/views/screens/driver_order_details_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
+import '../../features/update_order_state/presentation/models/pick_up_location_args.dart';
 import '../../features/update_order_state/presentation/screens/order_details_screen.dart';
 import '../../features/update_order_state/presentation/screens/pick_up_location.dart';
 import '../constants/app_text_string.dart';
@@ -90,13 +89,8 @@ class AppRouterConfig {
         path: AppRoutes.pickUpLocation,
         name: AppRoutes.pickUpLocation,
         builder: (context, state) {
-          final extra = state.extra as Map<String, dynamic>;
-          return PickUpLocationScreen(
-            address1: extra['address1'],
-            address2: extra['address2'],
-            destinationLocation: extra['destinationLocation'],
-            sourceLocation: extra['sourceLocation'],
-          );
+          final extra = state.extra as PickUpLocationArgs;
+          return PickUpLocationScreen(args: extra);
         },
       ),
 

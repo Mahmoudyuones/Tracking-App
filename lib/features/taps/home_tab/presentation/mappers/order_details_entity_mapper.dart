@@ -1,4 +1,6 @@
+import '../../../../../core/constants/app_text_string.dart';
 import '../../../../../core/shared/entities/driver_details_entity.dart';
+import '../../../../../core/shared/entities/location_entity.dart';
 import '../../../../../core/shared/entities/order_data_entity.dart' as details;
 import '../../../../../core/shared/entities/order_details_entity.dart';
 import '../../domain/entities/response/pending_orders_response/order_entity.dart';
@@ -18,6 +20,7 @@ extension HomeOrderDetailsMapper on OrderEntity {
           gender: user.gender,
           phone: user.phone,
           photo: user.photo,
+          location: LocationEntity(latitude: 30.02136, longitude: 31.22686),
         ),
         orderItems: orderItems
             .map(
@@ -48,7 +51,7 @@ extension HomeOrderDetailsMapper on OrderEntity {
           image: store.image,
           address: store.address,
           phoneNumber: store.phoneNumber,
-          latLong: store.latLong,
+          latLong: AppTextString.storeLatLong,
         ),
       ),
       driver: driver,

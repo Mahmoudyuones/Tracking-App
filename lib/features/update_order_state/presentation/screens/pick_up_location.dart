@@ -1,29 +1,33 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 import '../../../../core/style/color/app_colors.dart';
+import '../../../taps/orders_tap/order_details/presentation/views/widgets/store_avatar.dart';
+import '../models/pick_up_location_args.dart';
+import '../widgets/address_card_in_update_state.dart';
 import '../widgets/custom_map.dart';
+import '../widgets/user_avatar_in_update_state.dart';
 
 class PickUpLocationScreen extends StatelessWidget {
-  final LatLng sourceLocation;
-  final LatLng destinationLocation;
-  final bool pickUpAddressMode;
-  final Widget address1;
-  final Widget address2;
+  final PickUpLocationArgs args;
 
-  const PickUpLocationScreen({
-    super.key,
-    required this.sourceLocation,
-    required this.destinationLocation,
-    required this.address1,
-    required this.address2,
-    this.pickUpAddressMode = true,
-  });
+  const PickUpLocationScreen({super.key, required this.args});
 
   @override
   Widget build(BuildContext context) {
-    final centerLocation = LatLng(
-      (sourceLocation.latitude + destinationLocation.latitude) / 2,
-      (sourceLocation.longitude + destinationLocation.longitude) / 2,
+    log(args.destinationLocation.toString());
+    final address1 = AddressCardInUpdateState(
+      leading: StoreAvatar(imageUrl: args.storeImageUrl),
+      title: args.storeName,
+      address: args.storeAddress,
+      phone: args.storePhone,
+    );
+
+    final address2 = AddressCardInUpdateState(
+      leading: UserAvatarInUpdateState(imageUrl: args.userImageUrl),
+      title: args.userName,
+      address: args.userAddress,
+      phone: args.userPhone,
     );
 
     return Scaffold(
@@ -36,9 +40,10 @@ class PickUpLocationScreen extends StatelessWidget {
               child: Stack(
                 children: [
                   CustomMap(
-                    centerLocation: centerLocation,
-                    sourceLocation: sourceLocation,
-                    destinationLocation: destinationLocation,
+                    centerLocation: args.sourceLocation,
+                    sourceLocation: args.sourceLocation,
+                    destinationLocation: args.destinationLocation,
+                    pickUpAddressMode: args.pickUpAddressMode,
                   ),
                   Positioned(
                     top: 16,
@@ -104,9 +109,9 @@ class PickUpLocationScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  address1,
+                  args.pickUpAddressMode ? address1 : address2,
                   const SizedBox(height: 12),
-                  address2,
+                  args.pickUpAddressMode ? address2 : address1,
                 ],
               ),
             ),

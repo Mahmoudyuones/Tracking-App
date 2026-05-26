@@ -38,6 +38,7 @@ class AppTextString {
   static String get camera => 'common.camera'.tr();
   static String get takeNewPhoto => 'common.takeNewPhoto'.tr();
   static String get fileIsTooLarge => 'common.fileIsTooLarge'.tr();
+  static String get yourLocation => 'Your Location';
 
   // ─────────────────────────────── Errors ───────────────────────────────── //
   static String get navigationError => 'errors.navigation'.tr();
@@ -274,9 +275,12 @@ class AppTextString {
   static String get confirmLogout => 'common.confirmLogout'.tr();
 
   // ─────────────────────────────── Success ──────────────────────────────── //
-  // ─────────────────────────────── Success ──────────────────────────────── //
   static String get done => 'success.done'.tr();
   static String get thankYou => 'success.thankYou'.tr();
   static String get theOrderDeliveredSuccessfully =>
       'success.theOrderDeliveredSuccessfully'.tr();
+  // ─────────────────────────────── Static ────────────────────────── //
+  static const String storeLatLong = '30.0131,31.2089';
+  static const String flowery = 'Flowery';
+  static const String user = 'User';
 }
