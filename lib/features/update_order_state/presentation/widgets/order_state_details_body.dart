@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../../../../core/constants/api_endpoints.dart';
 import '../../../../core/constants/app_text_string.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/shared/entities/order_details_entity.dart';
 import '../../../taps/orders_tap/order_details/presentation/views/widgets/store_avatar.dart';
 import '../cubit/update_order_state_cubit.dart';
@@ -26,6 +29,7 @@ class OrderStateDetailsBody extends StatelessWidget {
     final store = order.store;
     final user = order.user;
     final items = order.orderItems;
+    final driver = orderDetails.driver;
     final currentStatus = order.state;
     final orderId = order.orderNumber.isNotEmpty ? order.orderNumber : order.id;
     final orderDate = order.createdAt.isNotEmpty
@@ -62,11 +66,45 @@ class OrderStateDetailsBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                AddressCardInUpdateState(
-                  leading: StoreAvatar(imageUrl: store.image),
-                  title: store.name,
-                  address: store.address,
-                  phone: store.phoneNumber,
+                GestureDetector(
+                  onTap: () {
+                    final parts = store.latLong.split(',');
+                    final destinationLocation = LatLng(
+                      double.parse(parts[0]),
+                      double.parse(parts[1]),
+                    );
+                    final driverLocation = LatLng(
+                      driver.location.latitude,
+                      driver.location.longitude,
+                    );
+                    context.pushNamed(
+                      AppRoutes.pickUpLocation,
+                      extra: {
+                        'address1': AddressCardInUpdateState(
+                          leading: StoreAvatar(imageUrl: store.image),
+                          title: store.name,
+                          address: store.address,
+                          phone: store.phoneNumber,
+                        ),
+                        'address2': AddressCardInUpdateState(
+                          leading: UserAvatarInUpdateState(
+                            imageUrl: '${ApiEndpoints.basePhoto}${user.photo}',
+                          ),
+                          title: '${user.firstName} ${user.lastName}'.trim(),
+                          address: AppTextString.defaultDeliveryAddress,
+                          phone: user.phone,
+                        ),
+                        'destinationLocation': destinationLocation,
+                        'sourceLocation': driverLocation,
+                      },
+                    );
+                  },
+                  child: AddressCardInUpdateState(
+                    leading: StoreAvatar(imageUrl: store.image),
+                    title: store.name,
+                    address: store.address,
+                    phone: store.phoneNumber,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Text(

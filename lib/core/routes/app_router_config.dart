@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:latlong2/latlong.dart';
 import '../../config/base_response/base_response.dart';
 import '../../config/di/di.dart';
 import '../../config/services/session_manager_service.dart';
@@ -23,6 +24,7 @@ import '../../features/taps/orders_tap/orders/domain/entities/order_wrapper_enti
 import '../../features/taps/orders_tap/order_details/presentation/views/screens/driver_order_details_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
 import '../../features/update_order_state/presentation/screens/order_details_screen.dart';
+import '../../features/update_order_state/presentation/screens/pick_up_location.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
@@ -85,6 +87,20 @@ class AppRouterConfig {
       ),
 
       GoRoute(
+        path: AppRoutes.pickUpLocation,
+        name: AppRoutes.pickUpLocation,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return PickUpLocationScreen(
+            address1: extra['address1'],
+            address2: extra['address2'],
+            destinationLocation: extra['destinationLocation'],
+            sourceLocation: extra['sourceLocation'],
+          );
+        },
+      ),
+
+      GoRoute(
         path: AppRoutes.driverOrderDetails,
         name: AppRoutes.driverOrderDetails,
         builder: (context, state) {
@@ -103,11 +119,13 @@ class AppRouterConfig {
         path: AppRoutes.orderDetails,
         name: AppRoutes.orderDetails,
         builder: (context, state) {
-          final order = state.extra as StartOrderEntity;
+          // final order = state.extra as StartOrderEntity;
 
           return OrderStateDetailsScreen(
-            orderId: order.id,
-            userId: order.userId,
+            // orderId: order.id,
+            // userId: order.userId,
+            orderId: '',
+            userId: '',
           );
         },
       ),
@@ -145,7 +163,7 @@ class AppRouterConfig {
     if (isLoggedIn &&
         (state.matchedLocation == AppRoutes.loginRoute ||
             state.matchedLocation == AppRoutes.onBoardingRoute)) {
-      return AppRoutes.mainRoute;
+      return AppRoutes.orderDetails;
     }
 
     return null;
