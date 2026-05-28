@@ -121,7 +121,7 @@ class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
               );
             }
 
-            if ((state.currentStep == 0 || state.currentStep == 2) &&
+            if ((state.currentStep == 0) &&
                 _driverSimulationStartedStep != state.currentStep) {
               final orderDetailsValue = orderDetails!;
               WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -131,27 +131,13 @@ class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
                 final storeLongitude = double.parse(storeLatLng[1]);
                 final driverLocation = orderDetailsValue.driver.location;
 
-                final destinationLatitude = state.currentStep == 0
-                    ? storeLatitude
-                    : orderDetailsValue.orders.user.location.latitude;
-                final destinationLongitude = state.currentStep == 0
-                    ? storeLongitude
-                    : orderDetailsValue.orders.user.location.longitude;
-
-                final startLatitude = state.currentStep == 0
-                    ? driverLocation.latitude
-                    : storeLatitude;
-                final startLongitude = state.currentStep == 0
-                    ? driverLocation.longitude
-                    : storeLongitude;
-
                 _driverSimulationStartedStep = state.currentStep;
                 _cubit.doIntent(
                   StartDriverSimulationIntent(
-                    storeLatitude: destinationLatitude,
-                    storeLongitude: destinationLongitude,
-                    startLatitude: startLatitude,
-                    startLongitude: startLongitude,
+                    destinationLatitude: storeLatitude,
+                    destinationLongitude: storeLongitude,
+                    startLatitude: driverLocation.latitude,
+                    startLongitude: driverLocation.longitude,
                     orderId: orderDetailsValue.orders.id,
                     userId: widget.userId,
                   ),

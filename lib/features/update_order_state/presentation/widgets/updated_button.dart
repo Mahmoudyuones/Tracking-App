@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../config/services/app_logger.dart';
 import '../../../../core/constants/app_text_string.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/style/color/app_colors.dart';
 import '../cubit/update_order_state_cubit.dart';
 import '../cubit/update_order_state_intents.dart';
@@ -18,7 +21,7 @@ class UpdatedButton extends StatelessWidget {
       AppTextString.startDeliver,
       AppTextString.arrivedToUser,
       AppTextString.deliveredToTheUser,
-      AppTextString.deliveredToTheUser,
+      AppTextString.done,
     ];
   }
 
@@ -36,12 +39,13 @@ class UpdatedButton extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<UpdateOrderStateCubit, UpdateOrderStateState>(
       builder: (context, state) {
+        appLogger.i('Current step: ${state.currentStep},');
         return SizedBox(
           width: double.infinity,
           height: 52,
           child: ElevatedButton(
             onPressed: state.currentStep == 4
-                ? null
+                ? () => context.pushNamed(AppRoutes.successRoute)
                 : state.currentStep == 0 || state.currentStep == 3
                 ? () {
                     context.read<UpdateOrderStateCubit>().doIntent(
@@ -53,6 +57,43 @@ class UpdatedButton extends StatelessWidget {
                     );
                   }
                 : () {
+                    if (state.currentStep == 1) {
+                      appLogger.i(
+                        'Starting driver simulation for order $orderId',
+                      );
+                      context.read<UpdateOrderStateCubit>().doIntent(
+                        StartDriverSimulationIntent(
+                          destinationLatitude: state
+                              .orderDetailsState!
+                              .data!
+                              .orders
+                              .user
+                              .location
+                              .latitude,
+                          destinationLongitude: state
+                              .orderDetailsState!
+                              .data!
+                              .orders
+                              .user
+                              .location
+                              .longitude,
+                          startLatitude: state
+                              .orderDetailsState!
+                              .data!
+                              .driver
+                              .location
+                              .latitude,
+                          startLongitude: state
+                              .orderDetailsState!
+                              .data!
+                              .driver
+                              .location
+                              .longitude,
+                          orderId: state.orderDetailsState!.data!.orders.id,
+                          userId: state.orderDetailsState!.data!.orders.user.id,
+                        ),
+                      );
+                    }
                     context.read<UpdateOrderStateCubit>().doIntent(
                       UpdateOnlyFirestoreIntent(
                         userId: userId,

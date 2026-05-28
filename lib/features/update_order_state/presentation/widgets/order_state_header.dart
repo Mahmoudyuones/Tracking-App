@@ -43,7 +43,7 @@ class OrderStateHeader extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              '${AppTextString.orderDateLabel} $orderDate',
+              '${AppTextString.orderDateLabel} ${orderDate.length >= 16 ? orderDate.substring(0, 16) : orderDate}',
               style: textTheme.bodySmall,
             ),
           ],
