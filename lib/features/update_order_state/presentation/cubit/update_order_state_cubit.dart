@@ -222,9 +222,7 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
       success: (_) {
         emit(
           state.copyWith(
-            updateDriverLocationState: const BaseState<void>(
-              data: null,
-            ),
+            updateDriverLocationState: const BaseState<void>(data: null),
           ),
         );
       },
