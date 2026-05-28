@@ -46,3 +46,21 @@ class UpdateDriverLocationIntent extends UpdateOrderStateIntents {
     required this.userId,
   });
 }
+
+class StartDriverSimulationIntent extends UpdateOrderStateIntents {
+  final double storeLatitude;
+  final double storeLongitude;
+  final String orderId;
+  final String userId;
+  final double startLatitude;
+  final double startLongitude;
+
+  const StartDriverSimulationIntent({
+    required this.storeLatitude,
+    required this.storeLongitude,
+    required this.orderId,
+    required this.userId,
+    required this.startLatitude,
+    required this.startLongitude,
+  });
+}

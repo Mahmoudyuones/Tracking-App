@@ -29,6 +29,10 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
   _updateOrderStatusInFirestoreUseCase;
   final UpdateDriverLocationUseCase _updateDriverLocationUseCase;
 
+  Timer? _simulationTimer;
+  int _simulationStep = 0;
+  static const int _totalSimulationSteps = 60;
+
   final StreamController<UpdateOrderStateSideEffects> _sideEffectsController =
       StreamController<UpdateOrderStateSideEffects>.broadcast();
 
@@ -66,6 +70,16 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
           longitude: intent.longitude,
           orderId: intent.orderId,
           userId: intent.userId,
+        );
+
+      case StartDriverSimulationIntent():
+        _startDriverSimulation(
+          storeLatitude: intent.storeLatitude,
+          storeLongitude: intent.storeLongitude,
+          orderId: intent.orderId,
+          userId: intent.userId,
+          startLatitude: intent.startLatitude,
+          startLongitude: intent.startLongitude,
         );
     }
   }
@@ -238,8 +252,55 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
     );
   }
 
+  void _startDriverSimulation({
+    required double storeLatitude,
+    required double storeLongitude,
+    required String orderId,
+    required String userId,
+    required double startLatitude,
+    required double startLongitude,
+  }) {
+    _simulationTimer?.cancel();
+    _simulationStep = 0;
+
+    final driverLocation = state.orderDetailsState?.data?.driver.location;
+    if (driverLocation == null) return;
+
+    final startLat = driverLocation.latitude;
+    final startLng = driverLocation.longitude;
+
+    _simulationTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (state.currentStep != 0 && state.currentStep != 2) {
+        timer.cancel();
+        return;
+      }
+
+      _simulationStep++;
+
+      final progress = _simulationStep / _totalSimulationSteps;
+      final clampedProgress = progress.clamp(0.0, 1.0);
+
+      final currentLat =
+          startLat + (storeLatitude - startLat) * clampedProgress;
+      final currentLng =
+          startLng + (storeLongitude - startLng) * clampedProgress;
+
+      _updateDriverLocation(
+        latitude: currentLat,
+        longitude: currentLng,
+        orderId: orderId,
+        userId: userId,
+      );
+
+      if (_simulationStep >= _totalSimulationSteps) {
+        timer.cancel();
+      }
+    });
+  }
+
   @override
   Future<void> close() {
+    _simulationTimer?.cancel();
     _orderDetailsSubscription?.cancel();
     _sideEffectsController.close();
     return super.close();

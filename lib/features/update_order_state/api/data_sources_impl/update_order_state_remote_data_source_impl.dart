@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../config/base_response/base_response.dart';
@@ -84,6 +86,9 @@ class UpdateOrderStateRemoteDataSourceImpl
       if (Firebase.apps.isEmpty) {
         await Firebase.initializeApp();
       }
+      log(
+        'Updating location for orderId: $orderId, userId: $userId, lat: ${location.latitude}, lng: ${location.longitude}',
+      );
 
       return await _fireService.fireStore
           .collection(FireStoreRefKey.users)

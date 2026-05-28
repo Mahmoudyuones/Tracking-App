@@ -30,6 +30,7 @@ class OrderStateDetailsScreen extends StatefulWidget {
 class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
   late final UpdateOrderStateCubit _cubit;
   late final StreamSubscription<UpdateOrderStateSideEffects> _sideEffectsSub;
+  int? _driverSimulationStartedStep;
 
   @override
   void initState() {
@@ -37,10 +38,7 @@ class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
     _cubit = GetIt.instance<UpdateOrderStateCubit>();
     _sideEffectsSub = _cubit.sideEffects.listen(_handleSideEffect);
     _cubit.doIntent(
-      const GetOrderByOrderIdIntent(
-        userId: '69deac8e6bbaf1588bbc1984',
-        orderId: '69e180e86bbaf1588bbc8595',
-      ),
+      GetOrderByOrderIdIntent(userId: widget.userId, orderId: widget.orderId),
     );
   }
 
@@ -121,6 +119,44 @@ class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
                   ),
                 ),
               );
+            }
+
+            if ((state.currentStep == 0 || state.currentStep == 2) &&
+                _driverSimulationStartedStep != state.currentStep) {
+              final orderDetailsValue = orderDetails!;
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                final storeLatLng = orderDetailsValue.orders.store.latLong
+                    .split(',');
+                final storeLatitude = double.parse(storeLatLng[0]);
+                final storeLongitude = double.parse(storeLatLng[1]);
+                final driverLocation = orderDetailsValue.driver.location;
+
+                final destinationLatitude = state.currentStep == 0
+                    ? storeLatitude
+                    : orderDetailsValue.orders.user.location.latitude;
+                final destinationLongitude = state.currentStep == 0
+                    ? storeLongitude
+                    : orderDetailsValue.orders.user.location.longitude;
+
+                final startLatitude = state.currentStep == 0
+                    ? driverLocation.latitude
+                    : storeLatitude;
+                final startLongitude = state.currentStep == 0
+                    ? driverLocation.longitude
+                    : storeLongitude;
+
+                _driverSimulationStartedStep = state.currentStep;
+                _cubit.doIntent(
+                  StartDriverSimulationIntent(
+                    storeLatitude: destinationLatitude,
+                    storeLongitude: destinationLongitude,
+                    startLatitude: startLatitude,
+                    startLongitude: startLongitude,
+                    orderId: orderDetailsValue.orders.id,
+                    userId: widget.userId,
+                  ),
+                );
+              });
             }
 
             return OrderStateDetailsBody(orderDetails: orderDetails!);
