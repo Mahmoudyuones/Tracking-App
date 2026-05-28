@@ -32,3 +32,17 @@ class UpdateOnlyFirestoreIntent extends UpdateOrderStateIntents {
     required this.userId,
   });
 }
+
+class UpdateDriverLocationIntent extends UpdateOrderStateIntents {
+  final double latitude;
+  final double longitude;
+  final String orderId;
+  final String userId;
+
+  const UpdateDriverLocationIntent({
+    required this.latitude,
+    required this.longitude,
+    required this.orderId,
+    required this.userId,
+  });
+}

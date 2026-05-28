@@ -8,12 +8,14 @@ class UpdateOrderStateState extends Equatable {
   final bool loadingUpdate;
   final BaseState<void>? changeOrderStatusState;
   final BaseState<void>? updateOrderStatusInFirestoreState;
+  final BaseState<void>? updateDriverLocationState;
   final int currentStep;
 
   const UpdateOrderStateState({
     this.orderDetailsState,
     this.changeOrderStatusState,
     this.updateOrderStatusInFirestoreState,
+    this.updateDriverLocationState,
     this.loadingUpdate = false,
     this.currentStep = 0,
   });
@@ -22,6 +24,7 @@ class UpdateOrderStateState extends Equatable {
     BaseState<OrderDetailsEntity>? orderDetailsState,
     BaseState<void>? changeOrderStatusState,
     BaseState<void>? updateOrderStatusInFirestoreState,
+    BaseState<void>? updateDriverLocationState,
     bool? loadingUpdate,
     int? currentStep,
   }) {
@@ -32,6 +35,8 @@ class UpdateOrderStateState extends Equatable {
       updateOrderStatusInFirestoreState:
           updateOrderStatusInFirestoreState ??
           this.updateOrderStatusInFirestoreState,
+      updateDriverLocationState:
+          updateDriverLocationState ?? this.updateDriverLocationState,
       loadingUpdate: loadingUpdate ?? this.loadingUpdate,
       currentStep: currentStep ?? this.currentStep,
     );
@@ -42,6 +47,7 @@ class UpdateOrderStateState extends Equatable {
     orderDetailsState,
     changeOrderStatusState,
     updateOrderStatusInFirestoreState,
+    updateDriverLocationState,
     loadingUpdate,
     currentStep,
   ];

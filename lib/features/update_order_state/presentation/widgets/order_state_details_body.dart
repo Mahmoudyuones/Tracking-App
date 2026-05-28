@@ -91,6 +91,7 @@ class OrderStateDetailsBody extends StatelessWidget {
                         userPhone: user.phone,
                         destinationLocation: destinationLocation,
                         sourceLocation: driverLocation,
+                        cubit: context.read<UpdateOrderStateCubit>(),
                       ),
                     );
                   },
@@ -133,6 +134,7 @@ class OrderStateDetailsBody extends StatelessWidget {
                         destinationLocation: destinationLocation,
                         sourceLocation: driverLocation,
                         pickUpAddressMode: false,
+                        cubit: context.read<UpdateOrderStateCubit>(),
                       ),
                     );
                   },
