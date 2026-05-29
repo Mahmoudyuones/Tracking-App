@@ -12,30 +12,55 @@ class GetOrderByOrderIdIntent extends UpdateOrderStateIntents {
 class ChangeOrderStatusIntent extends UpdateOrderStateIntents {
   final String orderId;
   final String state;
-
-  const ChangeOrderStatusIntent({required this.orderId, required this.state});
-}
-
-class UpdateOrderStatusInFirestoreIntent extends UpdateOrderStateIntents {
   final String userId;
-  final String orderId;
-  final String newStatus;
 
-  const UpdateOrderStatusInFirestoreIntent({
-    required this.userId,
+  const ChangeOrderStatusIntent({
     required this.orderId,
-    required this.newStatus,
+    required this.state,
+    required this.userId,
   });
 }
 
-class SubmitOrderStatusIntent extends UpdateOrderStateIntents {
-  final String userId;
+class UpdateOnlyFirestoreIntent extends UpdateOrderStateIntents {
   final String orderId;
-  final String newStatus;
+  final String newState;
+  final String userId;
 
-  const SubmitOrderStatusIntent({
-    required this.userId,
+  const UpdateOnlyFirestoreIntent({
     required this.orderId,
-    required this.newStatus,
+    required this.newState,
+    required this.userId,
+  });
+}
+
+class UpdateDriverLocationIntent extends UpdateOrderStateIntents {
+  final double latitude;
+  final double longitude;
+  final String orderId;
+  final String userId;
+
+  const UpdateDriverLocationIntent({
+    required this.latitude,
+    required this.longitude,
+    required this.orderId,
+    required this.userId,
+  });
+}
+
+class StartDriverSimulationIntent extends UpdateOrderStateIntents {
+  final double destinationLatitude;
+  final double destinationLongitude;
+  final String orderId;
+  final String userId;
+  final double startLatitude;
+  final double startLongitude;
+
+  const StartDriverSimulationIntent({
+    required this.destinationLatitude,
+    required this.destinationLongitude,
+    required this.orderId,
+    required this.userId,
+    required this.startLatitude,
+    required this.startLongitude,
   });
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../config/base_response/base_response.dart';
@@ -6,6 +8,7 @@ import '../../../../config/safe_api_call/safe_api_call.dart';
 import '../../../../core/constants/app_text_string.dart';
 import '../../../../core/helpers/firebase/fire_base_services.dart';
 import '../../../../core/helpers/firebase/fire_store_ref_key.dart';
+import '../../../../core/shared/models/location_model.dart';
 import '../../../../core/shared/models/order_details_model.dart';
 import '../../data/datasources/remote/update_order_state_remote_data_source.dart';
 import '../api_client/update_order_state_api_client.dart';
@@ -68,6 +71,34 @@ class UpdateOrderStateRemoteDataSourceImpl
     required String orderId,
     required String state,
   }) {
-    return safeApiCall(() => _apiClient.updateOrderState(orderId, state));
+    return safeApiCall(
+      () => _apiClient.updateOrderState(orderId, {'state': state}),
+    );
+  }
+
+  @override
+  Future<BaseResponse<void>> updateLocation({
+    required String orderId,
+    required String userId,
+    required LocationModel location,
+  }) {
+    return safeApiCall(() async {
+      if (Firebase.apps.isEmpty) {
+        await Firebase.initializeApp();
+      }
+      log(
+        'Updating location for orderId: $orderId, userId: $userId, lat: ${location.latitude}, lng: ${location.longitude}',
+      );
+
+      return await _fireService.fireStore
+          .collection(FireStoreRefKey.users)
+          .doc(userId)
+          .collection(FireStoreRefKey.orders)
+          .doc(orderId)
+          .update({
+            FireStoreRefKey.driverLatitude: location.latitude,
+            FireStoreRefKey.driverLongitude: location.longitude,
+          });
+    });
   }
 }

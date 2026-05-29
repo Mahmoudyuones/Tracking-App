@@ -4,8 +4,11 @@ import 'package:injectable/injectable.dart';
 import '../../../../../config/base_response/base_response.dart';
 import '../../../../../config/base_state/base_state.dart';
 import '../../../../../core/shared/entities/order_details_entity.dart';
+import '../../../../../core/shared/models/location_model.dart';
+import '../../../../core/constants/app_text_string.dart';
 import '../../domain/usecases/change_order_status_use_case.dart';
 import '../../domain/usecases/get_order_by_order_id_use_case.dart';
+import '../../domain/usecases/update_driver_location_use_case.dart';
 import '../../domain/usecases/update_order_status_in_firestore_use_case.dart';
 import 'update_order_state_intents.dart';
 import 'update_order_state_side_effects.dart';
@@ -17,12 +20,16 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
     this._getOrderByOrderidUseCase,
     this._changeOrderStatusUseCase,
     this._updateOrderStatusInFirestoreUseCase,
+    this._updateDriverLocationUseCase,
   ) : super(const UpdateOrderStateState());
 
   final GetOrderByOrderidUseCase _getOrderByOrderidUseCase;
   final ChangeOrderStatusUseCase _changeOrderStatusUseCase;
   final UpdateOrderStatusInFirestoreUseCase
   _updateOrderStatusInFirestoreUseCase;
+  final UpdateDriverLocationUseCase _updateDriverLocationUseCase;
+
+  static const int _totalSimulationSteps = 180;
 
   final StreamController<UpdateOrderStateSideEffects> _sideEffectsController =
       StreamController<UpdateOrderStateSideEffects>.broadcast();
@@ -42,20 +49,35 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
         );
 
       case ChangeOrderStatusIntent():
-        _changeOrderStatus(orderId: intent.orderId, newState: intent.state);
-
-      case UpdateOrderStatusInFirestoreIntent():
-        _updateOrderStatusInFirestore(
-          userId: intent.userId,
+        _changeOrderStatus(
           orderId: intent.orderId,
-          newStatus: intent.newStatus,
+          newStatus: intent.state,
+          userId: intent.userId,
         );
 
-      case SubmitOrderStatusIntent():
-        _changeAndUpdateOrderStatus(
+      case UpdateOnlyFirestoreIntent():
+        _updateFirestoreOnly(
           userId: intent.userId,
           orderId: intent.orderId,
-          newStatus: intent.newStatus,
+          newStatus: intent.newState,
+        );
+
+      case UpdateDriverLocationIntent():
+        _updateDriverLocation(
+          latitude: intent.latitude,
+          longitude: intent.longitude,
+          orderId: intent.orderId,
+          userId: intent.userId,
+        );
+
+      case StartDriverSimulationIntent():
+        _startDriverSimulation(
+          destinationLatitude: intent.destinationLatitude,
+          destinationLongitude: intent.destinationLongitude,
+          orderId: intent.orderId,
+          userId: intent.userId,
+          startLatitude: intent.startLatitude,
+          startLongitude: intent.startLongitude,
         );
     }
   }
@@ -100,84 +122,18 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
   }
 
   Future<void> _changeOrderStatus({
-    required String orderId,
-    required String newState,
-  }) async {
-    emit(state.copyWith(loadingUpdate: true));
-    final response = await _changeOrderStatusUseCase(
-      orderId: orderId,
-      state: newState,
-    );
-    response.when(
-      success: (_) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            changeOrderStatusState: const BaseState<void>(data: null),
-          ),
-        );
-        _emitEffect(const UpdateOrderStatusSuccessSideEffect());
-      },
-      failure: (failure) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            changeOrderStatusState: BaseState<void>(
-              errorMessage: failure.message,
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> _updateOrderStatusInFirestore({
     required String userId,
     required String orderId,
     required String newStatus,
   }) async {
     emit(state.copyWith(loadingUpdate: true));
-    final response = await _updateOrderStatusInFirestoreUseCase(
-      userId: userId,
-      orderId: orderId,
-      newStatus: newStatus,
-    );
-    response.when(
-      success: (_) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            updateOrderStatusInFirestoreState: const BaseState<void>(
-              data: null,
-            ),
-            updatedInFirestore: true,
-          ),
-        );
-      },
-      failure: (failure) {
-        emit(
-          state.copyWith(
-            loadingUpdate: false,
-            updateOrderStatusInFirestoreState: BaseState<void>(
-              errorMessage: failure.message,
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> _changeAndUpdateOrderStatus({
-    required String userId,
-    required String orderId,
-    required String newStatus,
-  }) async {
-    emit(state.copyWith(loadingUpdate: true));
-    _emitEffect(const Loading());
-
     final response = await _changeOrderStatusUseCase(
       orderId: orderId,
-      state: newStatus,
+      state: state.currentStep == 0
+          ? AppTextString.inProgress
+          : state.currentStep == 3
+          ? AppTextString.completed
+          : AppTextString.canceled,
     );
 
     response.when(
@@ -197,11 +153,9 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
                   data: null,
                 ),
                 changeOrderStatusState: const BaseState<void>(data: null),
-                updatedInFirestore: true,
+                currentStep: state.currentStep + 1,
               ),
             );
-            _emitEffect(const HideLoading());
-            _emitEffect(const UpdateOrderStatusSuccessSideEffect());
           },
           failure: (failure) {
             emit(
@@ -212,7 +166,6 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
                 ),
               ),
             );
-            _emitEffect(const HideLoading());
           },
         );
       },
@@ -225,9 +178,115 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateState> {
             ),
           ),
         );
-        _emitEffect(const HideLoading());
       },
     );
+  }
+
+  void _updateFirestoreOnly({
+    required String userId,
+    required String orderId,
+    required String newStatus,
+  }) async {
+    emit(state.copyWith(loadingUpdate: true));
+    final firestoreResponse = await _updateOrderStatusInFirestoreUseCase(
+      userId: userId,
+      orderId: orderId,
+      newStatus: newStatus,
+    );
+
+    firestoreResponse.when(
+      success: (_) {
+        emit(
+          state.copyWith(
+            loadingUpdate: false,
+            updateOrderStatusInFirestoreState: const BaseState<void>(
+              data: null,
+            ),
+            currentStep: state.currentStep + 1,
+          ),
+        );
+      },
+      failure: (failure) {
+        emit(
+          state.copyWith(
+            loadingUpdate: false,
+            updateOrderStatusInFirestoreState: BaseState<void>(
+              errorMessage: failure.message,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _updateDriverLocation({
+    required double latitude,
+    required double longitude,
+    required String orderId,
+    required String userId,
+  }) async {
+    final response = await _updateDriverLocationUseCase(
+      location: LocationModel(latitude: latitude, longitude: longitude),
+      orderId: orderId,
+      userId: userId,
+    );
+    response.when(
+      success: (_) {
+        emit(
+          state.copyWith(
+            updateDriverLocationState: const BaseState<void>(data: null),
+          ),
+        );
+      },
+      failure: (failure) {
+        emit(
+          state.copyWith(
+            updateDriverLocationState: BaseState<void>(
+              errorMessage: failure.message,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _startDriverSimulation({
+    required double destinationLatitude,
+    required double destinationLongitude,
+    required String orderId,
+    required String userId,
+    required double startLatitude,
+    required double startLongitude,
+  }) {
+    int simulationStep = 0;
+
+    simulationStep = 0;
+
+    final startLat = startLatitude;
+    final startLng = startLongitude;
+
+    Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (state.currentStep != 0 && state.currentStep != 2) {
+        timer.cancel();
+        return;
+      }
+
+      simulationStep++;
+      final progress = (simulationStep / _totalSimulationSteps).clamp(0.0, 1.0);
+
+      final currentLat = startLat + (destinationLatitude - startLat) * progress;
+      final currentLng =
+          startLng + (destinationLongitude - startLng) * progress;
+
+      _updateDriverLocation(
+        latitude: currentLat,
+        longitude: currentLng,
+        orderId: orderId,
+        userId: userId,
+      );
+
+      if (simulationStep >= _totalSimulationSteps) timer.cancel();
+    });
   }
 
   @override

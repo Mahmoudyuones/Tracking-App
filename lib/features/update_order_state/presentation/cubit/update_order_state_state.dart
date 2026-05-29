@@ -8,22 +8,25 @@ class UpdateOrderStateState extends Equatable {
   final bool loadingUpdate;
   final BaseState<void>? changeOrderStatusState;
   final BaseState<void>? updateOrderStatusInFirestoreState;
-  final bool updatedInFirestore;
+  final BaseState<void>? updateDriverLocationState;
+  final int currentStep;
 
   const UpdateOrderStateState({
     this.orderDetailsState,
     this.changeOrderStatusState,
     this.updateOrderStatusInFirestoreState,
+    this.updateDriverLocationState,
     this.loadingUpdate = false,
-    this.updatedInFirestore = false,
+    this.currentStep = 0,
   });
 
   UpdateOrderStateState copyWith({
     BaseState<OrderDetailsEntity>? orderDetailsState,
     BaseState<void>? changeOrderStatusState,
     BaseState<void>? updateOrderStatusInFirestoreState,
+    BaseState<void>? updateDriverLocationState,
     bool? loadingUpdate,
-    bool? updatedInFirestore,
+    int? currentStep,
   }) {
     return UpdateOrderStateState(
       orderDetailsState: orderDetailsState ?? this.orderDetailsState,
@@ -32,8 +35,10 @@ class UpdateOrderStateState extends Equatable {
       updateOrderStatusInFirestoreState:
           updateOrderStatusInFirestoreState ??
           this.updateOrderStatusInFirestoreState,
+      updateDriverLocationState:
+          updateDriverLocationState ?? this.updateDriverLocationState,
       loadingUpdate: loadingUpdate ?? this.loadingUpdate,
-      updatedInFirestore: updatedInFirestore ?? this.updatedInFirestore,
+      currentStep: currentStep ?? this.currentStep,
     );
   }
 
@@ -42,7 +47,8 @@ class UpdateOrderStateState extends Equatable {
     orderDetailsState,
     changeOrderStatusState,
     updateOrderStatusInFirestoreState,
-    updatedInFirestore,
+    updateDriverLocationState,
     loadingUpdate,
+    currentStep,
   ];
 }

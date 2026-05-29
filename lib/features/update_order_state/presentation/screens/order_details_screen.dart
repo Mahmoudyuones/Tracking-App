@@ -30,6 +30,7 @@ class OrderStateDetailsScreen extends StatefulWidget {
 class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
   late final UpdateOrderStateCubit _cubit;
   late final StreamSubscription<UpdateOrderStateSideEffects> _sideEffectsSub;
+  int? _driverSimulationStartedStep;
 
   @override
   void initState() {
@@ -37,10 +38,7 @@ class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
     _cubit = GetIt.instance<UpdateOrderStateCubit>();
     _sideEffectsSub = _cubit.sideEffects.listen(_handleSideEffect);
     _cubit.doIntent(
-      const GetOrderByOrderIdIntent(
-        userId: '69deac8e6bbaf1588bbc1984',
-        orderId: '69e180e86bbaf1588bbc8595',
-      ),
+      GetOrderByOrderIdIntent(userId: widget.userId, orderId: widget.orderId),
     );
   }
 
@@ -123,19 +121,31 @@ class _OrderStateDetailsScreenState extends State<OrderStateDetailsScreen> {
               );
             }
 
-            return OrderStateDetailsBody(
-              orderDetails: orderDetails!,
-              isUpdating: state.loadingUpdate,
-              onUpdateStatus: (newStatus) {
+            if ((state.currentStep == 0) &&
+                _driverSimulationStartedStep != state.currentStep) {
+              final orderDetailsValue = orderDetails!;
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                final storeLatLng = orderDetailsValue.orders.store.latLong
+                    .split(',');
+                final storeLatitude = double.parse(storeLatLng[0]);
+                final storeLongitude = double.parse(storeLatLng[1]);
+                final driverLocation = orderDetailsValue.driver.location;
+
+                _driverSimulationStartedStep = state.currentStep;
                 _cubit.doIntent(
-                  SubmitOrderStatusIntent(
+                  StartDriverSimulationIntent(
+                    destinationLatitude: storeLatitude,
+                    destinationLongitude: storeLongitude,
+                    startLatitude: driverLocation.latitude,
+                    startLongitude: driverLocation.longitude,
+                    orderId: orderDetailsValue.orders.id,
                     userId: widget.userId,
-                    orderId: widget.orderId,
-                    newStatus: newStatus,
                   ),
                 );
-              },
-            );
+              });
+            }
+
+            return OrderStateDetailsBody(orderDetails: orderDetails!);
           },
         ),
       ),

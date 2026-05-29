@@ -17,6 +17,7 @@ extension OrderMapper on OrderModel {
       state: state,
       orderNumber: orderNumber,
       store: store.toEntity(),
+      createdAt: createdAt.toString(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import '../../../../config/base_response/base_response.dart';
 import '../../../../core/shared/entities/order_details_entity.dart';
+import '../../../../core/shared/models/location_model.dart';
 import '../../../taps/home_tab/data/mappers/order_details_mapper.dart';
 import '../../domain/repositories/update_order_state_repository.dart';
 import '../datasources/remote/update_order_state_remote_data_source.dart';
@@ -45,6 +46,19 @@ class UpdateOrderStateRepositoryImpl implements UpdateOrderStateRepository {
       userId: userId,
       orderId: orderId,
       status: status,
+    );
+  }
+
+  @override
+  Future<BaseResponse<void>> updateDriverLocation({
+    required String orderId,
+    required String userId,
+    required LocationModel location,
+  }) {
+    return _remoteDataSource.updateLocation(
+      orderId: orderId,
+      userId: userId,
+      location: location,
     );
   }
 }

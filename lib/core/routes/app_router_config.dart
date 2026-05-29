@@ -10,6 +10,7 @@ import '../../core/enums/home_nav_bar.dart';
 import '../../features/auth/apply/presentation/screens/apply_screen.dart';
 import '../../features/auth/apply/presentation/screens/sucsess_apply_screen.dart';
 import '../../features/auth/login/presentation/views/login_view.dart';
+import '../../features/taps/home_tab/domain/entities/response/start_order_response/start_order_entity.dart';
 import '../../features/taps/profile_tab/change_password/presentation/view/screens/change_password_screen.dart';
 import '../../features/taps/profile_tab/edit_profile/presentation/view/screens/edit_profile_screen.dart';
 import '../../features/main/presentation/cubit/main_cubit.dart';
@@ -21,7 +22,9 @@ import '../../features/on_boarding/presentation/screens/onboarding_screen.dart';
 import '../../features/taps/orders_tap/orders/domain/entities/order_wrapper_entity.dart';
 import '../../features/taps/orders_tap/order_details/presentation/views/screens/driver_order_details_screen.dart';
 import '../../features/sucsess/presenatation/success_sccreen.dart';
+import '../../features/update_order_state/presentation/models/pick_up_location_args.dart';
 import '../../features/update_order_state/presentation/screens/order_details_screen.dart';
+import '../../features/update_order_state/presentation/screens/pick_up_location.dart';
 import '../constants/app_text_string.dart';
 import 'app_routes.dart';
 
@@ -84,6 +87,15 @@ class AppRouterConfig {
       ),
 
       GoRoute(
+        path: AppRoutes.pickUpLocation,
+        name: AppRoutes.pickUpLocation,
+        builder: (context, state) {
+          final extra = state.extra as PickUpLocationArgs;
+          return PickUpLocationScreen(args: extra);
+        },
+      ),
+
+      GoRoute(
         path: AppRoutes.driverOrderDetails,
         name: AppRoutes.driverOrderDetails,
         builder: (context, state) {
@@ -102,14 +114,12 @@ class AppRouterConfig {
         path: AppRoutes.orderDetails,
         name: AppRoutes.orderDetails,
         builder: (context, state) {
-          final extra = state.extra;
-          if (extra is Map<String, String>) {
-            return OrderStateDetailsScreen(
-              userId: extra['userId'] ?? '',
-              orderId: extra['orderId'] ?? '',
-            );
-          }
-          return const OrderStateDetailsScreen(userId: '', orderId: '');
+          final order = state.extra as StartOrderEntity;
+
+          return OrderStateDetailsScreen(
+            orderId: order.id,
+            userId: order.userId,
+          );
         },
       ),
     ],
@@ -146,7 +156,7 @@ class AppRouterConfig {
     if (isLoggedIn &&
         (state.matchedLocation == AppRoutes.loginRoute ||
             state.matchedLocation == AppRoutes.onBoardingRoute)) {
-      return AppRoutes.orderDetails;
+      return AppRoutes.mainRoute;
     }
 
     return null;
